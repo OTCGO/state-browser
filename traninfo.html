@@ -169,22 +169,43 @@
                                 that.vinout = { left: [], right: []}
                                 for(var j = 0; j < item.vin.length; j++){
                                     var vinItem = item.vin[j];
-                                    that.vinout.left.push({
-                                        title:  that.$t('transaction.sentFrom'),
-                                        symbol: vinItem.utxo.name,
-                                        value: vinItem.utxo.value,
-                                        address: vinItem.utxo.address
-                                    })
+                                    if(j === 0 ){
+                                        that.vinout.left.push({
+                                            title:  that.$t('transaction.sentFrom'),
+                                            symbol: vinItem.utxo.name,
+                                            value: vinItem.utxo.value,
+                                            address: vinItem.utxo.address
+                                        })
+                                    }else{
+                                        that.vinout.left.push({
+                                            title:  '',
+                                            symbol: vinItem.utxo.name,
+                                            value: vinItem.utxo.value,
+                                            address: vinItem.utxo.address
+                                        })
+                                    }
+
                                 }
 
                                 for(var k=0; k < item.vout.length; k++){
                                     var voutItem = item.vout[k];
-                                    that.vinout.right.push({
-                                        title: that.$t('transaction.sentTo'),
-                                        symbol: voutItem.name,
-                                        value: voutItem.value,
-                                        address: voutItem.address
-                                    })
+                                    if(k === 0 ){
+                                        that.vinout.right.push({
+                                            title: that.$t('transaction.sentTo'),
+                                            symbol: voutItem.name,
+                                            value: voutItem.value,
+                                            address: voutItem.address
+                                        })
+                                    }else{
+                                        that.vinout.right.push({
+                                            title: '',
+                                            symbol: voutItem.name,
+                                            value: voutItem.value,
+                                            address: voutItem.address
+                                        })    
+                                    }
+                                    
+
                                 }
                             }
 

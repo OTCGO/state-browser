@@ -1,0 +1,63 @@
+.page-tran-info, .page-block-info, .page-addr-info{
+    margin: 0 0 0 2rem;
+    width: 7.5rem;
+    font-size: 0.1rem;
+    color: #fff;
+}
+.page-home-info {
+    min-height: 8rem;
+}
+.page-block-info{
+    /* min-width: 15rem; */
+}
+.page-block-info .neo-paging{
+    width: 7.5rem;
+}
+.page-asset-list {
+    width: 7.5rem;
+    position: relative;
+    left: 2.45rem;
+    top: 0.2rem;
+}
+.page-home-slider {
+    margin: 1rem 0 0 0;
+}
+.page-home-toolbox {
+    position: relative;
+    bottom: 0.9rem;
+}
+
+.page-home-data.B0{
+    width: 7.5rem;
+    position: relative;
+    left: 1.5rem;
+    top:-0.8rem;
+}
+.page-home-data.B1{
+    width: 7.5rem;
+    position: relative;
+    left: 2.45rem;
+    top:-0.8rem;
+}
+.page-home-data.B2{
+    width: 7.5rem;
+    position: relative;
+    left: 2.45rem;
+    top:-0.8rem;
+}
+.page-home-data.B3{
+    width: 7.5rem;
+    position: relative;
+    left: 2.45rem;
+    top:-0.8rem;
+}
+.page-home-data.B4{
+    width: 7.5rem;
+    position: relative;
+    left: 2.45rem;
+    top:-0.8rem;
+}
+.title{
+    color: #84C033; 
+    font-size: 0.2rem;
+}

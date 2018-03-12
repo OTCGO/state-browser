@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>neo</title>
+    <link href="/styles/comp.css?v=2" rel="stylesheet" />
+    <link href="/libs/iconfont/iconfont.css?v=2" rel="stylesheet" />
+    <link href="/styles/layout.css?v=2" rel="stylesheet" />
+
+</head>
+
+<body>
+    <div id="app">
+        <neo-header></neo-header>
+        <div class="page-addr-info">
+            <neo-info-title v-bind:title="address" subtitle=""></neo-info-title>
+            <neo-addr-info ref="addrinfo"></neo-addr-info>
+            <neo-tran-list title="Transactions (6)"></neo-tran-list>
+        </div>
+        <neo-footer></neo-footer>
+    </div>
+    <script src="/libs/rem/rem.js?v=2" data-psd="750"></script>
+    <script src="/libs/vue/vue.min.js"></script>
+    <script src="/libs/moment/moment.min.js"></script>
+
+    <script src="libs/vue-i18n/vue-i18n.min.js"></script>
+    <script src="i18n/en.js"></script>
+    <script src="i18n/zhCHS.js"></script>
+    
+    <script src="/libs/echarts/echarts.min.js"></script>
+    <script src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
+    <script src="config.js"></script>
+    <script src="/component/comp.js"></script>
+
+    <script>
+        const i18n = new VueI18n({
+            locale: 'zhCHS', // 语言标识
+            messages:{
+                en,zhCHS
+            }
+        })        
+        var app = new Vue({
+            el: '#app',
+            i18n,
+            data:{
+               
+            },
+            computed: {
+                address: function() {
+                    return GetUrlParam('address');
+                }
+            },
+            methods: {
+                init: function() {
+                    // this.$refs.neochart.init();
+                    // this.$refs.wallet.init();
+                    this.$refs.addrinfo.init(this.address);
+                }
+            }
+        })
+
+        app.init();
+    </script>
+</body>
+
+</html>

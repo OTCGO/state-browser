@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>neo</title>
+    <link href="styles/comp.css?v=2" rel="stylesheet" />
+    <link href="libs/iconfont/iconfont.css?v=2" rel="stylesheet" />
+    <link href="styles/layout.css?v=2" rel="stylesheet" />
+
+</head>
+
+<body>
+    <div id="app">
+        <neo-header></neo-header>
+        <div class="page-tran-info">
+            <neo-info-title :title="$t('transaction.name')"  v-bind:id="id"></neo-info-title>
+            <neo-tran-info   v-bind:transaction="transaction"></neo-tran-info>
+            <neo-tran-record showborder="true" v-bind:record="nep5" v-if="nep5"></neo-tran-record> <br/>
+            <neo-tran-record showborder="true" v-bind:record="vinout" v-if="vinout"></neo-tran-record> <br/>
+            <neo-tran-script v-bind:scripts="scripts" v-if="scripts"></neo-tran-script>
+        </div>
+        <neo-footer></neo-footer>
+    </div>
+    <script src="config.js"></script>
+    <script src="libs/rem/rem.js?v=2" data-psd="750"></script>
+    <script src="libs/vue/vue.min.js"></script>
+    <script src="libs/moment/moment.min.js"></script>
+
+    <script src="libs/vue-i18n/vue-i18n.min.js"></script>
+    <script src="i18n/en.js"></script>
+    <script src="i18n/zhCHS.js"></script>
+    
+    <script src="libs/echarts/echarts.min.js"></script>
+    <script src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
+    <script src="component/comp.js"></script>
+
+    <script>
+        const i18n = new VueI18n({
+            locale: 'zhCHS', // 语言标识
+            messages:{
+                en,zhCHS
+            }
+        })
+
+        var app = new Vue({
+            el: '#app',
+            i18n,
+            data:function(){
+                return {
+                    nep5: undefined,
+                    vinout: undefined,
+                    // record: {
+                    //     left: [
+                    //         {title: 'Sent From', symbol: 'NEO', value: '100', address: '12121121212121212'},
+                    //         {title: 'Sent From', symbol: 'NEO', value: '100', address: '12121121212121212'}
+                    //     ],
+                    //     right: [
+                    //         {title: 'Sent To', symbol: 'NEO', value: '100', address: '12121121212121212'},
+                    //         {title: 'Sent To', symbol: 'NEO', value: '100', address: '12121121212121212'}
+                    //     ]
+                    // },
+                    scripts: undefined,
+                    // scripts: [
+                    //     {title: 'Bytecode Invocation Script', desc: '64654654654654654654654654654654654654654654'},
+                    //     {title: 'Bytecode Invocation Script', desc: '64654654654654654654654654654654654654654654'},
+                    //     {title: 'Bytecode Invocation Script', desc: '64654654654654654654654654654654654654654654'},
+                    //     {title: 'Bytecode Invocation Script', desc: '64654654654654654654654654654654654654654654'},
+                    //     {title: 'Bytecode Invocation Script', desc: '64654654654654654654654654654654654654654654'},
+                    //     {title: 'Bytecode Invocation Script', desc: '64654654654654654654654654654654654654654654'},
+                    //     {title: 'Bytecode Invocation Script', desc: '64654654654654654654654654654654654654654654'}
+                    // ]
+                    transaction:[]
+                }
+            } ,
+            computed: {
+                id: function() {
+                    return GetUrlParam('id');
+                }
+            },
+            methods: {
+                init: function() {
+                    // this.$refs.neochart.init();
+                    // this.$refs.wallet.init();
+                    var that = this;
+                    axios({
+                        url: `${host}/api/v1/${network}/public/graphql`,
+                        method: 'post', 
+                        data: {
+                            query: 
+                                '{'+
+                                    'TransactionQuery (txid:"'+this.id+'") {'+
+                                    'count,'+
+                                    'rows {'+
+                                        ' _id '+
+                                        ' txid '+
+                                        ' blockIndex '+
+                                        ' size '+
+                                        ' type '+
+                                        ' sys_fee '+
+                                        ' time '+
+                                        ' net_fee '+                                       
+                                        ' vin { '+
+                                            ' vout '+
+                                            ' txid '+
+                                            ' utxo { '+
+                                                ' address '+
+                                                ' value '+
+                                                ' asset '+
+                                                ' name '+
+                                            ' } '+
+                                        ' } '+
+                                        ' vout { '+
+                                                ' address ' +
+                                                ' value ' +
+                                                ' asset ' +
+                                                ' n ' +
+                                                ' name ' +
+                                        ' } '+
+                                        ' nep5 { '+
+                                                ' to'+
+                                                ' from  '+
+                                                ' symbol '+
+                                                ' value '+
+                                                ' operation '+
+                                                ' assetId '+
+                                        ' } '+
+                                        ' scripts { '+
+                                            ' invocation '+
+                                            ' verification '+
+                                        ' } '+
+                                    '}'+
+                                  '}'+
+                                '}'
+                        }
+                    })
+                    .then(function (resp) {
+                        var count = resp.data.data.TransactionQuery.count;
+
+                        if(count > 0){
+                            var item = resp.data.data.TransactionQuery.rows[0];
+                            console.log('item',item)
+                            if(item.nep5 && item.nep5.length>0){
+                                that.nep5 = {
+                                    left: [],
+                                    right: []
+                                }
+                            }
+
+                            if(item.nep5 && item.nep5.length > 0){
+                                for(var i=0; i<item.nep5.length; i++){
+                                    var row = item.nep5[i]
+                                    that.nep5.left.push({
+                                        title: 'Sent From',
+                                        symbol: row.symbol == null ? '--' : row.symbol,
+                                        value: row.value,
+                                        address: row.from
+                                    })
+                                    that.nep5.right.push({
+                                        title: 'Sent To',
+                                        symbol: row.symbol == null ? '--' : row.symbol,
+                                        value: row.value,
+                                        address: row.to
+                                    })
+                                }
+                            }
+
+                            if(item.vin && item.vout && item.vin.length > 0 && item.vout.length > 0){
+                                that.vinout = { left: [], right: []}
+                                for(var j = 0; j < item.vin.length; j++){
+                                    var vinItem = item.vin[j];
+                                    that.vinout.left.push({
+                                        title:  that.$t('transaction.sentFrom'),
+                                        symbol: vinItem.utxo.name,
+                                        value: vinItem.utxo.value,
+                                        address: vinItem.utxo.address
+                                    })
+                                }
+
+                                for(var k=0; k < item.vout.length; k++){
+                                    var voutItem = item.vout[k];
+                                    that.vinout.right.push({
+                                        title: that.$t('transaction.sentTo'),
+                                        symbol: voutItem.name,
+                                        value: voutItem.value,
+                                        address: voutItem.address
+                                    })
+                                }
+                            }
+
+                            if(item.scripts && item.scripts.length > 0){
+                                that.scripts = []
+                            }
+                            for(var i=0; i<item.scripts.length; i++){
+                                var row = item.scripts[0]
+
+                                if(row.invocation){
+                                    that.scripts.push({
+                                        title: that.$t('transaction.invocationScript'),
+                                        desc: row.invocation
+                                    })
+                                }
+                                if(row.verification) {
+                                    that.scripts.push({
+                                        title: that.$t('transaction.invocationScript'),
+                                        desc: row.verification
+                                    })
+                                }
+                            }
+
+                            // transactionItems
+                            that.transaction = [
+                                {title: that.$t('transaction.time'), desc: moment(item.time*1000).format("YYYY-MM-DD | HH:mm:ss")},
+                                {title: that.$t('transaction.type'), desc: item.type},
+                                {title: that.$t('transaction.networkFee'), desc: item.net_fee},
+                                {title: that.$t('transaction.systemFee'), desc: item.sys_fee},
+                                {title: that.$t('block.index'), desc: item.blockIndex},
+                                {title: that.$t('transaction.size'), desc: `${item.size} bytes` }
+                            ]
+                           
+                            console.log('transaction',that.transaction)
+
+                        }
+                        // that.$emit('loaded', resp.data.data.AssetQuery)
+                        // that.items = [];
+                        // for(var i=0; i<resp.data.data.AssetQuery.rows.length; i++){
+                        //     var row = resp.data.data.AssetQuery.rows[i];
+                        //     that.items.push({
+                        //         id: row.assetId == null ? 'N/A' : row.assetId,
+                        //         // symbol: row.symbol == null ? 'N/A' : row.symbol,
+                        //         amount: row.amount == null ? 'N/A' : row.amount,
+                        //         name: row.name == null ? 'N/A' : (row.name[0].name || 'N/A'),
+                        //         type: row.type == null ? 'N/A' : row.type
+                        //     })
+                        // }
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+                }
+            }
+        })
+
+        app.init();
+    </script>
+</body>
+
+</html>

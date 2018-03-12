@@ -1,0 +1,25 @@
+{
+  "name": "neo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/lynn_royal/neo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.17.1",
+    "chart.js": "^2.7.1",
+    "echarts": "^3.8.5",
+    "moment": "^2.20.1",
+    "momentjs": "^2.0.0",
+    "normalize.css": "^7.0.0",
+    "vue": "^2.5.13"
+  }
+}

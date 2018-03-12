@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>neo</title>
+    <link href="styles/site.css?v=2" rel="stylesheet" />
+    <link href="libs/iconfont/iconfont.css?v=2" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="app">
+        <div class="header">
+            <div class="title">
+                <h1 class="neo-fs5">NEO</h1>
+                <h2>NEP5</h2>
+                <h2>OCTGO</h2>
+            </div>
+            <div class="menu" v-cloak>
+                <div class="item" v-for="(item,itemIdx) in list" v-on:click="changeItem(itemIdx)">
+                    <span>
+                        {{item.name}}
+                        <i class="icon iconfont icon-arrow-down" v-if="item.items"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="viewpager">
+            <div class="indicator" v-cloak>
+                <div class="scopeline"></div>
+                <div class="scopeitem" 
+                    v-on:click="changeItem(idx)"
+                    v-bind:style="{left: positions[itemIdx][idx]+ 'rem'}" 
+                    v-for="(item, idx) in items"
+                    v-if="idx < itemIdx">
+                    <div class="dot" v-if="itemIdx != idx">
+                        <i></i>
+                    </div>
+                    <h1 v-if="itemIdx != idx">{{item.title}}</h1>
+                    <h2 v-if="itemIdx != idx">{{item.subtitle}}</h2>    
+                </div>
+                <div class="scopeitem" 
+                    v-on:click="changeItem(idx)"
+                    v-bind:style="{right: positions[itemIdx][idx]+ 'rem'}" 
+                    v-for="(item, idx) in items"
+                    v-if="idx > itemIdx">
+                    <div class="dot" v-if="itemIdx != idx">
+                        <i></i>
+                    </div>
+                    <h1 v-if="itemIdx != idx">{{item.title}}</h1>
+                    <h2 v-if="itemIdx != idx">{{item.subtitle}}</h2>    
+                </div>
+            </div>
+            <div class="viewpage" v-cloak>
+                <div class="toolbox dynamic" v-if="idx == 0">
+                    <input type="text" placeholder="Block Height,Hash,Address or Transactin Id"/>
+                    <i class="icon iconfont icon-search"></i>
+                </div>
+                <div class="toolbox market" v-if="idx == 1">
+                    <div class="total">
+                        <h1>$74.00</h1>
+                    </div>
+                    <div class="info">
+                        <div class="item">
+                            <label>24h Change:</label>
+                            <span class="highlight">2.28%</span>
+                        </div>
+                        <div class="item">
+                            <label>24h Volume:</label>
+                            <span>153,091,000.00</span>
+                        </div>
+                        <div class="item">
+                            <label>Market Cap:</label>
+                            <span>4,908,322,000.00</span>
+                        </div>
+                    </div>
+                    <div class="timestamp">
+                        Last Updated 5 mintues ago
+                    </div>
+                </div>
+                <div class="toolbox tran" v-if="idx == 2">
+                    <div class="total">
+                        <label>total trading</label>
+                        <span>4,494,253</span>
+                    </div>
+                    <div class="category">
+                        <span>Any <i class="icon iconfont icon-arrow-down"></i></span>
+                    </div>
+                </div>
+                <div class="toolbox block" v-if="idx == 3">
+                    <div class="total">
+                        <label>Block number</label>
+                        <span>1,764,548</span>
+                    </div>
+                </div>
+                <div class="toolbox wallet" v-if="idx == 4">
+                    <div class="total">
+                        <label>Total number of purses</label>
+                        <span>474,470</span>
+                    </div>
+                    <div class="toolbar">
+                        <div class="item">NEW WALLET</div>
+                        <div class="item middle">OPEN WALLET</div>
+                        <div class="item">MENU</div>
+                    </div>
+                </div>
+                <div class="title" v-if="idx < 3" v-bind:style="{left: toolboxPositions[idx] + 'rem', 'text-align': idx > 1 ? 'right' : 'left'}">
+                    <h1>{{title}}</h1>
+                    <div class="underline" v-bind:class="{'right': idx > 1}">
+                        <i></i>
+                    </div>
+                </div>
+                <div class="title" v-if="idx > 2" v-bind:style="{right: toolboxPositions[idx] + 'rem', 'text-align': idx > 1 ? 'right' : 'left'}">
+                    <h1>{{title}}</h1>
+                    <div class="underline" v-bind:class="{'right': idx > 1}">
+                        <i></i>
+                    </div>
+                </div>
+                <div class="tab" v-if="idx == 1">
+                    <div class="item" 
+                        v-on:click="changeTabItem(tabItemIdx)"
+                        v-bind:class="{'active': tabIdx == tabItemIdx}" 
+                        v-for="(tabItem, tabItemIdx) in tabs">{{tabItem}}</div>
+                </div>
+                <div class="detail dynamic" v-if="idx == 0">
+                    <div class="list">
+                        <div class="item" v-for="(item, idx) in dynamicItems">
+                            <h1>{{item.value}} <i>{{item.unit}}</i></h1>
+                            <h2>{{item.desc}}</h2>
+                            <div class="underlayer"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="detail tran" v-if="idx == 2">
+                    <div class="list">
+                        <div class="row header">
+                            <div class="col col-1">Type</div>
+                            <div class="col col-2">Transaction ID</div>
+                            <div class="col col-3">Computed on</div>
+                            <div class="underlayer"></div>
+                        </div>
+                        <div class="wrapper" v-for="(item, idx) in tranItems">
+                            <div class="row item" v-bind:class="{'expand': item.expand}">
+                                <div class="col col-1">
+                                    <span>{{item.type}}</span>
+                                </div>
+                                <div class="col col-2">
+                                    <span>{{item.tranid}}</span>
+                                </div>
+                                <div class="col col-3">
+                                    <span>{{item.computedon}}</span>
+                                </div>
+                                <div class="col col-4" v-on:click="expandTranItem(idx)">
+                                </div>
+                                <i class="icon iconfont icon-arrow-down-1"></i>
+                                <div class="underlayer"></div>
+                            </div>
+                            <div class="row detail" v-if="item.expand">
+                                    <div class="underlayer"></div>
+                                    <div class="col col-1">
+                                        <h1>Sent From</h1>
+                                        <h2>{{item.detail.fromid}}</h2>
+                                        <span>{{item.detail.fromval}}</span>
+                                    </div>
+                                    <div class="col col-1">
+                                        <h1>Sent To</h1>
+                                        <h2>{{item.detail.toid}}</h2>
+                                        <span>{{item.detail.toval}}</span>
+                                    </div>
+                                    <div class="fee">
+                                        Network Fee: {{item.detail.nwfee}} · System Fee: {{item.detail.sysfee}} · Data Size: {{item.detail.datasize}}
+                                    </div>
+                                    <div class="arrow">
+                                        <i class="icon iconfont icon-arrow-right"></i>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="pagging">
+                            <div class="info">
+                                Transactions 
+                                {{(pagging.currentPage-1)*pagging.pageCount+1}} 
+                                to 
+                                {{pagging.currentPage*pagging.pageCount}} 
+                                of 
+                                {{pagging.totalCount}} 
+                            </div>
+                            <div class="pagger">
+                                <i class="icon iconfont icon-arrow-left prev"></i>
+                                <i class="icon iconfont icon-arrow-right2 next"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="detail block" v-if="idx == 3">
+                    <div class="list">
+                        <div class="row header">
+                            <div class="col col-1">
+                                <span>Height</span>
+                            </div>
+                            <div class="col col-2">
+                                <span>Size</span>
+                            </div>
+                            <div class="col col-3">
+                                <span>Transactions</span>
+                            </div>
+                            <div class="col col-4">
+                                <span>Created on</span>
+                            </div>
+                            <div class="underlayer">
+                                
+                            </div>
+                        </div>
+                        <div class="row item" v-for="(item, idx) in blockItems">
+                            <div class="col col-1">
+                                <span>{{item.height}}</span>
+                            </div>
+                            <div class="col col-2">
+                                <span>{{item.size}}</span>
+                            </div>
+                            <div class="col col-3">
+                                <span>{{item.trans}}</span>
+                            </div>
+                            <div class="col col-4">
+                                <span>{{item.created}}</span>
+                            </div>
+                            <div class="underlayer">
+                            </div>
+                            <i class="icon iconfont icon-sign-five"></i>
+                        </div>
+                    </div>
+                    <div class="pagging">
+                        <div class="info">
+                            Transactions 
+                            {{(pagging.currentPage-1)*pagging.pageCount+1}} 
+                            to 
+                            {{pagging.currentPage*pagging.pageCount}} 
+                            of 
+                            {{pagging.totalCount}} 
+                        </div>
+                        <div class="pagger">
+                            <i class="icon iconfont icon-arrow-left prev"></i>
+                            <i class="icon iconfont icon-arrow-right2 next"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="detail wallet" v-if="idx == 4">
+                    <div class="list">
+                        <div class="row header">
+                                <div class="row header">
+                                    <div class="col col-1">
+                                        <span>Address ID</span>
+                                    </div>
+                                    <div class="col col-2">
+                                        <span>Created</span>
+                                    </div>
+                                    <div class="col col-3">
+                                        <span>Transactions</span>
+                                    </div>
+                                    <div class="col col-4">
+                                        <span>Last Transaction</span>
+                                    </div>
+                                    <div class="col col-5">
+                                        <span>Tokens</span>
+                                    </div>
+                                    <div class="underlayer">
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="row item" v-for="(item, idx) in walletItems">
+                            <div class="col col-1">
+                                <span>{{item.addr}}</span>
+                            </div>
+                            <div class="col col-2">
+                                <span>{{item.created}}</span>
+                            </div>
+                            <div class="col col-3">
+                                <span>{{item.trans}}</span>
+                            </div>
+                            <div class="col col-4">
+                                <span>{{item.last}}</span>
+                            </div>
+                            <div class="col col-5">
+                                <span> NEO: {{item.neo}}</span>
+                                <span> GAS: {{item.gas}}</span>
+                            </div>
+                            <div class="underlayer">
+                            </div>
+                            <i class="icon iconfont icon-sign-five"></i>
+                        </div>
+                    </div>
+                    <div class="pagging">
+                        <div class="info">
+                            Transactions 
+                            {{(pagging.currentPage-1)*pagging.pageCount+1}} 
+                            to 
+                            {{pagging.currentPage*pagging.pageCount}} 
+                            of 
+                            {{pagging.totalCount}} 
+                        </div>
+                        <div class="pagger">
+                            <i class="icon iconfont icon-arrow-left prev"></i>
+                            <i class="icon iconfont icon-arrow-right2 next"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail market" v-if="idx == 1">
+                    <div id="neochart" v-if="idx == 1" style="height: 2rem; width: 7.5rem;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="folder">
+                <div class="wrapper">
+                    <i class="icon iconfont icon-arrow-up"></i>
+                </div>
+            </div>
+            <div class="sns">
+                <i class="icon iconfont icon-qq"></i>
+                <i class="icon iconfont icon-wechat"></i>
+            </div>
+            <div class="info">
+                <div>Relatec links: OTCGO | NEO Intelligent economy | Binace | KUCOIN</div>
+                <div>Switch block chain: The test chain is not open temporarily</div>
+                <div>Node version: v2.3.5.0</div>
+            </div>
+            <div class="recnum">
+                Record number: 湘ICP备16019051号-1
+            </div>
+        </div>
+    </div>
+    <script src="libs/rem/rem.js?v=2" data-psd="750"></script>
+    <script src="libs/vue/vue.min.js"></script>
+    <script src="libs/moment/moment.min.js"></script>
+    
+    <script src="libs/echarts/echarts.min.js"></script>
+    <script src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
+    <script src="scripts/site.js"></script>
+    <script>
+        Menu.itemIdx = 0;
+        ViewPage.load();
+        // axios({
+        //     url: 'http://114.215.30.71:5001/api/v1/mainnet/public/graphql',
+        //     method: 'post', 
+        //     data: {
+        //         query: '{ AssetQuery { count } }'
+        //     }
+        // })
+        // .then(function (resp) {
+        //     console.log(resp)
+        // })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,848 @@
+/* Html Tag */
+html{
+    height: auto;
+}
+body{
+background: rgb(51,85,227); /* Old browsers */
+background: -moz-linear-gradient(-45deg, rgba(51,85,227,1) 0%, rgba(52,204,243,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(-45deg, rgba(51,85,227,1) 0%,rgba(52,204,243,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(135deg, rgba(51,85,227,1) 0%,rgba(52,204,243,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3355e3', endColorstr='#34ccf3',GradientType=1 );
+background-repeat: no-repeat;
+margin: 0;
+}
+
+
+h1,h2,h3,h4,h5,h6{
+    margin: 0;
+    font-weight: normal;
+}
+
+/* Simple Grid */
+/* .grid {min-width: 0 !important; max-width: 9999px !important;}
+[class*='col-'] {padding: 0 !important;} */
+
+/* Vue */
+[v-cloak]{visibility: hidden;}
+
+/* Shared */
+#app{
+    height: auto;
+    overflow: hidden;
+}
+
+/* #region Header */
+.header{ 
+    position: relative;
+    height: 1rem;
+}
+.header .title{
+    display: inline-block;
+    width: 1rem;
+    position: absolute;
+    top: 0.3rem;
+    left: 0.2rem;
+}
+.header .title h1{
+    font-size: 0.2rem;
+    color: #fff;
+}
+.header .title h2{
+    font-size: 0.12rem;
+    line-height: 0.12rem;
+    color: #fff;
+    font-weight: 100;
+}
+.header .menu {
+    display: inline-block;
+    position: absolute;
+    top: 0.3rem;
+    right: 0.2rem;
+    height: 0.4rem;
+    padding: 0 0 0 2.8rem;
+    width: 5rem;
+    text-align: right;
+}
+.header .menu .item{
+    display: inline-block;
+    height: 0.3rem;
+    text-align: center;
+    padding: 0 0.2rem;
+}
+.header .menu .item span{
+    display: inline-block;
+    position: relative;
+    top: -0.85rem;
+    font-size: 0.1rem;
+    color: #fff;
+    line-height: 0.2rem;
+}
+.header .menu .item span i{
+    position: relative;
+    top: 0.01rem;
+    font-size: 0.1rem;
+}
+
+/* #endregion */
+
+/* #region ViewPager */
+.viewpager {
+    padding: 1.5rem 0.2rem 0.2rem 0.2rem;
+}
+.viewpager .indicator{
+    position: relative;
+}
+.viewpager .scopeline{
+    border-bottom: 1px solid #92d4fe;
+}
+.viewpager .scopeitem {
+    position: absolute;
+    top: -0.05rem;
+    height: 1rem;
+    width: 10%;
+    text-align: center;
+    cursor: pointer;
+    z-index: 2;
+}
+.viewpager .scopeitem:last-child{
+    width: 15%;
+}
+.viewpager .scopeitem .dot{
+    height: 0.1rem;
+    font-size: 0.01rem;
+    line-height: 0.02rem;
+    text-align: center;
+}
+.viewpager .scopeitem .dot i{
+    display: inline-block;
+    height: 0.1rem;
+    width: 0.1rem;
+    border-radius: 0.2rem;
+    background: #fff;
+}
+.viewpager .scopeitem h1{
+    font-size: 0.1rem;
+    color: #fff;
+    margin: 0.1rem 0 0;
+}
+.viewpager .scopeitem h2 {
+    font-size: 0.1rem;
+    color: #fff;
+    margin: 0.03rem 0 0 0;
+}
+/* #endregion */
+
+/* #region ViewPage - Toolbox & Title */
+.viewpage {
+    width: 100%;
+    height: 6rem;
+    position: relative;
+    top: -0.5rem;
+    left: 0.2rem;
+    margin: 0.5rem 0 0 0;
+}
+
+.viewpage .toolbox{
+    height: 1rem;
+    width: 4rem;
+    background: #fff;
+    border-radius: 0.05rem;
+    position: relative;
+    top: -0.5rem;
+    box-shadow: 3px 3px 10px #4178B8;
+}
+
+.viewpage .title{
+    position: absolute;
+    top: 0.5em;
+    width: 4rem;
+}
+
+.viewpage .title h1{
+    font-size: 0.15rem;
+    color: #fff;
+    margin: 0.2rem 0 0 0;
+    font-weight: 200;
+}
+.viewpage .title .underline{
+    height: 0.2rem;
+    width: 0.2rem;
+    border-bottom: 1px solid #fff;
+    position: relative;
+    top: -0.16rem;
+}
+.viewpage .title .underline.right{
+    left: 3.8rem;
+}
+/* #endregion */
+
+/* #region ViewPage - Dynamic */
+.viewpage .toolbox.dynamic input{
+    position: absolute;
+    left: 0.2rem; 
+    top: 0.28rem;
+    line-height: 0.4rem;
+    width: 3.6rem;
+    border: 0;
+    font-size: 0.15rem;
+}
+.viewpage .toolbox.dynamic i{
+    position: absolute;
+    right: 0.2rem;
+    top: 0.32rem;
+    font-size: 0.3rem;
+    color: #3D71D0;
+}
+
+.viewpage .detail.dynamic{
+    padding: 0 0 0 1.35rem;
+}
+
+.viewpage .detail.dynamic .list {
+    width: 10rem;
+    height: auto;
+}
+
+.viewpage .detail.dynamic .list .item{
+    width: 1.7rem;
+    text-align: center;
+    position: relative;
+    padding: 0.2rem 0;
+    float: left;
+    margin: 0.2rem 0.2rem 0 0;
+}
+.viewpage .detail.dynamic .list .item .underlayer{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left:0;
+    top: 0;
+    background: #308FD8;
+    opacity: 0.4;
+    border-radius: 0.02rem;
+    z-index: 1;
+}
+.viewpage .detail.dynamic .list .item h1{
+    font-size: 0.25rem;
+    color: #fff;
+    font-weight: 100;
+    position: relative;
+    z-index: 2;
+}
+.viewpage .detail.dynamic .list .item h1 i{
+    font-style: normal;
+    font-size: 0.2rem;
+}
+.viewpage .detail.dynamic .list .item h2 {
+    font-size: 0.1rem;
+    transform: scale(0.7);
+    color: #fff;
+    font-weight: 100;
+    position: relative;
+    z-index: 2;
+}
+/* #endregion */
+
+/* #region ViewPage - Market */
+.viewpage .toolbox.market {
+    left: 1.8rem;
+    font-size: 0.1rem;
+}
+.viewpage .toolbox.market .total{
+    position: absolute;
+    top: 0.18rem;
+    left: 0.2rem;
+    height: 0.6rem;
+    padding: 0.1rem 0.4rem 0 0;
+    border-right: 1px solid #ddd;
+}
+.viewpage .toolbox.market .total h1{
+    font-size: 0.3rem;
+    color: #3A43C7;
+    font-weight: 100;
+}
+.viewpage .toolbox.market .info{
+    position: absolute;
+    width: 2.4rem;
+    top: 0.2rem;
+    right: 0;
+    color: #ddd;
+}
+.viewpage .toolbox.market .info .item{
+    transform: scale(0.8);  
+    width: 2.5rem;      
+}
+.viewpage .toolbox.market .info .item span{
+    width: 1.66rem;
+    display: inline-block;
+    text-align: right;
+}
+.viewpage .toolbox.market .info .item span.highlight{
+    color: #A0BA71;
+}
+.viewpage .toolbox.market .timestamp{
+    transform: scale(0.7);
+    color: #ddd;
+    position: absolute;
+    bottom: 0.05rem;
+    right: 0;
+}
+.viewpage .tab{
+    font-size: 0.1rem;
+    width: 3rem;
+    font-weight: 100;
+    padding: 0.1rem 0 0 1.78rem;
+}
+.viewpage .tab .item{
+    width: 0.3rem;
+    float: left;
+    text-align: center;
+    color: #ddd;
+    cursor: pointer;
+}
+.viewpage .tab .item.active{
+    color: #fff;
+}
+.viewpage .detail.market{
+    position: relative;
+    top: 0.13rem;
+    padding: 0 0 0 15%;
+}
+/* #endregion */
+
+/* #region ViewPage - Total Transactions */
+.viewpage .toolbox.tran {
+    left: 2.8rem;
+    font-size: 0.1rem;
+    font-weight: 200;
+}
+.viewpage .toolbox.tran .total{
+    position: absolute;
+    top: 0.3rem;
+    border-right: 1px solid #ddd;
+}
+.viewpage .toolbox.tran .total label{
+    color: #ddd;
+    margin: 0 0.2rem 0 0.1rem;
+}
+.viewpage .toolbox.tran .total span{
+    font-size: 0.2rem;
+    line-height: 0.4rem;
+    color: #3293D7;
+    margin: 0 1.2rem 0 0;
+}
+.viewpage .toolbox.tran .category{
+    position: absolute;
+    right: 0.2rem;
+    top: 0.3rem;
+}
+.viewpage .toolbox.tran .category span{
+    color: #ddd;
+    line-height: 0.4rem;
+}
+.viewpage .toolbox.tran .category span i{
+    color: #000;
+}
+.viewpage .detail.tran {
+    font-size: 0.1rem;
+    width: 7rem;
+    position: relative;
+    top: 0.2rem;
+    padding: 0 0 0 2.8rem;
+    
+}
+.viewpage .detail.tran .list{
+    width: 7.2rem;
+}
+.viewpage .detail.tran .list .row{
+    position: relative;
+}
+.viewpage .detail.tran .list .row .underlayer{
+    background: #666;
+    opacity: 0.2;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 0;
+}
+.viewpage .detail.tran .list .row.detail {
+    height: 1.1rem;
+}
+.viewpage .detail.tran .list .row.detail .underlayer{
+    opacity: 0.1 !important;
+}
+.viewpage .detail.tran .list .row.item .underlayer{
+    width: 6.73rem !important;
+}
+.viewpage .detail.tran .list .row.header{
+    height: 0.2rem;
+    width: 7.09rem;
+}
+.viewpage .detail.tran .list .row.item{
+    height: 0.3rem;
+    margin: 0.05rem 0 0 0;
+    border-left: 4px solid #84C033;
+}
+.viewpage .detail.tran .list .row .col{
+    z-index: 1;
+    color: #fff;
+    position: relative;
+    float: left;
+}
+.viewpage .detail.tran .list .row.header .col{
+    line-height: 0.2rem;
+}
+.viewpage .detail.tran .list .row.item .col{
+    line-height: 0.3rem;
+    transform: scale(0.9);
+    left: -0.06rem;    
+}
+.viewpage .detail.tran .list .row.header .col-1{
+    padding: 0 0 0 0.1rem !important;
+}
+.viewpage .detail.tran .list .row.detail  {
+    position: relative;
+    width: 7.1rem;
+}
+.viewpage .detail.tran .list .row.detail .col-1{
+    text-align: center;
+    width: 3.5rem !important;
+}
+.viewpage .detail.tran .list .row.detail .col-1 h1{
+    font-size: 0.15rem;
+    line-height: 0.4rem;
+}
+.viewpage .detail.tran .list .row.detail .col-1 h2{
+    font-size: 0.1rem;
+    transform: scale(0.8);
+    font-weight: 100;
+}
+.viewpage .detail.tran .list .row.detail .col-1 span{
+    font-size: 0.1rem;
+    font-weight: 100;
+}
+.viewpage .detail.tran .list .row.detail .fee{
+    font-size: 0.1rem;
+    color: #fff;
+    font-weight: 100;
+    position: absolute;
+    bottom: 0;
+    width: 6.7rem;
+    left: 0.2rem;
+    text-align: center;
+    border-top: 1px solid #fff;
+    padding: 0.02rem 0;
+    opacity: 0.4;
+}
+.viewpage .detail.tran .list .row.detail .arrow{
+    position: absolute;
+    left: 3.5rem;
+    top: 0.2rem;
+}
+.viewpage .detail.tran .list .row.detail .arrow i{
+    font-size: 0.22rem;
+    opacity: 0.5;
+    display: block;
+    color: #ddd;
+}
+.viewpage .detail.tran .list .row.item .col-1{
+    padding: 0 0 0 0.2rem !important;
+    width: 0.8rem;
+}
+.viewpage .detail.tran .list .row .col-1{
+    width: 1rem;
+}
+.viewpage .detail.tran .list .row .col-2{
+    width: 3rem;
+}
+.viewpage .detail.tran .list .row .col-3{
+    width: 2.8rem;
+}
+.viewpage .detail.tran .list .row .col-4{
+    width: 0.345rem;
+    background: #666;
+    opacity: 0.2;
+    text-align: center;
+    position: relative;
+    left: 0.02rem;
+    bottom: 0.02rem;
+    height: 0.33rem;
+}
+.viewpage .detail.tran .list .row.expand .col-4{
+    opacity: 0.1;
+}
+.viewpage .detail.tran .list .row.expand i{
+    transform: rotate(180deg)
+}
+.viewpage .detail.tran .list .row i{
+    position: absolute;
+    color: #fff;
+    font-weight: bold;
+    top: 0.1rem;
+    right: 0.21rem;
+    font-size: 0.1rem;
+}
+
+/* #endregion */
+
+/* #region ViewPage - Last Block */
+.viewpage .toolbox.block {
+    right: 2.8rem;
+    float: right;
+    font-size: 0.1rem;
+    font-weight: 200;
+}
+.viewpage .toolbox.block .total{
+    position: absolute;
+    top: 0.35rem;
+    left: 0.2rem;
+}
+.viewpage .toolbox.block .total label{
+    position: relative;
+    bottom: 0.04rem;
+    margin: 0 0.15rem 0 0;
+}
+.viewpage .toolbox.block .total span{
+    font-size: 0.22rem;
+    color: #3293D7;
+}
+.viewpage .detail.block {
+    position: absolute;
+    font-size: 0.1rem;
+    color: #fff;
+    float: right;
+    top: 1.2rem;
+    right: 2.8rem;
+    width: 7.5rem;
+}
+.viewpage .detail.block .list{
+    width: 7.5rem;
+}
+.viewpage .detail.block .row{
+    width:  7.5rem;
+    position: relative;
+}
+.viewpage .detail.block .row.item{
+    width:  auto;
+}
+.viewpage .detail.block .row.header{
+    height: 0.3rem;
+}
+.viewpage .detail.block .row.item{
+    height: 0.38rem;
+    margin: 0.05rem 0 0 0;
+    border-left: 0.04rem solid #34D8F4;
+}
+.viewpage .detail.block .row .underlayer{
+    background: #666;
+    opacity: 0.2;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+.viewpage .detail.block .row.header .underlayer{
+    background: #333;
+    opacity: 0.2;
+    position: relative;
+    z-index: -1;
+}
+.viewpage .detail.block .row.item i{
+    position: absolute;
+    left: 0.1rem;
+    top: 0.14rem;
+    color: #34D8F4;
+    font-size: 0.1rem;    
+}
+.viewpage .detail.block .row .col{
+    display: inline-block;
+    float: left;
+}
+.viewpage .detail.block .row .col span{
+    line-height: 0.3rem;
+    display: block;
+    transform: scale(0.9);
+    font-size: 0.1rem;
+}
+.viewpage .detail.block .row.item .col span{
+    line-height: 0.4rem;
+    display: block;
+    transform: scale(0.8);
+    position: relative;
+    left: -0.13rem;
+}
+.viewpage .detail.block .row .col-1{
+    width: 1.5rem;
+}
+.viewpage .detail.block .row .col-1 span{
+    margin: 0 0 0 0.35rem;
+}
+.viewpage .detail.block .row .col-2{
+    width: 2rem;
+}
+.viewpage .detail.block .row .col-3{
+    width: 2rem;
+}
+.viewpage .detail.block .row .col-4{
+    width: 2rem;
+}
+.viewpage .detail.block .row.item .col-4{
+    width: 1.9rem;
+}
+/* #endregion */
+
+/* #region ViewPage - Wallet addresses created */
+.viewpage .toolbox.wallet {
+    right: 0.5rem;
+    float: right;
+    font-size: 0.1rem;
+    font-weight: 200;
+}
+
+.viewpage .toolbox.wallet .total{
+    padding: 0.2rem 0.2rem;
+}
+.viewpage .toolbox.wallet label{
+    margin: 0 0.2rem 0 0;
+    color: #ddd;
+}
+.viewpage .toolbox.wallet .total span{
+    font-size: 0.2rem;
+    color: #308FD8;
+}
+.viewpage .toolbox.wallet .toolbar{
+    border-top: 1px solid #ddd;
+    padding: 0.08rem 0 0 0.08rem;
+}
+.viewpage .toolbox.wallet .toolbar .item{
+    width: 1.29rem;
+    font-size: 0.1rem;
+    float: left;
+    text-align: center;
+    color: #ddd;
+}
+.viewpage .toolbox.wallet .toolbar .item.middle{
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+
+.viewpage .detail.wallet {
+    font-size: 0.1rem;
+    color: #fff;
+    position: absolute;
+    top: 1.2rem;
+    right: 2.6rem;
+    width: 7.5rem;
+}
+.viewpage .detail.wallet .list{
+    width: 7.5rem;
+}
+.viewpage .detail.wallet .row{
+    width:  7.5rem;
+    position: relative;
+}
+.viewpage .detail.wallet .row.item{
+    width:  auto;
+}
+.viewpage .detail.wallet .row.header{
+    height: 0.3rem;
+}
+.viewpage .detail.wallet .row.item{
+    height: 0.38rem;
+    margin: 0.05rem 0 0 0;
+    border-left: 0.04rem solid #34D8F4;
+}
+.viewpage .detail.wallet .row .underlayer{
+    background: #666;
+    opacity: 0.2;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+.viewpage .detail.wallet .row.header .underlayer{
+    background: #333;
+    opacity: 0.2;
+    position: relative;
+    z-index: -1;
+}
+.viewpage .detail.wallet .row.item i{
+    position: absolute;
+    left: 0.1rem;
+    top: 0.14rem;
+    color: #34D8F4;
+    font-size: 0.1rem;
+}
+.viewpage .detail.wallet .row .col{
+    float:left;
+}
+.viewpage .detail.wallet .row .col span{
+    line-height: 0.3rem;
+    display: block;
+    transform: scale(0.9);
+    font-size: 0.1rem;
+}
+.viewpage .detail.wallet .row.item .col span{
+    line-height: 0.4rem;
+    display: block;
+    transform: scale(0.8);
+    position: relative;
+    left: -0.13rem;
+}
+.viewpage .detail.wallet .row .col-1{
+    width: 2.5rem;
+}
+.viewpage .detail.wallet .row .col-1 span{
+    margin: 0 0 0 0.35rem;
+}
+.viewpage .detail.wallet .row .col-2{
+    width: 1.5rem;
+}
+.viewpage .detail.wallet .row.item .col-2{
+    width: 1.53rem;
+}
+.viewpage .detail.wallet .row .col-3{
+    width: 1rem;
+}
+.viewpage .detail.wallet .row .col-4{
+    width: 1rem;
+}
+.viewpage .detail.wallet .row.item .col-4{
+    width: 1rem;
+}
+.viewpage .detail.wallet .row .col-5{
+    width: 1.3rem;
+}
+.viewpage .detail.wallet .row.item .col-5 span{
+    display: block;
+    height: 0.12rem;
+    position: relative;
+    top: -0.04rem;
+    right: -0.00001rem;
+}
+/* #endregion */
+
+/* #region Pagging */
+.pagging {
+    margin: 0.1rem 0 0 0;
+}
+.pagging .info{
+    font-size: 0.1rem;
+}
+.pagging .pagger{
+    margin: 0.2rem 0 0 0;
+    text-align: center;
+}
+.pagging .pagger i{
+    font-size: 0.1rem;
+    padding: 0.05rem;
+    color: #fff;
+    font-weight: bold;
+    border: 1px solid #fff;
+}
+/* #endregion */
+
+/* #region Footer*/
+.footer {
+    font-size: 0.1rem;
+    margin: 0.5rem 0 0 0;
+    text-align: center;
+    border-top: 1px solid #fff;
+    color: #fff;
+    font-weight: 100;
+}
+.footer .folder{
+    padding: 0.3rem 0;
+}
+.footer .folder i{
+    padding: 0.05rem;
+    border: 2px solid #fff;
+    color: #fff;
+    font-size: 0.1rem;
+    font-weight: bold;
+}
+.footer .folder .wrapper{
+    display: inline-block;
+    width: 0.3rem;
+    height: 0.4rem;
+    border-bottom: 1px solid #fff;
+}
+.footer .sns{
+    margin: 0.2rem 0;
+}
+.footer .sns i{
+    font-size: 0.2rem;
+    border: 1px solid #fff;
+    border-radius: 0.3rem;
+    padding: 0.08rem;
+}
+.footer .info{
+    line-height: 0.3rem;
+}
+.footer .recnum{
+    padding: 0.2rem 0;
+}
+/* #endregion */
+
+/* #region Assets */
+.assets{
+    font-size: 0.1rem;
+    width: 100%;
+    height: auto;
+    margin: 0.4rem 0 0 0;
+    border-top: 1px solid #fff;
+    padding: 0.4rem 0 0.4rem 2.5rem;
+    color: #fff;
+}
+.assets .list{
+    width: 7.5rem;
+}
+.assets .list .row{
+    width: 7.5rem;
+    position: relative;
+    height: 0.3rem;
+    margin: 0.1rem;
+    line-height: 0.3rem;
+}
+.assets .list .row .underlayer{
+    background: #666;
+    opacity: 0.2;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 0;
+}
+.assets .list .col{
+    width: 1rem;
+    float: left;
+}
+.assets .list .row.hd .col span{
+    position: relative;
+    left: 0.05rem;
+}
+.assets .list .col-1{
+    padding: 0 0 0 0.2rem;
+}
+.assets .list .row.item .col-1{
+    border-left: 0.03rem solid #B871A7;
+}
+.assets .list .col-2{
+    width: 2rem;
+}
+.assets .list .col-3{
+    width: 3rem;
+}
+
+.assets .list .col-4{
+    width: 1rem;
+}
+
+/* #endregion */

@@ -1,0 +1,1054 @@
+/* #region common */
+html{
+    min-height: 100%;
+}
+body{
+    min-height: 100%;
+    background: rgb(51,85,227); /* Old browsers */
+    background: -moz-linear-gradient(-45deg, rgba(51,85,227,1) 0%, rgba(52,204,243,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, rgba(51,85,227,1) 0%,rgba(52,204,243,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, rgba(51,85,227,1) 0%,rgba(52,204,243,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3355e3', endColorstr='#34ccf3',GradientType=1 );
+    background-repeat: no-repeat;
+    margin: 0;
+}
+
+#app{padding: 0.2rem 0.2rem 0 0.2rem;}
+.clear{clear: both;}
+
+/* #endregion */
+
+/* #region neo-header */
+.neo-header{ 
+    height: 0.7rem;
+    padding: 0 0 0 0.2rem;
+    border-bottom: 1px solid #ddd;
+}
+/* #endregion */
+
+/* #region neo-title */
+.neo-title{
+    width: 0.6rem;
+    float: left;
+}
+.neo-title__main{
+    font-size: 0.2rem;
+}
+.neo-title__main span{
+    font-size: 0.2rem;
+    color: #fff;
+}
+.neo-title__sub {
+    font-size: 0.1rem;
+    height: 0.1rem;
+}
+.neo-title__sub span{
+    transform: scale(0.8);
+    color: #fff;
+    font-weight: 100;
+}
+/* #endregion */
+
+/* #region neo-info-title */
+.neo-info-title {
+  width: 100%;
+}
+.neo-info-title .title{
+    margin: 0.2rem 0 0 0;
+    font-size: 0.2rem;
+}
+.neo-info-title .subtitle{
+    font-weight: 100;
+}
+.neo-info-title .goback{
+    margin: 0.2rem 0 0.1rem 0;
+    color: #69AD66;
+}
+
+/* #endregion */
+
+/* #region neo-menu*/
+.neo-menu {
+    height: 0.4rem;
+    width: 6rem;
+    float: right;
+    padding: 0.2rem 0;
+}
+.neo-menu__item{
+    float: right;
+    height: 0.3rem;
+    text-align: center;
+    padding: 0 0.2rem;
+    position: relative;
+}
+.neo-menu__item span{
+    display: inline-block;
+    position: relative;
+    top: -0.85rem;
+    font-size: 0.12rem;
+    font-weight: 100;
+    color: #fff;
+    line-height: 0.2rem;
+}
+.neo-menu__item span i{
+    position: relative;
+    top: 0.01rem;
+    left: 0.02rem;
+    font-size: 0.1rem;
+}
+.neo-menu__item .underline{
+    border-bottom: 1px solid #fff;
+    position: absolute;
+    width: 0.3rem;
+    top: 0.3rem;
+    left: 0.23rem;
+}
+/* #endregion */
+
+/* #region neo-slider */
+.neo-slider{
+    margin: 0.4rem 0;
+    position: relative;
+}
+.neo-slider__line{
+    border-bottom: 1px solid #92d4fe;
+}
+.neo-slider__item {
+    position: absolute;
+    top: -0.05rem;
+    height: 1rem;
+    width: 1.7rem;
+    text-align: center;
+    cursor: pointer;
+    z-index: 2;
+}
+.neo-slider__item:last-child{
+    width: 1.7rem;
+}
+.neo-slider__item-dot{
+    height: 0.1rem;
+    font-size: 0.01rem;
+    line-height: 0.02rem;
+    text-align: center;
+}
+.neo-slider__item-dot i{
+    display: inline-block;
+    height: 0.1rem;
+    width: 0.1rem;
+    border-radius: 0.2rem;
+    background: #fff;
+}
+.neo-slider__item h1{
+    font-size: 0.1rem;
+    color: #fff;
+    margin: 0.1rem 0 0;
+}
+.neo-slider__item h2 {
+    font-size: 0.1rem;
+    color: #fff;
+    margin: 0.03rem 0 0 0;
+}
+/* #endregion */
+
+/* #region neo-footer */
+.neo-footer {
+    font-size: 0.1rem;
+    margin: 0.5rem 0 0 0;
+    text-align: center;
+    border-top: 1px solid #fff;
+    color: #fff;
+    font-weight: 100;
+}
+.neo-footer .folder{
+    padding: 0.3rem 0;
+}
+.neo-footer .folder i{
+    padding: 0.05rem;
+    border: 2px solid #fff;
+    color: #fff;
+    font-size: 0.1rem;
+    font-weight: bold;
+}
+.neo-footer .folder .wrapper{
+    display: inline-block;
+    width: 0.3rem;
+    height: 0.4rem;
+    border-bottom: 1px solid #fff;
+}
+.neo-footer .sns{
+    margin: 0.2rem 0;
+}
+.neo-footer .sns i{
+    font-size: 0.2rem;
+    border: 1px solid #fff;
+    border-radius: 0.3rem;
+    padding: 0.08rem;
+}
+.neo-footer .info{
+    line-height: 0.3rem;
+}
+.neo-footer .recnum{
+    padding: 0.2rem 0;
+}
+/* #endregion */
+
+/* #region neo-paging */
+.neo-paging {
+    font-size: 0.1rem;
+}
+.neo-paging .info{
+    color: #fff;
+    width: 7.5rem;
+}
+.neo-paging .page{
+    text-align: center;
+    height: auto;
+}
+.neo-paging .page i{
+    font-size: 0.12rem;
+    padding: 0.05rem;
+    color: #fff;
+    font-weight: bold;
+    border: 1px solid #fff;
+}
+.neo-paging .page i.disable{
+    opacity: 0.5;
+}
+/* #endregion */
+
+/* #region neo-toolbox */
+.neo-toolbox{
+    height: 1rem;
+    width: 4rem;
+    background: #fff;
+    border-radius: 0.05rem;
+    position: relative;
+    box-shadow: 3px 3px 10px #4178B8;
+}
+
+.neo-toolbox__title{
+    position: relative;
+    width: 4rem;
+    width: 100%;
+    font-size: 0.1rem;
+}
+
+.neo-toolbox__title h1{
+    font-size: 0.15rem;
+    color: #fff;
+    margin: 0.2rem 0 0 0;
+    font-weight: 200;
+}
+.neo-toolbox__title .underline{
+    height: 0.2rem;
+    width: 0.2rem;
+    border-bottom: 1px solid #fff;
+    position: relative;
+    top: -0.16rem;
+}
+.neo-toolbox__title .underline.right{
+    display: inline-block;
+    font-size: 0.2rem;
+}
+
+.neo-toolbox.dynamic {
+    margin: 0 0 0 0.2rem;
+}
+
+.neo-toolbox.dynamic input{
+    position: absolute;
+    left: 0.2rem; 
+    top: 0.28rem;
+    line-height: 0.4rem;
+    width: 3.6rem;
+    border: 0;
+    font-size: 0.15rem;
+    font-weight: 100;
+    outline: none
+}
+.neo-toolbox.dynamic i{
+    position: absolute;
+    right: 0.2rem;
+    top: 0.32rem;
+    font-size: 0.3rem;
+    color: #3D71D0;
+}
+
+.neo-toolbox.market {
+    left: 1.8rem;
+    font-size: 0.1rem;
+}
+.neo-toolbox.market .total{
+    position: absolute;
+    top: 0.18rem;
+    left: 0.2rem;
+    height: 0.6rem;
+    padding: 0.1rem 0.4rem 0 0;
+    border-right: 1px solid #ddd;
+}
+.neo-toolbox.market .total h1{
+    font-size: 0.3rem;
+    color: #3A43C7;
+    font-weight: 100;
+    position: relative;
+    bottom: 0.18rem;
+}
+.neo-toolbox.market .info{
+    position: absolute;
+    width: 2.4rem;
+    top: 0.2rem;
+    right: -0.2rem;
+    color: #ddd;
+}
+.neo-toolbox.market .info .item{
+    transform: scale(0.8);  
+    width: 2.5rem;      
+}
+.neo-toolbox.market .info .item span{
+    width: 1.66rem;
+    display: inline-block;
+    text-align: right;
+}
+.neo-toolbox.market .info .item span.highlight{
+    color: #A0BA71;
+}
+.neo-toolbox.market .timestamp{
+    transform: scale(0.7);
+    color: #ddd;
+    position: absolute;
+    bottom: 0.05rem;
+    right: -0.03rem;
+}
+
+.neo-toolbox.tran {
+    left: 3.92rem;
+    font-size: 0.1rem;
+    font-weight: 200;
+}
+.neo-toolbox.tran .total{
+    position: absolute;
+    top: 0.3rem;
+    border-right: 1px solid #ddd;
+}
+.neo-toolbox.tran .total label{
+    color: #ddd;
+    margin: 0 0.2rem 0 0.1rem;
+}
+.neo-toolbox.tran .total span{
+    font-size: 0.2rem;
+    line-height: 0.4rem;
+    color: #3293D7;
+    margin: 0 1.2rem 0 0;
+}
+.neo-toolbox.tran .category{
+    position: absolute;
+    right: 0.2rem;
+    top: 0.3rem;
+}
+.neo-toolbox.tran .category span{
+    color: #ddd;
+    line-height: 0.4rem;
+}
+.neo-toolbox.tran .category span i{
+    color: #000;
+}
+
+.neo-toolbox.block {
+    right: 2.8rem;
+    float: right;
+    font-size: 0.1rem;
+    font-weight: 200;
+}
+.neo-toolbox.block .total{
+    position: absolute;
+    top: 0.35rem;
+    left: 0.2rem;
+}
+.neo-toolbox.block .total label{
+    position: relative;
+    bottom: 0.04rem;
+    margin: 0 0.15rem 0 0;
+}
+.neo-toolbox.block .total span{
+    font-size: 0.22rem;
+    color: #3293D7;
+}
+.neo-toolbox.wallet {
+    right: 0.2rem;
+    float: right;
+    font-size: 0.1rem;
+    font-weight: 200;
+}
+
+.neo-toolbox.wallet .total{
+    padding: 0.2rem 0.2rem;
+}
+.neo-toolbox.wallet label{
+    margin: 0 0.2rem 0 0;
+    color: #ddd;
+}
+.neo-toolbox.wallet .total span{
+    font-size: 0.2rem;
+    color: #308FD8;
+}
+.neo-toolbox.wallet .toolbar{
+    border-top: 1px solid #ddd;
+    padding: 0.08rem 0 0 0.08rem;
+}
+.neo-toolbox.wallet .toolbar .item{
+    width: 1.29rem;
+    font-size: 0.1rem;
+    float: left;
+    text-align: center;
+    color: #ddd;
+}
+.neo-toolbox.wallet .toolbar .item.middle{
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+/* #endregion */
+
+/* #region neo-dynamic-list */
+.neo-dynamic-list {
+    width: 10rem;
+    height: auto;
+}
+
+.neo-dynamic-list__item{
+    width: 1.7rem;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    padding: 0.2rem 0;
+    margin: 0.2rem 0.2rem 0 0;
+}
+.neo-dynamic-list__item-underlayer{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left:0;
+    top: 0;
+    background: #308FD8;
+    opacity: 0.4;
+    border-radius: 0.02rem;
+    z-index: 1;
+}
+.neo-dynamic-list__item h1{
+    font-size: 0.25rem;
+    color: #fff;
+    font-weight: 100;
+    position: relative;
+    z-index: 2;
+}
+.neo-dynamic-list__item h1 i{
+    font-style: normal;
+    font-size: 0.2rem;
+}
+.neo-dynamic-list__item h2 {
+    font-size: 0.1rem;
+    transform: scale(0.7);
+    color: #fff;
+    font-weight: 100;
+    position: relative;
+    z-index: 2;
+}
+/* #endregion */
+
+/* #region neo-wallet-list*/
+.neo-wallet-list{
+    width: 7.5rem;
+    color: #fff;
+}
+.neo-wallet-list .row{
+    width:  7.5rem;
+    position: relative;
+}
+.neo-wallet-list .row.item{
+    width:  auto;
+}
+.neo-wallet-list .row.header{
+    height: 0.3rem;
+}
+.neo-wallet-list .row.item{
+    height: 0.38rem;
+    margin: 0.05rem 0 0 0;
+    border-left: 0.04rem solid #F2C404;
+}
+.neo-wallet-list .row .underlayer{
+    background: #666;
+    opacity: 0.2;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+.neo-wallet-list .row.header .underlayer{
+    background: #333;
+    opacity: 0.2;
+    position: relative;
+    z-index: -1;
+}
+.neo-wallet-list .row.item i{
+    position: absolute;
+    left: 0.1rem;
+    top: 0.11rem;
+    color: #F2C404;
+    font-size: 0.14rem;
+}
+.neo-wallet-list .row .col{
+    float:left;
+}
+.neo-wallet-list .row .col span{
+    line-height: 0.3rem;
+    display: block;
+    transform: scale(0.9);
+    font-size: 0.1rem;
+}
+.neo-wallet-list .row.item .col span{
+    line-height: 0.4rem;
+    display: block;
+    transform: scale(0.8);
+    position: relative;
+    left: -0.13rem;
+}
+.neo-wallet-list .row .col-1{
+    width: 2.5rem;
+}
+.neo-wallet-list .row .col-1 span{
+    margin: 0 0 0 0.35rem;
+}
+.neo-wallet-list .row.item .col-1 span{
+    color: #1FA256;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.neo-wallet-list .row.header .col-2{
+    width: 2rem;
+}
+.neo-wallet-list .row.item .col-2{
+    width: 2.04rem;
+}
+.neo-wallet-list .row .col-3{
+    width: 1.5rem;
+}
+.neo-wallet-list .row .col-4{
+    /* width: 2rem; */
+}
+.neo-wallet-list .row.item .col-4{
+    width: 1rem;
+}
+.neo-wallet-list .row .col-5{
+    width: 1.3rem;
+}
+.neo-wallet-list .row.item .col-5 span{
+    display: block;
+    height: 0.12rem;
+    position: relative;
+    top: -0.04rem;
+    right: -0.00001rem;
+}
+/* #endregion */
+
+/* #region neo-tran-record */
+.neo-tran-record{
+    font-size: 0.1rem;
+    width: 100%;
+    position: relative;
+}
+.neo-tran-record.border {
+    border-left: 0.04rem solid #85C227;
+}
+.neo-tran-record .underlayer{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left:0;
+    top: 0;
+    background: #308FD8;
+    opacity: 0.4;
+    border-radius: 0.02rem;
+    z-index: -1;
+}
+.neo-tran-record__left, .neo-tran-record__right{
+    float: left;
+    padding: 0.1rem 0 0.2rem 0;
+    text-align: center;
+}
+.neo-tran-record__left{
+    width: 50%;
+}
+.neo-tran-record__middle{
+    position: absolute;
+    top: 37%;
+    left: 50%;
+}
+.neo-tran-record__middle i {
+    font-size: 0.2rem;
+    color:#ddd;
+    
+}
+.neo-tran-record__right{
+    width: 50%;
+}
+.neo-tran-record__title{
+    margin: 0.1rem 0 0 0;
+    font-size: 0.15rem; 
+    color: #fff;
+}
+.neo-tran-record__address{
+    margin: 0.1rem 0 0 0;
+}
+.neo-tran-record__address span{
+    color: #acd845;
+    text-decoration: underline;
+}
+.neo-tran-record__address i{
+    position: relative;
+    top: 0.03rem;
+    color: #f5ab57;
+    font-weight: bold;
+    font-size: 0.15rem;
+}
+.neo-tran-record__amount{
+    margin: 0.1rem 0 0 0;
+}
+.neo-tran-record__amount span{
+    color: #fff;
+}
+/* #endregion */
+
+/* #region neo-tran-list */
+.neo-tran-list{
+    width: 7.2rem;
+    font-size: 0.1rem;
+}
+.neo-tran-list .title{
+    font-size: 0.2rem;
+    color: #84C033;
+    margin: 0.1rem 0;
+}
+.neo-tran-list .row{
+    position: relative;
+}
+.neo-tran-list .row .underlayer{
+    background: #666;
+    opacity: 0.2;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+.neo-tran-list .row.item .underlayer{
+    width: 6.8rem !important;
+}
+.neo-tran-list .row.header{
+    height: 0.25rem;
+}
+.neo-tran-list .row.item{
+    height: 0.3rem;
+    margin: 0.05rem 0 0 0;
+    border-left: 0.04rem solid #84C033;
+}
+.neo-tran-list .row .col{
+    z-index: 1;
+    color: #fff;
+    position: relative;
+    float: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.neo-tran-list .row.header .col{
+    line-height: 0.25rem;
+}
+.neo-tran-list .row.item .col{
+    line-height: 0.3rem;
+}
+.neo-tran-list .row.item .col span{
+    transform: scale(0.9)
+}
+.neo-tran-list .row.item .col-1 span{
+    position: relative;
+    left: 0.08rem;
+}
+.neo-tran-list .row.item .col-2 span{
+    text-decoration: underline;
+    color: #84C033;
+    cursor: pointer;
+}
+.neo-tran-list .row.header .col span{
+    position: relative;
+    left: 0.04rem;
+}
+.neo-tran-list .row.header .col-1 span{
+    position: relative;
+    left: 0.1rem;
+}
+.neo-tran-list .row .col-1{
+    width: 1rem;
+}
+.neo-tran-list .row .col-2{
+    width: 4rem;
+}
+.neo-tran-list .row .col-3{
+    width: 1rem;
+    padding: 0 0 0 0.2rem;
+}
+.neo-tran-list .row .col-4{
+    width: 0.32rem;
+    background: #666;
+    opacity: 0.2;
+    text-align: center;
+    height: 100%;
+    float: right;
+}
+.neo-tran-list .row.expand .col-4{
+    opacity: 0.1;
+}
+.neo-tran-list .row.expand i{
+    transform: rotate(180deg)
+}
+.neo-tran-list .row i{
+    position: absolute;
+    color: #fff;
+    font-weight: bold;
+    top: 0.1rem;
+    right: 0.1rem;
+    font-size: 0.1rem;
+}
+
+/* #endregion */
+
+/* #region neo-tran-info */
+.neo-tran-info {
+    font-size: 0.1rem;
+    color: #fff;
+}
+.neo-tran-info__item{
+    float: left;
+    width: 2rem;
+    margin: 0 0.1rem 0.1rem 0;
+    text-align: left;
+    padding: 0.1rem;
+    height: 0.8rem;
+    position: relative;
+}
+.neo-tran-info__item.first{
+    border-left: 0.02rem solid #85C226;
+}
+.neo-tran-info__item h1{
+    font-size: 0.1rem;
+    margin: 0;
+}
+.neo-tran-info__item span{
+    font-size: 0.15rem;
+    font-weight: 100;
+}
+.neo-tran-info__item .underlayer{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left:0;
+    top: 0;
+    background: #308FD8;
+    opacity: 0.4;
+    border-radius: 0.02rem;
+    z-index: -1;
+}
+/* #endregion */
+
+/* #region neo-tran-script */
+.neo-tran-script{
+    width: 100%;
+    font-size: 0.1rem;
+}
+.neo-tran-script__item{
+    width: 7.5rem;
+    margin: 0 0 0.1rem 0;
+    border-left: 0.02rem solid #85C226;
+    position: relative;
+    padding: 0.2rem 0 0.2rem 0.2rem;
+}
+.neo-tran-script__item .underlayer{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left:0;
+    top: 0;
+    background: #308FD8;
+    opacity: 0.4;
+    border-radius: 0.02rem;
+    z-index: -1;
+}
+.neo-tran-script__item-title{
+    font-size: 0.15rem;
+    color: #85C226;
+}
+.neo-tran-script__item-desc{
+    color: #fff;
+    word-wrap:break-word;
+    padding: 0 0.2rem 0 0;
+}
+/* #endregion */
+
+/* #region neo-block-list */
+
+.neo-block-list {
+    font-size: 0.1rem;
+    color: #fff;
+    width: 7.5rem;
+}
+.neo-block-list .row{
+    width:  7.5rem;
+    position: relative;
+}
+.neo-block-list .row.item{
+    width:  auto;
+}
+.neo-block-list .row.header{
+    height: 0.3rem;
+}
+.neo-block-list .row.item{
+    height: 0.38rem;
+    margin: 0.05rem 0 0 0;
+    border-left: 0.04rem solid #34D8F4;
+}
+.neo-block-list .row .underlayer{
+    background: #666;
+    opacity: 0.2;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+.neo-block-list .row.header .underlayer{
+    background: #333;
+    opacity: 0.2;
+    position: relative;
+    z-index: -1;
+}
+.neo-block-list .row.item i{
+    position: absolute;
+    left: 0.1rem;
+    top: 0.14rem;
+    color: #34D8F4;
+    font-size: 0.1rem;    
+}
+.neo-block-list .row .col{
+    display: inline-block;
+    float: left;
+}
+.neo-block-list .row .col span{
+    line-height: 0.35rem;
+    display: block;
+    transform: scale(0.9);
+    font-size: 0.1rem;
+}
+
+.neo-block-list .row.item .col span{
+    line-height: 0.4rem;
+    display: block;
+    transform: scale(0.8);
+    position: relative;
+    left: -0.13rem;
+}
+.neo-block-list .row .col-1{
+    width: 1.5rem;
+}
+.neo-block-list .row .col-1 span{
+    margin: 0 0 0 0.4rem;
+}
+.neo-block-list .row.item .col-1 span{
+    position: relative;
+    margin: 0;
+    left: 0.27rem;
+    text-decoration: underline;
+    color: #84C033;
+    cursor: pointer;
+}
+.neo-block-list .row .col-2{
+    width: 2rem;
+}
+.neo-block-list .row .col-3{
+    width: 2rem;
+}
+.neo-block-list .row .col-4{
+    width: 2rem;
+}
+.neo-block-list .row.item .col-4{
+    width: 1.9rem;
+}
+
+/* #endregion */
+
+/* #region neo-block-info */
+.neo-block-info {
+    font-size: 0.1rem;
+    color: #fff;
+}
+.neo-block-info__item{
+    float: left;
+    width: 2rem;
+    margin: 0 0.1rem 0.1rem 0;
+    text-align: left;
+    padding: 0.1rem;
+    height: 0.8rem;
+    position: relative;
+}
+.neo-block-info__item.first{
+    border-left: 0.02rem solid #32D8F4;
+}
+.neo-block-info__item h1{
+    font-size: 0.1rem;
+    margin: 0;
+}
+.neo-block-info__item span{
+    font-size: 0.15rem;
+    font-weight: 100;
+    word-wrap: break-word;
+}
+.neo-block-info__item .underlayer{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left:0;
+    top: 0;
+    background: #308FD8;
+    opacity: 0.4;
+    border-radius: 0.02rem;
+    z-index: -1;
+}
+/* #endregion */
+
+/* #region neo-addr-info */
+.neo-addr-info{
+    font-size: 0.1rem;
+    border-left: 0.02rem solid #F7C300;
+    padding: 0.2rem;
+    width: 7.5rem;
+    position: relative;
+}
+.neo-addr-info .underlayer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left:0;
+    top: 0;
+    background: #308FD8;
+    opacity: 0.4;
+    border-radius: 0.02rem;
+    z-index: -1;
+}
+.neo-addr-info .balance {
+    border-bottom: 0.01rem solid #ddd;
+}
+.neo-addr-info .balance .col{
+    width: 3.5rem;
+    text-align: center;
+    float: left;
+    padding: 0.3rem 0;
+}
+.neo-addr-info .balance .col.item{
+    border: 0.01rem solid #ddd;
+    margin: 0 0.05rem 0.1rem 0.05rem;
+}
+
+
+
+.neo-addr-info .balance h1, .neo-addr-info .balance h2{
+    color: #fff;
+    margin: 0;
+    font-weight: normal;
+}
+.neo-addr-info .balance h1 {
+    font-size: 0.20rem;
+}
+.neo-addr-info .balance h2 {
+    font-size: 0.2rem;
+}
+.neo-addr-info .balance span {
+    font-size: 0.1rem;
+    color: #dfdfdf;
+    font-weight: 100;
+    margin: 0.2rem 0 0 0;
+}
+.neo-addr-info .chart .title{
+    font-size: 0.15rem;
+    color: #F7C300;
+    margin: 0.2rem 0 0.1rem 0;
+}
+.neo-addr-info .chart .date{
+    font-size: 0.15rem;
+    color: #F7C300;
+    margin: 0.1rem 0;
+    padding: 0 0 0 0.2rem;
+}
+/* #endregion */
+
+/* #region neo-asset-list */
+.neo-asset-list{
+    font-size: 0.1rem;
+    width: 7.5rem;
+    height: auto;
+    color: #fff;
+}
+.neo-asset-list .row{
+    width: 7.5rem;
+    position: relative;
+    height: 0.3rem;
+    margin: 0.1rem 0;
+    line-height: 0.3rem;
+}
+.neo-asset-list .row .underlayer{
+    background: #666;
+    opacity: 0.2;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 0;
+}
+.neo-asset-list .col{
+    width: 1rem;
+    float: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.neo-asset-list .row.hd .col span{
+    position: relative;
+    left: 0.05rem;
+}
+.neo-asset-list .col-1{
+    padding: 0 0 0 0.1rem;
+    width: 0.8rem;
+}
+.neo-asset-list .row.item .col-1{
+    border-left: 0.03rem solid #B871A7;
+}
+.neo-asset-list .col-2{
+    width: 1rem;
+}
+.neo-asset-list .col-3{
+    width: 4.2rem;
+}
+.neo-asset-list .row.item .col-3 span{
+    transform: scale(0.8);
+}
+.neo-asset-list .col-4{
+    width: 0.8rem;
+    padding: 0 0 0 0.2rem;
+}
+/* #endregion */
+
+
+
+
+

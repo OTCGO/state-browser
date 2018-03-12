@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>neo</title>
+    <link href="styles/comp.css?v=3" rel="stylesheet" />
+    <link href="styles/resp.css?v=3" rel="stylesheet" />
+    <link href="libs/iconfont/iconfont.css?v=3" rel="stylesheet" />
+    <link href="styles/layout.css?v=3" rel="stylesheet" />
+
+</head>
+
+<body>
+    <div id="app">
+        <neo-header ref="header" v-bind:class="screenSize"></neo-header>
+        <div class="page-home-info" v-bind:class="screenSize">
+            <div class="page-home-slider" v-bind:class="screenSize">
+                <neo-slider v-bind:itemidx="sliderIdx" v-bind:class="screenSize" v-on:change="changeSlider"></neo-slider>
+            </div>
+            <div class="page-home-toolbox">
+                <neo-toolbox v-bind:total="totalCount" v-bind:class="screenSize" v-bind:itemidx="sliderIdx"></neo-toolbox>
+            </div>
+            <div class="page-home-data" v-bind:class="screenSize+sliderIdx">
+                <neo-dynamic-list ref="neodynamic" v-if="sliderIdx == 0" v-bind:class="screenSize"></neo-dynamic-list>
+                <neo-market-neochart ref="neochart" v-if="sliderIdx == 1" v-bind:class="screenSize"></neo-market-neochart>
+                <neo-tran-list 
+                    v-if="sliderIdx == 2" 
+                    v-bind:class="screenSize"
+                    ref="tran"
+                    v-bind:page="currentPage"
+                    v-bind:count="pageCount"
+                    v-on:loaded="loaded">
+                </neo-tran-list>
+                <neo-block-list 
+                    v-if="sliderIdx == 3" 
+                    v-bind:class="screenSize"                    
+                    ref="block"
+                    v-bind:page="currentPage"
+                    v-bind:count="pageCount"
+                    v-on:loaded="loaded">
+                </neo-block-list>
+                <neo-wallet-list 
+                    ref="wallet" 
+                    v-bind:page="currentPage"
+                    v-bind:count="pageCount"
+                    v-if="sliderIdx == 4" 
+                    v-bind:class="screenSize"
+                    v-on:loaded="loaded">
+                </neo-wallet-list>
+                <neo-paging 
+                    v-bind:tint="tintColor" 
+                    v-bind:page="currentPage" 
+                    v-bind:count="pageCount" 
+                    v-bind:total="totalCount" 
+                    v-on:change="changePaging" 
+                    v-if="sliderIdx >= 2" 
+                    v-bind:class="screenSize">
+                </neo-paging>
+            </div>
+        </div>
+       
+        <neo-footer v-bind:class="screenSize"></neo-footer>
+    </div>
+    <script src="libs/rem/rem.js?v=2" data-psd="750"></script>
+    <script src="libs/vue/vue.min.js"></script>
+    <script src="libs/vue-i18n/vue-i18n.min.js"></script>
+    <script src="libs/moment/moment.min.js"></script>
+    <script src="libs/echarts/echarts.min.js"></script>
+    <script src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
+
+    <script src="i18n/en.js"></script>
+    <script src="i18n/zhCHS.js"></script>
+
+    <script src="config.js"></script>
+    <script src="component/comp.js"></script>
+
+    <script>
+
+        const i18n = new VueI18n({
+            locale: 'zhCHS', // 语言标识
+            messages:{
+                en,zhCHS
+            }
+        })
+        var app = new Vue({
+            el: '#app',
+            i18n,
+            data: {
+                sliderIdx: 3,
+                tintColor: '#F9C400',
+                currentPage: 1,
+                pageCount: 15,
+                totalCount: 0
+            },
+            computed: {
+                screenSize: function() {
+                    return window.screenSize;
+                }
+            },
+            methods: {
+                init: function() {
+                    console.log("init")
+                    this.currentPage = 1;
+                    this.pageCount = 15;
+                    this.totalCount = 0;
+                    this.load();
+                    this.$refs.header.setMenuIdx(3)
+
+
+                },
+                load: function() {
+                    var that = this;
+
+                    if(that.sliderIdx === 0){
+                        setTimeout(function (){
+                            that.$refs.neodynamic.init();
+                        }, 500);
+                    } 
+                    if(that.sliderIdx === 1){
+                        // setTimeout(function (){
+                        //     that.$refs.neochart.init();
+                        // }, 500);
+                    } 
+                    else if(that.sliderIdx === 2){
+                        setTimeout(function (){
+                            that.$refs.tran.init();
+                        }, 500);
+                    }
+                    else if(that.sliderIdx === 3){
+                        setTimeout(function (){
+                            that.$refs.block.init();
+                        }, 500);
+                    } 
+                    else if(that.sliderIdx === 4) {
+                        setTimeout(function (){
+                            that.$refs.wallet.init();
+                        }, 500);
+                    }
+                },
+                loaded: function(resp){
+                    console.log("loaded", resp)
+                    this.totalCount = resp.count;
+                },
+                changeSlider: function(idx){
+                    if(idx === this.sliderIdx){
+                        return;
+                    }
+                    this.sliderIdx = idx;
+                    this.init();
+                },
+                changePaging: function(args) {
+                    this.currentPage = args.currentPage;
+                    this.pageCount = args.pageCount;
+                    this.totalCount = args.totalCount;
+                    this.load();
+                }
+            }
+        })
+
+        app.init();
+    </script>
+</body>
+
+</html>

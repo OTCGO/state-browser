@@ -857,7 +857,7 @@ Vue.component('neo-tran-list', {
                         for(var j = 0; j < vins.length; j++){
                             var vinItem = vins[j];
                             record.left.push({
-                                title: that.$t('transaction.sentFrom'),
+                                // title: "Sent From",
                                 symbol: vinItem.utxo.name,
                                 value: vinItem.utxo.value,
                                 address: vinItem.utxo.address
@@ -867,7 +867,7 @@ Vue.component('neo-tran-list', {
                         for(var k=0; k < vouts.length; k++){
                             var voutItem = vouts[k];
                             record.right.push({
-                                title: that.$t('transaction.sentTo'),
+                                // title: "Sent To",
                                 symbol: voutItem.name,
                                 value: voutItem.value,
                                 address: voutItem.address
@@ -882,19 +882,24 @@ Vue.component('neo-tran-list', {
                             var nep5Item = nep5s[l];
                             item.records.push({
                                 left: [{
-                                    title: that.$t('transaction.sentFrom'),
+                                    // title: "Sent From",
                                     symbol: nep5Item.symbol == null ? '--' : nep5Item.symbol,
                                     address: nep5Item.from,
                                     value: nep5Item.value
                                 }],
                                 right: [{
-                                    title: that.$t('transaction.sentTo'),
+                                    // title: "Sent From",
                                     symbol: nep5Item.symbol == null ? '--' : nep5Item.symbol,
                                     address: nep5Item.to,
                                     value: nep5Item.value
                                 }]
                             })
                         }
+                    }
+
+                    if(item.records && item.records.length > 0){
+                        item.records[0].left[0].title = that.$t('transaction.sentFrom');
+                        item.records[0].right[0].title = that.$t('transaction.sentTo')
                     }
                 }
             })

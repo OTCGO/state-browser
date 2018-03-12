@@ -151,13 +151,13 @@
                                 for(var i=0; i<item.nep5.length; i++){
                                     var row = item.nep5[i]
                                     that.nep5.left.push({
-                                        title: 'Sent From',
+                                        title: that.$t('transaction.sentFrom'),
                                         symbol: row.symbol == null ? '--' : row.symbol,
                                         value: row.value,
                                         address: row.from
                                     })
                                     that.nep5.right.push({
-                                        title: 'Sent To',
+                                        title: that.$t('transaction.sentTo'),
                                         symbol: row.symbol == null ? '--' : row.symbol,
                                         value: row.value,
                                         address: row.to

@@ -9,6 +9,7 @@ const zhCHS = {
   slider: {
     dynamic: {
       name: '动态',
+      search:'区块高度、地址或交易标识'
     },
     market: {
       name: '行情',

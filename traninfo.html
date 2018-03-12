@@ -192,7 +192,7 @@
                                 that.scripts = []
                             }
                             for(var i=0; i<item.scripts.length; i++){
-                                var row = item.scripts[0]
+                                var row = item.scripts[i]
 
                                 if(row.invocation){
                                     that.scripts.push({
@@ -202,7 +202,7 @@
                                 }
                                 if(row.verification) {
                                     that.scripts.push({
-                                        title: that.$t('transaction.invocationScript'),
+                                        title: that.$t('transaction.verificationScript'),
                                         desc: row.verification
                                     })
                                 }

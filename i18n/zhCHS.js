@@ -29,7 +29,7 @@ const zhCHS = {
     blockNum:'区块数量',
     assetNum:'资产数量',
     addressNum:'地址数量',
-    transactionNum:'交易数数量',
+    transactionNum:'交易数量',
     day:'天'
   },
   block: {

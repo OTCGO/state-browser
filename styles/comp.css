@@ -946,22 +946,23 @@ body{
     z-index: -1;
 }
 .neo-addr-info .balance {
-    border-bottom: 0.01rem solid #ddd;
+    /* border-bottom: 0.01rem solid #ddd; */
 }
 .neo-addr-info .balance .col{
     width: 3.5rem;
     text-align: center;
     float: left;
-    padding: 0.3rem 0;
+    padding: 0.1rem 0;
 }
 .neo-addr-info .balance .col.item{
-    border: 0.01rem solid #ddd;
+    border-bottom: 0.01rem solid #ddd; 
+    height: 0.5rem;
     margin: 0 0.05rem 0.1rem 0.05rem;
 }
 
 
 
-.neo-addr-info .balance h1, .neo-addr-info .balance h2{
+.neo-addr-info .balance h1, .neo-addr-info .balance h3{
     color: #fff;
     margin: 0;
     font-weight: normal;

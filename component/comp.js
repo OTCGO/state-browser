@@ -110,10 +110,10 @@ Vue.component('neo-slider',{
         return {
             items:[
                 {title: this.$t("slider.dynamic.name") , subtitle: ''},
-                {title: this.$t("slider.market.name"), subtitle: '74.00'},
-                {title: this.$t("slider.transaction.name"), subtitle: '4,374,385'},
-                {title: this.$t("slider.block.name"), subtitle: '1,764,548'},
-                {title: this.$t("slider.address.name"), subtitle: '474,479'}
+                {title: this.$t("slider.market.name"), subtitle: ''},
+                {title: this.$t("slider.transaction.name"), subtitle: ''},
+                {title: this.$t("slider.block.name"), subtitle: ''},
+                {title: this.$t("slider.address.name"), subtitle: ''}
             ],
             positions: [
                 [0, 5.1, 3.4, 1.7, 0],
@@ -174,7 +174,7 @@ Vue.component('neo-toolbox', {
     '</div>'+
     '<div class="neo-toolbox tran" v-if="itemidx == 2">'+
         '<div class="total">'+
-            '<label>total trading</label>'+
+            '<label>{{$t("dynamic.transactionNum")}}</label>'+
             '<span>{{Total}}</span>'+
         '</div>'+
         '<div class="category">'+
@@ -183,14 +183,14 @@ Vue.component('neo-toolbox', {
     '</div>'+
     '<div class="neo-toolbox block" v-if="itemidx == 3">'+
         '<div class="total">'+
-            '<label>Block number</label>'+
+            '<label>{{$t("dynamic.blockNum")}}</label>'+
             '<span>{{Total}}</span>'+
         '</div>'+
     '</div>'+
     '<div class="clear" v-if="itemidx == 3"></div>'+
     '<div class="neo-toolbox wallet" v-if="itemidx == 4">'+
         '<div class="total">'+
-            '<label>Total number of purses</label>'+
+            '<label>{{$t("dynamic.addressNum")}}</label>'+
             '<span>{{Total}}</span>'+
         '</div>'+
         '<div class="toolbar">'+
@@ -216,7 +216,8 @@ Vue.component('neo-toolbox', {
     computed: {
         title: function(){
             console.log(this)
-            return ['Dynamic','Market','Total Transactions','Last Block','Wallet addresses created'][this.itemidx]
+            return [this.$t('slider.dynamic.name'),this.$t('slider.market.name'),this.$t('slider.transaction.name'),
+                    this.$t('slider.block.name'),this.$t('slider.address.name')][this.itemidx]
         },
         Total: function() {
             return this.total.toString().replace(/(?=((?!\b)\d{3})+$)/g, ',')
@@ -277,16 +278,16 @@ Vue.component('neo-footer', {
             '</div>'+
         '</div>'+
         '<div class="sns">'+
-            '<i class="icon iconfont icon-qq"></i>'+
-            '<i class="icon iconfont icon-wechat"></i>'+
+            // '<i class="icon iconfont icon-qq"></i>'+
+            // '<i class="icon iconfont icon-wechat"></i>'+
         '</div>'+
         '<div class="info">'+
             '<div>Relatec links: OTCGO | NEO Intelligent economy | Binace | KUCOIN</div>'+
             '<div>Switch block chain: The test chain is not open temporarily</div>'+
-            '<div>Node version: v2.3.5.0</div>'+
+            '<div>Node version: v2.7.2</div>'+
         '</div>'+
         '<div class="recnum">'+
-            'Record number: 湘ICP备16019051号-1'+
+            // 'Record number: 湘ICP备16019051号-1'+
         '</div>'+
     '</div>'
 });
@@ -404,7 +405,7 @@ Vue.component('neo-dynamic-list',{
                 }
             })
             .then(function (resp) {
-                console.log(resp)
+                // console.log(resp)
                 console.log(resp.data.data.SystemQuery.rows)
                 result = resp.data.data.SystemQuery.rows
                 that.items = [
@@ -850,7 +851,7 @@ Vue.component('neo-tran-list', {
                         for(var j = 0; j < vins.length; j++){
                             var vinItem = vins[j];
                             record.left.push({
-                                title: "Sent From",
+                                title: that.$t('transaction.sentFrom'),
                                 symbol: vinItem.utxo.name,
                                 value: vinItem.utxo.value,
                                 address: vinItem.utxo.address
@@ -860,7 +861,7 @@ Vue.component('neo-tran-list', {
                         for(var k=0; k < vouts.length; k++){
                             var voutItem = vouts[k];
                             record.right.push({
-                                title: "Sent To",
+                                title: that.$t('transaction.sentTo'),
                                 symbol: voutItem.name,
                                 value: voutItem.value,
                                 address: voutItem.address
@@ -875,13 +876,13 @@ Vue.component('neo-tran-list', {
                             var nep5Item = nep5s[l];
                             item.records.push({
                                 left: [{
-                                    title: "Sent From",
+                                    title: that.$t('transaction.sentFrom'),
                                     symbol: nep5Item.symbol == null ? '--' : nep5Item.symbol,
                                     address: nep5Item.from,
                                     value: nep5Item.value
                                 }],
                                 right: [{
-                                    title: "Sent From",
+                                    title: that.$t('transaction.sentTo'),
                                     symbol: nep5Item.symbol == null ? '--' : nep5Item.symbol,
                                     address: nep5Item.to,
                                     value: nep5Item.value
@@ -1087,8 +1088,8 @@ Vue.component('neo-addr-info', {
         '<div class="balance">'+
 
             '<div v-for="item in items" class="col item" v-if="item.balances != '+'0'+' ">'+
-                '<h1>{{item.name}}</h1>'+
-                '<h2>{{item.balances}}</h2>'+
+                '<h3>{{item.name}}</h3>'+
+                '<h4>{{item.balances}}</h4>'+
             '</div>'+
 
             '<div class="clear"></div>'+

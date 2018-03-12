@@ -11,12 +11,13 @@ Vue.component('neo-info-title', {
     template:
     '<div class="neo-info-title">'+
         '<div class="title">{{title}}</div>'+
-        '<div class="subtitle"> {{id}} </div>'+
+        '<div class="subtitle">{{subtitle}} {{id}} </div>'+
         '<div class="goback">Back to transactions</div>'+
     '</div>',
     props: {
         title: String,
-        id: String
+        id: String,
+        subtitle: String
     },
 })
 
@@ -747,7 +748,8 @@ Vue.component('neo-tran-list', {
         title: Boolean,
         page: Number,
         count: Number,
-        block: Number
+        block: Number,
+        address: Number
     },
     data: function() {
         return {
@@ -762,7 +764,11 @@ Vue.component('neo-tran-list', {
             }
             
             if(this.block) {
-                filter += 'blockIndex:'+this.block;
+                filter += ' ,blockIndex:'+this.block;
+            }
+
+            if(this.address) {
+                filter += ' ,address: "' + this.address +'"';
             }
 
             return filter;

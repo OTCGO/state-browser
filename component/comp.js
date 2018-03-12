@@ -148,7 +148,7 @@ Vue.component('neo-toolbox', {
     template: 
     '<div>'+
     '<div class="neo-toolbox dynamic" v-if="itemidx == 0">'+
-        '<input type="text" v-on:keyup="handleKeyup" v-model="search" placeholder="$t("slider.dynamic.search")" />'+
+        '<input type="text" v-on:keyup="handleKeyup" v-model="search" v-bind:placeholder="$t('+`'slider.dynamic.search'`+')" />'+
         '<i v-on:click="handleSearch" class="icon iconfont icon-search"></i>'+
     '</div>'+
     '<div class="neo-toolbox market" v-if="itemidx == 1">'+

@@ -12,7 +12,7 @@ Vue.component('neo-info-title', {
     '<div class="neo-info-title">'+
         '<div class="title">{{title}}</div>'+
         '<div class="subtitle">{{subtitle}} {{id}} </div>'+
-        '<div class="goback">Back to transactions</div>'+
+        '<div class="goback"></div>'+
     '</div>',
     props: {
         title: String,

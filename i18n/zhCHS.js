@@ -71,6 +71,8 @@ const zhCHS = {
     amount: '总量'
   },
   pagination:{
-
+    current:'当前',
+    to:'至',
+    total:'共'
   }
 }

@@ -153,20 +153,20 @@ Vue.component('neo-toolbox', {
     '</div>'+
     '<div class="neo-toolbox market" v-if="itemidx == 1">'+
         '<div class="total">'+
-            '<h1>$74.00</h1>'+
+            '<h1>$00.00</h1>'+
         '</div>'+
         '<div class="info">'+
             '<div class="item">'+
                 '<label>24h Change:</label>'+
-                '<span class="highlight">2.28%</span>'+
+                '<span class="highlight">0.00%</span>'+
             '</div>'+
             '<div class="item">'+
                 '<label>24h Volume:</label>'+
-                '<span>153,091,000.00</span>'+
+                '<span>000,000.00</span>'+
             '</div>'+
             '<div class="item">'+
                 '<label>Market Cap:</label>'+
-                '<span>4,908,322,000.00</span>'+
+                '<span>000,000.00</span>'+
             '</div>'+
         '</div>'+
         '<div class="timestamp">'+
@@ -297,11 +297,11 @@ Vue.component('neo-paging', {
     template:
     '<div class="neo-paging">'+
     '<div class="info" v-bind:style="{color: TintColor}">'+
-        'Transactions'+
+        '{{$t("pagination.current")}}'+
         ' {{(CurrentPage-1)*PageCount+1}} '+ 
-        ' to '+ 
+        ' {{$t("pagination.to")}} '+ 
         ' {{CurrentPage*PageCount>TotalCount ? TotalCount : CurrentPage*PageCount}} '+ 
-        ' of '+ 
+        ' {{$t("pagination.total")}} '+ 
         ' {{TotalCount}} '+ 
     '</div>'+
     '<div class="page">'+

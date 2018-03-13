@@ -8,20 +8,20 @@ const zhCHS = {
   },
   slider: {
     dynamic: {
-      name: '动态',
+      name: '最新动态',
       search:'区块高度、地址或交易标识'
     },
     market: {
-      name: '行情',
+      name: '最新行情',
     },
     transaction: {
-      name: '最近交易',
+      name: '最新交易',
     },
     block: {
-      name: '最近区块',
+      name: '最新区块',
     },
     address: {
-      name: '地址信息'
+      name: '最新地址'
     }
   },
   dynamic:{

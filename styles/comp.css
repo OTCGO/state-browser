@@ -191,6 +191,9 @@ body{
 .neo-footer .recnum{
     padding: 0.2rem 0;
 }
+.neo-footer .folder .wrapper a{
+    text-decoration: none;
+}
 /* #endregion */
 
 /* #region neo-paging */

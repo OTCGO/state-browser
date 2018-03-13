@@ -275,7 +275,7 @@ Vue.component('neo-footer', {
     '<div class="neo-footer">'+
         '<div class="folder">'+
             '<div class="wrapper">'+
-                '<i class="icon iconfont icon-arrow-up"></i>'+
+                '<a href="#top"><i class="icon iconfont icon-arrow-up"></i></a>'+
             '</div>'+
         '</div>'+
         '<div class="sns">'+

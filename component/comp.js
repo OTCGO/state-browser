@@ -690,7 +690,7 @@ Vue.component('neo-tran-record', {
         '<div class="neo-tran-record__left">'+
             '<div v-for="(left, leftIdx) in record.left">'+
                 '<div class="neo-tran-record__title">{{left.title}}</div>'+
-                '<div class="neo-tran-record__address"><i class="icon iconfont icon-search"></i> <span>{{left.address}}</span></div>'+
+                '<div class="neo-tran-record__address" v-on:click="goto(left.address)"><i class="icon iconfont icon-search"></i> <span>{{left.address}}</span></div>'+
                 '<div class="neo-tran-record__amount"><span>{{left.value}} {{left.symbol}}</span></div>'+
             '</div>'+        
         '</div>'+
@@ -700,7 +700,7 @@ Vue.component('neo-tran-record', {
         '<div class="neo-tran-record__right">'+
             '<div v-for="(right, rightIdx) in record.right">'+
                 '<div class="neo-tran-record__title">{{right.title}}</div>'+
-                '<div class="neo-tran-record__address"><i class="icon iconfont icon-search"></i><span>{{right.address}}</span></div>'+
+                '<div class="neo-tran-record__address" v-on:click="goto(right.address)"><i class="icon iconfont icon-search"></i><span>{{right.address}}</span></div>'+
                 '<div class="neo-tran-record__amount"><span>{{right.value}} {{right.symbol}}</span></div>'+
             '</div>'+   
         '</div>'+
@@ -711,6 +711,11 @@ Vue.component('neo-tran-record', {
         showborder: Boolean,
         record: Object
     },
+    methods: {
+        goto: function(address) {
+            window.location.href = "addrinfo?address="+address
+        }
+    }
 });
 
 Vue.component('neo-tran-list', {
@@ -921,7 +926,7 @@ Vue.component('neo-tran-info', {
         '<div class="warpper" v-for="(item, itemIdx) in transaction">'+
             '<div class="neo-tran-info__item" v-bind:class="{\'first\': itemIdx%3==0}">'+
                 '<h1>{{item.title}}</h1>'+
-                '<span>{{item.desc}}</span>'+
+                '<span v-bind:class="{\'link\': item.url}" v-on:click="goto(item.url)">{{item.desc}}</span>'+
                 '<div class="underlayer"></div>'+
             '</div>'+
             '<div class="clear" v-if="itemIdx % 3 == 2 || itemIdx == transaction.length - 1"></div>'+
@@ -944,7 +949,11 @@ Vue.component('neo-tran-info', {
         }
     },
     methods:{
-
+        goto: function(url){
+            if(url){
+                window.location.href = url;
+            }
+        }
     }
 
 });
@@ -1069,7 +1078,7 @@ Vue.component('neo-block-info', {
         '<div class="warpper" v-for="(item, itemIdx) in block">'+
             '<div class="neo-block-info__item" v-bind:class="{\'first\': itemIdx%3==0}">'+
                 '<h1>{{item.title}}</h1>'+
-                '<span>{{item.desc}}</span>'+
+                '<span v-bind:class="{\'link\': item.url}" v-on:click="goto(item.url)">{{item.desc}}</span>'+
                 '<div class="underlayer"></div>'+
             '</div>'+
             '<div class="clear" v-if="itemIdx % 3 == 2 || itemIdx == block.length - 1"></div>'+
@@ -1089,6 +1098,13 @@ Vue.component('neo-block-info', {
             //     {title: 'Merkleroot', desc: '1 minute ago'},
             //     {title: 'Size', desc: '1 minute ago'},
             // ]
+        }
+    },
+    methods: {
+        goto: function(url){
+            if(url){
+                window.location.href = url;
+            }
         }
     }
 });

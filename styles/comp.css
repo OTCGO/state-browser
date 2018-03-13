@@ -15,6 +15,7 @@ body{
 
 #app{padding: 0.2rem 0.2rem 0 0.2rem;}
 .clear{clear: both;}
+.link{color: #84C033; text-decoration: underline; cursor: pointer;}
 
 /* #endregion */
 
@@ -603,6 +604,7 @@ body{
 .neo-tran-record__address span{
     color: #acd845;
     text-decoration: underline;
+    cursor: pointer;
 }
 .neo-tran-record__address i{
     position: relative;
@@ -610,6 +612,7 @@ body{
     color: #f5ab57;
     font-weight: bold;
     font-size: 0.15rem;
+    cursor: pointer;
 }
 .neo-tran-record__amount{
     margin: 0.1rem 0 0 0;

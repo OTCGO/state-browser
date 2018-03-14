@@ -14,7 +14,7 @@
     <div id="app">
         <neo-header></neo-header>
         <div class="page-addr-info">
-            <neo-info-title title="Address Information" subtitle="Address |" v-bind:id="address"></neo-info-title>
+            <neo-info-title :title="$t('address.value')" subtitle="" v-bind:id="address"></neo-info-title>
             <neo-addr-info ref="addrinfo"></neo-addr-info><br />
             <neo-tran-list 
                 ref="tran" 

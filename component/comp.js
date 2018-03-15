@@ -319,7 +319,8 @@ Vue.component('neo-paging', {
     },
     computed: {
         TotalPage: function() {
-            return parseInt(this.total/this.count) + (this.total%this.page==0 ? 0 : 1);
+            //  Math.ceil 向上取整
+            return Math.ceil(parseFloat(this.total/this.count))
         },
         TotalCount: function() {
             return this.total.toString().replace(/(?=((?!\b)\d{3})+$)/g, ',')

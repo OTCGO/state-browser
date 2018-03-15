@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>neo</title>
     <link href="styles/comp.css?v=2" rel="stylesheet" />
-    <link href="libs/iconfont/iconfont.css?v=2" rel="stylesheet" />
+    <link href="libs/iconfont/iconfont.css?v=3" rel="stylesheet" />
     <link href="styles/layout.css?v=2" rel="stylesheet" />
 
 </head>
@@ -151,13 +151,13 @@
                                 for(var i=0; i<item.nep5.length; i++){
                                     var row = item.nep5[i]
                                     that.nep5.left.push({
-                                        title: 'Sent From',
+                                        title: that.$t('transaction.sentFrom'),
                                         symbol: row.symbol == null ? '--' : row.symbol,
                                         value: row.value,
                                         address: row.from
                                     })
                                     that.nep5.right.push({
-                                        title: 'Sent To',
+                                        title: that.$t('transaction.sentTo'),
                                         symbol: row.symbol == null ? '--' : row.symbol,
                                         value: row.value,
                                         address: row.to
@@ -169,22 +169,43 @@
                                 that.vinout = { left: [], right: []}
                                 for(var j = 0; j < item.vin.length; j++){
                                     var vinItem = item.vin[j];
-                                    that.vinout.left.push({
-                                        title:  that.$t('transaction.sentFrom'),
-                                        symbol: vinItem.utxo.name,
-                                        value: vinItem.utxo.value,
-                                        address: vinItem.utxo.address
-                                    })
+                                    if(j === 0 ){
+                                        that.vinout.left.push({
+                                            title:  that.$t('transaction.sentFrom'),
+                                            symbol: vinItem.utxo.name,
+                                            value: vinItem.utxo.value,
+                                            address: vinItem.utxo.address
+                                        })
+                                    }else{
+                                        that.vinout.left.push({
+                                            title:  '',
+                                            symbol: vinItem.utxo.name,
+                                            value: vinItem.utxo.value,
+                                            address: vinItem.utxo.address
+                                        })
+                                    }
+
                                 }
 
                                 for(var k=0; k < item.vout.length; k++){
                                     var voutItem = item.vout[k];
-                                    that.vinout.right.push({
-                                        title: that.$t('transaction.sentTo'),
-                                        symbol: voutItem.name,
-                                        value: voutItem.value,
-                                        address: voutItem.address
-                                    })
+                                    if(k === 0 ){
+                                        that.vinout.right.push({
+                                            title: that.$t('transaction.sentTo'),
+                                            symbol: voutItem.name,
+                                            value: voutItem.value,
+                                            address: voutItem.address
+                                        })
+                                    }else{
+                                        that.vinout.right.push({
+                                            title: '',
+                                            symbol: voutItem.name,
+                                            value: voutItem.value,
+                                            address: voutItem.address
+                                        })    
+                                    }
+                                    
+
                                 }
                             }
 
@@ -192,7 +213,7 @@
                                 that.scripts = []
                             }
                             for(var i=0; i<item.scripts.length; i++){
-                                var row = item.scripts[0]
+                                var row = item.scripts[i]
 
                                 if(row.invocation){
                                     that.scripts.push({
@@ -202,7 +223,7 @@
                                 }
                                 if(row.verification) {
                                     that.scripts.push({
-                                        title: that.$t('transaction.invocationScript'),
+                                        title: that.$t('transaction.verificationScript'),
                                         desc: row.verification
                                     })
                                 }
@@ -214,7 +235,7 @@
                                 {title: that.$t('transaction.type'), desc: item.type},
                                 {title: that.$t('transaction.networkFee'), desc: item.net_fee},
                                 {title: that.$t('transaction.systemFee'), desc: item.sys_fee},
-                                {title: that.$t('block.index'), desc: item.blockIndex},
+                                {title: that.$t('block.index'), desc: item.blockIndex, url: 'blockinfo.html?index='+item.blockIndex},
                                 {title: that.$t('transaction.size'), desc: `${item.size} bytes` }
                             ]
                            

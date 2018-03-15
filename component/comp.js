@@ -11,12 +11,13 @@ Vue.component('neo-info-title', {
     template:
     '<div class="neo-info-title">'+
         '<div class="title">{{title}}</div>'+
-        '<div class="subtitle"> {{id}} </div>'+
-        '<div class="goback">Back to transactions</div>'+
+        '<div class="subtitle">{{subtitle}} {{id}} </div>'+
+        '<div class="goback"></div>'+
     '</div>',
     props: {
         title: String,
-        id: String
+        id: String,
+        subtitle: String
     },
 })
 
@@ -110,10 +111,10 @@ Vue.component('neo-slider',{
         return {
             items:[
                 {title: this.$t("slider.dynamic.name") , subtitle: ''},
-                {title: this.$t("slider.market.name"), subtitle: '74.00'},
-                {title: this.$t("slider.transaction.name"), subtitle: '4,374,385'},
-                {title: this.$t("slider.block.name"), subtitle: '1,764,548'},
-                {title: this.$t("slider.address.name"), subtitle: '474,479'}
+                {title: this.$t("slider.market.name"), subtitle: ''},
+                {title: this.$t("slider.transaction.name"), subtitle: ''},
+                {title: this.$t("slider.block.name"), subtitle: ''},
+                {title: this.$t("slider.address.name"), subtitle: ''}
             ],
             positions: [
                 [0, 5.1, 3.4, 1.7, 0],
@@ -147,25 +148,25 @@ Vue.component('neo-toolbox', {
     template: 
     '<div>'+
     '<div class="neo-toolbox dynamic" v-if="itemidx == 0">'+
-        '<input type="text" v-on:keyup="handleKeyup" v-model="search" placeholder="Block Height,Address or Transactin Id"/>'+
+        '<input type="text" v-on:keyup="handleKeyup" v-model="search" v-bind:placeholder="$t('+`'slider.dynamic.search'`+')" />'+
         '<i v-on:click="handleSearch" class="icon iconfont icon-search"></i>'+
     '</div>'+
     '<div class="neo-toolbox market" v-if="itemidx == 1">'+
         '<div class="total">'+
-            '<h1>$74.00</h1>'+
+            '<h1>$00.00</h1>'+
         '</div>'+
         '<div class="info">'+
             '<div class="item">'+
                 '<label>24h Change:</label>'+
-                '<span class="highlight">2.28%</span>'+
+                '<span class="highlight">0.00%</span>'+
             '</div>'+
             '<div class="item">'+
                 '<label>24h Volume:</label>'+
-                '<span>153,091,000.00</span>'+
+                '<span>000,000.00</span>'+
             '</div>'+
             '<div class="item">'+
                 '<label>Market Cap:</label>'+
-                '<span>4,908,322,000.00</span>'+
+                '<span>000,000.00</span>'+
             '</div>'+
         '</div>'+
         '<div class="timestamp">'+
@@ -174,7 +175,7 @@ Vue.component('neo-toolbox', {
     '</div>'+
     '<div class="neo-toolbox tran" v-if="itemidx == 2">'+
         '<div class="total">'+
-            '<label>total trading</label>'+
+            '<label>{{$t("dynamic.transactionNum")}}</label>'+
             '<span>{{Total}}</span>'+
         '</div>'+
         '<div class="category">'+
@@ -183,14 +184,14 @@ Vue.component('neo-toolbox', {
     '</div>'+
     '<div class="neo-toolbox block" v-if="itemidx == 3">'+
         '<div class="total">'+
-            '<label>Block number</label>'+
+            '<label>{{$t("dynamic.blockNum")}}</label>'+
             '<span>{{Total}}</span>'+
         '</div>'+
     '</div>'+
     '<div class="clear" v-if="itemidx == 3"></div>'+
     '<div class="neo-toolbox wallet" v-if="itemidx == 4">'+
         '<div class="total">'+
-            '<label>Total number of purses</label>'+
+            '<label>{{$t("dynamic.addressNum")}}</label>'+
             '<span>{{Total}}</span>'+
         '</div>'+
         '<div class="toolbar">'+
@@ -216,7 +217,8 @@ Vue.component('neo-toolbox', {
     computed: {
         title: function(){
             console.log(this)
-            return ['Dynamic','Market','Total Transactions','Last Block','Wallet addresses created'][this.itemidx]
+            return [this.$t('slider.dynamic.name'),this.$t('slider.market.name'),this.$t('slider.transaction.name'),
+                    this.$t('slider.block.name'),this.$t('slider.address.name')][this.itemidx]
         },
         Total: function() {
             return this.total.toString().replace(/(?=((?!\b)\d{3})+$)/g, ',')
@@ -273,20 +275,20 @@ Vue.component('neo-footer', {
     '<div class="neo-footer">'+
         '<div class="folder">'+
             '<div class="wrapper">'+
-                '<i class="icon iconfont icon-arrow-up"></i>'+
+                '<a href="#top"><i class="icon iconfont icon-arrow-up"></i></a>'+
             '</div>'+
         '</div>'+
         '<div class="sns">'+
-            '<i class="icon iconfont icon-qq"></i>'+
-            '<i class="icon iconfont icon-wechat"></i>'+
+            // '<i class="icon iconfont icon-qq"></i>'+
+            // '<i class="icon iconfont icon-wechat"></i>'+
         '</div>'+
         '<div class="info">'+
             '<div>Relatec links: OTCGO | NEO Intelligent economy | Binace | KUCOIN</div>'+
             '<div>Switch block chain: The test chain is not open temporarily</div>'+
-            '<div>Node version: v2.3.5.0</div>'+
+            '<div>Node version: v2.7.2</div>'+
         '</div>'+
         '<div class="recnum">'+
-            'Record number: 湘ICP备16019051号-1'+
+            // 'Record number: 湘ICP备16019051号-1'+
         '</div>'+
     '</div>'
 });
@@ -295,11 +297,11 @@ Vue.component('neo-paging', {
     template:
     '<div class="neo-paging">'+
     '<div class="info" v-bind:style="{color: TintColor}">'+
-        'Transactions'+
+        '{{$t("pagination.current")}}'+
         ' {{(CurrentPage-1)*PageCount+1}} '+ 
-        ' to '+ 
+        ' {{$t("pagination.to")}} '+ 
         ' {{CurrentPage*PageCount>TotalCount ? TotalCount : CurrentPage*PageCount}} '+ 
-        ' of '+ 
+        ' {{$t("pagination.total")}} '+ 
         ' {{TotalCount}} '+ 
     '</div>'+
     '<div class="page">'+
@@ -404,7 +406,7 @@ Vue.component('neo-dynamic-list',{
                 }
             })
             .then(function (resp) {
-                console.log(resp)
+                // console.log(resp)
                 console.log(resp.data.data.SystemQuery.rows)
                 result = resp.data.data.SystemQuery.rows
                 that.items = [
@@ -688,7 +690,7 @@ Vue.component('neo-tran-record', {
         '<div class="neo-tran-record__left">'+
             '<div v-for="(left, leftIdx) in record.left">'+
                 '<div class="neo-tran-record__title">{{left.title}}</div>'+
-                '<div class="neo-tran-record__address"><i class="icon iconfont icon-search"></i> <span>{{left.address}}</span></div>'+
+                '<div class="neo-tran-record__address" v-on:click="goto(left.address)"><i class="icon iconfont icon-search"></i> <span>{{left.address}}</span></div>'+
                 '<div class="neo-tran-record__amount"><span>{{left.value}} {{left.symbol}}</span></div>'+
             '</div>'+        
         '</div>'+
@@ -698,7 +700,7 @@ Vue.component('neo-tran-record', {
         '<div class="neo-tran-record__right">'+
             '<div v-for="(right, rightIdx) in record.right">'+
                 '<div class="neo-tran-record__title">{{right.title}}</div>'+
-                '<div class="neo-tran-record__address"><i class="icon iconfont icon-search"></i><span>{{right.address}}</span></div>'+
+                '<div class="neo-tran-record__address" v-on:click="goto(right.address)"><i class="icon iconfont icon-search"></i><span>{{right.address}}</span></div>'+
                 '<div class="neo-tran-record__amount"><span>{{right.value}} {{right.symbol}}</span></div>'+
             '</div>'+   
         '</div>'+
@@ -709,6 +711,11 @@ Vue.component('neo-tran-record', {
         showborder: Boolean,
         record: Object
     },
+    methods: {
+        goto: function(address) {
+            window.location.href = "addrinfo?address="+address
+        }
+    }
 });
 
 Vue.component('neo-tran-list', {
@@ -746,7 +753,8 @@ Vue.component('neo-tran-list', {
         title: Boolean,
         page: Number,
         count: Number,
-        block: Number
+        block: Number,
+        address: Number
     },
     data: function() {
         return {
@@ -761,7 +769,11 @@ Vue.component('neo-tran-list', {
             }
             
             if(this.block) {
-                filter += 'blockIndex:'+this.block;
+                filter += ' ,blockIndex:'+this.block;
+            }
+
+            if(this.address) {
+                filter += ' ,address: "' + this.address +'"';
             }
 
             return filter;
@@ -850,7 +862,7 @@ Vue.component('neo-tran-list', {
                         for(var j = 0; j < vins.length; j++){
                             var vinItem = vins[j];
                             record.left.push({
-                                title: "Sent From",
+                                // title: "Sent From",
                                 symbol: vinItem.utxo.name,
                                 value: vinItem.utxo.value,
                                 address: vinItem.utxo.address
@@ -860,7 +872,7 @@ Vue.component('neo-tran-list', {
                         for(var k=0; k < vouts.length; k++){
                             var voutItem = vouts[k];
                             record.right.push({
-                                title: "Sent To",
+                                // title: "Sent To",
                                 symbol: voutItem.name,
                                 value: voutItem.value,
                                 address: voutItem.address
@@ -875,19 +887,24 @@ Vue.component('neo-tran-list', {
                             var nep5Item = nep5s[l];
                             item.records.push({
                                 left: [{
-                                    title: "Sent From",
+                                    // title: "Sent From",
                                     symbol: nep5Item.symbol == null ? '--' : nep5Item.symbol,
                                     address: nep5Item.from,
                                     value: nep5Item.value
                                 }],
                                 right: [{
-                                    title: "Sent From",
+                                    // title: "Sent From",
                                     symbol: nep5Item.symbol == null ? '--' : nep5Item.symbol,
                                     address: nep5Item.to,
                                     value: nep5Item.value
                                 }]
                             })
                         }
+                    }
+
+                    if(item.records && item.records.length > 0){
+                        item.records[0].left[0].title = that.$t('transaction.sentFrom');
+                        item.records[0].right[0].title = that.$t('transaction.sentTo')
                     }
                 }
             })
@@ -909,7 +926,7 @@ Vue.component('neo-tran-info', {
         '<div class="warpper" v-for="(item, itemIdx) in transaction">'+
             '<div class="neo-tran-info__item" v-bind:class="{\'first\': itemIdx%3==0}">'+
                 '<h1>{{item.title}}</h1>'+
-                '<span>{{item.desc}}</span>'+
+                '<span v-bind:class="{\'link\': item.url}" v-on:click="goto(item.url)">{{item.desc}}</span>'+
                 '<div class="underlayer"></div>'+
             '</div>'+
             '<div class="clear" v-if="itemIdx % 3 == 2 || itemIdx == transaction.length - 1"></div>'+
@@ -932,7 +949,11 @@ Vue.component('neo-tran-info', {
         }
     },
     methods:{
-
+        goto: function(url){
+            if(url){
+                window.location.href = url;
+            }
+        }
     }
 
 });
@@ -1057,7 +1078,7 @@ Vue.component('neo-block-info', {
         '<div class="warpper" v-for="(item, itemIdx) in block">'+
             '<div class="neo-block-info__item" v-bind:class="{\'first\': itemIdx%3==0}">'+
                 '<h1>{{item.title}}</h1>'+
-                '<span>{{item.desc}}</span>'+
+                '<span v-bind:class="{\'link\': item.url}" v-on:click="goto(item.url)">{{item.desc}}</span>'+
                 '<div class="underlayer"></div>'+
             '</div>'+
             '<div class="clear" v-if="itemIdx % 3 == 2 || itemIdx == block.length - 1"></div>'+
@@ -1078,6 +1099,13 @@ Vue.component('neo-block-info', {
             //     {title: 'Size', desc: '1 minute ago'},
             // ]
         }
+    },
+    methods: {
+        goto: function(url){
+            if(url){
+                window.location.href = url;
+            }
+        }
     }
 });
 
@@ -1087,8 +1115,8 @@ Vue.component('neo-addr-info', {
         '<div class="balance">'+
 
             '<div v-for="item in items" class="col item" v-if="item.balances != '+'0'+' ">'+
-                '<h1>{{item.name}}</h1>'+
-                '<h2>{{item.balances}}</h2>'+
+                '<h3>{{item.name}}</h3>'+
+                '<h4>{{item.balances}}</h4>'+
             '</div>'+
 
             '<div class="clear"></div>'+

@@ -8,19 +8,20 @@ const zhCHS = {
   },
   slider: {
     dynamic: {
-      name: '动态',
+      name: '最新动态',
+      search:'区块高度、地址或交易标识'
     },
     market: {
-      name: '行情',
+      name: '最新行情',
     },
     transaction: {
-      name: '最近交易',
+      name: '最新交易',
     },
     block: {
-      name: '最近区块',
+      name: '最新区块',
     },
     address: {
-      name: '地址信息'
+      name: '最新地址'
     }
   },
   dynamic:{
@@ -29,7 +30,7 @@ const zhCHS = {
     blockNum:'区块数量',
     assetNum:'资产数量',
     addressNum:'地址数量',
-    transactionNum:'交易数数量',
+    transactionNum:'交易数量',
     day:'天'
   },
   block: {
@@ -70,6 +71,8 @@ const zhCHS = {
     amount: '总量'
   },
   pagination:{
-
+    current:'当前',
+    to:'至',
+    total:'共'
   }
 }

@@ -13,6 +13,7 @@
 
 <body>
     <div id="app">
+        <a name="top"></a>
         <neo-header ref="header" v-bind:class="screenSize"></neo-header>
         <div class="page-home-info" v-bind:class="screenSize">
             <div class="page-home-slider" v-bind:class="screenSize">
@@ -87,7 +88,7 @@
             el: '#app',
             i18n,
             data: {
-                sliderIdx: 3,
+                sliderIdx: GetUrlParam('idx') == '' ? 0 : GetUrlParam('idx'),
                 tintColor: '#F9C400',
                 currentPage: 1,
                 pageCount: 15,
@@ -107,32 +108,31 @@
                     this.load();
                     this.$refs.header.setMenuIdx(3)
 
-
+                    history.pushState({},"neo", "?idx="+this.sliderIdx); 
                 },
                 load: function() {
                     var that = this;
-
-                    if(that.sliderIdx === 0){
+                    if(that.sliderIdx == 0){
                         setTimeout(function (){
                             that.$refs.neodynamic.init();
                         }, 500);
                     } 
-                    if(that.sliderIdx === 1){
+                    if(that.sliderIdx == 1){
                         // setTimeout(function (){
                         //     that.$refs.neochart.init();
                         // }, 500);
                     } 
-                    else if(that.sliderIdx === 2){
+                    else if(that.sliderIdx == 2){
                         setTimeout(function (){
                             that.$refs.tran.init();
                         }, 500);
                     }
-                    else if(that.sliderIdx === 3){
+                    else if(that.sliderIdx == 3){
                         setTimeout(function (){
                             that.$refs.block.init();
                         }, 500);
                     } 
-                    else if(that.sliderIdx === 4) {
+                    else if(that.sliderIdx == 4) {
                         setTimeout(function (){
                             that.$refs.wallet.init();
                         }, 500);

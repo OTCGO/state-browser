@@ -741,7 +741,7 @@ Vue.component('neo-tran-list', {
                 '</div>'+
                 '<div class="col col-4" v-on:click="expandTranItem(idx)">'+
                 '</div>'+
-                '<i class="icon iconfont icon-arrow-down-1" v-if="item.type==\'Invocation\'"></i>'+
+                '<i class="icon iconfont icon-arrow-down-1" v-if="item.records.length > 0"></i>'+
                 '<div class="underlayer"></div>'+
             '</div>'+
             '<div v-if="item.expand">'+
@@ -781,9 +781,9 @@ Vue.component('neo-tran-list', {
     },
     methods: {
         expandTranItem: function(idx) {
-            if(this.items[idx].type != 'Invocation') {
-                return;
-            }
+            // if(this.items[idx].type != 'Invocation') {
+            //     return;
+            // }
             this.items[idx].expand = !this.items[idx].expand;
             this.$set(this.items, idx, this.items[idx]);
         },
@@ -840,7 +840,7 @@ Vue.component('neo-tran-list', {
                 }
             })
             .then(function (resp) {
-                console.log(resp)
+                
                 that.$emit('loaded', resp.data.data.TransactionQuery)
                 that.items = [];
                 for(var i=0; i<resp.data.data.TransactionQuery.rows.length; i++){
@@ -907,6 +907,8 @@ Vue.component('neo-tran-list', {
                         item.records[0].right[0].title = that.$t('transaction.sentTo')
                     }
                 }
+
+                console.log('items',that.items)
             })
             .catch(function (error) {
                 console.log(error);

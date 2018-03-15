@@ -335,7 +335,7 @@ body{
     border-right: 1px solid #ddd;
 }
 .neo-toolbox.tran .total label{
-    color: #ddd;
+    color: #000;
     margin: 0 0.2rem 0 0.1rem;
 }
 .neo-toolbox.tran .total span{
@@ -389,7 +389,7 @@ body{
 }
 .neo-toolbox.wallet label{
     margin: 0 0.2rem 0 0;
-    color: #ddd;
+    color: #000;
 }
 .neo-toolbox.wallet .total span{
     font-size: 0.2rem;

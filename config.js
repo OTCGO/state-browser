@@ -15,9 +15,27 @@ window.GetUrlParam = function(name){
 }
 
 
+// change url Param but not refesh
+window.SetUrlParam = function(param,value){
+    var query = location.search.substring(1);
+    var p = new RegExp("("+param+")=[^&]*");
+    if(p.test(query)){
+        query = query.replace(p,"$1="+value);
+        history.pushState({},"neo", '?'+query );
+    }else{
+        if(query == ''){
+            history.pushState({},"neo", '?'+param+'='+value );
+        }else{
+            history.pushState({},"neo", '?'+query+'&'+param+'='+value );
+        }
+    }    
+}
+
+
 let network = GetUrlParam('network') || 'mainnet'
 let host = 'http://114.215.30.71:5001'
 
 if(network === 'testnet'){
     host = 'http://future.otcgo.cn:5001'
 }
+

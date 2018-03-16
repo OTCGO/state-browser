@@ -80,9 +80,10 @@
     <script src="component/comp.js"></script>
 
     <script>
+        localStorage.locale = 'zhCHS'
 
         const i18n = new VueI18n({
-            locale: 'zhCHS', // 语言标识
+            locale: localStorage.locale || 'zhCHS', // 语言标识
             messages:{
                 en,zhCHS
             }
@@ -110,7 +111,16 @@
                     this.totalCount = 0;
                     this.load();
                     this.$refs.header.setMenuIdx(3)
-                    history.pushState({},"neo", "?idx="+this.sliderIdx ); 
+
+                    SetUrlParam('idx',this.sliderIdx)
+                    // history.pushState({},"neo", search === "" ? ("?idx="+this.sliderIdx) : (`${search}&idx=${this.sliderIdx}`)  ); 
+
+                    // if(/\?/g.test(document.location.toString())){
+                    //     history.pushState({},"neo", "?idx="+this.sliderIdx ); 
+                    // }else{
+                    //     history.pushState({},"neo", "?idx="+this.sliderIdx ); 
+                    // }
+                    
                 },
                 load: function() {
                     var that = this;

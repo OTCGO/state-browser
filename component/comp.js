@@ -40,7 +40,7 @@ Vue.component('neo-menu', {
             menu:[
                 {name: this.$t("menu.language"), items:[]},
                 {name: this.$t("menu.api")},
-                {name: this.$t("menu.assets"), href:"assets.html"},
+                {name: this.$t("menu.assets"), href:"assets.html" },
                 {name: this.$t("menu.home"), href:"index.html"}
             ],
             positions: ['', '', '0.23', '0.25rem']
@@ -725,7 +725,7 @@ Vue.component('neo-tran-list', {
         '<div class="title" v-if="title!=\'\'">{{title}}</div>'+
         '<div class="row header">'+
             '<div class="col col-1"><span>{{$t("transaction.type") }}</span></div>'+
-            '<div class="col col-2"><span>{{$t("transaction.transactionId") }} ID</span></div>'+
+            '<div class="col col-2"><span>{{$t("transaction.transactionId") }}</span></div>'+
             '<div class="col col-3"><span>{{$t("transaction.time") }}</span></div>'+
             '<div class="underlayer"></div>'+
         '</div>'+

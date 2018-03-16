@@ -37,7 +37,7 @@
 
     <script>
         const i18n = new VueI18n({
-            locale: 'zhCHS', // 语言标识
+            locale: localStorage.locale || 'zhCHS', // 语言标识
             messages:{
                 en,zhCHS
             }

@@ -9,7 +9,7 @@ const zhCHS = {
   slider: {
     dynamic: {
       name: '最新动态',
-      search:'区块高度、地址或交易标识'
+      search:'请输入区块高度、地址或交易标识'
     },
     market: {
       name: '最新行情',
@@ -74,5 +74,9 @@ const zhCHS = {
     current:'当前',
     to:'至',
     total:'共'
+  },
+  footer:{
+    link:'相关链接',
+    version:'节点版本'
   }
 }

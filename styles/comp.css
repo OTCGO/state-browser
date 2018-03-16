@@ -90,6 +90,7 @@ body{
     font-weight: 100;
     color: #fff;
     line-height: 0.2rem;
+    cursor: pointer;
 }
 .neo-menu__item span i{
     position: relative;
@@ -191,9 +192,11 @@ body{
 .neo-footer .recnum{
     padding: 0.2rem 0;
 }
-.neo-footer .folder .wrapper a{
+.neo-footer  a{
     text-decoration: none;
+    color: #fff;
 }
+
 /* #endregion */
 
 /* #region neo-paging */
@@ -268,7 +271,8 @@ body{
     border: 0;
     font-size: 0.15rem;
     font-weight: 100;
-    outline: none
+    outline: none;
+    cursor: pointer;
 }
 .neo-toolbox.dynamic i{
     position: absolute;
@@ -500,6 +504,7 @@ body{
     top: 0.11rem;
     color: #F2C404;
     font-size: 0.14rem;
+    cursor: pointer;
 }
 .neo-wallet-list .row .col{
     float:left;

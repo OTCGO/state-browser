@@ -283,9 +283,9 @@ Vue.component('neo-footer', {
             // '<i class="icon iconfont icon-wechat"></i>'+
         '</div>'+
         '<div class="info">'+
-            '<div>Relatec links: OTCGO | NEO Intelligent economy | Binace | KUCOIN</div>'+
-            '<div>Switch block chain: The test chain is not open temporarily</div>'+
-            '<div>Node version: v2.7.2</div>'+
+            // '<div>{{$t("footer.link")}}: <a href="https://otcgo.cn">OTCGO</a> </div>'+
+            // '<div>Switch block chain: The test chain is not open temporarily</div>'+
+            '<div>{{$t("footer.version")}}: v2.7.2</div>'+
         '</div>'+
         '<div class="recnum">'+
             // 'Record number: 湘ICP备16019051号-1'+
@@ -714,7 +714,7 @@ Vue.component('neo-tran-record', {
     },
     methods: {
         goto: function(address) {
-            window.location.href = "addrinfo?address="+address
+            window.location.href = "addrinfo.html?address="+address
         }
     }
 });

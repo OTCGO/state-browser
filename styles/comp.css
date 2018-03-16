@@ -272,7 +272,7 @@ body{
     font-size: 0.15rem;
     font-weight: 100;
     outline: none;
-    cursor: pointer;
+    
 }
 .neo-toolbox.dynamic i{
     position: absolute;
@@ -280,6 +280,7 @@ body{
     top: 0.32rem;
     font-size: 0.3rem;
     color: #3D71D0;
+    cursor: pointer;
 }
 
 .neo-toolbox.market {

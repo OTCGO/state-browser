@@ -78,7 +78,7 @@ Vue.component('neo-header', {
         return {
             menuIdx: 1,
             languages: [
-                {code: 'en', name: '英文'},
+                {code: 'en', name: 'English'},
                 {code: 'zhCHS', name: '中文'}
             ]
         }

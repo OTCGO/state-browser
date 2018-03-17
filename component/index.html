@@ -16,7 +16,7 @@
         <!-- <neo-footer></neo-footer> -->
         <!-- <neo-dynamic-list></neo-dynamic-list> -->
         <!-- <neo-market-neochart ref="neochart"></neo-market-neochart> -->
-        <neo-wallet-list ref="wallet"></neo-wallet-list>
+        <!-- <neo-wallet-list ref="wallet"></neo-wallet-list> -->
         <!-- <neo-tran-record></neo-tran-record> -->
         <!-- <neo-tran-info></neo-tran-info> -->
         <!-- <neo-tran-script></neo-tran-script> -->
@@ -27,6 +27,7 @@
         <!-- <neo-addr-info ref="addrinfo"></neo-addr-info> -->
         <!-- <neo-asset-list></neo-asset-list> -->
         <!-- <neo-block-list></neo-block-list> -->
+        <neo-select v-on:selected="selected" right="1rem" show="true" v-bind:data="items"></neo-select>
     </div>
     <script src="/libs/rem/rem.js?v=2" data-psd="750"></script>
     <script src="/libs/vue/vue.min.js"></script>
@@ -40,12 +41,22 @@
         var app = new Vue({
             el: '#app',
             data: {
+                items: [
+                    {code: "test1", name: '测试1'},
+                    {code: "test2", name: '测试5'},
+                    {code: "test3", name: '测试6'},
+                    {code: "test4", name: '测试7'},
+                    {code: "test5", name: '测试8'},
+                ]
             },
             methods: {
                 init: function() {
                     // this.$refs.neochart.init();
-                    this.$refs.wallet.init();
+                    // this.$refs.wallet.init();
                     // this.$refs.addrinfo.init();
+                },
+                selected: function(item) {
+                    console.log(item)
                 }
             }
         })

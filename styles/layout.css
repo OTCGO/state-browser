@@ -27,31 +27,31 @@
     bottom: 0.9rem;
 }
 
-.page-home-data.B0{
+.page-home-data.B0, .page-home-data.P0, .page-home-data.M0{
     width: 7.5rem;
     position: relative;
     left: 1.5rem;
     top:-0.8rem;
 }
-.page-home-data.B1{
+.page-home-data.B1, .page-home-data.P1, .page-home-data.M1{
     width: 7.5rem;
     position: relative;
     left: 2.45rem;
     top:-0.8rem;
 }
-.page-home-data.B2{
+.page-home-data.B2, .page-home-data.P2, .page-home-data.M2{
     width: 7.5rem;
     position: relative;
     left: 2.45rem;
     top:-0.8rem;
 }
-.page-home-data.B3{
+.page-home-data.B3, .page-home-data.P3, .page-home-data.M3{
     width: 7.5rem;
     position: relative;
     left: 2.45rem;
     top:-0.8rem;
 }
-.page-home-data.B4{
+.page-home-data.B4, .page-home-data.P4, .page-home-data.M4{
     width: 7.5rem;
     position: relative;
     left: 2.45rem;

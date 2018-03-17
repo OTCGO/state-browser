@@ -1,4 +1,4 @@
-//简体中文
+// 英文
 const en = {
   menu: {
     home: 'Home',

@@ -49,18 +49,17 @@ Vue.component('neo-menu', {
                 {name: this.$t("menu.assets"), href:"assets.html" },
                 {name: this.$t("menu.home"), href:"index.html"}
             ],
-            positions: ['', '', '0.23', '0.18rem']
+            positions: ['', '', '0.16rem', '0.18rem']
         }
     },
     methods: {
         changeMenuItem: function(idx) {
-            console.log(idx);
             this.idx = idx;
             var menuItem = this.menu[idx];
-            console.log(menuItem)
             if(menuItem.href){
                 window.location.href = menuItem.href;
             }
+            this.$emit('changed', idx)
         }
     }
 });
@@ -69,16 +68,35 @@ Vue.component('neo-header', {
     template: 
     '<div class=\'neo-header\'>'+
         '<neo-title></neo-title>'+
-        '<neo-menu v-bind:idx="menuIdx"></neo-menu>'+
+        '<neo-menu ref="menu" v-bind:idx="menuIdx" v-on:changed="changedMenu"></neo-menu>'+
+        '<neo-select ref="tooltip" right="0.15rem" v-bind:data="languages" v-on:selected="changeLanguage" top="0.65rem"></neo-select>'+
     '</div>',
     data: function() {
         return {
-            menuIdx: 1
+            menuIdx: 1,
+            languages: [
+                {code: 'en', name: '英文'},
+                {code: 'zhCHS', name: '中文'}
+            ]
         }
     },
     methods: {
         setMenuIdx: function(idx) {
             this.menuIdx = idx;
+        },
+        changedMenu: function(idx) {
+            if(idx == 0){
+                if(this.$refs.tooltip.visiable) {
+                    this.$refs.tooltip.hide();
+                } else {
+                    this.$refs.tooltip.show();
+                }
+            }
+        },
+        changeLanguage: function(option) {
+            console.log(option)
+            this.$refs.tooltip.hide();
+            i18n.locale= option.code;
         }
     }
 });
@@ -184,10 +202,11 @@ Vue.component('neo-toolbox', {
             '<label>{{$t("dynamic.transactionNum")}}</label>'+
             '<span>{{Total}}</span>'+
         '</div>'+
-        '<div class="category">'+
-            '<span>Any <i class="icon iconfont icon-arrow-down"></i></span>'+
+        '<div class="category" v-on:click="handleCategory">'+
+            '<span>{{category.name}} <i class="icon iconfont icon-arrow-down"></i></span>'+
         '</div>'+
     '</div>'+
+    '<neo-select ref="tooltip" v-if="itemidx == 2" v-on:selected="changeCategory" v-bind:data="categoryItems" left="6.9rem" top="0.6rem"></neo-select>'+
     '<div class="neo-toolbox block" v-if="itemidx == 3">'+
         '<div class="total">'+
             '<label>{{$t("dynamic.blockNum")}}</label>'+
@@ -228,6 +247,9 @@ Vue.component('neo-toolbox', {
         },
         Total: function() {
             return this.total.toString().replace(/(?=((?!\b)\d{3})+$)/g, ',')
+        },
+        category: function() {
+            return this.categoryItems[this.categoryIdx];
         }
     },
     props: {
@@ -237,7 +259,15 @@ Vue.component('neo-toolbox', {
     data: function() {
         return {
             toolboxPositions: [0.2, 1.8, -4.5, 2.8, 0.2],
-            search: undefined
+            search: undefined,
+            categoryItems: [
+                {idx: 0, code: 'Any', name: 'Any'},
+                {idx: 1, code: 'Contract', name: 'Contract'},
+                {idx: 2, code: 'Minner', name: 'Minner'},
+                {idx: 3, code: 'Claim', name: 'Claim'},
+                {idx: 4, code: 'Invocation', name: 'Invocation'},
+            ],
+            categoryIdx: 2
         }
     },
     methods: {
@@ -271,7 +301,18 @@ Vue.component('neo-toolbox', {
             if(event.keyCode === 13){
                 this.handleSearch()
             }
-            
+        },
+        handleCategory: function(){
+            if(this.$refs.tooltip.visiable){
+                this.$refs.tooltip.hide();
+            } else {
+                this.$refs.tooltip.show();
+            }
+        },
+        changeCategory: function(item) {
+            console.log(item)
+            this.categoryIdx = item.idx;
+            this.$refs.tooltip.hide();
         }
     }
 });
@@ -1179,7 +1220,6 @@ Vue.component('neo-asset-list', {
             '<div class="col col-2"><span>{{item.type}}</span></div>'+
             '<div class="col col-3"><span>{{item.id}}</span></div>'+
             '<div class="col col-4"><span>{{item.amount}}</span></div>'+
-
             '<div class="underlayer"></div>'+
         '</div>'+
     '</div>',
@@ -1238,6 +1278,54 @@ Vue.component('neo-asset-list', {
             .catch(function (error) {
                 console.log(error);
             });
+        }
+    }
+})
+
+Vue.component('neo-select', {
+    template: 
+    '<div class="neo-select" v-if="visiable" v-bind:style="{left: left, right: right, top: top}">'+
+        '<div class="neo-select-arrow"></div>'+
+        '<div class="neo-select-list">'+
+            '<div class="neo-select-item" v-bind:class="{\'last\': itemIdx==items.length-1}" v-for="(item,itemIdx) in items" v-on:click="selected(itemIdx)">{{item.name}}</div>'+
+        '</div>'+
+    '</div>',
+    props: {
+        data: Array,
+        left: Number,
+        right: Number,
+        top: Number
+    },
+    data: function() {
+        return {
+            visiable: false
+        }
+    },
+    computed: {
+        items: function() {
+            if(this.data && this.data.length > 0) {
+                return this.data
+            }
+
+            var arr = [];
+            for(var i = 0; i < 5; i++) {
+                arr.push({
+                    code: 'item'+i,
+                    name: '选项'+i
+                })
+            }
+            return arr;
+        }
+    },
+    methods: {
+        selected: function(idx) {
+            this.$emit('selected', this.items[idx])
+        },
+        show: function() {
+            this.visiable = true;
+        },
+        hide: function() {
+            this.visiable = false;
         }
     }
 })

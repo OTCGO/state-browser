@@ -273,6 +273,9 @@ Vue.component('neo-toolbox', {
                 {idx: 2, code: 'Miner', name: 'Miner'},
                 {idx: 3, code: 'Claim', name: 'Claim'},
                 {idx: 4, code: 'Invocation', name: 'Invocation'},
+                {idx: 5, code: 'Publish', name: 'Publish'},
+                {idx: 6, code: 'Issue', name: 'Issue'},
+                {idx: 7, code: 'Register', name: 'Register'},
             ],
             categoryIdx: 0
         }

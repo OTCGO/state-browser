@@ -270,7 +270,7 @@ Vue.component('neo-toolbox', {
             categoryItems: [
                 {idx: 0, code: 'Any', name: 'Any'},
                 {idx: 1, code: 'Contract', name: 'Contract'},
-                {idx: 2, code: 'Minner', name: 'Minner'},
+                {idx: 2, code: 'Miner', name: 'Miner'},
                 {idx: 3, code: 'Claim', name: 'Claim'},
                 {idx: 4, code: 'Invocation', name: 'Invocation'},
             ],

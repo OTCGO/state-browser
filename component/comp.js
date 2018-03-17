@@ -96,7 +96,9 @@ Vue.component('neo-header', {
         changeLanguage: function(option) {
             console.log(option)
             this.$refs.tooltip.hide();
-            i18n.locale= option.code;
+            localStorage.locale = option.code
+            window.location.reload();
+            // i18n.locale= option.code;
         }
     }
 });

@@ -1,10 +1,16 @@
 Vue.component('neo-title', {
     template:
-    '<div class="neo-title">'+
+    '<div class="neo-title" v-on:click="goto()">'+
         '<div class="neo-title__main"><span>NEO</span></div>' + 
         '<div class="neo-title__sub"><span>NEP5</span></div>'+
         '<div class="neo-title__sub"><span>OTCGO</span></div>'+
     '</div>',
+    methods:{
+        goto(){
+            // return home
+            window.location.href = '/'
+        }
+    }
 });
 
 Vue.component('neo-info-title', {
@@ -43,7 +49,7 @@ Vue.component('neo-menu', {
                 {name: this.$t("menu.assets"), href:"assets.html" },
                 {name: this.$t("menu.home"), href:"index.html"}
             ],
-            positions: ['', '', '0.23', '0.25rem']
+            positions: ['', '', '0.23', '0.18rem']
         }
     },
     methods: {
@@ -1058,7 +1064,7 @@ Vue.component('neo-block-list', {
                     var row = resp.data.data.BlockQuery.rows[i];
                     that.items.push({
                         height: row.index.toString().replace(/(?=((?!\b)\d{3})+$)/g, ','),
-                        size: row.size.toString().replace(/(?=((?!\b)\d{3})+$)/g, ',')+'bytes',
+                        size: row.size.toString().replace(/(?=((?!\b)\d{3})+$)/g, ',') + ' ' + that.$t('block.byte'),
                         trans: row.transactions,
                         created: row.time == null ? 'N/A' : moment(row.time*1000).format("YYYY-MM-DD | HH:mm:ss")
                     })
@@ -1221,7 +1227,7 @@ Vue.component('neo-asset-list', {
                 for(var i=0; i<resp.data.data.AssetQuery.rows.length; i++){
                     var row = resp.data.data.AssetQuery.rows[i];
                     that.items.push({
-                        id: row.assetId == null ? 'N/A' : row.assetId,
+                        id: row.assetId == null ? 'N/A' : row.assetId.substring(2),
                         // symbol: row.symbol == null ? 'N/A' : row.symbol,
                         amount: row.amount == null ? 'N/A' : row.amount,
                         name: row.name == null ? 'N/A' : (row.name[0].name || 'N/A'),

@@ -9,7 +9,7 @@ const en = {
   slider: {
     dynamic: {
       name: 'Dynamic',
-      search:'Block Height, Hash, Address or Transaction id'
+      search: 'Block Height, Hash, Address or Transaction id'
     },
     market: {
       name: 'Market',
@@ -24,40 +24,41 @@ const en = {
       name: 'Addresses'
     }
   },
-  dynamic:{
-    startTime:'start time',
-    runTime:'run time',
-    blockNum:'total blocks',
-    assetNum:'total assets',
-    addressNum:'total addresses',
-    transactionNum:'total transactions',
-    day:'day'
+  dynamic: {
+    startTime: 'start time',
+    runTime: 'run time',
+    blockNum: 'total blocks',
+    assetNum: 'total assets',
+    addressNum: 'total addresses',
+    transactionNum: 'total transactions',
+    day: 'day'
   },
   block: {
-    name:'block info',
-    index:'index',
-    hash:'hash',
-    version:'version',
-    merkleroot:'merkleroot',
-    invocationScript:'invocationScript',
-    verificationScript:'verificationScript',
+    name: 'block info',
+    index: 'index',
+    hash: 'hash',
+    byte: 'bytes',
+    version: 'version',
+    merkleroot: 'merkleroot',
+    invocationScript: 'invocationScript',
+    verificationScript: 'verificationScript',
     height: 'height',
     size: 'size',
     transactions: 'transactions',
     time: 'time'
   },
   transaction: {
-    name:'transaction info',
+    name: 'transaction info',
     type: 'type',
-    networkFee:'networkFee',
-    systemFee:'systemFee',
+    networkFee: 'networkFee',
+    systemFee: 'systemFee',
     transactionId: "transaction id",
     time: 'time',
     size: 'size',
-    invocationScript:'invocationScript',
-    verificationScript:'verificationScript',
-    sentFrom:'sentFrom',
-    sentTo:'sentTo'
+    invocationScript: 'invocationScript',
+    verificationScript: 'verificationScript',
+    sentFrom: 'sentFrom',
+    sentTo: 'sentTo'
   },
   address: {
     value: 'address',
@@ -70,12 +71,12 @@ const en = {
     assetId: 'assetId',
     amount: 'amount'
   },
-  pagination:{
-    current:'current',
-    to:'to',
-    total:'total'
+  pagination: {
+    current: 'current',
+    to: 'to',
+    total: 'total'
   },
-  footer:{
-    version:'cli version'
+  footer: {
+    version: 'cli version'
   }
 }

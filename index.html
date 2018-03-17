@@ -23,7 +23,12 @@
                 <neo-slider v-bind:itemidx="sliderIdx" v-bind:class="screenSize" v-on:change="changeSlider"></neo-slider>
             </div>
             <div class="page-home-toolbox">
-                <neo-toolbox v-bind:total="totalCount" v-bind:class="screenSize" v-bind:itemidx="sliderIdx"></neo-toolbox>
+                <neo-toolbox 
+                    v-on:changed="changeCategory" 
+                    v-bind:total="totalCount" 
+                    v-bind:class="screenSize" 
+                    v-bind:itemidx="sliderIdx">
+                </neo-toolbox>
             </div>
             <div class="page-home-data" v-bind:class="screenSize+sliderIdx">
                 <neo-dynamic-list ref="neodynamic" v-if="sliderIdx == 0" v-bind:class="screenSize"></neo-dynamic-list>
@@ -66,7 +71,7 @@
        
         <neo-footer v-bind:class="screenSize"></neo-footer>
     </div>
-    <script src="libs/rem/rem.js?v=2" data-psd="750"></script>
+    <script src="libs/rem/rem.js?v=4" data-psd="750"></script>
     <script src="libs/vue/vue.min.js"></script>
     <script src="libs/vue-i18n/vue-i18n.min.js"></script>
     <script src="libs/moment/moment.min.js"></script>
@@ -95,7 +100,8 @@
                 tintColor: '#F9C400',
                 currentPage: 1,
                 pageCount: 15,
-                totalCount: 0
+                totalCount: 0,
+                category: 'Any'
             },
             computed: {
                 screenSize: function() {
@@ -165,6 +171,12 @@
                     this.pageCount = args.pageCount;
                     this.totalCount = args.totalCount;
                     this.load();
+                },
+                changeCategory: function(item) {
+                    this.currentPage = 1;
+                    this.pageCount = 15;
+                    this.totalCount = 0;
+                    this.$refs.tran.setCategory(item.code);
                 }
             }
         })

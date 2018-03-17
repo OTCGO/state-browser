@@ -49,17 +49,20 @@ Vue.component('neo-menu', {
                 {name: this.$t("menu.assets"), href:"assets.html" },
                 {name: this.$t("menu.home"), href:"index.html"}
             ],
-            positions: ['', '', '0.16rem', '0.18rem']
+            positions: ['', '', '0.20rem', '0.20rem']
         }
     },
     methods: {
         changeMenuItem: function(idx) {
+            this.$emit('changed', idx)
+            if(idx < 2){
+                return;
+            }
             this.idx = idx;
             var menuItem = this.menu[idx];
             if(menuItem.href){
                 window.location.href = menuItem.href;
             }
-            this.$emit('changed', idx)
         }
     }
 });
@@ -75,7 +78,7 @@ Vue.component('neo-header', {
         return {
             menuIdx: 1,
             languages: [
-                {code: 'en', name: '英文'},
+                {code: 'en', name: 'English'},
                 {code: 'zhCHS', name: '中文'}
             ]
         }
@@ -96,9 +99,11 @@ Vue.component('neo-header', {
         changeLanguage: function(option) {
             console.log(option)
             this.$refs.tooltip.hide();
-            localStorage.locale = option.code
+            if(localStorage.locale == option.code){
+                return;
+            }
+            localStorage.locale = option.code;
             window.location.reload();
-            // i18n.locale= option.code;
         }
     }
 });
@@ -265,11 +270,14 @@ Vue.component('neo-toolbox', {
             categoryItems: [
                 {idx: 0, code: 'Any', name: 'Any'},
                 {idx: 1, code: 'Contract', name: 'Contract'},
-                {idx: 2, code: 'Minner', name: 'Minner'},
+                {idx: 2, code: 'Miner', name: 'Miner'},
                 {idx: 3, code: 'Claim', name: 'Claim'},
                 {idx: 4, code: 'Invocation', name: 'Invocation'},
+                {idx: 5, code: 'Publish', name: 'Publish'},
+                {idx: 6, code: 'Issue', name: 'Issue'},
+                {idx: 7, code: 'Register', name: 'Register'},
             ],
-            categoryIdx: 2
+            categoryIdx: 0
         }
     },
     methods: {
@@ -312,9 +320,9 @@ Vue.component('neo-toolbox', {
             }
         },
         changeCategory: function(item) {
-            console.log(item)
             this.categoryIdx = item.idx;
             this.$refs.tooltip.hide();
+            this.$emit('changed', item)
         }
     }
 });
@@ -808,7 +816,8 @@ Vue.component('neo-tran-list', {
     },
     data: function() {
         return {
-            items: []
+            items: [],
+            category: 'Any'
         }
     },
     computed: {
@@ -826,6 +835,10 @@ Vue.component('neo-tran-list', {
                 filter += ' ,address: "' + this.address +'"';
             }
 
+            if(this.category && this.category != 'Any') {
+                filter += ' ,type: "' + this.category +'Transaction"';
+            }
+
             return filter;
         }
     },
@@ -836,6 +849,10 @@ Vue.component('neo-tran-list', {
             // }
             this.items[idx].expand = !this.items[idx].expand;
             this.$set(this.items, idx, this.items[idx]);
+        },
+        setCategory: function(category) {
+            this.category = category
+            this.init()
         },
         init: function() {
             var that = this;

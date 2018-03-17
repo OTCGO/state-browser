@@ -7,7 +7,7 @@
     resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize'
   var metaEl = document.createElement('meta')
   metaEl.name = 'viewport'
-  metaEl.content = 'width=device-width, user-scalable=no, initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale
+  metaEl.content = 'width=device-width, user-scalable=yes, initial-scale=' + scale + ', maximum-scale=' + scale*100 + ', minimum-scale=' + scale
   docEl.firstElementChild.appendChild(metaEl)
   var recalc = function () {
     var width = docEl.clientWidth*750/1280;

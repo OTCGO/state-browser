@@ -102,7 +102,7 @@ body{
 .neo-menu__item .underline{
     border-bottom: 1px solid #fff;
     position: absolute;
-    width: 0.3rem;
+    width: 0.25rem;
     top: 0.3rem;
     left: 0.23rem;
 }
@@ -339,6 +339,7 @@ body{
     position: absolute;
     top: 0.3rem;
     border-right: 1px solid #ddd;
+    width: 3rem;
 }
 .neo-toolbox.tran .total label{
     color: #000;

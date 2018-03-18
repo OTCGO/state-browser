@@ -930,7 +930,7 @@ Vue.component('neo-tran-list', {
                         for(var j = 0; j < vins.length; j++){
                             var vinItem = vins[j];
                             record.left.push({
-                                // title: "Sent From",
+                                title: "",
                                 symbol: vinItem.utxo.name,
                                 value: vinItem.utxo.value,
                                 address: vinItem.utxo.address
@@ -940,7 +940,7 @@ Vue.component('neo-tran-list', {
                         for(var k=0; k < vouts.length; k++){
                             var voutItem = vouts[k];
                             record.right.push({
-                                // title: "Sent To",
+                                title: "",
                                 symbol: voutItem.name,
                                 value: voutItem.value,
                                 address: voutItem.address
@@ -972,18 +972,20 @@ Vue.component('neo-tran-list', {
                             })
                         }
                     }
-                }
 
-                if(item.records && item.records.length > 0){
-                    
-                    if(item.records[0].left.length > 0){
-                        item.records[0].left[0].title = that.$t('transaction.sentFrom');
+                    if(item.records && item.records.length > 0){
+                        console.log('left',item.records[0].left.length)
+                        console.log('right',item.records[0].right.length)
+                        if(item.records[0].left.length > 0){
+                            item.records[0].left[0].title = that.$t('transaction.sentFrom');
+                        }
+    
+                        if(item.records[0].right.length > 0){
+                            item.records[0].right[0].title = that.$t('transaction.sentTo')
+                        } 
                     }
-
-                    if(item.records[0].right.length  > 0 ){
-                        item.records[0].right[0].title = that.$t('transaction.sentTo')
-                    } 
                 }
+
 
             })
             .catch(function (error) {

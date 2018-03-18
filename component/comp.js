@@ -920,8 +920,9 @@ Vue.component('neo-tran-list', {
                         expand: false,
                     }
                     that.items.push(item)
-                    if(row.vin && row.vout && row.vin.length > 0 
-                        && row.vout.length > 0){
+                   
+                    if(row.vin || row.vout){
+                        
                         var vins = row.vin;
                         var vouts = row.vout;
                         var record = { left: [], right: []}
@@ -946,8 +947,11 @@ Vue.component('neo-tran-list', {
                             })
                         }
 
-                        item.records.push(record)
+                        if(record.left.length  || record.right.length){
+                            item.records.push(record)
+                        }  
                     }
+
                     if(row.nep5 && row.nep5.length > 0){
                         var nep5s = row.nep5;
                         for(var l = 0; l < nep5s.length; l ++){
@@ -968,14 +972,19 @@ Vue.component('neo-tran-list', {
                             })
                         }
                     }
-
-                    if(item.records && item.records.length > 0){
-                        item.records[0].left[0].title = that.$t('transaction.sentFrom');
-                        item.records[0].right[0].title = that.$t('transaction.sentTo')
-                    }
                 }
 
-                console.log('items',that.items)
+                if(item.records && item.records.length > 0){
+                    
+                    if(item.records[0].left.length > 0){
+                        item.records[0].left[0].title = that.$t('transaction.sentFrom');
+                    }
+
+                    if(item.records[0].right.length  > 0 ){
+                        item.records[0].right[0].title = that.$t('transaction.sentTo')
+                    } 
+                }
+
             })
             .catch(function (error) {
                 console.log(error);

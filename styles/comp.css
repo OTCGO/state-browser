@@ -407,12 +407,15 @@ body{
     border-top: 1px solid #ddd;
     padding: 0.08rem 0 0 0.08rem;
 }
-.neo-toolbox.wallet .toolbar .item{
+.neo-toolbox.wallet .toolbar .item {
     width: 1.29rem;
     font-size: 0.1rem;
     float: left;
     text-align: center;
-    color: #ddd;
+}
+.neo-toolbox.wallet .toolbar .item a {
+    text-decoration: none;
+    color: #928c8c;
 }
 .neo-toolbox.wallet .toolbar .item.middle{
     border-left: 1px solid #ddd;

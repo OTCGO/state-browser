@@ -227,9 +227,8 @@ Vue.component('neo-toolbox', {
             '<span>{{Total}}</span>'+
         '</div>'+
         '<div class="toolbar">'+
-            '<div class="item"><span>NEW WALLET</span></div>'+
-            '<div class="item middle"><span>OPEN WALLET</span></div>'+
-            '<div class="item"><span>MENU</span></div>'+
+            '<div class="item"><a href="https://otcgo.cn/#/signUp" target="_blank" ><span>{{$t("address.newWallet")}}</span></a></div>'+
+            '<div class="item middle"><a href="https://otcgo.cn/#/login" target="_blank" ><span>{{$t("address.openWallet")}}</span></a></div>'+
         '</div>'+
     '</div>'+
     '<div class="clear" v-if="itemidx == 4"></div>'+

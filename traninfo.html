@@ -165,49 +165,81 @@
                                 }
                             }
 
-                            if(item.vin || item.vout ){
-                                that.vinout = { left: [], right: []}
-                                for(var j = 0; j < item.vin.length; j++){
-                                    var vinItem = item.vin[j];
-                                    if(j === 0 ){
-                                        that.vinout.left.push({
-                                            title:  that.$t('transaction.sentFrom'),
-                                            symbol: vinItem.utxo.name,
-                                            value: vinItem.utxo.value,
-                                            address: vinItem.utxo.address
-                                        })
-                                    }else{
-                                        that.vinout.left.push({
-                                            title:  '',
-                                            symbol: vinItem.utxo.name,
-                                            value: vinItem.utxo.value,
-                                            address: vinItem.utxo.address
-                                        })
-                                    }
 
+                            if(item.vin || item.vout){
+                                
+                                var vins = item.vin;
+                                var vouts = item.vout;
+                                var record = { left: [], right: []}
+
+                                for(var j = 0; j < vins.length; j++){
+                                    var vinItem = vins[j];
+                                    record.left.push({
+                                        // title: "Sent From",
+                                        symbol: vinItem.utxo.name,
+                                        value: vinItem.utxo.value,
+                                        address: vinItem.utxo.address
+                                    })
                                 }
 
-                                for(var k=0; k < item.vout.length; k++){
-                                    var voutItem = item.vout[k];
-                                    if(k === 0 ){
-                                        that.vinout.right.push({
-                                            title: that.$t('transaction.sentTo'),
-                                            symbol: voutItem.name,
-                                            value: voutItem.value,
-                                            address: voutItem.address
-                                        })
-                                    }else{
-                                        that.vinout.right.push({
-                                            title: '',
-                                            symbol: voutItem.name,
-                                            value: voutItem.value,
-                                            address: voutItem.address
-                                        })    
-                                    }
+                                for(var k=0; k < vouts.length; k++){
+                                    var voutItem = vouts[k];
+                                    record.right.push({
+                                        // title: "Sent To",
+                                        symbol: voutItem.name,
+                                        value: voutItem.value,
+                                        address: voutItem.address
+                                    })
+                                }
+
+                                if(record.left.length  || record.right.length){
+                                    that.vinout = record
+                                }  
+                            }
+
+                            // if(item.vin || item.vout ){
+                            //     that.vinout = { left: [], right: []}
+                            //     for(var j = 0; j < item.vin.length; j++){
+                            //         var vinItem = item.vin[j];
+                            //         if(j === 0 ){
+                            //             that.vinout.left.push({
+                            //                 title:  that.$t('transaction.sentFrom'),
+                            //                 symbol: vinItem.utxo.name,
+                            //                 value: vinItem.utxo.value,
+                            //                 address: vinItem.utxo.address
+                            //             })
+                            //         }else{
+                            //             that.vinout.left.push({
+                            //                 title:  '',
+                            //                 symbol: vinItem.utxo.name,
+                            //                 value: vinItem.utxo.value,
+                            //                 address: vinItem.utxo.address
+                            //             })
+                            //         }
+
+                            //     }
+
+                            //     for(var k=0; k < item.vout.length; k++){
+                            //         var voutItem = item.vout[k];
+                            //         if(k === 0 ){
+                            //             that.vinout.right.push({
+                            //                 title: that.$t('transaction.sentTo'),
+                            //                 symbol: voutItem.name,
+                            //                 value: voutItem.value,
+                            //                 address: voutItem.address
+                            //             })
+                            //         }else{
+                            //             that.vinout.right.push({
+                            //                 title: '',
+                            //                 symbol: voutItem.name,
+                            //                 value: voutItem.value,
+                            //                 address: voutItem.address
+                            //             })    
+                            //         }
                                     
 
-                                }
-                            }
+                            //     }
+                            // }
 
                             if(item.scripts && item.scripts.length > 0){
                                 that.scripts = []

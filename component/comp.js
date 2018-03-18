@@ -1298,7 +1298,7 @@ Vue.component('neo-asset-list', {
                     var row = resp.data.data.AssetQuery.rows[i];
                     that.items.push({
                         id: row.assetId == null ? 'N/A' : row.assetId.substring(2),
-                        // symbol: row.symbol == null ? 'N/A' : row.symbol,
+                        symbol: row.symbol == null ? '' : row.symbol,
                         amount: row.amount == null ? 'N/A' : row.amount,
                         name: row.name == null ? 'N/A' : (row.name[0].name || 'N/A'),
                         type: row.type == null ? 'N/A' : row.type

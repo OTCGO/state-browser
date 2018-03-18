@@ -1299,7 +1299,7 @@ Vue.component('neo-asset-list', {
                     that.items.push({
                         id: row.assetId == null ? 'N/A' : row.assetId.substring(2),
                         symbol: row.symbol == null ? '' : row.symbol,
-                        amount: row.amount == null ? 'N/A' : row.amount,
+                        amount: row.amount == null ? 'N/A' : row.amount.toString().replace(/(?=((?!\b)\d{3})+$)/g, ','),
                         name: row.name == null ? 'N/A' : (row.name[0].name || 'N/A'),
                         type: row.type == null ? 'N/A' : row.type
                     })

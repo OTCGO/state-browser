@@ -165,7 +165,7 @@
                                 }
                             }
 
-                            if(item.vin && item.vout && item.vin.length > 0 && item.vout.length > 0){
+                            if(item.vin || item.vout ){
                                 that.vinout = { left: [], right: []}
                                 for(var j = 0; j < item.vin.length; j++){
                                     var vinItem = item.vin[j];

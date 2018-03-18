@@ -16,8 +16,7 @@
         <div class="page-tran-info">
             <neo-info-title :title="$t('transaction.name')"  v-bind:id="id"></neo-info-title>
             <neo-tran-info   v-bind:transaction="transaction"></neo-tran-info>
-            <neo-tran-record showborder="true" v-bind:record="nep5" v-if="nep5"></neo-tran-record> <br/>
-            <neo-tran-record showborder="true" v-bind:record="vinout" v-if="vinout"></neo-tran-record> <br/>
+            <neo-tran-record v-for="(recordItem, recordIdx) in records" showborder="true" v-bind:record="recordItem" v-if="records"></neo-tran-record>
             <neo-tran-script v-bind:scripts="scripts" v-if="scripts"></neo-tran-script>
         </div>
         <neo-footer></neo-footer>
@@ -48,28 +47,8 @@
             i18n,
             data:function(){
                 return {
-                    nep5: undefined,
-                    vinout: undefined,
-                    // record: {
-                    //     left: [
-                    //         {title: 'Sent From', symbol: 'NEO', value: '100', address: '12121121212121212'},
-                    //         {title: 'Sent From', symbol: 'NEO', value: '100', address: '12121121212121212'}
-                    //     ],
-                    //     right: [
-                    //         {title: 'Sent To', symbol: 'NEO', value: '100', address: '12121121212121212'},
-                    //         {title: 'Sent To', symbol: 'NEO', value: '100', address: '12121121212121212'}
-                    //     ]
-                    // },
+                    records: undefined,
                     scripts: undefined,
-                    // scripts: [
-                    //     {title: 'Bytecode Invocation Script', desc: '64654654654654654654654654654654654654654654'},
-                    //     {title: 'Bytecode Invocation Script', desc: '64654654654654654654654654654654654654654654'},
-                    //     {title: 'Bytecode Invocation Script', desc: '64654654654654654654654654654654654654654654'},
-                    //     {title: 'Bytecode Invocation Script', desc: '64654654654654654654654654654654654654654654'},
-                    //     {title: 'Bytecode Invocation Script', desc: '64654654654654654654654654654654654654654654'},
-                    //     {title: 'Bytecode Invocation Script', desc: '64654654654654654654654654654654654654654654'},
-                    //     {title: 'Bytecode Invocation Script', desc: '64654654654654654654654654654654654654654654'}
-                    // ]
                     transaction:[]
                 }
             } ,
@@ -139,32 +118,7 @@
 
                         if(count > 0){
                             var item = resp.data.data.TransactionQuery.rows[0];
-                            console.log('item',item)
-                            if(item.nep5 && item.nep5.length>0){
-                                that.nep5 = {
-                                    left: [],
-                                    right: []
-                                }
-                            }
-
-                            if(item.nep5 && item.nep5.length > 0){
-                                for(var i=0; i<item.nep5.length; i++){
-                                    var row = item.nep5[i]
-                                    that.nep5.left.push({
-                                        title: that.$t('transaction.sentFrom'),
-                                        symbol: row.symbol == null ? '--' : row.symbol,
-                                        value: row.value,
-                                        address: row.from
-                                    })
-                                    that.nep5.right.push({
-                                        title: that.$t('transaction.sentTo'),
-                                        symbol: row.symbol == null ? '--' : row.symbol,
-                                        value: row.value,
-                                        address: row.to
-                                    })
-                                }
-                            }
-
+                            var records = []
 
                             if(item.vin || item.vout){
                                 
@@ -175,7 +129,7 @@
                                 for(var j = 0; j < vins.length; j++){
                                     var vinItem = vins[j];
                                     record.left.push({
-                                        // title: "Sent From",
+                                        title: "",
                                         symbol: vinItem.utxo.name,
                                         value: vinItem.utxo.value,
                                         address: vinItem.utxo.address
@@ -185,7 +139,7 @@
                                 for(var k=0; k < vouts.length; k++){
                                     var voutItem = vouts[k];
                                     record.right.push({
-                                        // title: "Sent To",
+                                        title: "",
                                         symbol: voutItem.name,
                                         value: voutItem.value,
                                         address: voutItem.address
@@ -193,53 +147,47 @@
                                 }
 
                                 if(record.left.length  || record.right.length){
-                                    that.vinout = record
+                                    records.push(record)
                                 }  
                             }
 
-                            // if(item.vin || item.vout ){
-                            //     that.vinout = { left: [], right: []}
-                            //     for(var j = 0; j < item.vin.length; j++){
-                            //         var vinItem = item.vin[j];
-                            //         if(j === 0 ){
-                            //             that.vinout.left.push({
-                            //                 title:  that.$t('transaction.sentFrom'),
-                            //                 symbol: vinItem.utxo.name,
-                            //                 value: vinItem.utxo.value,
-                            //                 address: vinItem.utxo.address
-                            //             })
-                            //         }else{
-                            //             that.vinout.left.push({
-                            //                 title:  '',
-                            //                 symbol: vinItem.utxo.name,
-                            //                 value: vinItem.utxo.value,
-                            //                 address: vinItem.utxo.address
-                            //             })
-                            //         }
+                            if(item.nep5 && item.nep5.length > 0){
+                                var nep5s = item.nep5;
+                                for(var l = 0; l < nep5s.length; l ++){
+                                    var nep5Item = nep5s[l];
+                                    records.push({
+                                        left: [{
+                                            // title: "Sent From",
+                                            symbol: nep5Item.symbol == null ? '--' : nep5Item.symbol,
+                                            address: nep5Item.from,
+                                            value: nep5Item.value
+                                        }],
+                                        right: [{
+                                            // title: "Sent From",
+                                            symbol: nep5Item.symbol == null ? '--' : nep5Item.symbol,
+                                            address: nep5Item.to,
+                                            value: nep5Item.value
+                                        }]
+                                    })
+                                }
+                            }
 
-                            //     }
+                            if(records && records.length > 0){
+                                console.log('left',records[0].left.length)
+                                console.log('right',records[0].right.length)
+                                if(records[0].left.length > 0){
+                                    records[0].left[0].title = that.$t('transaction.sentFrom');
+                                }
+            
+                                if(records[0].right.length > 0){
+                                    records[0].right[0].title = that.$t('transaction.sentTo')
+                                } 
+                            }
+                            
 
-                            //     for(var k=0; k < item.vout.length; k++){
-                            //         var voutItem = item.vout[k];
-                            //         if(k === 0 ){
-                            //             that.vinout.right.push({
-                            //                 title: that.$t('transaction.sentTo'),
-                            //                 symbol: voutItem.name,
-                            //                 value: voutItem.value,
-                            //                 address: voutItem.address
-                            //             })
-                            //         }else{
-                            //             that.vinout.right.push({
-                            //                 title: '',
-                            //                 symbol: voutItem.name,
-                            //                 value: voutItem.value,
-                            //                 address: voutItem.address
-                            //             })    
-                            //         }
-                                    
+                            // tran records       
+                            that.records = records
 
-                            //     }
-                            // }
 
                             if(item.scripts && item.scripts.length > 0){
                                 that.scripts = []
@@ -271,21 +219,9 @@
                                 {title: that.$t('transaction.size'), desc: `${item.size} bytes` }
                             ]
                            
-                            console.log('transaction',that.transaction)
+                            // console.log('transaction',that.transaction)
 
                         }
-                        // that.$emit('loaded', resp.data.data.AssetQuery)
-                        // that.items = [];
-                        // for(var i=0; i<resp.data.data.AssetQuery.rows.length; i++){
-                        //     var row = resp.data.data.AssetQuery.rows[i];
-                        //     that.items.push({
-                        //         id: row.assetId == null ? 'N/A' : row.assetId,
-                        //         // symbol: row.symbol == null ? 'N/A' : row.symbol,
-                        //         amount: row.amount == null ? 'N/A' : row.amount,
-                        //         name: row.name == null ? 'N/A' : (row.name[0].name || 'N/A'),
-                        //         type: row.type == null ? 'N/A' : row.type
-                        //     })
-                        // }
                     })
                     .catch(function (error) {
                         console.log(error);

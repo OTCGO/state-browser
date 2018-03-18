@@ -63,7 +63,9 @@ const en = {
   address: {
     value: 'address',
     blockIndex: 'blockIndex',
-    time: 'time'
+    time: 'time',
+    newWallet:'NEW WALLET',
+    openWallet:'OPEN WALLET',
   },
   asset: {
     name: 'name',

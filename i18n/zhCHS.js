@@ -63,7 +63,9 @@ const zhCHS = {
   address: {
     value: '地址',
     blockIndex: '区块高度',
-    time: '时间'
+    time: '时间',
+    newWallet:'创建钱包',
+    openWallet:'登陆钱包',
   },
   asset: {
     name: '名称',

@@ -429,8 +429,8 @@ Vue.component('neo-paging', {
 Vue.component('neo-dynamic-list',{
     template: 
     '<div class="neo-dynamic-list">'+
-        '<div class="neo-dynamic-list__item" v-for="(item, itemIdx) in items">'+
-            '<h1>{{item.value}} <i>{{item.unit}}</i></h1>'+
+        '<div class="neo-dynamic-list__item" v-for="(item, itemIdx) in items" v-on:click="tap(item)">'+
+            '<h1 v-bind:class="{\'link\': item.url}">{{item.value}} <i>{{item.unit}}</i></h1>'+
             '<h2>{{item.desc}}</h2>'+
             '<div class="neo-dynamic-list__item-underlayer"></div>'+
         '</div>'+
@@ -441,6 +441,11 @@ Vue.component('neo-dynamic-list',{
         }
     },
     methods: {
+        tap: function(item) {
+            if(item.url){
+                window.location.href = item.url
+            }
+        },
         init: function() {
             let that = this 
             axios({
@@ -469,7 +474,7 @@ Vue.component('neo-dynamic-list',{
                 that.items = [
                     {value: moment(result.startTime*1000).format("YYYY-MM-DD"), unit: '', desc: that.$t('dynamic.startTime')},
                     {value: moment(result.curretTime*1000).diff(moment(result.startTime*1000), "days"), unit: that.$t('dynamic.day'), desc:  that.$t('dynamic.runTime')},
-                    {value: result.assetNum.toString().replace(/(?=((?!\b)\d{3})+$)/g, ','), unit: '', desc: that.$t('dynamic.assetNum')},
+                    {value: result.assetNum.toString().replace(/(?=((?!\b)\d{3})+$)/g, ','), unit: '', desc: that.$t('dynamic.assetNum'), url:'assets.html'},
                     {value: result.blockNum.toString().replace(/(?=((?!\b)\d{3})+$)/g, ','), unit: '', desc: that.$t('dynamic.blockNum') },
                     {value: result.transactionNum.toString().replace(/(?=((?!\b)\d{3})+$)/g, ','), unit: '', desc: that.$t('dynamic.transactionNum') },
                     {value: result.addressNum.toString().replace(/(?=((?!\b)\d{3})+$)/g, ','), unit: '', desc:that.$t('dynamic.addressNum')}

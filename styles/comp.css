@@ -455,6 +455,10 @@ body{
     position: relative;
     z-index: 2;
 }
+.neo-dynamic-list__item h1.link{
+    color: #84C033;
+    cursor: pointer;
+}
 .neo-dynamic-list__item h1 i{
     font-style: normal;
     font-size: 0.2rem;

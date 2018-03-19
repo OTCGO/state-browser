@@ -29,7 +29,7 @@ body{
 
 /* #region neo-title */
 .neo-title{
-    width: 0.6rem;
+    width: 1rem;
     float: left;
     cursor: pointer;
 }
@@ -48,6 +48,10 @@ body{
     transform: scale(0.8);
     color: #fff;
     font-weight: 100;
+}
+.neo-title .logo {
+    display: block;
+    width: 1rem;
 }
 /* #endregion */
 

@@ -1,5 +1,6 @@
 // 英文
 var en = {
+  logo:'/images/logo_en.svg',
   menu: {
     home: 'Home',
     assets: 'Asset',

@@ -1,7 +1,4 @@
 
-
-
-
 window.GetUrlParam = function(name){
     var url = document.location.toString();
     if(!name){
@@ -32,8 +29,8 @@ window.SetUrlParam = function(param,value){
 }
 
 
-let network = GetUrlParam('network') || 'mainnet'
-let host = 'http://114.215.30.71:5001'
+var network = GetUrlParam('network') || 'mainnet'
+var host = 'http://114.215.30.71:5001'
 
 if(network === 'testnet'){
     host = 'http://future.otcgo.cn:5001'

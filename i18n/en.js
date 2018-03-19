@@ -1,5 +1,5 @@
 // 英文
-const en = {
+var en = {
   menu: {
     home: 'Home',
     assets: 'Asset',

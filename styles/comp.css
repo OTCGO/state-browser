@@ -268,7 +268,7 @@ body{
     left: 0.2rem; 
     top: 0.28rem;
     line-height: 0.4rem;
-    width: 3.6rem;
+    width: 3.2rem;
     border: 0;
     font-size: 0.15rem;
     font-weight: 100;
@@ -454,6 +454,10 @@ body{
     font-weight: 100;
     position: relative;
     z-index: 2;
+}
+.neo-dynamic-list__item h1.link{
+    color: #84C033;
+    cursor: pointer;
 }
 .neo-dynamic-list__item h1 i{
     font-style: normal;

@@ -1,5 +1,5 @@
 //简体中文
-const zhCHS = {
+var zhCHS = {
   menu: {
     home: '首页',
     assets: '资产',

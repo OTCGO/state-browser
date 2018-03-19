@@ -447,7 +447,7 @@ Vue.component('neo-dynamic-list',{
             }
         },
         init: function() {
-            let that = this 
+            var that = this 
             axios({
                 url: host+'/api/v1/'+network+'/public/graphql',
                 method: 'post', 

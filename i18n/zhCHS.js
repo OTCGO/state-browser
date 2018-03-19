@@ -1,5 +1,6 @@
 //简体中文
 var zhCHS = {
+  logo:'/images/logo_zh.svg',
   menu: {
     home: '首页',
     assets: '资产',

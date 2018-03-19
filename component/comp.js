@@ -1,9 +1,10 @@
 Vue.component('neo-title', {
     template:
     '<div class="neo-title" v-on:click="goto()">'+
-        '<div class="neo-title__main"><span>NEO</span></div>' + 
-        '<div class="neo-title__sub"><span>NEP5</span></div>'+
-        '<div class="neo-title__sub"><span>OTCGO</span></div>'+
+        '<img class="logo"  :src="$t(\'logo\')" />'+
+        // '<div class="neo-title__main"><span>NEO</span></div>' + 
+        // '<div class="neo-title__sub"><span>NEP5</span></div>'+
+        // '<div class="neo-title__sub"><span>OTCGO</span></div>'+
     '</div>',
     methods:{
         goto: function(){

@@ -1051,7 +1051,7 @@ body{
 }
 .neo-asset-list .col-1{
     padding: 0 0 0 0.1rem;
-    width: 0.8rem;
+    width: 1.3rem;
 }
 .neo-asset-list .row.item .col-1{
     border-left: 0.03rem solid #B871A7;
@@ -1060,7 +1060,7 @@ body{
     width: 1rem;
 }
 .neo-asset-list .col-3{
-    width: 4.2rem;
+    width: 3.6rem;
 }
 .neo-asset-list .row.item .col-3 span{
     transform: scale(0.8);

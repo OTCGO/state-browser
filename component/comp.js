@@ -282,12 +282,18 @@ Vue.component('neo-toolbox', {
     methods: {
         // search
         handleSearch: function() {
-            console.log('search',this.search.length)
+            console.log('search',this.search)
+            
+            // if search not exist 
+            if(!this.search || this.search === undefined){
+                return
+            }
             // address start 'A'
             if(this.search.replace(/\s+/g,"").substring(0,1) === 'A'){
                 window.location.href = 'addrinfo.html?address=' + this.search
                 return
             }
+
             //txid lenght  64 or 66
             if(this.search.length === 64 || this.search.length === 66) {
                 //console.log('/traninfo.html?id=' + (this.search.length === 66 ? this.search : `0x${this.search}`))

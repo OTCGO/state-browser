@@ -6,7 +6,7 @@ Vue.component('neo-title', {
         '<div class="neo-title__sub"><span>OTCGO</span></div>'+
     '</div>',
     methods:{
-        goto(){
+        goto: function(){
             // return home
             window.location.href = '/'
         }
@@ -179,7 +179,7 @@ Vue.component('neo-toolbox', {
     template: 
     '<div>'+
     '<div class="neo-toolbox dynamic" v-if="itemidx == 0">'+
-        '<input type="text" v-on:keyup="handleKeyup" v-model="search" v-bind:placeholder="$t('+`'slider.dynamic.search'`+')" />'+
+        '<input type="text" v-on:keyup="handleKeyup" v-model="search" v-bind:placeholder="$t(\'slider.dynamic.search\')" />'+
         '<i v-on:click="handleSearch" class="icon iconfont icon-search"></i>'+
     '</div>'+
     '<div class="neo-toolbox market" v-if="itemidx == 1">'+
@@ -291,7 +291,7 @@ Vue.component('neo-toolbox', {
             //txid lenght  64 or 66
             if(this.search.length === 64 || this.search.length === 66) {
                 //console.log('/traninfo.html?id=' + (this.search.length === 66 ? this.search : `0x${this.search}`))
-                window.location.href = 'traninfo.html?id=' + (this.search.length === 66 ? this.search : `0x${this.search}`)
+                window.location.href = 'traninfo.html?id=' + (this.search.length === 66 ? this.search : '0x${this.search}')
                 return
             }
 
@@ -449,22 +449,21 @@ Vue.component('neo-dynamic-list',{
         init: function() {
             let that = this 
             axios({
-                url: `${host}/api/v1/${network}/public/graphql`,
+                url: host+'/api/v1/'+network+'/public/graphql',
                 method: 'post', 
                 data: {
-                    query: `{
-                        SystemQuery{
-                          rows {
-                            startTime
-                            curretTime
-                            blockNum
-                            assetNum
-                            addressNum
-                            transactionNum
-                          }
-                        }
-                      }
-                    `
+                    query: '{'+
+                        ' SystemQuery { '+
+                            ' rows {'+
+                                ' startTime '+
+                                ' curretTime '+
+                                ' blockNum '+
+                                ' assetNum '+
+                                ' addressNum '+
+                                ' transactionNum '+
+                            ' } '+
+                        ' } '+
+                    ' } '
                 }
             })
             .then(function (resp) {
@@ -701,7 +700,7 @@ Vue.component('neo-wallet-list', {
             var that = this;
             that.walletItems = [];
             axios({
-                url: `${host}/api/v1/${network}/public/graphql`,
+                url: host+'/api/v1/'+network+'/public/graphql',
                 method: 'post', 
                 data: {
                     query: 
@@ -862,7 +861,7 @@ Vue.component('neo-tran-list', {
             var that = this;
             that.items = [];
             axios({
-                url: `${host}/api/v1/${network}/public/graphql`,
+                url: host+'/api/v1/'+network+'/public/graphql',
                 method: 'post', 
                 data: {
                     query: 
@@ -1106,7 +1105,7 @@ Vue.component('neo-block-list', {
             var that = this;
             that.walletItems = [];
             axios({
-                url: `${host}/api/v1/${network}/public/graphql`,
+                url: host+'/api/v1/'+network+'/public/graphql',
                 method: 'post', 
                 data: {
                     query: 
@@ -1224,7 +1223,7 @@ Vue.component('neo-addr-info', {
             // this.$refs.chart.init();
             var that = this;
             axios({
-                url: `${host}/api/v1/${network}/address/balances/${address}`,
+                url: host+'/api/v1/'+network+'/address/balances/'+address,
                 method: 'get'
             })
             .then(function (resp) {
@@ -1271,27 +1270,26 @@ Vue.component('neo-asset-list', {
             var that = this;
             that.items = [];
             axios({
-                url: `${host}/api/v1/${network}/public/graphql`,
+                url: host+'/api/v1/'+network+'/public/graphql',
                 method: 'post', 
                 data: {
-                    query:`{
-                            AssetQuery(skip:${(this.page-1) * this.count } , limit:${this.count}) {
-                            count
-                            rows {
-                                _id
-                                assetId
-                                symbol
-                                type
-                                amount
-                                name {
-                                lang
-                                name
-                                }
-                            }
+                    query:'{'+
+                            ' AssetQuery(skip: ' + (that.page-1) * that.count +', limit: '+ that.count +' ){ '+
+                                ' count '+
+                                ' rows { '+
+                                    ' _id '+
+                                    ' assetId '+
+                                    ' symbol '+
+                                    ' type '+
+                                    ' amount '+
+                                    ' name { '+
+                                        ' lang '+
+                                        ' name '+
+                                    ' } '+
+                                ' } '+
                             
-                            }
-                        }
-                    `
+                            ' } '+
+                        ' } '
                 }
             })
             .then(function (resp) {

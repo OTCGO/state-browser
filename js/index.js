@@ -7,7 +7,7 @@ var i18n = new VueI18n({
 })
 var app = new Vue({
     el: '#app',
-    i18n: i18n,
+    i18n,
     data: {
         sliderIdx: GetUrlParam('idx') == '' ? 0 : GetUrlParam('idx'),
         tintColor: '#F9C400',

@@ -11,11 +11,15 @@ const path = require('path')
 
 module.exports = {
     entry: {
-        comp: './component.js',
-        home: './js/home.js'
+        comp: './component/comp.js',
+        index: './js/index.js',
+        addrinfo: './js/addrinfo.js',
+        assets: './js/assets.js',
+        blockinfo: './js/blockinfo.js',
+        traninfo: './js/traninfo.js',
     },
     output: {
-        path: path.join('/dist/js'),
+        path: path.join(__dirname+'/dist'),
         filename: '[name].js'
     },
     module: {

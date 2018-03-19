@@ -475,8 +475,8 @@ Vue.component('neo-dynamic-list',{
             })
             .then(function (resp) {
                 // console.log(resp)
-                console.log(resp.data.data.SystemQuery.rows)
-                result = resp.data.data.SystemQuery.rows
+                // console.log(resp.data.data.SystemQuery.rows)
+                let result = resp.data.data.SystemQuery.rows
                 that.items = [
                     {value: moment(result.startTime*1000).format("YYYY-MM-DD"), unit: '', desc: that.$t('dynamic.startTime')},
                     {value: moment(result.curretTime*1000).diff(moment(result.startTime*1000), "days"), unit: that.$t('dynamic.day'), desc:  that.$t('dynamic.runTime')},

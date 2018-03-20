@@ -30,6 +30,7 @@ var app = new Vue({
         load: function() {
             var that = this;
             setTimeout(function (){
+                that.$refs.asset.setCurrentPage(that.currentPage)
                 that.$refs.asset.init();
             }, 500);
         },

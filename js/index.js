@@ -54,16 +54,19 @@ var app = new Vue({
             } 
             else if(that.sliderIdx == 2){
                 setTimeout(function (){
+                    that.$refs.tran.setCurrentPage(that.currentPage)
                     that.$refs.tran.init();
                 }, 500);
             }
             else if(that.sliderIdx == 3){
                 setTimeout(function (){
+                    that.$refs.block.setCurrentPage(that.currentPage)
                     that.$refs.block.init();
                 }, 500);
             } 
             else if(that.sliderIdx == 4) {
                 setTimeout(function (){
+                    that.$refs.wallet.setCurrentPage(that.currentPage)
                     that.$refs.wallet.init();
                 }, 500);
             }

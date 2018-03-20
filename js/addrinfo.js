@@ -34,6 +34,7 @@ var app = new Vue({
             this.currentPage = args.currentPage;
             this.pageCount = args.pageCount;
             this.totalCount = args.totalCount;
+            this.$refs.tran.setCurrentPage(args.currentPage);
             this.$refs.tran.init()
         }
     }

@@ -700,6 +700,7 @@ Vue.component('neo-wallet-list', {
     data: function() {
         return {
             items: [],
+            currentPage: 1
         }
     },
     methods: {
@@ -712,7 +713,7 @@ Vue.component('neo-wallet-list', {
                 data: {
                     query: 
                     '{'+
-                        'AddressQuery (skip:'+(this.page-1)*this.count+', limit:'+ this.count +' ) {'+
+                        'AddressQuery (skip:'+(this.currentPage-1)*this.count+', limit:'+ this.count +' ) {'+
                         'count,'+
                         'rows {'+
                           ' _id '+
@@ -748,6 +749,9 @@ Vue.component('neo-wallet-list', {
         },
         goto: function(address) {
             window.location.href = 'addrinfo.html?address=' + address
+        },
+        setCurrentPage: function(currentPage) {
+            this.currentPage = currentPage;
         }
     }
 });
@@ -827,14 +831,15 @@ Vue.component('neo-tran-list', {
     data: function() {
         return {
             items: [],
-            category: 'Any'
+            category: 'Any',
+            currentPage: 1,
         }
     },
     computed: {
         QueryFilter: function() {
             var filter = '';
-            if(this.page && this.count){
-                filter += 'skip:'+(this.page-1)*this.count+', limit:'+ this.count;
+            if(this.currentPage && this.count){
+                filter += 'skip:'+(this.currentPage-1)*this.count+', limit:'+ this.count;
             }
             
             if(this.block) {
@@ -863,6 +868,9 @@ Vue.component('neo-tran-list', {
         setCategory: function(category) {
             this.category = category
             this.init()
+        },
+        setCurrentPage: function(currentPage) {
+            this.currentPage = currentPage;
         },
         init: function() {
             var that = this;
@@ -1105,6 +1113,7 @@ Vue.component('neo-block-list', {
         return {
             items: [
             ],
+            currentPage: 1
         }
     },
     methods:{
@@ -1117,7 +1126,7 @@ Vue.component('neo-block-list', {
                 data: {
                     query: 
                     '{'+
-                        'BlockQuery (skip:'+(this.page-1)*this.count+', limit:'+ this.count +' ) {'+
+                        'BlockQuery (skip:'+(this.currentPage-1)*this.count+', limit:'+ this.count +' ) {'+
                         'count,'+
                         'rows {'+
                           ' _id '+
@@ -1158,6 +1167,9 @@ Vue.component('neo-block-list', {
         goto: function(index) {
 
             window.location.href = 'blockinfo.html?index=' + index.toString().replace(/,/g, '')
+        },
+        setCurrentPage: function(currentPage) {
+            this.currentPage = currentPage;
         }
     }
 })
@@ -1269,7 +1281,8 @@ Vue.component('neo-asset-list', {
     },
     data: function() {
         return {
-            items: []
+            items: [],
+            currentPage: 1
         }
     },
     methods: {
@@ -1281,7 +1294,7 @@ Vue.component('neo-asset-list', {
                 method: 'post', 
                 data: {
                     query:'{'+
-                            ' AssetQuery(skip: ' + (that.page-1) * that.count +', limit: '+ that.count +' ){ '+
+                            ' AssetQuery(skip: ' + (that.currentPage-1) * that.count +', limit: '+ that.count +' ){ '+
                                 ' count '+
                                 ' rows { '+
                                     ' _id '+
@@ -1317,6 +1330,9 @@ Vue.component('neo-asset-list', {
             .catch(function (error) {
                 console.log(error);
             });
+        },
+        setCurrentPage: function(currentPage) {
+            this.currentPage = currentPage;
         }
     }
 })

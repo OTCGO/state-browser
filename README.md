@@ -17,6 +17,9 @@ npm build
 
 ## update
 
+#### 2018-03-20
+* 添加**state-api.otcgo.cn**
+
 
 #### 2018-03-19
 * 修复资产列表显示

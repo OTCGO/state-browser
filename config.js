@@ -30,7 +30,7 @@ window.SetUrlParam = function(param,value){
 
 
 var network = GetUrlParam('network') || 'mainnet'
-var host = 'http://114.215.30.71:5001'
+var host = 'http://state-api.otcgo.cn'
 
 if(network === 'testnet'){
     host = 'http://future.otcgo.cn:5001'

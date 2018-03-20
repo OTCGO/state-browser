@@ -46,7 +46,7 @@ Vue.component('neo-menu', {
         return {
             menu:[
                 {name: this.$t("menu.language"), items:[]},
-                {name: this.$t("menu.api")},
+                {name: this.$t("menu.api"), href:"https://otcgo.github.io/doc/"},
                 {name: this.$t("menu.assets"), href:"assets.html" },
                 {name: this.$t("menu.home"), href:"index.html"}
             ],
@@ -55,10 +55,18 @@ Vue.component('neo-menu', {
     },
     methods: {
         changeMenuItem: function(idx) {
+            
             this.$emit('changed', idx)
+
+            // open api window
+            if (idx == 1) {
+                window.open(this.menu[idx].href)
+                return
+            }
             if(idx < 2){
                 return;
             }
+
             this.idx = idx;
             var menuItem = this.menu[idx];
             if(menuItem.href){
@@ -362,7 +370,7 @@ Vue.component('neo-paging', {
     '<div class="info" v-bind:style="{color: TintColor}">'+
         '{{$t("pagination.current")}}'+
         ' {{(CurrentPage-1)*PageCount+1}} '+ 
-        ' {{$t("pagination.to")}} '+ 
+        ' {{$t("pagination.to")}}'+ 
         ' {{CurrentPage*PageCount>TotalCount ? TotalCount : CurrentPage*PageCount}} '+ 
         ' {{$t("pagination.total")}} '+ 
         ' {{TotalCount}} '+ 

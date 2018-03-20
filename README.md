@@ -17,6 +17,9 @@ npm build
 
 ## update
 
+#### 2018-03-21
+* 添加**API**
+
 #### 2018-03-20
 * 添加**state-api.otcgo.cn**
 

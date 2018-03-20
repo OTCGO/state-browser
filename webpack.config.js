@@ -9,7 +9,10 @@
 
 const path = require('path')
 
+const env = process.env.NODE_ENV
+
 module.exports = {
+    mode:env ||  "development",
     entry: {
         comp: './component/comp.js',
         index: './js/index.js',
@@ -18,6 +21,7 @@ module.exports = {
         blockinfo: './js/blockinfo.js',
         traninfo: './js/traninfo.js',
     },
+    devtool: env === 'production' ? 'cheap-module-source-map' : 'source-map',
     output: {
         path: path.join(__dirname+'/dist'),
         filename: '[name].js'

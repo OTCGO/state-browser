@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "./node_modules/.bin/http-server & ./node_modules/.bin/webpack --watch",
+    "start": "set NODE_ENV = develpment & ./node_modules/.bin/http-server & ./node_modules/.bin/webpack --watch",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "./node_modules/.bin/webpack"
+    "build": "set NODE_ENV = production &  ./node_modules/.bin/webpack "
   },
   "repository": {
     "type": "git",

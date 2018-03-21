@@ -306,7 +306,7 @@ Vue.component('neo-toolbox', {
             //txid lenght  64 or 66
             if(this.search.length === 64 || this.search.length === 66) {
                 //console.log('/traninfo.html?id=' + (this.search.length === 66 ? this.search : `0x${this.search}`))
-                window.location.href = 'traninfo.html?id=' + (this.search.length === 66 ? this.search : '0x${this.search}')
+                window.location.href = 'traninfo.html?id=' + (this.search.length === 66 ? this.search : `0x${this.search}`)
                 return
             }
 

@@ -77,7 +77,9 @@ var zhCHS = {
   pagination: {
     current: '当前',
     to: '至',
-    total: '共'
+    total: '共',
+    next: '下一页',
+    prev: '上一页'
   },
   footer: {
     link: '相关链接',

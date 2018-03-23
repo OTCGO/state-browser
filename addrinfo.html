@@ -32,12 +32,21 @@
                 v-bind:total="totalCount" 
                 v-on:change="changePaging">
             </neo-paging>
+            <paginate
+                v-bind:page-count="Math.ceil(totalCount/pageCount)"
+                v-bind:click-handler="changePaginate"
+                v-bind:page-range="5"
+                v-bind:prev-text="$t('pagination.prev')"
+                v-bind:next-text="$t('pagination.next')"
+                v-bind:container-class="'neo-pagination'">
+            </paginate>
         </div>
         <neo-footer></neo-footer>
     </div>
     <script src="/libs/rem/rem.js?v=4" data-psd="750"></script>
     <script src="/libs/vue/vue.min.js"></script>
     <script src="/libs/moment/moment.min.js"></script>
+    <script src="libs/vue-paginate/paginate.min.js"></script>
 
     <script src="libs/vue-i18n/vue-i18n.min.js"></script>
     <script src="i18n/en.js"></script>

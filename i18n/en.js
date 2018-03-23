@@ -77,7 +77,9 @@ var en = {
   pagination: {
     current: 'current',
     to: 'to',
-    total: 'total'
+    total: 'total',
+    next: 'Next',
+    prev: 'Prev'
   },
   footer: {
     version: 'cli version'

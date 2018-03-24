@@ -5,6 +5,7 @@ var i18n = new VueI18n({
         zhCHS: zhCHS
     }
 })
+
 var app = new Vue({
     el: '#app',
     i18n,
@@ -87,6 +88,10 @@ var app = new Vue({
             this.pageCount = args.pageCount;
             this.totalCount = args.totalCount;
             this.load();
+        },
+        changePaginate: function(page) {
+            this.currentPage = page
+            this.load()
         },
         changeCategory: function(item) {
             this.currentPage = 1;

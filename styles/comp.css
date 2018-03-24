@@ -253,8 +253,8 @@ body{
     background: #3293D7;
 }
 .neo-pagination > li.disabled > a {
-    color: #ddd;
-    background: #aaa;
+    color: #337ab7;
+    background: #fff;
 }
 .neo-pagination > li:first-child > a,
 .neo-pagination > li:first-child > span {
@@ -400,11 +400,11 @@ border-bottom-left-radius: 4px;
     position: absolute;
     right: 0.2rem;
     top: 0.3rem;
+    cursor: pointer;
 }
 .neo-toolbox.tran .category span{
     color: #000;
     line-height: 0.4rem;
-    cursor: pointer;
 }
 .neo-toolbox.tran .category span i{
     color: #ddd;

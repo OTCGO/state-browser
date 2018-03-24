@@ -364,6 +364,8 @@ Vue.component('neo-footer', {
     '</div>'
 });
 
+Vue.component('paginate', VuejsPaginate)
+
 Vue.component('neo-paging', {
     template:
     '<div class="neo-paging">'+
@@ -375,18 +377,27 @@ Vue.component('neo-paging', {
         ' {{$t("pagination.total")}} '+ 
         ' {{TotalCount}} '+ 
     '</div>'+
-    '<div class="page">'+
-        '<i class="icon iconfont icon-arrow-left prev" v-bind:class="{\'disable\': CurrentPage==1}" v-if="CurrentPage==1"></i>'+
-        '<i class="icon iconfont icon-arrow-left prev" v-on:click="prevPage" v-bind:style="{background: TintColor}" v-if="CurrentPage!=1"></i>'+
-        '<i class="icon iconfont icon-arrow-right2 next" v-on:click="nextPage" v-bind:style="{background: TintColor}" v-if="CurrentPage<TotalPage"></i>'+
-        '<i class="icon iconfont icon-arrow-right2 next" v-bind:class="{\'disable\': CurrentPage>=TotalPage}" v-if="CurrentPage>=TotalPage"></i>'+
-    '</div>'+
+    // '<div class="page">'+
+    //     '<i class="icon iconfont icon-arrow-left prev" v-bind:class="{\'disable\': CurrentPage==1}" v-if="CurrentPage==1"></i>'+
+    //     '<i class="icon iconfont icon-arrow-left prev" v-on:click="prevPage" v-bind:style="{background: TintColor}" v-if="CurrentPage!=1"></i>'+
+    //     '<i class="icon iconfont icon-arrow-right2 next" v-on:click="nextPage" v-bind:style="{background: TintColor}" v-if="CurrentPage<TotalPage"></i>'+
+    //     '<i class="icon iconfont icon-arrow-right2 next" v-bind:class="{\'disable\': CurrentPage>=TotalPage}" v-if="CurrentPage>=TotalPage"></i>'+
+    // '</div>'+
+    // '<paginate'+
+    //     'v-bind:page-count="Math.ceil(totalCount/pageCount)"'+
+    //     'v-bind:click-handler="changePaginate"'+
+    //     'prev-text="\'Prev\'"'+
+    //     'next-text="\'Next\'"'+
+    //     'container-class="\'neo-pagination\'">'+
+    //     '</paginate>'+
     '</div>',
     props: {
         tint: String,
         page: Number,
         count: Number,
-        total: Number
+        total: Number,
+        prevText: String,
+        nextText: String,
     },
     computed: {
         TotalPage: function() {
@@ -1392,5 +1403,3 @@ Vue.component('neo-select', {
         }
     }
 })
-
-

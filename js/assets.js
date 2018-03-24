@@ -43,6 +43,10 @@ var app = new Vue({
             this.pageCount = args.pageCount;
             this.totalCount = args.totalCount;
             this.load();
+        },
+        changePaginate: function(page) {
+            this.currentPage = page
+            this.load();
         }
     }
 })

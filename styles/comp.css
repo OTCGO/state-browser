@@ -363,6 +363,7 @@ body{
 .neo-toolbox.tran .category span{
     color: #000;
     line-height: 0.4rem;
+    cursor: pointer;
 }
 .neo-toolbox.tran .category span i{
     color: #ddd;

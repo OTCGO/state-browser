@@ -107,6 +107,11 @@ var app = new Vue({
             this.totalCount = args.totalCount;
             this.$refs.tran.setCurrentPage(this.currentPage)
             this.$refs.tran.init()
+        },
+        changePaginate: function(page) {
+            this.currentPage = page
+            this.$refs.tran.setCurrentPage(this.currentPage)
+            this.$refs.tran.init()
         }
     }
 })

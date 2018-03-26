@@ -1290,7 +1290,7 @@ Vue.component('neo-asset-list', {
             '<div class="col col-1" v-bind:title="item.name"><span>{{item.name}}</span></div>'+
             '<div class="col col-2"><span>{{item.type}}</span></div>'+
             '<div class="col col-3"><span>{{item.id}}</span></div>'+
-            '<div class="col col-4"><span>{{item.amount}}</span></div>'+
+            '<div class="col col-4"><span>{{item.amount}}&nbsp; {{item.symbol}}</span></div>'+
             '<div class="underlayer"></div>'+
         '</div>'+
     '</div>',

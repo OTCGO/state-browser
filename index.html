@@ -73,7 +73,8 @@
                     v-bind:page-range="5"
                     v-bind:prev-text="$t('pagination.prev')"
                     v-bind:next-text="$t('pagination.next')"
-                    v-bind:container-class="'neo-pagination'">
+                    v-bind:container-class="'neo-pagination'"
+                    v-if="sliderIdx >= 2">
                 </paginate>
             </div>
         </div>

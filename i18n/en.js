@@ -69,10 +69,10 @@ var en = {
     openWallet:'OPEN WALLET',
   },
   asset: {
-    name: 'name',
-    type: 'type',
-    assetId: 'assetId',
-    amount: 'amount'
+    name: 'Name',
+    type: 'Type',
+    assetId: 'AssetId',
+    amount: 'Amount'
   },
   pagination: {
     current: 'current',

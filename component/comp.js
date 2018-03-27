@@ -463,8 +463,18 @@ Vue.component('neo-dynamic-list',{
     '</div>',
     data: function() {
         return {
-            items: undefined
+            items: undefined,
+            countdown: 0, // 倒计时,
+            blockIndex: 0,
+            intervalid1: undefined,
+            intervalid2: undefined
         }
+    },
+    beforeDestroy(){
+        // clearInterval 
+        clearInterval(this.intervalid1)
+        clearInterval(this.intervalid2)
+        console.log('beforeDestroy')
     },
     methods: {
         tap: function(item) {
@@ -493,23 +503,56 @@ Vue.component('neo-dynamic-list',{
                 }
             })
             .then(function (resp) {
-                // console.log(resp)
-                // console.log(resp.data.data.SystemQuery.rows)
-                let result = resp.data.data.SystemQuery.rows
-                that.items = [
-                    {value: moment(result.startTime*1000).format("YYYY-MM-DD HH:mm"), unit: '', desc: that.$t('dynamic.startTime')},
-                    {value: moment(result.curretTime*1000).diff(moment(result.startTime*1000), "days"), unit: that.$t('dynamic.day'), desc:  that.$t('dynamic.runTime')},
-                    {value: result.assetNum.toString().replace(/(?=((?!\b)\d{3})+$)/g, ','), unit: '', desc: that.$t('dynamic.assetNum'), url:'assets.html'},
-                    {value: result.blockNum.toString().replace(/(?=((?!\b)\d{3})+$)/g, ','), unit: '', desc: that.$t('dynamic.blockNum') },
-                    {value: result.transactionNum.toString().replace(/(?=((?!\b)\d{3})+$)/g, ','), unit: '', desc: that.$t('dynamic.transactionNum') },
-                    {value: result.addressNum.toString().replace(/(?=((?!\b)\d{3})+$)/g, ','), unit: '', desc:that.$t('dynamic.addressNum')}
-                ]
+                if(resp){
+                    let result = resp.data.data.SystemQuery.rows
+
+                    // update  countdown = 0
+                    if(parseInt(result.blockNum - 1) > that.blockIndex){
+                        that.countdown = 0
+                    }
+                    
+                    that.blockIndex = result.blockNum - 1
+                    that.items = [
+                        {value: moment(result.startTime*1000).format("YYYY-MM-DD HH:mm"), unit: '', desc: that.$t('dynamic.startTime')},
+                        {value: moment(result.curretTime*1000).diff(moment(result.startTime*1000), "days"), unit: that.$t('dynamic.day'), desc:  that.$t('dynamic.runTime')},
+                        {value: result.assetNum.toString().replace(/(?=((?!\b)\d{3})+$)/g, ','), unit: '', desc: that.$t('dynamic.assetNum'), url:'assets.html'},
+                        {value: result.blockNum.toString().replace(/(?=((?!\b)\d{3})+$)/g, ','), unit: '', desc: that.$t('dynamic.blockNum') },
+                        {value: result.transactionNum.toString().replace(/(?=((?!\b)\d{3})+$)/g, ','), unit: '', desc: that.$t('dynamic.transactionNum') },
+                        {value: result.addressNum.toString().replace(/(?=((?!\b)\d{3})+$)/g, ','), unit: '', desc:that.$t('dynamic.addressNum')},
+                        {value: that.countdown, unit: that.$t('dynamic.second'), desc:that.$t('dynamic.newBlock')}
+                    ]
+                    
+                    console.log('that.intervalid2',that.intervalid2)
+                    if(!that.intervalid2){
+                        // 出块时间
+                        that.getCountdown()
+                    }
+                   
+                }
             })
             .catch(function (error) {
                 console.log(error);
             });
 
+            if(!that.intervalid1){
+                // setInterval update
+                that.intervalid1 = setInterval(() => {
+                    that.init()
+                    console.log('init')
+                },10000)
+            }
+
+
+        },
+        getCountdown(){
+            console.log('getCountdown')
+            let that = this 
+            that.intervalid2 = setInterval(()=>{
+                    that.$set(that.items, 6, { value: that.countdown++,unit: that.$t('dynamic.second'), desc:that.$t('dynamic.newBlock') })
+                    console.log('getCountdown')
+                },1000)
         }
+
     }
 });
 

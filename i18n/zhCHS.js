@@ -32,7 +32,9 @@ var zhCHS = {
     assetNum: '资产数量',
     addressNum: '地址数量',
     transactionNum: '交易数量',
-    day: '天'
+    day: '天',
+    second: '秒',
+    newBlock: '新块时间'
   },
   block: {
     name: '区块信息',

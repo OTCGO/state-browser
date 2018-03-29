@@ -32,7 +32,9 @@ var en = {
     assetNum: 'total assets',
     addressNum: 'total addresses',
     transactionNum: 'total transactions',
-    day: 'day'
+    day: 'days',
+    second: 'seconds',
+    newBlock: 'new block'
   },
   block: {
     name: 'block info',
@@ -69,10 +71,10 @@ var en = {
     openWallet:'OPEN WALLET',
   },
   asset: {
-    name: 'name',
-    type: 'type',
-    assetId: 'assetId',
-    amount: 'amount'
+    name: 'Name',
+    type: 'Type',
+    assetId: 'AssetId',
+    amount: 'Amount'
   },
   pagination: {
     current: 'current',

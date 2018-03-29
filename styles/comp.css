@@ -495,9 +495,9 @@ border-bottom-left-radius: 4px;
     z-index: 1;
 }
 .neo-dynamic-list__item h1{
-    font-size: 0.25rem;
+    font-size: 0.23rem;
     color: #fff;
-    font-weight: 100;
+    font-weight: 80;
     position: relative;
     z-index: 2;
 }

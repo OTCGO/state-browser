@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <div id="app">
+    <div id="app" v-on:click="appevent">
         <a name="top"></a>
         <neo-header ref="header" v-bind:class="screenSize"></neo-header>
         <div class="page-home-info" v-bind:class="screenSize">
@@ -25,6 +25,7 @@
             </div>
             <div class="page-home-toolbox">
                 <neo-toolbox 
+                    ref="toolbox"
                     v-on:changed="changeCategory" 
                     v-bind:total="totalCount" 
                     v-bind:class="screenSize" 

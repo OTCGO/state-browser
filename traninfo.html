@@ -12,8 +12,8 @@
 </head>
 
 <body>
-    <div id="app">
-        <neo-header></neo-header>
+    <div id="app" v-on:click="appevent">
+        <neo-header ref="header"></neo-header>
         <div class="page-tran-info">
             <neo-info-title :title="$t('transaction.name')"  v-bind:id="id"></neo-info-title>
             <neo-tran-info   v-bind:transaction="transaction"></neo-tran-info>

@@ -13,8 +13,8 @@
 </head>
 
 <body>
-    <div id="app">
-        <neo-header></neo-header>
+    <div id="app" v-on:click="appevent">
+        <neo-header ref="header"></neo-header>
         <div class="page-addr-info">
             <neo-info-title :title="$t('address.value')" subtitle="" v-bind:id="address"></neo-info-title>
             <neo-addr-info ref="addrinfo"></neo-addr-info><br />

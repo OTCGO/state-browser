@@ -12,8 +12,8 @@
 </head>
 
 <body>
-    <div id="app">
-        <neo-header></neo-header>
+    <div id="app" v-on:click="appevent">
+        <neo-header ref="header"></neo-header>
         <div class="page-block-info">
             <neo-info-title :title="$t('block.name')"   v-bind:id="index"></neo-info-title>
             <neo-block-info :block=block></neo-block-info>

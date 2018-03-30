@@ -20,6 +20,9 @@ var app = new Vue({
         }
     },
     methods: {
+        appevent: function() {
+            this.$refs.header.hideSelect();
+        },
         init: function() {
             this.currentPage = 1;
             this.pageCount = 15;

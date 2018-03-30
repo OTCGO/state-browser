@@ -23,6 +23,10 @@ var app = new Vue({
         }
     },
     methods: {
+        appevent: function() {
+            this.$refs.header.hideSelect();
+            this.$refs.toolbox.hideCategory();
+        },
         init: function() {
             console.log("init")
             this.currentPage = 1;

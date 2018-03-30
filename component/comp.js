@@ -31,7 +31,7 @@ Vue.component('neo-info-title', {
 Vue.component('neo-menu', {
     template: 
     '<div class="neo-menu" v-cloak>'+
-        '<div class="neo-menu__item" v-for="(item,itemIdx) in menu" v-on:click="changeMenuItem(itemIdx)">'+
+        '<div class="neo-menu__item" v-for="(item,itemIdx) in menu" v-on:click.prevent="changeMenuItem(itemIdx)">'+
             '<span>'+
                 '{{item.name}}'+
                 '<i class="icon iconfont icon-arrow-down" v-if="item.items"></i>'+
@@ -89,7 +89,8 @@ Vue.component('neo-header', {
             languages: [
                 {code: 'en', name: 'English'},
                 {code: 'zhCHS', name: '中文'}
-            ]
+            ],
+            select: false
         }
     },
     methods: {
@@ -98,9 +99,12 @@ Vue.component('neo-header', {
         },
         changedMenu: function(idx) {
             if(idx == 0){
+                window.event.cancelBubble = true
+                
                 if(this.$refs.tooltip.visiable) {
                     this.$refs.tooltip.hide();
                 } else {
+                    this.select = true
                     this.$refs.tooltip.show();
                 }
             }
@@ -113,6 +117,9 @@ Vue.component('neo-header', {
             }
             localStorage.locale = option.code;
             window.location.reload();
+        },
+        hideSelect: function() {
+            this.$refs.tooltip.hide()
         }
     }
 });
@@ -327,12 +334,18 @@ Vue.component('neo-toolbox', {
             }
         },
         handleCategory: function(){
+            window.event.cancelBubble = true;
             if(this.$refs.tooltip.visiable){
                 this.$refs.tooltip.hide();
             } else {
                 this.$refs.tooltip.show();
             }
         },
+        hideCategory: function() {
+            if(this.$refs.tooltip){
+                this.$refs.tooltip.hide();
+            }
+        },  
         changeCategory: function(item) {
             this.categoryIdx = item.idx;
             this.$refs.tooltip.hide();

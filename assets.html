@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <div id="app">
+    <div id="app" v-on:click="appevent">
         <neo-header ref="header" v-bind:class="screenSize"></neo-header>
         <div class="page-asset-list" v-bind:class="screenSize">
             <neo-asset-list 

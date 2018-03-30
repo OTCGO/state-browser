@@ -22,6 +22,9 @@ var app = new Vue({
         }
     },
     methods: {
+        appevent: function() {
+            this.$refs.header.hideSelect();
+        },
         init: function() {
             // this.$refs.neochart.init();
             // this.$refs.wallet.init();

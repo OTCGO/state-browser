@@ -526,7 +526,7 @@ Vue.component('neo-dynamic-list',{
                     
                     that.blockIndex = result.blockNum - 1
                     that.items = [
-                        {value: moment(result.startTime*1000).format("YYYY-MM-DD HH:mm"), unit: '', desc: that.$t('dynamic.startTime')},
+                        {value: moment(result.startTime*1000).format("YYYY-MM-DD"), unit: '', desc: that.$t('dynamic.startTime')},
                         {value: moment(result.curretTime*1000).diff(moment(result.startTime*1000), "days"), unit: that.$t('dynamic.day'), desc:  that.$t('dynamic.runTime')},
                         {value: result.assetNum.toString().replace(/(?=((?!\b)\d{3})+$)/g, ','), unit: '', desc: that.$t('dynamic.assetNum'), url:'assets.html'},
                         {value: result.blockNum.toString().replace(/(?=((?!\b)\d{3})+$)/g, ','), unit: '', desc: that.$t('dynamic.blockNum') },

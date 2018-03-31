@@ -42,7 +42,7 @@ var app = new Vue({
         },
         changePaginate: function(page) {
             this.currentPage = page
-            this.$refs.tran.setCurrentPage(args.currentPage);
+            this.$refs.tran.setCurrentPage(this.currentPage);
             this.$refs.tran.init()
         }
     }

@@ -1357,7 +1357,8 @@ Vue.component('neo-asset-list', {
     data: function() {
         return {
             items: [],
-            currentPage: 1
+            currentPage: 1,
+            keyword: ''
         }
     },
     methods: {
@@ -1369,7 +1370,7 @@ Vue.component('neo-asset-list', {
                 method: 'post', 
                 data: {
                     query:'{'+
-                            ' AssetQuery(skip: ' + (that.currentPage-1) * that.count +', limit: '+ that.count +' ){ '+
+                            ' AssetQuery(skip: ' + (that.currentPage-1) * that.count +', limit: '+ that.count + (that.keyword == '' ? '' : ', search:"'+that.keyword+'"') +' ){ '+
                                 ' count '+
                                 ' rows { '+
                                     ' _id '+
@@ -1408,6 +1409,9 @@ Vue.component('neo-asset-list', {
         },
         setCurrentPage: function(currentPage) {
             this.currentPage = currentPage;
+        },
+        setSearchKeyword: function(keyword) {
+            this.keyword = keyword
         }
     }
 })
@@ -1456,6 +1460,24 @@ Vue.component('neo-select', {
         },
         hide: function() {
             this.visiable = false;
+        }
+    }
+})
+
+Vue.component('neo-search', {
+    template: 
+    '<div class="neo-search">'+
+        '<input type="text" v-on:keyup.enter="search" v-model="keyword"> </input>' +
+        '<i class="icon iconfont icon-search" v-on:click="search"></i>'+
+    '</div>',
+    data: function() {
+        return {
+            keyword: ''
+        }
+    },
+    methods: {
+        search: function () {
+            this.$emit('search', this.keyword)
         }
     }
 })

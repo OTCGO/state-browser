@@ -14,11 +14,16 @@
     width: 7.5rem;
 }
 .page-asset-list {
-    width: 7.5rem;
+    width: 9rem;
     position: relative;
-    left: 2.45rem;
-    top: 0.2rem;
+    left: 1.5rem;
+    top: -1rem;
 }
+.page-asset-list .neo-search{
+    position: relative;
+    top: 0.4rem;
+}
+
 .page-home-slider {
     margin: 1rem 0 0 0;
 }

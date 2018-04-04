@@ -50,6 +50,12 @@ var app = new Vue({
         changePaginate: function(page) {
             this.currentPage = page
             this.load();
+        },
+        search: function(keyword) {
+            this.$refs.asset.setSearchKeyword(keyword);
+            this.$refs.asset.setCurrentPage(1);
+            this.currentPage = 1;
+            this.$refs.asset.init();
         }
     }
 })

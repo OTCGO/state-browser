@@ -1063,12 +1063,12 @@ border-bottom-left-radius: 4px;
 /* #region neo-asset-list */
 .neo-asset-list{
     font-size: 0.1rem;
-    width: 7.5rem;
+    width: 10rem;
     height: auto;
     color: #fff;
 }
 .neo-asset-list .row{
-    width: 7.5rem;
+    width: 9rem;
     position: relative;
     height: 0.3rem;
     margin: 0.1rem 0;
@@ -1097,7 +1097,7 @@ border-bottom-left-radius: 4px;
 }
 .neo-asset-list .col-1{
     padding: 0 0 0 0.1rem;
-    width: 1.3rem;
+    width: 1.7rem;
 }
 .neo-asset-list .row.item .col-1{
     border-left: 0.03rem solid #B871A7;
@@ -1106,7 +1106,7 @@ border-bottom-left-radius: 4px;
     width: 1rem;
 }
 .neo-asset-list .col-3{
-    width: 3.3rem;
+    width: 4.5rem;
 }
 .neo-asset-list .row.item .col-3 span{
     transform: scale(0.8);
@@ -1159,7 +1159,10 @@ border-bottom-left-radius: 4px;
 }
 /* #endregion */
 
-/* #region pagination */
-
+/* #region neo-search */
+.neo-search{padding: 0; height: 0.4rem; display: inline-block; width: 100%; position: relative;}
+.neo-search input{position: absolute; right: 0; top: 0; font-size: 0.1rem; height: 0.23rem; 
+    line-height: 0.2rem; width: 2rem; border:none; padding: 0.03rem 0.3rem 0.03rem 0.03rem;}
+.neo-search i {position: absolute; right: 0.02rem; top: 0.03rem; color: #3293D7; font-size: 0.2rem;}
 /* #endregion */
 

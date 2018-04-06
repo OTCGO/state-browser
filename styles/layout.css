@@ -17,11 +17,15 @@
     width: 9rem;
     position: relative;
     left: 1.5rem;
-    top: -1rem;
+    top: 0;
 }
 .page-asset-list .neo-search{
     position: relative;
-    top: 0.4rem;
+    top: -0.5rem;
+}
+.page-asset-list .neo-asset-list {
+    position: relative;
+    top: -0.8rem;
 }
 
 .page-home-slider {

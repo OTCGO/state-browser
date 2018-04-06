@@ -67,8 +67,8 @@ var app = new Vue({
 
                     // block detail info
                     that.block = [
-                        {title: that.$t('asset.name'), desc: item.name.name==null? '--' : item.name.name},
-                        {title: that.$t('asset.symbol'), desc: item.symbol==null ? '--' : item.symbol},
+                        {title: that.$t('asset.name'), desc:  item.name[0].name ?  item.name[0].name : item.name},
+                        {title: that.$t('asset.symbol'), desc: item.symbol ? item.symbol : item.name[0].name },
                         {title: that.$t('asset.type'), desc: item.type},
                         {title: that.$t('asset.assetId'), desc: item.assetId},
                         {title: that.$t('asset.amount'), desc: item.amount},

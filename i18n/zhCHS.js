@@ -74,7 +74,9 @@ var zhCHS = {
     name: '名称',
     type: '类型',
     assetId: '标识',
-    amount: '总量'
+    amount: '总量',
+    symbol: '符号',
+    info: '资产信息'
   },
   pagination: {
     current: '当前',

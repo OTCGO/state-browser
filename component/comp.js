@@ -1423,7 +1423,7 @@ Vue.component('neo-asset-list', {
         },
         detail: function(idx) {
             console.log(this.items[idx])
-            window.location.href = 'assetinfo?index=0x'+this.items[idx].id
+            window.location.href = 'assetinfo.html?index=0x'+this.items[idx].id
         }
     }
 })

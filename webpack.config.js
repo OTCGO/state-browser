@@ -20,6 +20,7 @@ module.exports = {
         assets: './js/assets.js',
         blockinfo: './js/blockinfo.js',
         traninfo: './js/traninfo.js',
+        assetinfo: './js/assetinfo.js'
     },
     devtool: env === 'production' ? 'cheap-module-source-map' : 'source-map',
     output: {

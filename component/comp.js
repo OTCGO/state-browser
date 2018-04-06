@@ -908,6 +908,7 @@ Vue.component('neo-tran-list', {
             items: [],
             category: 'Any',
             currentPage: 1,
+            asset: ''
         }
     },
     computed: {
@@ -929,6 +930,10 @@ Vue.component('neo-tran-list', {
                 filter += ' ,type: "' + this.category +'Transaction"';
             }
 
+            if(this.asset && this.asset != '') {
+                filter += ' ,asset: "' + this.asset + '"';
+            }
+
             return filter;
         }
     },
@@ -947,6 +952,9 @@ Vue.component('neo-tran-list', {
         setCurrentPage: function(currentPage) {
             this.currentPage = currentPage;
         },
+        setAsset: function(asset) {
+            this.asset = asset
+        },  
         init: function() {
             var that = this;
             that.items = [];
@@ -1345,7 +1353,7 @@ Vue.component('neo-asset-list', {
         '<div class="row item" v-for="(item, itemIdx) in items">'+
             '<div class="col col-1" v-bind:title="item.name"><span>{{item.name}}</span></div>'+
             '<div class="col col-2"><span>{{item.type}}</span></div>'+
-            '<div class="col col-3"><span>{{item.id}}</span></div>'+
+            '<div class="col col-3 link" v-on:click="detail(itemIdx)"><span>{{item.id}}</span></div>'+
             '<div class="col col-4"><span>{{item.amount}}&nbsp; {{item.symbol}}</span></div>'+
             '<div class="underlayer"></div>'+
         '</div>'+
@@ -1412,6 +1420,10 @@ Vue.component('neo-asset-list', {
         },
         setSearchKeyword: function(keyword) {
             this.keyword = keyword
+        },
+        detail: function(idx) {
+            console.log(this.items[idx])
+            window.location.href = 'assetinfo?index=0x'+this.items[idx].id
         }
     }
 })

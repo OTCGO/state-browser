@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>NEO全资产区块浏览器</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+    <link href="styles/comp.css?v=2" rel="stylesheet" />
+    <link href="libs/iconfont/iconfont.css?v=2" rel="stylesheet" />
+    <link href="styles/layout.css?v=2" rel="stylesheet" />
+
+</head>
+
+<body>
+    <div id="app" v-on:click="appevent">
+        <neo-header ref="header"></neo-header>
+        <div class="page-block-info">
+            <neo-info-title :title="$t('asset.info')"   v-bind:id="index"></neo-info-title>
+            <neo-block-info :block=block></neo-block-info>
+            <neo-tran-list 
+                ref="tran" 
+                v-on:loaded="loaded"
+                v-bind:page="currentPage"
+                v-bind:count="pageCount">
+            </neo-tran-list> 
+            <neo-paging 
+                v-bind:tint="tintColor" 
+                v-bind:page="currentPage" 
+                v-bind:count="pageCount" 
+                v-bind:total="totalCount" 
+                v-on:change="changePaging">
+            </neo-paging>
+            <paginate
+                v-bind:page-count="Math.ceil(totalCount/pageCount)"
+                v-bind:click-handler="changePaginate"
+                v-bind:page-range="5"
+                v-bind:prev-text="$t('pagination.prev')"
+                v-bind:next-text="$t('pagination.next')"
+                v-bind:container-class="'neo-pagination'">
+            </paginate><br /><br />
+        </div>
+        <neo-footer></neo-footer>
+    </div>
+    <script src="config.js"></script>
+    <script src="libs/rem/rem.js?v=4" data-psd="750"></script>
+    <script src="libs/vue/vue.min.js"></script>
+    <script src="libs/moment/moment.min.js"></script>
+
+    <script src="libs/vue-i18n/vue-i18n.min.js"></script>
+    <script src="libs/vue-paginate/paginate.min.js"></script>
+    <script src="i18n/en.js"></script>
+    <script src="i18n/zhCHS.js"></script>
+
+    <script src="libs/echarts/echarts.min.js"></script>
+    <script src="libs/bluebird/bluebird.min.js"></script>
+    <script src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
+    <script src="dist/comp.js"></script>
+    <script src="dist/assetinfo.js"></script>
+
+</body>
+
+</html>

@@ -3,7 +3,7 @@ var en = {
   logo:'/images/logo_en.svg',
   menu: {
     home: 'Home',
-    assets: 'Asset',
+    assets: 'Assets',
     api: 'API',
     language: 'Language',
   },

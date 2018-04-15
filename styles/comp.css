@@ -1166,3 +1166,85 @@ border-bottom-left-radius: 4px;
 .neo-search i {position: absolute; right: 0.02rem; top: 0.03rem; color: #3293D7; font-size: 0.2rem;}
 /* #endregion */
 
+
+/* #region neo-address-list */
+.neo-address-list{
+    width: 7.2rem;
+    font-size: 0.1rem;
+}
+.neo-address-list .title{
+    font-size: 0.2rem;
+    color: #84C033;
+    margin: 0.1rem 0;
+}
+.neo-address-list .row{
+    position: relative;
+}
+.neo-address-list .row .underlayer{
+    background: #666;
+    opacity: 0.2;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+.neo-address-list .row.item .underlayer{
+    width: 6.8rem !important;
+}
+.neo-address-list .row.header{
+    height: 0.25rem;
+}
+.neo-address-list .row.item{
+    height: 0.3rem;
+    margin: 0.05rem 0 0 0;
+    border-left: 0.04rem solid #84C033;
+}
+.neo-address-list .row .col{
+    z-index: 1;
+    color: #fff;
+    position: relative;
+    float: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.neo-address-list .row.header .col{
+    line-height: 0.25rem;
+}
+.neo-address-list .row.item .col{
+    line-height: 0.3rem;
+}
+.neo-address-list .row.item .col span{
+    transform: scale(0.9)
+}
+.neo-address-list .row.item .col-1 span{
+    position: relative;
+    left: 0.08rem;
+}
+.neo-address-list .row.item .col-2 span{
+    text-decoration: underline;
+    color: #84C033;
+    cursor: pointer;
+}
+.neo-address-list .row.header .col span{
+    position: relative;
+    left: 0.04rem;
+}
+.neo-address-list .row.header .col-1 span{
+    position: relative;
+    left: 0.1rem;
+}
+.neo-address-list .row .col-1{
+    width: 1rem;
+}
+.neo-address-list .row .col-2{
+    width: 4rem;
+}
+.neo-address-list .row .col-3{
+    width: 1.4rem;
+    padding: 0 0 0 0.2rem;
+}
+
+/* #region neo-search */

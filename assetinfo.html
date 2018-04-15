@@ -17,6 +17,9 @@
         <div class="page-block-info">
             <neo-info-title :title="$t('asset.info')"   v-bind:id="index"></neo-info-title>
             <neo-block-info :block=block></neo-block-info>
+
+            <neo-address-list ref="address" v-bind:id="index" ></neo-address-list> <br>
+
             <neo-tran-list 
                 ref="tran" 
                 v-on:loaded="loaded"

@@ -1,6 +1,6 @@
 // 英文
 var en = {
-  logo:'/images/logo_en.svg',
+  logo: '/images/logo_en.svg',
   menu: {
     home: 'Home',
     assets: 'Assets',
@@ -67,8 +67,10 @@ var en = {
     value: 'address',
     blockIndex: 'blockIndex',
     time: 'time',
-    newWallet:'NEW WALLET',
-    openWallet:'OPEN WALLET',
+    newWallet: 'NEW WALLET',
+    openWallet: 'OPEN WALLET',
+    balance: 'balance',
+    rank: 'rank'
   },
   asset: {
     name: 'Name',

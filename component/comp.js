@@ -831,6 +831,86 @@ Vue.component('neo-wallet-list', {
     }
 });
 
+Vue.component('neo-address-list', {
+    template: 
+    '<div class="neo-address-list">'+
+        '<div class="row header">'+
+                '<div class="row header">'+
+                    '<div class="col col-1">'+
+                        '<span>{{$t("address.rank")}}</span>'+
+                    '</div>'+
+                    '<div class="col col-2">'+
+                        '<span>{{$t("address.value")}}</span>'+
+                    '</div>'+
+                    '<div class="col col-3">'+
+                        '<span>{{$t("address.balance") }}</span>'+
+                    '</div>'+
+                    '<div class="underlayer"></div>'+
+                '</div>'+
+        '</div>'+
+        '<div class="row item" v-for="(item, idx) in items">'+
+            '<div class="col col-1">'+
+                '<span>{{idx+1}}</span>'+
+            '</div>'+
+            '<div class="col col-2">'+
+                '<span v-on:click="goto(item.addr)">{{item.addr}}</span>'+
+            '</div>'+
+            '<div class="col col-3">'+
+                '<span>{{item.balance}}</span>'+
+            '</div>'+
+            '<div class="underlayer">'+
+            '</div>'+
+        '</div>'+
+        '<div class="clear"></div>'+
+    '</div>',
+    props: {
+        page: Number,
+        count: Number,
+        id: String
+    },
+    data: function() {
+        return {
+            items: [],
+            currentPage: 1
+        }
+    },
+    methods: {
+        init: function() {
+            var that = this;
+            that.addressItems = [];
+            axios({
+                url: host+'/api/v1/'+network+'/asset/transaction/' + that.id.substring(2)+`?start=${0}&end=${19}`,
+                method: 'get', 
+            })
+            .then(function (resp) {
+                // console.log(resp)
+                console.log(resp.data.data)
+                const result = resp.data.data
+                that.items = [];
+                // var rows = resp.data.data.AddressQuery.rows;
+                for(var i=0; i< result.length; i++){
+                    const row = JSON.parse(result[i]);
+                    that.items.push({
+                        num: i,
+                        addr: row.address,
+                        balance: row.balances || 0,
+                    })
+                }
+                // that.$emit('loaded', resp.data.data.AddressQuery)
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        },
+        goto: function(address) {
+            window.location.href = 'addrinfo.html?address=' + address
+        },
+        setCurrentPage: function(currentPage) {
+            this.currentPage = currentPage;
+        }
+    }
+});
+
 Vue.component('neo-tran-record', {
     template:
     '<div class="neo-tran-record" v-bind:class="{\'border\': showborder}">'+

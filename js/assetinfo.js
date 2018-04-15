@@ -34,6 +34,7 @@ var app = new Vue({
             // this.$refs.wallet.init();
             this.$refs.tran.setAsset(this.index)
             this.$refs.tran.init()
+            this.$refs.address.init()
 
             var that = this;
             axios({

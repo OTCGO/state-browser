@@ -1,6 +1,6 @@
 //简体中文
 var zhCHS = {
-  logo:'/images/logo_zh.svg',
+  logo: '/images/logo_zh.svg',
   menu: {
     home: '首页',
     assets: '资产',
@@ -67,8 +67,10 @@ var zhCHS = {
     value: '地址',
     blockIndex: '区块高度',
     time: '时间',
-    newWallet:'创建钱包',
-    openWallet:'登陆钱包',
+    newWallet: '创建钱包',
+    openWallet: '登陆钱包',
+    balance: '余额',
+    rank: '排名'
   },
   asset: {
     name: '名称',

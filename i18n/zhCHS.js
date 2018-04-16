@@ -70,7 +70,8 @@ var zhCHS = {
     newWallet: '创建钱包',
     openWallet: '登陆钱包',
     balance: '余额',
-    rank: '排名'
+    rank: '排名',
+    zero: "该地址余额为0"
   },
   asset: {
     name: '名称',

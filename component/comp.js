@@ -887,7 +887,6 @@ Vue.component('neo-address-list', {
                 console.log(resp.data.data)
                 const result = resp.data.data
                 that.items = [];
-                // var rows = resp.data.data.AddressQuery.rows;
                 for(var i=0; i< result.length; i++){
                     const row = JSON.parse(result[i]);
                     that.items.push({
@@ -896,7 +895,6 @@ Vue.component('neo-address-list', {
                         balance: row.balances || 0,
                     })
                 }
-                // that.$emit('loaded', resp.data.data.AddressQuery)
             })
             .catch(function (error) {
                 console.log(error);
@@ -1380,24 +1378,26 @@ Vue.component('neo-addr-info', {
         '<div class="balance">'+
 
             '<div v-for="item in items" class="col item" v-if="item.balances != '+'0'+' ">'+
+                
                 '<h3>{{item.name}}</h3>'+
                 '<h4>{{item.balances}}</h4>'+
             '</div>'+
 
-            '<div class="clear"></div>'+
+            
+            '<div class="col item"  v-show = "isZero">'+
+                '<h3>{{$t("address.zero")}}</h3>'+
+            '</div>'+
 
+            
+            '<div class="clear"></div>'+
         '</div>'+
-        // '<div class="chart">'+
-        //     '<div class="title">Last 25 Transactions for NEO</div>'+
-        //      '<neo-market-neochart ref="chart"></neo-market-neochart>'+
-        //     '<div class="date">2018.1.Jan</div>'+
-        // '</div>'+
         '<div class="underlayer"></div>'+
         ''+
     '</div>',
     data: function() {
         return {
-            items: []
+            items: [],
+            isZero: true
         }
     },
     methods: {
@@ -1411,6 +1411,13 @@ Vue.component('neo-addr-info', {
             .then(function (resp) {
                 // console.log('resp',resp);
                 that.items = resp.data.data
+                for (const item of that.items) {
+                    if(item.balances != '0'){
+                        that.isZero = false
+                        break
+                    }
+                    // console.log('item',item.balances)
+                }
             })
             .catch(function (error) {
                 console.log(error);

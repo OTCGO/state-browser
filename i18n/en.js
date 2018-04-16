@@ -70,7 +70,8 @@ var en = {
     newWallet: 'NEW WALLET',
     openWallet: 'OPEN WALLET',
     balance: 'balance',
-    rank: 'rank'
+    rank: 'rank',
+    zero: "the address balance is 0"
   },
   asset: {
     name: 'Name',

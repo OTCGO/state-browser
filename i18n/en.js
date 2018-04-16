@@ -71,7 +71,8 @@ var en = {
     openWallet: 'OPEN WALLET',
     balance: 'balance',
     rank: 'rank',
-    zero: "the address balance is 0"
+    zero: "the address balance is 0",
+    update: "update time 01: 00"
   },
   asset: {
     name: 'Name',

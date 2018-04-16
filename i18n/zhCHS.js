@@ -71,7 +71,8 @@ var zhCHS = {
     openWallet: '登陆钱包',
     balance: '余额',
     rank: '排名',
-    zero: "该地址余额为0"
+    zero: "该地址余额为0",
+    update: "数据更新时间 01: 00"
   },
   asset: {
     name: '名称',

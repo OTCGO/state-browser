@@ -1191,7 +1191,7 @@ border-bottom-left-radius: 4px;
     z-index: -1;
 }
 .neo-address-list .row.item .underlayer{
-    width: 6.8rem !important;
+    width: 7.15rem ;
 }
 .neo-address-list .row.header{
     height: 0.25rem;
@@ -1245,6 +1245,11 @@ border-bottom-left-radius: 4px;
 .neo-address-list .row .col-3{
     width: 1.4rem;
     padding: 0 0 0 0.2rem;
+}
+
+.neo-address-list .update {
+    color: 0.2rem;
+    text-align: right;
 }
 
 /* #region neo-search */

@@ -1,3 +1,5 @@
+Vue.component('paginate', VuejsPaginate)
+
 Vue.component('neo-title', {
     template:
     '<div class="neo-title" v-on:click="goto()">'+
@@ -377,7 +379,7 @@ Vue.component('neo-footer', {
     '</div>'
 });
 
-Vue.component('paginate', VuejsPaginate)
+
 
 Vue.component('neo-paging', {
     template:
@@ -834,6 +836,7 @@ Vue.component('neo-wallet-list', {
 Vue.component('neo-address-list', {
     template: 
     '<div class="neo-address-list">'+
+        '<h4 class="update">{{$t("address.update")}}</h4>'+
         '<div class="row header">'+
                 '<div class="row header">'+
                     '<div class="col col-1">'+
@@ -850,7 +853,7 @@ Vue.component('neo-address-list', {
         '</div>'+
         '<div class="row item" v-for="(item, idx) in items">'+
             '<div class="col col-1">'+
-                '<span>{{idx+1}}</span>'+
+                '<span>{{20 * (currentPage-1) + idx + 1}}</span>'+
             '</div>'+
             '<div class="col col-2">'+
                 '<span v-on:click="goto(item.addr)">{{item.addr}}</span>'+
@@ -861,32 +864,44 @@ Vue.component('neo-address-list', {
             '<div class="underlayer">'+
             '</div>'+
         '</div>'+
-        '<div class="clear"></div>'+
+        '<div class="clear"></div><br>'+
+
+        '<paginate'+
+            ' :page-count="Math.ceil(totalCount/pageCount)"'+
+            ' :click-handler="changePaginate"'+
+            ' :page-range="2"'+
+            ' :prev-text="$t(\'pagination.prev\')"'+
+            ' :next-text="$t(\'pagination.next\')"'+
+            ' container-class="neo-pagination">'+
+        ' </paginate>'+
+
+        '<div class="clear"></div><br>'+
     '</div>',
     props: {
-        page: Number,
-        count: Number,
         id: String
     },
     data: function() {
         return {
             items: [],
-            currentPage: 1
+            pageCount: 20,
+            currentPage: 1,
+            totalCount: 0
         }
     },
     methods: {
-        init: function() {
+        init: function(start = 0 ,end = 19) {
             var that = this;
             that.addressItems = [];
             axios({
-                url: host+'/api/v1/'+network+'/asset/transaction/' + that.id.substring(2)+`?start=${0}&end=${19}`,
+                url: host+'/api/v1/'+network+'/asset/transaction/' + that.id.substring(2)+`?start=${start}&end=${end}`,
                 method: 'get', 
             })
             .then(function (resp) {
                 // console.log(resp)
                 console.log(resp.data.data)
-                const result = resp.data.data
+                const result = resp.data.data.list
                 that.items = [];
+                that.totalCount = resp.data.data.count
                 for(var i=0; i< result.length; i++){
                     const row = JSON.parse(result[i]);
                     that.items.push({
@@ -903,9 +918,15 @@ Vue.component('neo-address-list', {
         goto: function(address) {
             window.location.href = 'addrinfo.html?address=' + address
         },
-        setCurrentPage: function(currentPage) {
-            this.currentPage = currentPage;
+        changePaginate: function(pageNum) {
+            this.currentPage = pageNum
+            const start = 20 * (pageNum - 1)
+            const end = start + 19
+            this.init(start,end)
+            // console.log('start',start);
+            // console.log('end',end);
         }
+
     }
 });
 

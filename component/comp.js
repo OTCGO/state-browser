@@ -371,7 +371,7 @@ Vue.component('neo-footer', {
         '<div class="info">'+
             // '<div>{{$t("footer.link")}}: <a href="https://otcgo.cn">OTCGO</a> </div>'+
             // '<div>Switch block chain: The test chain is not open temporarily</div>'+
-            '<div>{{$t("footer.version")}}: v2.7.2</div>'+
+            '<div>{{$t("footer.version")}}: v2.7.3</div>'+
         '</div>'+
         '<div class="recnum">'+
             // 'Record number: 湘ICP备16019051号-1'+

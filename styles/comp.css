@@ -245,7 +245,7 @@ body{
 .neo-footer .left .footer__connect li {
     display: inline-block;
     font-size: 18px;
-    margin-right: 8px;
+    margin-right: 0.1rem;
     width: 40px;
     text-align: center;
 }

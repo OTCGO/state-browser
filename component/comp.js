@@ -366,11 +366,11 @@ Vue.component('neo-footer', {
                 '<i class="fa fa-github"></i>'+
                 '</a>'+
             '</li>'+
-            '<li class="weibo">'+
-                '<a target="_blank" rel="noreferrer noopener" href="#">'+
-                    '<i class=" fa fa-weibo"></i>'+
-                '</a>'+
-            '</li>'+
+            // '<li class="weibo">'+
+            //     '<a target="_blank" rel="noreferrer noopener" href="#">'+
+            //         '<i class=" fa fa-weibo"></i>'+
+            //     '</a>'+
+            // '</li>'+
             '<li class="weixin">'+
                     '<a href="#"><i class="fa fa-weixin"></i></a> <div class="weixin-qr-code">'+
                             '<img  src="/images/weixin-qrcode.jpg" alt="蓝鲸淘智能资产管理平台" width="160">'+

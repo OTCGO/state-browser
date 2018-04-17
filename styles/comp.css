@@ -165,6 +165,7 @@ body{
     border-top: 1px solid #fff;
     color: #fff;
     font-weight: 100;
+    height: 1.5rem;
 }
 .neo-footer .folder{
     padding: 0.3rem 0;
@@ -202,6 +203,107 @@ body{
     color: #fff;
 }
 
+
+.neo-footer .left{
+    width: 25%;
+    float: left;
+    height: 1.1rem;
+
+}
+.neo-footer .center{
+    width: 40%;
+    float: left;
+    height: 1.1rem;
+}
+.neo-footer .right{
+    width: 20%;
+    float: right;
+    height: 1.1rem;
+}
+
+.neo-footer .left  ul {
+    list-style: none;
+}
+.neo-footer .left .footer-bottom, .footer__connect {
+    margin-top: 10px;
+}
+.neo-footer .left .footer__connect {
+    margin-top: 40px;
+    padding: 0;
+}
+.neo-footer .left ol, ul {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.neo-footer .left ul li {
+    line-height: 1.9em;
+}
+.neo-footer .left .footer__connect li {
+    border-radius: 4px;
+}
+.neo-footer .left .footer__connect li {
+    display: inline-block;
+    font-size: 18px;
+    margin-right: 8px;
+    width: 40px;
+    text-align: center;
+}
+
+.neo-footer .left a {
+    color: #8e8e8e;
+}
+.neo-footer .left .footer__connect a[href*=github] {
+    background: #333;
+}
+.neo-footer .left .footer__connect li a {
+    padding: .2em 0 0;
+    display: block;
+    border-radius: 4px;
+}
+
+.neo-footer .left .qq-qr-code, .weixin-qr-code {
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    right: 50%;
+    -webkit-transform: translate(50%,-10px);
+    transform: translate(50%,-10px);
+    -webkit-box-shadow: 0 4px 6px rgba(0,0,0,.46);
+    box-shadow: 0 4px 6px rgba(0,0,0,.46);
+}
+
+
+
+.neo-footer .left .footer__connect li.weibo {
+    background: #f75b5b;
+}
+
+
+.neo-footer .left .footer__connect li.weibo, .footer__connect li.weixin {
+    -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.16);
+    box-shadow: 0 3px 6px rgba(0,0,0,.16);
+}
+
+.neo-footer .left .footer__connect li.weixin {
+    background: -webkit-gradient(linear,left top,right top,from(#15b982),to(#01d18b));
+    background: linear-gradient(90deg,#15b982,#01d18b);
+    position: relative;
+}
+
+.neo-footer .left .footer__connect li.weixin:hover .weixin-qr-code{
+    display: block;
+}
+
+.neo-footer .left .footer__connect li.qq {
+    background: #24bdff;
+}
+
+.neo-footer .left .footer__connect li i {
+    color: #fff;
+    position: relative;
+    top: 2px;
+}
 /* #endregion */
 
 /* #region neo-paging */

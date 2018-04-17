@@ -376,7 +376,7 @@ Vue.component('neo-footer', {
                             '<img  src="/images/weixin-qrcode.jpg" alt="蓝鲸淘智能资产管理平台" width="160">'+
                     '</div>'+
             '</li> '+
-            '<li class="qq"><a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=81c87837cb04d3d063cb52dd4fd72668829598647f9794f8166fb965420b5e96" alt="SEA第四社群" title="SEA第四社群"><i class="fa fa-qq"></i></a> '+
+            '<li class="qq"><a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=1c63793c5fc8adaf4d6c5c9ee782c1ce8fb14dee9494d69a7372efc5415988d6" alt="SEA第五社群" title="SEA第五社群"><i class="fa fa-qq"></i></a> '+
             ' </li>'+
             '</ul>'+
         '</div>'+

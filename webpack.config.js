@@ -8,11 +8,12 @@
  */
 
 const path = require('path')
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const env = process.env.NODE_ENV
 
 module.exports = {
-    mode:env ||  "development",
+    mode: env || "development",
     entry: {
         comp: './component/comp.js',
         index: './js/index.js',
@@ -20,19 +21,42 @@ module.exports = {
         assets: './js/assets.js',
         blockinfo: './js/blockinfo.js',
         traninfo: './js/traninfo.js',
-        assetinfo: './js/assetinfo.js'
+        assetinfo: './js/assetinfo.js',
+        compcss: './styles/comp.css'
     },
     devtool: env === 'production' ? 'cheap-module-source-map' : 'source-map',
     output: {
-        path: path.join(__dirname+'/dist'),
+        path: path.join(__dirname + '/dist'),
         filename: '[name].js'
     },
     module: {
-        rules: [
-          {
+        rules: [{
             test: /\.js$/,
             loader: 'babel-loader',
-          },
-        ],
+        }, ],
+        rules: [{
+            test: /\.css$/,
+            use: ["style-loader", {
+                loader: "css-loader",
+                options: {
+                    minimize: true
+                }
+            }, "postcss-loader"],
+        }],
+        rules: [{
+            test: /\.css$/,
+            use: ExtractTextPlugin.extract({
+                fallback: "style-loader",
+                use: [
+                    { loader: 'css-loader', options: { minimize: true } }
+                ]
+            })
+        }]
     },
+    plugins: [
+        new ExtractTextPlugin({
+            filename: '[name].css',
+            allChunks: true,
+        }),
+    ]
 }

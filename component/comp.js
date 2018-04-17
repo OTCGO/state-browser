@@ -359,24 +359,48 @@ Vue.component('neo-toolbox', {
 Vue.component('neo-footer', {
     template: 
     '<div class="neo-footer">'+
-        '<div class="folder">'+
-            '<div class="wrapper">'+
-                '<a href="#top"><i class="icon iconfont icon-arrow-up"></i></a>'+
+        '<div class="left">'+
+            '<ul class="footer__connect">'+
+            '<li class="github">'+
+                '<a target="_blank" rel="noreferrer noopener" href="https://github.com/OTCGO/state-browser">'+
+                '<i class="fa fa-github"></i>'+
+                '</a>'+
+            '</li>'+
+            '<li class="weibo">'+
+                '<a target="_blank" rel="noreferrer noopener" href="#">'+
+                    '<i class=" fa fa-weibo"></i>'+
+                '</a>'+
+            '</li>'+
+            '<li class="weixin">'+
+                    '<a href="#"><i class="fa fa-weixin"></i></a> <div class="weixin-qr-code">'+
+                            '<img  src="/images/weixin-qrcode.jpg" alt="蓝鲸淘智能资产管理平台" width="160">'+
+                    '</div>'+
+            '</li> '+
+            '<li class="qq"><a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=81c87837cb04d3d063cb52dd4fd72668829598647f9794f8166fb965420b5e96" alt="SEA第四社群" title="SEA第四社群"><i class="fa fa-qq"></i></a> '+
+            ' </li>'+
+            '</ul>'+
+        '</div>'+
+        '<div class="center">'+
+            '<div class="folder">'+
+                '<div class="wrapper">'+
+                    '<a href="#top"><i class="icon iconfont icon-arrow-up"></i></a>'+
+                '</div>'+
+            '</div>'+
+            '<div class="info">'+
+                '<div>{{$t("footer.version")}}: v2.7.3</div>'+
             '</div>'+
         '</div>'+
-        '<div class="sns">'+
-            // '<i class="icon iconfont icon-qq"></i>'+
-            // '<i class="icon iconfont icon-wechat"></i>'+
         '</div>'+
-        '<div class="info">'+
-            // '<div>{{$t("footer.link")}}: <a href="https://otcgo.cn">OTCGO</a> </div>'+
-            // '<div>Switch block chain: The test chain is not open temporarily</div>'+
-            '<div>{{$t("footer.version")}}: v2.7.3</div>'+
+        '<div class="right">'+
+            
         '</div>'+
-        '<div class="recnum">'+
-            // 'Record number: 湘ICP备16019051号-1'+
-        '</div>'+
-    '</div>'
+        '<div class="clear"></div>'+
+    '</div>',
+    methods: {
+        hoverHandle: function(){
+            console.log('hoverHandle')
+        }
+    }
 });
 
 

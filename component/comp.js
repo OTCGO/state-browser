@@ -926,12 +926,10 @@ Vue.component('neo-address-list', {
                 const result = resp.data.data.list
                 that.items = [];
                 that.totalCount = resp.data.data.count
-                for(var i=0; i< result.length; i++){
-                    const row = JSON.parse(result[i]);
+                for(var i=0; i< result.length; i = i + 2){
                     that.items.push({
-                        num: i,
-                        addr: row.address,
-                        balance: row.balances || 0,
+                        addr: result[i],
+                        balance: result[i+1] || 0,
                     })
                 }
             })

@@ -72,7 +72,7 @@ var en = {
     balance: 'balance',
     rank: 'rank',
     zero: "the address balance is 0",
-    update: "update time 01: 00"
+    update: "Weekly Updates"
   },
   asset: {
     name: 'Name',

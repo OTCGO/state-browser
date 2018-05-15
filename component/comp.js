@@ -36,8 +36,7 @@ Vue.component('neo-info-title', {
         qrcode:Boolean
     },
     mounted() {
-        // 调用请求数据的方法
-        console.log('props',this.id)
+       // console.log('props',this.id)
     }
 })
 

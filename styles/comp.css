@@ -17,6 +17,7 @@ body{
 .clear{clear: both;}
 .link{color: #84C033; text-decoration: underline; cursor: pointer;}
 
+.clearfloat{clear:both} 
 /* #endregion */
 
 /* #region neo-header */
@@ -64,11 +65,16 @@ body{
     font-size: 0.2rem;
 }
 .neo-info-title .subtitle{
+    margin-top: 0.2rem;
     font-weight: 100;
+    float: left;
+    width: 70%;
 }
-.neo-info-title .goback{
-    margin: 0.2rem 0 0.1rem 0;
+.neo-info-title .qrcode{
     color: #69AD66;
+    float: right; 
+    height: 1rem;
+    width: 20%;
 }
 
 /* #endregion */

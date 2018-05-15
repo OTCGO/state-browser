@@ -17,7 +17,7 @@
     <div id="app" v-on:click="appevent">
         <neo-header ref="header"></neo-header>
         <div class="page-addr-info">
-            <neo-info-title :title="$t('address.value')" subtitle="" v-bind:id="address"></neo-info-title>
+            <neo-info-title :title="$t('address.value')" subtitle="" v-bind:id="address" :qrcode="true" ></neo-info-title>
             <neo-addr-info ref="addrinfo"></neo-addr-info><br />
             <neo-tran-list 
                 ref="tran" 
@@ -50,6 +50,7 @@
     <script src="libs/vue-paginate/paginate.min.js"></script>
 
     <script src="libs/vue-i18n/vue-i18n.min.js"></script>
+    <script src="libs/vue-qrcode/dist/vue-qrcode.min.js"></script>
     <script src="i18n/en.js"></script>
     <script src="i18n/zhCHS.js"></script>
     
@@ -59,6 +60,7 @@
     <script src="config.js"></script>
     <script src="dist/comp.js"></script>
     <script src="dist/addrinfo.js"></script>
+
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110660254-2"></script>
     <script>

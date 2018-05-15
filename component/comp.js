@@ -1,4 +1,5 @@
 Vue.component('paginate', VuejsPaginate)
+Vue.component('qrcode', VueQrcode)
 
 Vue.component('neo-title', {
     template:
@@ -20,14 +21,24 @@ Vue.component('neo-info-title', {
     template:
     '<div class="neo-info-title">'+
         '<div class="title">{{title}}</div>'+
-        '<div class="subtitle">{{subtitle}} {{id}} </div>'+
-        '<div class="goback"></div>'+
+        '<div style="height:1rem">'+
+            '<div class="subtitle">{{subtitle}} {{id}} </div>'+
+            '<div class="qrcode">'+
+                '<qrcode v-if="qrcode" :value="id" :options="{ size: 100 }"></qrcode>'+
+            '</div>'+
+            '<div class="clearfloat"></div>'+
+        '</div>'+
     '</div>',
     props: {
         title: String,
         id: String,
-        subtitle: String
+        subtitle: String,
+        qrcode:Boolean
     },
+    mounted() {
+        // 调用请求数据的方法
+        console.log('props',this.id)
+    }
 })
 
 Vue.component('neo-menu', {

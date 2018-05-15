@@ -17,6 +17,9 @@ npm build
 
 ## update
 
+#### 2018-05-15
+* 添加地址qrcode
+
 #### 2018-04-24
 * 添加https
 

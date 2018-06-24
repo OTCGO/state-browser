@@ -1,11 +1,13 @@
 //简体中文
 var zhCHS = {
   logo: '/images/logo_zh.svg',
+  language: 'zhCHS',
   menu: {
     home: '首页',
     assets: '资产',
     api: 'API',
     language: '语言',
+    wallet: '钱包App'
   },
   slider: {
     dynamic: {

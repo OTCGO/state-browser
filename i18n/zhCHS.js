@@ -7,7 +7,7 @@ var zhCHS = {
     assets: '资产',
     api: 'API',
     language: '语言',
-    wallet: '钱包App'
+    wallet: '钱包APP'
   },
   slider: {
     dynamic: {

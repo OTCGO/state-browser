@@ -29,7 +29,8 @@
     "normalize.css": "^7.0.0",
     "postcss-loader": "^2.1.4",
     "style-loader": "^0.20.3",
-    "vue": "^2.5.13"
+    "vue": "^2.5.13",
+    "vue-select": "^2.4.0"
   },
   "devDependencies": {
     "extract-text-webpack-plugin": "^4.0.0-beta.0",

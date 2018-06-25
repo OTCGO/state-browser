@@ -48,28 +48,41 @@ Vue.component('neo-menu', {
                 '{{item.name}}'+
                 '<i class="icon iconfont icon-arrow-down" v-if="item.items"></i>'+
             '</span>'+
-            '<div class="underline" v-bind:style="{left: positions[idx]}" v-if="itemIdx == idx && idx > 1"></div>'+
+            '<div class="underline" v-bind:style="{left: positions[idx]}" v-if="itemIdx-1 == idx && idx > 1"></div>'+
         '</div>'+
     '</div>',
     props: {
         idx: Number
     },
+    mounted() {
+        // if(this.$t("language") == 'en'){
+        //     this.positions = ['', '', '', '0.20rem', '0.20rem']
+        // } else {
+        //     this.positions = ['', '', '', '0.20rem', '0.25rem']
+        // }
+    },
     data: function(){
         return {
             menu:[
-                {name: this.$t("menu.language"), items:[]},
-                {name: this.$t("menu.api"), href:"https://otcgo.github.io/doc/"},
-                {name: this.$t("menu.assets"), href:"assets.html" },
-                {name: this.$t("menu.home"), href:"index.html"}
+                {id: 1, name: this.$t("menu.language"), items:[]},
+                {id: 2, name: this.$t("menu.wallet"), href:"https://otcgo.cn/download/"},
+                {id: 3, name: this.$t("menu.api"), href:"https://otcgo.github.io/doc/"},
+                {id: 4, name: this.$t("menu.assets"), href:"assets.html" },
+                {id: 5, name: this.$t("menu.home"), href:"index.html"}
             ],
-            positions: ['', '', '0.20rem', '0.20rem']
+            positions: ['', '', '', '0.20rem', '0.20rem']
+        }
+    },
+    computed:{
+        positions: function(){
+            
         }
     },
     methods: {
         changeMenuItem: function(idx) {
             
             this.$emit('changed', idx)
-
+            console.log(idx)
             // open api window
             if (idx == 1) {
                 window.open(this.menu[idx].href)
@@ -97,7 +110,7 @@ Vue.component('neo-header', {
     '</div>',
     data: function() {
         return {
-            menuIdx: 1,
+            menuIdx: 4,
             languages: [
                 {code: 'en', name: 'English'},
                 {code: 'zhCHS', name: '中文'}

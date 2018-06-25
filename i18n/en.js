@@ -1,11 +1,13 @@
 // 英文
 var en = {
   logo: '/images/logo_en.svg',
+  language: 'en',
   menu: {
     home: 'Home',
     assets: 'Assets',
     api: 'API',
     language: 'Language',
+    wallet: 'Wallet App'
   },
   slider: {
     dynamic: {

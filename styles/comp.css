@@ -174,7 +174,7 @@ body{
     height: 1.5rem;
 }
 .neo-footer .folder{
-    padding: 0.3rem 0;
+    padding: 0.2rem 0;
 }
 .neo-footer .folder i{
     padding: 0.05rem;
@@ -227,6 +227,15 @@ body{
     height: 1.1rem;
 }
 
+.neo-footer .right .v-select{
+    background: white;
+    /* width: 1.5rem; */
+    margin-top: 0.2rem
+}
+
+.neo-footer .right input {
+    width:0
+}
 .neo-footer .left  ul {
     list-style: none;
 }
@@ -1361,3 +1370,5 @@ border-bottom-left-radius: 4px;
 }
 
 /* #region neo-search */
+
+

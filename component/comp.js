@@ -423,7 +423,7 @@ Vue.component('neo-footer', {
     '</div>',
     data: function() {
         return {
-            network: 'MainNet'
+            network: ''
         }
     },
     methods: {
@@ -435,8 +435,8 @@ Vue.component('neo-footer', {
             // console.log('selectNetwork',this.network)
             // this.network: 'MainNet'
 
-           console.log('network',GetUrlParam('network') === 'mainnet')
-            if(GetUrlParam('network') === 'mainnet' ){
+           // console.log('network',GetUrlParam('network') === 'mainnet')
+            if(this.network === 'TestNet' ){
                 location.href = `index.html?network=testnet`
             }else{
                 location.href = `index.html?network=mainnet`
@@ -446,7 +446,14 @@ Vue.component('neo-footer', {
 
     },
     mounted(){
-        this.network = GetUrlParam('network') === 'mainnet' ? 'TestNet' : 'MainNet'
+        console.log('network',GetUrlParam('network'))
+        if(!GetUrlParam('network')){
+            this.network = 'TestNet'
+
+            return
+        }
+
+        this.network = GetUrlParam('network') === 'mainnet'  ? 'TestNet' : 'MainNet'
     }
 
 });

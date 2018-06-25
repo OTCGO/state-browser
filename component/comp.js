@@ -603,7 +603,7 @@ Vue.component('neo-dynamic-list',{
                     that.items = [
                         {value: moment(result.startTime*1000).format("YYYY-MM-DD"), unit: '', desc: that.$t('dynamic.startTime')},
                         {value: moment(result.curretTime*1000).diff(moment(result.startTime*1000), "days"), unit: that.$t('dynamic.day'), desc:  that.$t('dynamic.runTime')},
-                        {value: result.assetNum.toString().replace(/(?=((?!\b)\d{3})+$)/g, ','), unit: '', desc: that.$t('dynamic.assetNum'), url:'assets.html'},
+                        {value: result.assetNum.toString().replace(/(?=((?!\b)\d{3})+$)/g, ','), unit: '', desc: that.$t('dynamic.assetNum'), url:`assets.html?network=${GetUrlParam('network') || 'mainnet'}`},
                         {value: result.blockNum.toString().replace(/(?=((?!\b)\d{3})+$)/g, ','), unit: '', desc: that.$t('dynamic.blockNum') },
                         {value: result.transactionNum.toString().replace(/(?=((?!\b)\d{3})+$)/g, ','), unit: '', desc: that.$t('dynamic.transactionNum') },
                         {value: result.addressNum.toString().replace(/(?=((?!\b)\d{3})+$)/g, ','), unit: '', desc:that.$t('dynamic.addressNum')},
@@ -987,7 +987,7 @@ Vue.component('neo-address-list', {
             });
         },
         goto: function(address) {
-            window.location.href = 'addrinfo.html?address=' + address
+            window.location.href = 'addrinfo.html?address=' + address + `&network=${GetUrlParam('network') || 'mainnet'}`
         },
         changePaginate: function(pageNum) {
             this.currentPage = pageNum
@@ -1030,7 +1030,7 @@ Vue.component('neo-tran-record', {
     },
     methods: {
         goto: function(address) {
-            window.location.href = "addrinfo.html?address="+address
+            window.location.href = "addrinfo.html?address="+ address + `&network=${GetUrlParam('network') || 'mainnet'}`
         }
     }
 });
@@ -1266,7 +1266,7 @@ Vue.component('neo-tran-list', {
         goto: function(idx) {
             console.log(idx)
             var item = this.items[idx];
-            window.location.href = 'traninfo.html?id='+item.tranid
+            window.location.href = 'traninfo.html?id='+ item.tranid + `&network=${GetUrlParam('network') || 'mainnet'}`
         }
     }
 })
@@ -1602,7 +1602,7 @@ Vue.component('neo-asset-list', {
         },
         detail: function(idx) {
             console.log(this.items[idx])
-            window.location.href = 'assetinfo.html?index=0x'+this.items[idx].id
+            window.location.href = 'assetinfo.html?index=0x'+this.items[idx].id + `&network=${GetUrlParam('network') || 'mainnet'}`
         }
     }
 })

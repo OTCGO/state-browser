@@ -86,7 +86,7 @@ var app = new Vue({
 
                     // block detail info
                     that.block = [
-                        {title: that.$t('block.index'), desc: item.index, url: 'blockinfo.html?index='+item.index},
+                        {title: that.$t('block.index'), desc: item.index, url: 'blockinfo.html?index='+item.index + `&network=${GetUrlParam('network') || 'mainnet'}`},
                         {title: that.$t('block.transactions'), desc: item.transactions},
                         {title: that.$t('block.hash'), desc: item.hash},
                         {title: that.$t('block.time'), desc: moment(item.time*1000).format("YYYY-MM-DD | HH:mm:ss")},

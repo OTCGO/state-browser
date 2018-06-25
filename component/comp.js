@@ -65,18 +65,11 @@ Vue.component('neo-menu', {
     data: function(){
         return {
             menu:[
-<<<<<<< HEAD
                 {id: 1, name: this.$t("menu.language"), items:[]},
                 {id: 2, name: this.$t("menu.wallet"), href:"https://otcgo.cn/download/"},
                 {id: 3, name: this.$t("menu.api"), href:"https://otcgo.github.io/doc/"},
-                {id: 4, name: this.$t("menu.assets"), href:"assets.html" },
-                {id: 5, name: this.$t("menu.home"), href:"index.html"}
-=======
-                {name: this.$t("menu.language"), items:[]},
-                {name: this.$t("menu.api"), href:"https://otcgo.github.io/doc/"},
-                {name: this.$t("menu.assets"), href:`assets.html?network=${GetUrlParam('network') || 'mainnet'}` },
-                {name: this.$t("menu.home"), href:`index.html?network=${GetUrlParam('network') || 'mainnet'}`}
->>>>>>> staging
+                {id: 4, name: this.$t("menu.assets"), href:`assets.html?network=${GetUrlParam('network') || 'mainnet'}` },
+                {id: 5, name: this.$t("menu.home"), href:`index.html?network=${GetUrlParam('network') || 'mainnet'}`}
             ],
             positions: ['', '', '', '0.20rem', '0.20rem']
         }

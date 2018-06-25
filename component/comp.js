@@ -1,8 +1,6 @@
-import vSelect from 'vue-select'
 
 Vue.component('paginate', VuejsPaginate)
 Vue.component('qrcode', VueQrcode)
-Vue.component('v-select', vSelect)
 
 Vue.component('neo-title', {
     template:

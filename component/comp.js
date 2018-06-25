@@ -13,7 +13,7 @@ Vue.component('neo-title', {
     methods:{
         goto: function(){
             // return home
-            window.location.href = '/'
+            window.location.href = `/?network=${GetUrlParam('network') || 'mainnet'}`
         }
     }
 });
@@ -332,20 +332,20 @@ Vue.component('neo-toolbox', {
             }
             // address start 'A'
             if(this.search.replace(/\s+/g,"").substring(0,1) === 'A'){
-                window.location.href = 'addrinfo.html?address=' + this.search
+                window.location.href = 'addrinfo.html?address=' + this.search + `&network=${GetUrlParam('network') || 'mainnet'}`
                 return
             }
 
             //txid lenght  64 or 66
             if(this.search.length === 64 || this.search.length === 66) {
                 //console.log('/traninfo.html?id=' + (this.search.length === 66 ? this.search : `0x${this.search}`))
-                window.location.href = 'traninfo.html?id=' + (this.search.length === 66 ? this.search : `0x${this.search}`)
+                window.location.href = 'traninfo.html?id=' + (this.search.length === 66 ? this.search : `0x${this.search}` + `&network=${GetUrlParam('network') || 'mainnet'}`)
                 return
             }
 
             //block height only contains number
             if(/^\d+$/.test(this.search)) {
-                window.location.href = 'blockinfo.html?index=' + this.search
+                window.location.href = 'blockinfo.html?index=' + this.search + `&network=${GetUrlParam('network') || 'mainnet'}`
                 return
             }
 
@@ -898,7 +898,7 @@ Vue.component('neo-wallet-list', {
             });
         },
         goto: function(address) {
-            window.location.href = 'addrinfo.html?address=' + address
+            window.location.href = 'addrinfo.html?address=' + address + `&network=${GetUrlParam('network') || 'mainnet'}`
         },
         setCurrentPage: function(currentPage) {
             this.currentPage = currentPage;
@@ -1419,7 +1419,7 @@ Vue.component('neo-block-list', {
         },
         goto: function(index) {
 
-            window.location.href = 'blockinfo.html?index=' + index.toString().replace(/,/g, '')
+            window.location.href = 'blockinfo.html?index=' + index.toString().replace(/,/g, '') + `&network=${GetUrlParam('network') || 'mainnet'}`
         },
         setCurrentPage: function(currentPage) {
             this.currentPage = currentPage;

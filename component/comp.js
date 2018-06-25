@@ -431,17 +431,10 @@ Vue.component('neo-footer', {
                 location.href = `index.html?network=mainnet`
             }
 
-            // this.network = GetUrlParam('network') === 'mainnet' ? 'MainNet' : 'TestNet'
-
-            
-            // if(this.selected){
-            //    
-            // }
         }
 
     },
     mounted(){
-        
         this.network = GetUrlParam('network') === 'mainnet' ? 'TestNet' : 'MainNet'
     }
 

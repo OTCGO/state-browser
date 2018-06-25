@@ -182,7 +182,7 @@ var app = new Vue({
                         {title: that.$t('transaction.type'), desc: item.type},
                         {title: that.$t('transaction.networkFee'), desc: item.net_fee},
                         {title: that.$t('transaction.systemFee'), desc: item.sys_fee},
-                        {title: that.$t('block.index'), desc: item.blockIndex, url: 'blockinfo.html?index='+item.blockIndex},
+                        {title: that.$t('block.index'), desc: item.blockIndex, url: 'blockinfo.html?index=' + item.blockIndex + `&network=${GetUrlParam('network') || 'mainnet'}`},
                         {title: that.$t('transaction.size'), desc: item.size+ ' bytes' }
                     ]
                    

@@ -1,3 +1,4 @@
+
 Vue.component('paginate', VuejsPaginate)
 Vue.component('qrcode', VueQrcode)
 
@@ -64,11 +65,18 @@ Vue.component('neo-menu', {
     data: function(){
         return {
             menu:[
+<<<<<<< HEAD
                 {id: 1, name: this.$t("menu.language"), items:[]},
                 {id: 2, name: this.$t("menu.wallet"), href:"https://otcgo.cn/download/"},
                 {id: 3, name: this.$t("menu.api"), href:"https://otcgo.github.io/doc/"},
                 {id: 4, name: this.$t("menu.assets"), href:"assets.html" },
                 {id: 5, name: this.$t("menu.home"), href:"index.html"}
+=======
+                {name: this.$t("menu.language"), items:[]},
+                {name: this.$t("menu.api"), href:"https://otcgo.github.io/doc/"},
+                {name: this.$t("menu.assets"), href:`assets.html?network=${GetUrlParam('network') || 'mainnet'}` },
+                {name: this.$t("menu.home"), href:`index.html?network=${GetUrlParam('network') || 'mainnet'}`}
+>>>>>>> staging
             ],
             positions: ['', '', '', '0.20rem', '0.20rem']
         }
@@ -384,24 +392,25 @@ Vue.component('neo-footer', {
     '<div class="neo-footer">'+
         '<div class="left">'+
             '<ul class="footer__connect">'+
-            '<li class="github">'+
-                '<a target="_blank" rel="noreferrer noopener" href="https://github.com/OTCGO/state-browser">'+
-                '<i class="fa fa-github"></i>'+
-                '</a>'+
-            '</li>'+
-            // '<li class="weibo">'+
-            //     '<a target="_blank" rel="noreferrer noopener" href="#">'+
-            //         '<i class=" fa fa-weibo"></i>'+
-            //     '</a>'+
-            // '</li>'+
-            '<li class="weixin">'+
-                    '<a href="#"><i class="fa fa-weixin"></i></a> <div class="weixin-qr-code">'+
-                            '<img  src="/images/weixin-qrcode.jpg" alt="蓝鲸淘智能资产管理平台" width="160">'+
-                    '</div>'+
-            '</li> '+
-            '<li class="qq"><a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=1c63793c5fc8adaf4d6c5c9ee782c1ce8fb14dee9494d69a7372efc5415988d6" alt="SEA第五社群" title="SEA第五社群"><i class="fa fa-qq"></i></a> '+
-            ' </li>'+
+                '<li class="github">'+
+                    '<a target="_blank" rel="noreferrer noopener" href="https://github.com/OTCGO/state-browser">'+
+                    '<i class="fa fa-github"></i>'+
+                    '</a>'+
+                '</li>'+
+                // '<li class="weibo">'+
+                //     '<a target="_blank" rel="noreferrer noopener" href="#">'+
+                //         '<i class=" fa fa-weibo"></i>'+
+                //     '</a>'+
+                // '</li>'+
+                '<li class="weixin">'+
+                        '<a href="#"><i class="fa fa-weixin"></i></a> <div class="weixin-qr-code">'+
+                                '<img  src="/images/weixin-qrcode.jpg" alt="蓝鲸淘智能资产管理平台" width="160">'+
+                        '</div>'+
+                '</li> '+
+                '<li class="qq"><a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=1c63793c5fc8adaf4d6c5c9ee782c1ce8fb14dee9494d69a7372efc5415988d6" alt="SEA第五社群" title="SEA第五社群"><i class="fa fa-qq"></i></a> '+
+                ' </li>'+
             '</ul>'+
+            
         '</div>'+
         '<div class="center">'+
             '<div class="folder">'+
@@ -411,20 +420,44 @@ Vue.component('neo-footer', {
             '</div>'+
             '<div class="info">'+
                 '<div>{{$t("footer.version")}}: v2.7.3</div>'+
+                '<div class="netwrok"><a href="javascript:void(0)" @click="selectNetwork">{{ network }}</a></div>'+
             '</div>'+
         '</div>'+
-        '</div>'+
         '<div class="right">'+
-            
+            // '<v-select :on-change="selectNetwork()" v-model="selected" :options="options"></v-select>'+
         '</div>'+
         '<div class="clear"></div>'+
     '</div>',
+    data: function() {
+        return {
+            network: 'MainNet'
+        }
+    },
     methods: {
         hoverHandle: function(){
             console.log('hoverHandle')
+        },
+
+        selectNetwork: function(){
+            // console.log('selectNetwork',this.network)
+            // this.network: 'MainNet'
+
+           console.log('network',GetUrlParam('network') === 'mainnet')
+            if(GetUrlParam('network') === 'mainnet' ){
+                location.href = `index.html?network=testnet`
+            }else{
+                location.href = `index.html?network=mainnet`
+            }
+
         }
+
+    },
+    mounted(){
+        this.network = GetUrlParam('network') === 'mainnet' ? 'TestNet' : 'MainNet'
     }
+
 });
+
 
 
 

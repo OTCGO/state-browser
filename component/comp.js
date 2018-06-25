@@ -432,10 +432,6 @@ Vue.component('neo-footer', {
         },
 
         selectNetwork: function(){
-            // console.log('selectNetwork',this.network)
-            // this.network: 'MainNet'
-
-           // console.log('network',GetUrlParam('network') === 'mainnet')
             if(this.network === 'TestNet' ){
                 location.href = `index.html?network=testnet`
             }else{

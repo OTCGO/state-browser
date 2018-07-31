@@ -423,7 +423,7 @@ Vue.component('neo-footer', {
                 '</div>'+
             '</div>'+
             '<div class="info">'+
-                '<div>{{$t("footer.version")}}: v2.7.3</div>'+
+                '<div>{{$t("footer.version")}}: v2.7.6</div>'+
                 '<div class="netwrok"><a href="javascript:void(0)" @click="selectNetwork">{{ network }}</a></div>'+
             '</div>'+
         '</div>'+

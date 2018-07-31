@@ -6,7 +6,7 @@ Vue.component('neo-title', {
     template:
     '<div class="neo-title" v-on:click="goto()">'+
         '<img class="logo"  :src="$t(\'logo\')" />'+
-        // '<div class="neo-title__main"><span>NEO</span></div>' + 
+        // '<div class="neo-title__main"><span>NEO</span></div>' +
         // '<div class="neo-title__sub"><span>NEP5</span></div>'+
         // '<div class="neo-title__sub"><span>OTCGO</span></div>'+
     '</div>',
@@ -42,7 +42,7 @@ Vue.component('neo-info-title', {
 })
 
 Vue.component('neo-menu', {
-    template: 
+    template:
     '<div class="neo-menu" v-cloak>'+
         '<div class="neo-menu__item" v-for="(item,itemIdx) in menu" v-on:click.prevent="changeMenuItem(itemIdx)">'+
             '<span>'+
@@ -76,12 +76,12 @@ Vue.component('neo-menu', {
     },
     computed:{
         positions: function(){
-            
+
         }
     },
     methods: {
         changeMenuItem: function(idx) {
-            
+
             this.$emit('changed', idx)
             console.log(idx)
             // open api window
@@ -103,7 +103,7 @@ Vue.component('neo-menu', {
 });
 
 Vue.component('neo-header', {
-    template: 
+    template:
     '<div class=\'neo-header\'>'+
         '<neo-title></neo-title>'+
         '<neo-menu ref="menu" v-bind:idx="menuIdx" v-on:changed="changedMenu"></neo-menu>'+
@@ -126,7 +126,7 @@ Vue.component('neo-header', {
         changedMenu: function(idx) {
             if(idx == 0){
                 window.event.cancelBubble = true
-                
+
                 if(this.$refs.tooltip.visiable) {
                     this.$refs.tooltip.hide();
                 } else {
@@ -151,30 +151,30 @@ Vue.component('neo-header', {
 });
 
 Vue.component('neo-slider',{
-    template: 
+    template:
     '<div class="neo-slider" v-cloak>'+
         '<div class="neo-slider__line"></div>'+
         '<div class="neo-slider__item"'+
             'v-on:click="changeItem(idx)"'+
-            'v-bind:style="{left: positions[itemidx][idx]+ \'rem\'}"'+ 
+            'v-bind:style="{left: positions[itemidx][idx]+ \'rem\'}"'+
             'v-for="(item, idx) in items"'+
             'v-if="idx < itemidx">'+
             '<div class="neo-slider__item-dot" v-if="itemidx != idx">'+
                 '<i></i>'+
             '</div>'+
             '<h1 v-if="itemidx != idx">{{item.title}}</h1>'+
-            '<h2 v-if="itemidx != idx">{{item.subtitle}}</h2>'+    
+            '<h2 v-if="itemidx != idx">{{item.subtitle}}</h2>'+
         '</div>'+
         '<div class="neo-slider__item"'+
             'v-on:click="changeItem(idx)"'+
-            'v-bind:style="{right: positions[itemidx][idx]+ \'rem\'}"'+ 
+            'v-bind:style="{right: positions[itemidx][idx]+ \'rem\'}"'+
             'v-for="(item, idx) in items"'+
             'v-if="idx > itemidx">'+
             '<div class="neo-slider__item-dot" v-if="itemidx != idx">'+
                 '<i></i>'+
             '</div>'+
             '<h1 v-if="itemidx != idx">{{item.title}}</h1>'+
-            '<h2 v-if="itemidx != idx">{{item.subtitle}}</h2>'+    
+            '<h2 v-if="itemidx != idx">{{item.subtitle}}</h2>'+
         '</div>'+
     '</div>',
     props: {
@@ -218,7 +218,7 @@ Vue.component('neo-slider',{
 });
 
 Vue.component('neo-toolbox', {
-    template: 
+    template:
     '<div>'+
     '<div class="neo-toolbox dynamic" v-if="itemidx == 0">'+
         '<input type="text" v-on:keyup="handleKeyup" v-model="search" v-bind:placeholder="$t(\'slider.dynamic.search\')" />'+
@@ -325,7 +325,7 @@ Vue.component('neo-toolbox', {
         // search
         handleSearch: function() {
             console.log('search',this.search)
-            
+
             // if search not exist 
             if(!this.search || this.search === undefined){
                 return
@@ -371,7 +371,7 @@ Vue.component('neo-toolbox', {
             if(this.$refs.tooltip){
                 this.$refs.tooltip.hide();
             }
-        },  
+        },
         changeCategory: function(item) {
             this.categoryIdx = item.idx;
             this.$refs.tooltip.hide();
@@ -381,7 +381,7 @@ Vue.component('neo-toolbox', {
 });
 
 Vue.component('neo-footer', {
-    template: 
+    template:
     '<div class="neo-footer">'+
         '<div class="left">'+
             '<ul class="footer__connect">'+
@@ -403,7 +403,18 @@ Vue.component('neo-footer', {
                 '<li class="qq"><a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=1c63793c5fc8adaf4d6c5c9ee782c1ce8fb14dee9494d69a7372efc5415988d6" alt="SEA第五社群" title="SEA第五社群"><i class="fa fa-qq"></i></a> '+
                 ' </li>'+
             '</ul>'+
-            
+            '<div class="links">'+
+    '          <ul class="list-unstyled">' +
+    '                       <li ><span class="text-type2">友情链接</span></li>'+
+    '                      <li><a class="text-color2" target="_blank" href="https://neo.org">NEO智能经济</a></li>' +
+    '                      <li><a class="text-color2" target="_blank" href="https://ont.io">本体网络</a></li>' +
+    '                       <li><a class="text-color2" target="_blank" href="http://cryptogladiator.io/">疯狂角斗士</a></li>' +
+    '                      <li><a class="text-color2" target="_blank" href="http://alchemint.io">阿基米德稳定币</a></li>' +
+    '                      <li><a class="text-color2" target="_blank" href="http://loopring.org">路印协议</a></li>' +
+    '                      <li><a class="text-color2" target="_blank" href="http://www.binance.com">币安</a></li>' +
+    '                      <li><a class="text-color2" target="_blank" href="http://www.byb.world">币用宝</a></li>' +
+    '                    </ul>' +
+    '                        </div>'+
         '</div>'+
         '<div class="center">'+
             '<div class="folder">'+
@@ -412,7 +423,7 @@ Vue.component('neo-footer', {
                 '</div>'+
             '</div>'+
             '<div class="info">'+
-                '<div>{{$t("footer.version")}}: v2.7.3</div>'+
+                '<div>{{$t("footer.version")}}: v2.7.6</div>'+
                 '<div class="netwrok"><a href="javascript:void(0)" @click="selectNetwork">{{ network }}</a></div>'+
             '</div>'+
         '</div>'+
@@ -462,11 +473,11 @@ Vue.component('neo-paging', {
     '<div class="neo-paging">'+
     '<div class="info" v-bind:style="{color: TintColor}">'+
         '{{$t("pagination.current")}}'+
-        ' {{(CurrentPage-1)*PageCount+1}} '+ 
-        ' {{$t("pagination.to")}}'+ 
-        ' {{CurrentPage*PageCount>TotalCount ? TotalCount : CurrentPage*PageCount}} '+ 
-        ' {{$t("pagination.total")}} '+ 
-        ' {{TotalCount}} '+ 
+        ' {{(CurrentPage-1)*PageCount+1}} '+
+        ' {{$t("pagination.to")}}'+
+        ' {{CurrentPage*PageCount>TotalCount ? TotalCount : CurrentPage*PageCount}} '+
+        ' {{$t("pagination.total")}} '+
+        ' {{TotalCount}} '+
     '</div>'+
     // '<div class="page">'+
     //     '<i class="icon iconfont icon-arrow-left prev" v-bind:class="{\'disable\': CurrentPage==1}" v-if="CurrentPage==1"></i>'+
@@ -544,7 +555,7 @@ Vue.component('neo-paging', {
 })
 
 Vue.component('neo-dynamic-list',{
-    template: 
+    template:
     '<div class="neo-dynamic-list">'+
         '<div class="neo-dynamic-list__item" v-for="(item, itemIdx) in items" v-on:click="tap(item)">'+
             '<h1 v-bind:class="{\'link\': item.url}">{{item.value}} <i>{{item.unit}}</i></h1>'+
@@ -574,10 +585,10 @@ Vue.component('neo-dynamic-list',{
             }
         },
         init: function() {
-            var that = this 
+            var that = this
             axios({
                 url: host+'/api/v1/'+network+'/public/graphql',
-                method: 'post', 
+                method: 'post',
                 data: {
                     query: '{'+
                         ' SystemQuery { '+
@@ -601,7 +612,7 @@ Vue.component('neo-dynamic-list',{
                     if(parseInt(result.blockNum - 1) > that.blockIndex){
                         that.countdown = 0
                     }
-                    
+
                     that.blockIndex = result.blockNum - 1
                     that.items = [
                         {value: moment(result.startTime*1000).format("YYYY-MM-DD"), unit: '', desc: that.$t('dynamic.startTime')},
@@ -612,13 +623,13 @@ Vue.component('neo-dynamic-list',{
                         {value: result.addressNum.toString().replace(/(?=((?!\b)\d{3})+$)/g, ','), unit: '', desc:that.$t('dynamic.addressNum')},
                         {value: that.countdown, unit: that.$t('dynamic.second'), desc:that.$t('dynamic.newBlock')}
                     ]
-                    
+
                     console.log('that.intervalid2',that.intervalid2)
                     if(!that.intervalid2){
                         // 出块时间
                         that.getCountdown()
                     }
-                   
+
                 }
             })
             .catch(function (error) {
@@ -637,7 +648,7 @@ Vue.component('neo-dynamic-list',{
         },
         getCountdown(){
             console.log('getCountdown')
-            let that = this 
+            let that = this
             that.intervalid2 = setInterval(()=>{
                     that.$set(that.items, 6, { value: that.countdown++,unit: that.$t('dynamic.second'), desc:that.$t('dynamic.newBlock') })
                     console.log('getCountdown')
@@ -659,22 +670,22 @@ Vue.component('neo-market-neochart', {
             if(this.chart){
                 this.chart = undefined
             }
-            
+
             this.chart = echarts.init(document.getElementById('neochart'));
-            
+
             var data1 = [];
 
             var data2 = [];
 
             for(var i = 0; i < 65; i++){
                 data1.push({
-                    "date": moment('2018-01-12 00:00').add(3*i, 'hours').format('YYYY-MM-DD HH:mm'), 
+                    "date": moment('2018-01-12 00:00').add(3*i, 'hours').format('YYYY-MM-DD HH:mm'),
                     "value": parseInt(Math.random()*10)})
             }
 
             for(var i = 0; i < 65; i++){
                 data2.push({
-                    "date": moment('2018-01-12 00:00').add(3*i, 'hours').format('YYYY-MM-DD HH:mm'), 
+                    "date": moment('2018-01-12 00:00').add(3*i, 'hours').format('YYYY-MM-DD HH:mm'),
                     "value": parseInt(Math.random()*10)})
             }
 
@@ -792,7 +803,7 @@ Vue.component('neo-market-neochart', {
 });
 
 Vue.component('neo-wallet-list', {
-    template: 
+    template:
     '<div class="neo-wallet-list">'+
         '<div class="row header">'+
                 '<div class="row header">'+
@@ -862,9 +873,9 @@ Vue.component('neo-wallet-list', {
             that.walletItems = [];
             axios({
                 url: host+'/api/v1/'+network+'/public/graphql',
-                method: 'post', 
+                method: 'post',
                 data: {
-                    query: 
+                    query:
                     '{'+
                         'AddressQuery (skip:'+(this.currentPage-1)*this.count+', limit:'+ this.count +' ) {'+
                         'count,'+
@@ -910,7 +921,7 @@ Vue.component('neo-wallet-list', {
 });
 
 Vue.component('neo-address-list', {
-    template: 
+    template:
     '<div class="neo-address-list">'+
         '<h4 class="update">{{$t("address.update")}}</h4>'+
         '<div class="row header">'+
@@ -970,7 +981,7 @@ Vue.component('neo-address-list', {
             that.addressItems = [];
             axios({
                 url: host+'/api/v1/'+network+'/asset/transaction/' + that.id.substring(2)+`?start=${start}&end=${end}`,
-                method: 'get', 
+                method: 'get',
             })
             .then(function (resp) {
                 // console.log(resp)
@@ -1012,7 +1023,7 @@ Vue.component('neo-tran-record', {
                 '<div class="neo-tran-record__title">{{left.title}}</div>'+
                 '<div class="neo-tran-record__address" v-on:click="goto(left.address)"><i class="icon iconfont icon-search"></i> <span>{{left.address}}</span></div>'+
                 '<div class="neo-tran-record__amount"><span>{{left.value}} {{left.symbol}}</span></div>'+
-            '</div>'+        
+            '</div>'+
         '</div>'+
         '<div class="neo-tran-record__middle">'+
             '<i class="icon iconfont icon-arrow-right"></i>'+
@@ -1022,7 +1033,7 @@ Vue.component('neo-tran-record', {
                 '<div class="neo-tran-record__title">{{right.title}}</div>'+
                 '<div class="neo-tran-record__address" v-on:click="goto(right.address)"><i class="icon iconfont icon-search"></i><span>{{right.address}}</span></div>'+
                 '<div class="neo-tran-record__amount"><span>{{right.value}} {{right.symbol}}</span></div>'+
-            '</div>'+   
+            '</div>'+
         '</div>'+
         '<div class="underlayer"></div>'+
         '<div class="clear"></div>'+
@@ -1090,7 +1101,7 @@ Vue.component('neo-tran-list', {
             if(this.currentPage && this.count){
                 filter += 'skip:'+(this.currentPage-1)*this.count+', limit:'+ this.count;
             }
-            
+
             if(this.block) {
                 filter += ' ,blockIndex:'+this.block;
             }
@@ -1127,15 +1138,15 @@ Vue.component('neo-tran-list', {
         },
         setAsset: function(asset) {
             this.asset = asset
-        },  
+        },
         init: function() {
             var that = this;
             that.items = [];
             axios({
                 url: host+'/api/v1/'+network+'/public/graphql',
-                method: 'post', 
+                method: 'post',
                 data: {
-                    query: 
+                    query:
                     '{'+
                         'TransactionQuery ('+that.QueryFilter+' ) {'+
                         'count,'+
@@ -1181,7 +1192,7 @@ Vue.component('neo-tran-list', {
                 }
             })
             .then(function (resp) {
-                
+
                 that.$emit('loaded', resp.data.data.TransactionQuery)
                 that.items = [];
                 for(var i=0; i<resp.data.data.TransactionQuery.rows.length; i++){
@@ -1194,9 +1205,9 @@ Vue.component('neo-tran-list', {
                         expand: false,
                     }
                     that.items.push(item)
-                   
+
                     if(row.vin || row.vout){
-                        
+
                         var vins = row.vin;
                         var vouts = row.vout;
                         var record = { left: [], right: []}
@@ -1223,7 +1234,7 @@ Vue.component('neo-tran-list', {
 
                         if(record.left.length  || record.right.length){
                             item.records.push(record)
-                        }  
+                        }
                     }
 
                     if(row.nep5 && row.nep5.length > 0){
@@ -1253,10 +1264,10 @@ Vue.component('neo-tran-list', {
                         if(item.records[0].left.length > 0){
                             item.records[0].left[0].title = that.$t('transaction.sentFrom');
                         }
-    
+
                         if(item.records[0].right.length > 0){
                             item.records[0].right[0].title = that.$t('transaction.sentTo')
-                        } 
+                        }
                     }
                 }
 
@@ -1275,7 +1286,7 @@ Vue.component('neo-tran-list', {
 })
 
 Vue.component('neo-tran-info', {
-    template: 
+    template:
     '<div class="neo-tran-info">'+
         '<div class="warpper" v-for="(item, itemIdx) in transaction">'+
             '<div class="neo-tran-info__item" v-bind:class="{\'first\': itemIdx%3==0}">'+
@@ -1327,7 +1338,7 @@ Vue.component('neo-tran-script',{
 });
 
 Vue.component('neo-block-list', {
-    template: 
+    template:
     '<div class="neo-block-list">'+
         '<div class="row header">'+
             '<div class="col col-1">'+
@@ -1378,9 +1389,9 @@ Vue.component('neo-block-list', {
             that.walletItems = [];
             axios({
                 url: host+'/api/v1/'+network+'/public/graphql',
-                method: 'post', 
+                method: 'post',
                 data: {
-                    query: 
+                    query:
                     '{'+
                         'BlockQuery (skip:'+(this.currentPage-1)*this.count+', limit:'+ this.count +' ) {'+
                         'count,'+
@@ -1431,8 +1442,8 @@ Vue.component('neo-block-list', {
 })
 
 Vue.component('neo-block-info', {
-    template: 
-    '<div class="neo-block-info">'+ 
+    template:
+    '<div class="neo-block-info">'+
         '<div class="warpper" v-for="(item, itemIdx) in block">'+
             '<div class="neo-block-info__item" v-bind:class="{\'first\': itemIdx%3==0}">'+
                 '<h1>{{item.title}}</h1>'+
@@ -1473,17 +1484,17 @@ Vue.component('neo-addr-info', {
         '<div class="balance">'+
 
             '<div v-for="item in items" class="col item" v-if="item.balances != '+'0'+' ">'+
-                
+
                 '<h3>{{item.name}}</h3>'+
                 '<h4>{{item.balances}}</h4>'+
             '</div>'+
 
-            
+
             '<div class="col item"  v-show = "isZero">'+
                 '<h3>{{$t("address.zero")}}</h3>'+
             '</div>'+
 
-            
+
             '<div class="clear"></div>'+
         '</div>'+
         '<div class="underlayer"></div>'+
@@ -1518,12 +1529,12 @@ Vue.component('neo-addr-info', {
                 console.log(error);
             });
         }
-    
+
     }
 });
 
 Vue.component('neo-asset-list', {
-    template: 
+    template:
     '<div class="neo-asset-list" v-cloak>'+
         '<div class="row hd">'+
             '<div class="col col-1"><span>{{$t("asset.name")}}</span></div>'+
@@ -1557,7 +1568,7 @@ Vue.component('neo-asset-list', {
             that.items = [];
             axios({
                 url: host+'/api/v1/'+network+'/public/graphql',
-                method: 'post', 
+                method: 'post',
                 data: {
                     query:'{'+
                             ' AssetQuery(skip: ' + (that.currentPage-1) * that.count +', limit: '+ that.count + (that.keyword == '' ? '' : ', search:"'+that.keyword+'"') +' ){ '+
@@ -1573,7 +1584,7 @@ Vue.component('neo-asset-list', {
                                         ' name '+
                                     ' } '+
                                 ' } '+
-                            
+
                             ' } '+
                         ' } '
                 }
@@ -1611,7 +1622,7 @@ Vue.component('neo-asset-list', {
 })
 
 Vue.component('neo-select', {
-    template: 
+    template:
     '<div class="neo-select" v-if="visiable" v-bind:style="{left: left, right: right, top: top}">'+
         '<div class="neo-select-arrow"></div>'+
         '<div class="neo-select-list">'+
@@ -1659,7 +1670,7 @@ Vue.component('neo-select', {
 })
 
 Vue.component('neo-search', {
-    template: 
+    template:
     '<div class="neo-search">'+
         '<input type="text" v-on:keyup.enter="search" v-model="keyword"> </input>' +
         '<i class="icon iconfont icon-search" v-on:click="search"></i>'+

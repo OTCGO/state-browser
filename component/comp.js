@@ -406,7 +406,8 @@ Vue.component('neo-footer', {
             '<div class="links">'+
     '          <ul class="list-unstyled">' +
     '                       <li ><span class="text-type2">友情链接</span></li>'+
-    '                      <li><a class="text-color2" target="_blank" href="https://neo.org">NEO智能经济</a></li>' +
+    '                       <li><a class="text-color2" target="_blank" href="https://otcgo.cn/">SEA</a></li>' +    
+    '                       <li><a class="text-color2" target="_blank" href="https://neo.org">NEO</a></li>' +
     '                      <li><a class="text-color2" target="_blank" href="https://ont.io">本体网络</a></li>' +
     '                       <li><a class="text-color2" target="_blank" href="http://cryptogladiator.io/">疯狂角斗士</a></li>' +
     '                      <li><a class="text-color2" target="_blank" href="http://alchemint.io">阿基米德稳定币</a></li>' +

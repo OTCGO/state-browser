@@ -92,6 +92,15 @@ var en = {
     prev: 'Prev'
   },
   footer: {
-    version: 'cli version'
+    version: 'cli version',
+      link:'link',
+      SEA:'SEA',
+      NEO:'NEO',
+      ont:'ONT',
+      cryptogladiator:'CryptoGladiator',
+      alchemint:'Alchemint',
+      loopring:'Loopring',
+      binance:'Binance',
+      byb:'BiYongbao'
   }
 }

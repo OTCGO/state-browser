@@ -397,7 +397,7 @@ Vue.component('neo-footer', {
                 // '</li>'+
                 '<li class="weixin">'+
                         '<a href="#"><i class="fa fa-weixin"></i></a> <div class="weixin-qr-code">'+
-                                '<img  src="/images/weixin-qrcode.jpg" alt="蓝鲸淘智能资产管理平台" width="160">'+
+                                '<img  src="/images/wxQrcode.jpg" alt="蓝鲸淘智能资产管理平台" width="160">'+
                         '</div>'+
                 '</li> '+
                 '<li class="qq"><a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=1c63793c5fc8adaf4d6c5c9ee782c1ce8fb14dee9494d69a7372efc5415988d6" alt="SEA第五社群" title="SEA第五社群"><i class="fa fa-qq"></i></a> '+
@@ -405,15 +405,8 @@ Vue.component('neo-footer', {
             '</ul>'+
             '<div class="links">'+
     '          <ul class="list-unstyled">' +
-    '                       <li ><span class="text-type2">友情链接</span></li>'+
-    '                       <li><a class="text-color2" target="_blank" href="https://otcgo.cn/">SEA</a></li>' +    
-    '                       <li><a class="text-color2" target="_blank" href="https://neo.org">NEO</a></li>' +
-    '                      <li><a class="text-color2" target="_blank" href="https://ont.io">本体网络</a></li>' +
-    '                       <li><a class="text-color2" target="_blank" href="http://cryptogladiator.io/">疯狂角斗士</a></li>' +
-    '                      <li><a class="text-color2" target="_blank" href="http://alchemint.io">阿基米德稳定币</a></li>' +
-    '                      <li><a class="text-color2" target="_blank" href="http://loopring.org">路印协议</a></li>' +
-    '                      <li><a class="text-color2" target="_blank" href="http://www.binance.com">币安</a></li>' +
-    '                      <li><a class="text-color2" target="_blank" href="http://www.byb.world">币用宝</a></li>' +
+    '                      <li ><span class="text-type2">{{$t("footer.link")}}</span></li>'+
+    '                       <li v-for="item in links"><a class="text-color2" target="_blank" :href="item.href">{{item.text}}</a></li>' +
     '                    </ul>' +
     '                        </div>'+
         '</div>'+
@@ -435,7 +428,34 @@ Vue.component('neo-footer', {
     '</div>',
     data: function() {
         return {
-            network: ''
+            network: '',
+            links: [
+                {
+                    text: this.$t('footer.SEA'),
+                    href: 'https://otcgo.cn/'
+                }, {
+                    text: this.$t('footer.NEO'),
+                    href: 'https://neo.org'
+                }, {
+                    text: this.$t('footer.ont'),
+                    href: 'https://ont.io'
+                }, {
+                    text: this.$t('footer.cryptogladiator'),
+                    href: 'http://cryptogladiator.io'
+                }, {
+                    text: this.$t('footer.alchemint'),
+                    href: 'http://alchemint.io'
+                }, {
+                    text: this.$t('footer.loopring'),
+                    href: 'http://loopring.org'
+                }, {
+                    text: this.$t('footer.binance'),
+                    href: 'http://www.binance.com'
+                }, {
+                    text: this.$t('footer.byb'),
+                    href: 'http://www.byb.world'
+                },
+            ]
         }
     },
     methods: {

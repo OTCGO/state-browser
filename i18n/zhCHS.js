@@ -7,7 +7,7 @@ var zhCHS = {
     assets: '资产',
     api: 'API',
     language: '语言',
-    wallet: '钱包APP'
+    wallet: 'SEA钱包'
   },
   slider: {
     dynamic: {
@@ -93,6 +93,14 @@ var zhCHS = {
   },
   footer: {
     link: '相关链接',
-    version: '节点版本'
+    version: '节点版本',
+      SEA:'SEA',
+      NEO:'NEO',
+      ont:'本体网络',
+      cryptogladiator:'疯狂角斗士',
+      alchemint:'阿基米德稳定币',
+      loopring:'路印协议',
+      binance:'币安',
+      byb:'币用宝'
   }
 }

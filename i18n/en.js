@@ -7,7 +7,7 @@ var en = {
     assets: 'Assets',
     api: 'API',
     language: 'Language',
-    wallet: 'Wallet App'
+    wallet: 'SEA Wallet'
   },
   slider: {
     dynamic: {

@@ -397,7 +397,7 @@ Vue.component('neo-footer', {
                 // '</li>'+
                 '<li class="weixin">'+
                         '<a href="#"><i class="fa fa-weixin"></i></a> <div class="weixin-qr-code">'+
-                                '<img  src="/images/weixin-qrcode.jpg" alt="蓝鲸淘智能资产管理平台" width="160">'+
+                                '<img  src="/images/wxQrcode.jpg" alt="蓝鲸淘智能资产管理平台" width="160">'+
                         '</div>'+
                 '</li> '+
                 '<li class="qq"><a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=1c63793c5fc8adaf4d6c5c9ee782c1ce8fb14dee9494d69a7372efc5415988d6" alt="SEA第五社群" title="SEA第五社群"><i class="fa fa-qq"></i></a> '+

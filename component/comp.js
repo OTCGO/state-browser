@@ -680,7 +680,7 @@ Vue.component('neo-dynamic-list',{
 });
 
 Vue.component('neo-market-neochart', {
-    template: '<div id="neochart" style="height: 2rem; width: 7.5rem;"></div>',
+    template: '<div id="neochart" style="height: 2rem;"></div>',
     data: function() {
         return {
             chart: undefined

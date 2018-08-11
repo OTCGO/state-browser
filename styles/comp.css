@@ -16,6 +16,7 @@ body {
 
 #app {
     padding: 0.2rem 0.2rem 0 0.2rem;
+    overflow: hidden;
 }
 
 .clear {

@@ -51,6 +51,7 @@
     position: relative;
     left: 2.45rem;
     top:-0.8rem;
+    overflow: hidden;
 }
 .page-home-data.B2, .page-home-data.P2, .page-home-data.M2{
     width: 7.5rem;

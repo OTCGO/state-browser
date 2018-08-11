@@ -36,6 +36,10 @@
     bottom: 0.9rem;
 }
 
+.page-home-toolbox .p {
+    overflow: hidden;
+}
+
 .page-home-data.B0, .page-home-data.P0, .page-home-data.M0{
     width: 7.5rem;
     position: relative;

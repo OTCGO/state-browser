@@ -101,6 +101,7 @@ var zhCHS = {
       alchemint:'阿基米德稳定币',
       loopring:'路印协议',
       binance:'币安',
-      byb:'币用宝'
+      byb:'币用宝',
+      nns:'NNS',
   }
 }

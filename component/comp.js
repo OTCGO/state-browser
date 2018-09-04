@@ -386,7 +386,7 @@ Vue.component('neo-footer', {
             '<ul class="footer__connect">'+
                 '<li class="">'+
                     '<a target="_blank" rel="noreferrer noopener" href="https://github.com/OTCGO/state-browser">'+
-                    '<img src="/images/Github.svg" width="25" alt="">'+
+                    '<img src="/images/Github.svg" width="25" height="25" alt="">'+
                     '</a>'+
                 '</li>'+
                 // '<li class="weibo">'+
@@ -394,16 +394,16 @@ Vue.component('neo-footer', {
                 //         '<i class=" fa fa-weibo"></i>'+
                 //     '</a>'+
                 // '</li>'+
-                 '<li class=""><a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=1c63793c5fc8adaf4d6c5c9ee782c1ce8fb14dee9494d69a7372efc5415988d6" alt="SEA第五社群" title="SEA第五社群"><img src="/images/QQ.svg" width="25" alt=""></a> '+
+                 '<li class=""><a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=1c63793c5fc8adaf4d6c5c9ee782c1ce8fb14dee9494d69a7372efc5415988d6" alt="SEA第五社群" title="SEA第五社群"><img src="/images/QQ.svg" width="25" height="25" alt=""></a> '+
                  ' </li>'+
                 '<li class="weixin">'+
                         '<a href="#"><img src="/images/wx.svg"  width="25" alt=""></a> <div class="weixin-qr-code">'+
                                 '<img  src="/images/wxQrcode.jpg" alt="蓝鲸淘智能资产管理平台" width="160">'+
                         '</div>'+
                 '</li> '+
-                '<li class="telegram"><a target="_blank" href="//t.me/otcgo"  title="Telegram"><img src="/images/Telegram.svg" width="25" alt=""></a> '+
+                '<li class="telegram"><a target="_blank" href="//t.me/otcgo"  title="Telegram"><img src="/images/Telegram.svg" width="25" height="25" alt=""></a> '+
                 '</li>'+
-                '<li class="twitter"><a target="_blank" href="https://twitter.com/smart_exchangea"  title="twitter"><img src="/images/Twitter.svg" width="25" alt=""></a> '+
+                '<li class="twitter"><a target="_blank" href="https://twitter.com/smart_exchangea"  title="twitter"><img src="/images/Twitter.svg" width="25" height="25" alt=""></a> '+
                 '</li>'+
             '</ul>'+
             '<div class="links" style="display: flex;">' +
@@ -420,7 +420,7 @@ Vue.component('neo-footer', {
                 '</div>'+
             '</div>'+
             '<div class="info">'+
-                '<div>{{$t("footer.version")}}: v2.7.6</div>'+
+                '<div>{{$t("footer.version")}}: v2.8.0</div>'+
                 '<div class="netwrok"><a href="javascript:void(0)" @click="selectNetwork">{{ network }}</a></div>'+
             '</div>'+
         '</div>'+

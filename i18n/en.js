@@ -103,5 +103,6 @@ var en = {
       binance:'Binance',
       byb:'BiYongbao',
       nns:'NNS',
+      zdpvt:'zdpvt'
   }
 }

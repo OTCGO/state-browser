@@ -126,7 +126,6 @@ Vue.component('neo-header', {
         changedMenu: function(idx) {
             if(idx == 0){
                 window.event.cancelBubble = true
-
                 if(this.$refs.tooltip.visiable) {
                     this.$refs.tooltip.hide();
                 } else {
@@ -462,6 +461,9 @@ Vue.component('neo-footer', {
                 }, {
                     text: this.$t('footer.nns'),
                     href: 'https://neons.name'
+                }, {
+                    text: this.$t('footer.zdpvt'),
+                    href: 'https://www.zdpvt.com/'
                 },
             ]
         }

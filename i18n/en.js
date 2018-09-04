@@ -101,6 +101,7 @@ var en = {
       alchemint:'Alchemint',
       loopring:'Loopring',
       binance:'Binance',
-      byb:'BiYongbao'
+      byb:'BiYongbao',
+      nns:'NNS',
   }
 }

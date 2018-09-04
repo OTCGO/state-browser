@@ -385,9 +385,9 @@ Vue.component('neo-footer', {
     '<div class="neo-footer">'+
         '<div class="left">'+
             '<ul class="footer__connect">'+
-                '<li class="github">'+
+                '<li class="">'+
                     '<a target="_blank" rel="noreferrer noopener" href="https://github.com/OTCGO/state-browser">'+
-                    '<i class="fa fa-github"></i>'+
+                    '<img src="/images/Github.svg" width="25" height="25" alt="">'+
                     '</a>'+
                 '</li>'+
                 // '<li class="weibo">'+
@@ -395,20 +395,24 @@ Vue.component('neo-footer', {
                 //         '<i class=" fa fa-weibo"></i>'+
                 //     '</a>'+
                 // '</li>'+
+                 '<li class=""><a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=1c63793c5fc8adaf4d6c5c9ee782c1ce8fb14dee9494d69a7372efc5415988d6" alt="SEA第五社群" title="SEA第五社群"><img src="/images/QQ.svg" width="25" height="25" alt=""></a> '+
+                 ' </li>'+
                 '<li class="weixin">'+
-                        '<a href="#"><i class="fa fa-weixin"></i></a> <div class="weixin-qr-code">'+
+                        '<a href="#"><img src="/images/wx.svg"  width="25" alt=""></a> <div class="weixin-qr-code">'+
                                 '<img  src="/images/wxQrcode.jpg" alt="蓝鲸淘智能资产管理平台" width="160">'+
                         '</div>'+
                 '</li> '+
-                '<li class="qq"><a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=1c63793c5fc8adaf4d6c5c9ee782c1ce8fb14dee9494d69a7372efc5415988d6" alt="SEA第五社群" title="SEA第五社群"><i class="fa fa-qq"></i></a> '+
-                ' </li>'+
+                '<li class="telegram"><a target="_blank" href="//t.me/otcgo"  title="Telegram"><img src="/images/Telegram.svg" width="25" height="25" alt=""></a> '+
+                '</li>'+
+                '<li class="twitter"><a target="_blank" href="https://twitter.com/smart_exchangea"  title="twitter"><img src="/images/Twitter.svg" width="25" height="25" alt=""></a> '+
+                '</li>'+
             '</ul>'+
-            '<div class="links">'+
-    '          <ul class="list-unstyled">' +
-    '                      <li ><span class="text-type2">{{$t("footer.link")}}</span></li>'+
+            '<div class="links" style="display: flex;">' +
+    '           <span class="text-type2">{{$t("footer.link")}}</span>'+
+    '          <ul class="list-unstyled" style="flex:1">' +
     '                       <li v-for="item in links"><a class="text-color2" target="_blank" :href="item.href">{{item.text}}</a></li>' +
     '                    </ul>' +
-    '                        </div>'+
+    '        </div>'+
         '</div>'+
         '<div class="center">'+
             '<div class="folder">'+
@@ -417,12 +421,13 @@ Vue.component('neo-footer', {
                 '</div>'+
             '</div>'+
             '<div class="info">'+
-                '<div>{{$t("footer.version")}}: v2.7.6</div>'+
+                '<div>{{$t("footer.version")}}: v2.8.0</div>'+
                 '<div class="netwrok"><a href="javascript:void(0)" @click="selectNetwork">{{ network }}</a></div>'+
             '</div>'+
         '</div>'+
-        '<div class="right">'+
+        '<div class="right" style="display:flex;justify-content: center;align-items: center;padding:0">'+
             // '<v-select :on-change="selectNetwork()" v-model="selected" :options="options"></v-select>'+
+        '<img src="/images/wxQrcode.jpg" width="120" height="120" alt="">'+
         '</div>'+
         '<div class="clear"></div>'+
     '</div>',
@@ -454,6 +459,9 @@ Vue.component('neo-footer', {
                 }, {
                     text: this.$t('footer.byb'),
                     href: 'http://www.byb.world'
+                }, {
+                    text: this.$t('footer.nns'),
+                    href: 'https://neons.name'
                 },
             ]
         }

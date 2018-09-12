@@ -103,6 +103,7 @@ var zhCHS = {
       binance:'币安',
       byb:'币用宝',
       nns:'NNS',
-      zdpvt:'支点'
+      zdpvt:'支点',
+      DBC:'深脑链'
   }
 }

@@ -464,6 +464,9 @@ Vue.component('neo-footer', {
                 }, {
                     text: this.$t('footer.zdpvt'),
                     href: 'https://www.zdpvt.com/'
+                }, {
+                    text: this.$t('footer.DBC'),
+                    href: 'https://www.deepbrainchain.org/'
                 },
             ]
         }

@@ -467,6 +467,15 @@ Vue.component('neo-footer', {
                 }, {
                     text: this.$t('footer.DBC'),
                     href: 'https://www.deepbrainchain.org/'
+                }, {
+                    text: this.$t('footer.chainfor'),
+                    href: 'https://www.chainfor.com/'
+                }, {
+                    text: this.$t('footer.bixiaobai'),
+                    href: 'http://www.bixiaobai.com/'
+                }, {
+                    text: this.$t('footer.biyiye'),
+                    href: 'http://biyiye.com/'
                 },
             ]
         }

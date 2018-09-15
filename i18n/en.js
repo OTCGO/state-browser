@@ -104,6 +104,9 @@ var en = {
         byb: 'BiYongbao',
         nns: 'NNS',
         zdpvt: 'zdpvt',
-        DBC: '深脑链'
+        DBC: 'DBC',
+        chainfor:'chainfor',
+        bixiaobai:'bixiaobai',
+        biyiye:'biyiye'
     }
 };

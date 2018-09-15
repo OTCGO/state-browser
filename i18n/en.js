@@ -104,6 +104,9 @@ var en = {
         byb: 'BiYongbao',
         nns: 'NNS',
         zdpvt: 'zdpvt',
-        DBC: 'DBC'
+        DBC: 'DBC',
+        chainfor:'chainfor',
+        bixiaobai:'bixiaobai',
+        biyiye:'biyiye'
     }
 };

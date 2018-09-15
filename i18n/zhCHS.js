@@ -104,6 +104,9 @@ var zhCHS = {
       byb:'币用宝',
       nns:'NNS',
       zdpvt:'支点',
-      DBC:'深脑链'
+      DBC:'深脑链',
+      chainfor:'链向财经',
+      bixiaobai:'币小白',
+      biyiye:'币一页'
   }
 }

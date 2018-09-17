@@ -45,7 +45,8 @@ class App extends React.Component {
     return (
       <div >
         <Sidebar
-          open={this.state.siderOpen}
+          // open={this.state.siderOpen}
+          open
           handleDrawerToggle={this.handleDrawerToggle}
           routes={menuRoutes}
 

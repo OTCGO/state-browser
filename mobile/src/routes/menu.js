@@ -4,7 +4,7 @@ import Loading from '../components/Loading'
 const menuRoutes = [
   {
     path: '/home',
-    sidebarName: 'Dashboard',
+    sidebarName: 'Home',
     navbarName: 'Material Dashboard',
     // icon: Dashboard,
     component: Loadable({
@@ -24,7 +24,7 @@ const menuRoutes = [
   },
   {
     path: '/block',
-    sidebarName: 'BlockList',
+    // sidebarName: 'BlockList',
     navbarName: 'BlockList',
     // icon: Dashboard,
     component: Loadable({
@@ -34,7 +34,7 @@ const menuRoutes = [
   },
   {
     path: '/transactionlist',
-    sidebarName: 'Dashboard',
+    sidebarName: 'TransactionList',
     navbarName: 'Material Dashboard',
     // icon: Dashboard,
     component: Loadable({
@@ -44,7 +44,7 @@ const menuRoutes = [
   },
   {
     path: '/transaction',
-    sidebarName: 'Dashboard',
+    // sidebarName: 'Dashboard',
     navbarName: 'Material Dashboard',
     // icon: Dashboard,
     component: Loadable({
@@ -54,7 +54,7 @@ const menuRoutes = [
   },
   {
     path: '/assetlist',
-    sidebarName: 'Dashboard',
+    sidebarName: 'AssetList',
     navbarName: 'Material Dashboard',
     // icon: Dashboard,
     component: Loadable({
@@ -64,7 +64,7 @@ const menuRoutes = [
   },
   {
     path: '/asset',
-    sidebarName: 'Dashboard',
+    // sidebarName: 'Dashboard',
     navbarName: 'Material Dashboard',
     // icon: Dashboard,
     component: Loadable({

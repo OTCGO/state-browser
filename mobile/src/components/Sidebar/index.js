@@ -7,54 +7,49 @@ import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
+import Divider from '@material-ui/core/Divider'
+import Button from '@material-ui/core/Button'
 
-const styles = {
+const styles = theme => ({
   list: {
     width: 250
+  },
+  button: {
+    margin: theme.spacing.unit,
+    display: 'block'
   }
-}
+})
 
 const Sidebar = ({ ...props }) => {
-  // console.log('props', props)
+  console.log('props', props)
   const { classes } = props
 
   const sideList = (
     <div className={classes.list}>
+      <h4>菜单</h4>
       <List>
-        <NavLink
-          to={'/home'}
 
-        >
-          <ListItem button>
+        {
+          props.routes.map((item) => {
+            if (item.sidebarName) {
+              return (
+                <NavLink
+                  to={item.path}
 
-            <ListItemText primary='首页' />
-          </ListItem>
-        </NavLink>
-        <NavLink
-          to={'/blocklist'}
+                >
+                  <ListItem button>
 
-        >
-          <ListItem button>
-            <ListItemText primary='最新区块' />
-          </ListItem>
-        </NavLink>
-        <NavLink
-          to={'/transactionlist'}
+                    <Button variant='contained' color='primary' className={classes.button}>
+        item
+                    </Button>
+                  </ListItem>
+                  <Divider />
+                </NavLink>
+              )
+            }
+          })
+        }
 
-        >
-          <ListItem button>
-            <ListItemText primary='最新交易' />
-          </ListItem>
-        </NavLink>
-
-        <NavLink
-          to={'/assetlist'}
-
-        >
-          <ListItem button>
-            <ListItemText primary='资产列表' />
-          </ListItem>
-        </NavLink>
       </List>
 
     </div>

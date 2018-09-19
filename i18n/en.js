@@ -107,6 +107,10 @@ var en = {
         DBC: 'DBC',
         chainfor:'chainfor',
         bixiaobai:'bixiaobai',
-        biyiye:'biyiye'
+        biyiye:'biyiye',
+        odaily:'odaily',
+        ihuoqiu:'ihuoqiu',
+        blockchainho:'blockchainho',
+        BlockCC:'BlockCC'
     }
 };

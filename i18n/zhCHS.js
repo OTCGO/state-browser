@@ -107,6 +107,10 @@ var zhCHS = {
       DBC:'深脑链',
       chainfor:'链向财经',
       bixiaobai:'币小白',
-      biyiye:'币一页'
+      biyiye:'币一页',
+      odaily:'星球日报',
+      ihuoqiu:'火球财经',
+      blockchainho:'区块链之家论坛',
+      BlockCC:'BlockCC'
   }
 }

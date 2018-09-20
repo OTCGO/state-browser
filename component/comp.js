@@ -476,6 +476,18 @@ Vue.component('neo-footer', {
                 }, {
                     text: this.$t('footer.biyiye'),
                     href: 'http://biyiye.com/'
+                }, {
+                    text: this.$t('footer.odaily'),
+                    href: 'https://m.odaily.com'
+                }, {
+                    text: this.$t('footer.ihuoqiu'),
+                    href: 'http://m.ihuoqiu.com'
+                }, {
+                    text: this.$t('footer.blockchainho'),
+                    href: 'http://www.blockchainho.me/'
+                }, {
+                    text: this.$t('footer.BlockCC'),
+                    href: 'http://biyiye.com/'
                 },
             ]
         }

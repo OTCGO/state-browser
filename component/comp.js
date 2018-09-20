@@ -478,10 +478,10 @@ Vue.component('neo-footer', {
                     href: 'http://biyiye.com/'
                 }, {
                     text: this.$t('footer.odaily'),
-                    href: 'https://m.odaily.com'
+                    href: 'https://www.odaily.com'
                 }, {
                     text: this.$t('footer.ihuoqiu'),
-                    href: 'http://m.ihuoqiu.com'
+                    href: 'http://www.ihuoqiu.com'
                 }, {
                     text: this.$t('footer.blockchainho'),
                     href: 'http://www.blockchainho.me/'

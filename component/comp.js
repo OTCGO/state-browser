@@ -488,6 +488,9 @@ Vue.component('neo-footer', {
                 }, {
                     text: this.$t('footer.BlockCC'),
                     href: 'http://biyiye.com/'
+                }, {
+                    text: this.$t('footer.WLZJ'),
+                    href: 'http://www.wanlianzhijia.com'
                 },
             ]
         }

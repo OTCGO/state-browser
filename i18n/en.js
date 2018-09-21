@@ -111,6 +111,7 @@ var en = {
         odaily:'odaily',
         ihuoqiu:'ihuoqiu',
         blockchainho:'blockchainho',
-        BlockCC:'BlockCC'
+        BlockCC:'BlockCC',
+        WLZJ:'WL',
     }
 };

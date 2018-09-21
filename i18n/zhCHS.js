@@ -111,6 +111,7 @@ var zhCHS = {
       odaily:'星球日报',
       ihuoqiu:'火球财经',
       blockchainho:'区块链之家论坛',
-      BlockCC:'BlockCC'
+      BlockCC:'BlockCC',
+      WLZJ:'万链之家',
   }
 }

@@ -426,7 +426,7 @@ Vue.component('neo-footer', {
         '</div>'+
         '<div class="right" style="display:flex;justify-content: center;align-items: center;padding:0">'+
             // '<v-select :on-change="selectNetwork()" v-model="selected" :options="options"></v-select>'+
-        '<img src="/images/wxQrcode.jpg" width="120" height="120" alt="">'+
+        '<img src="/images/wxQrcode.jpg" width="120" height="120" style="margin-top:.2rem" alt="">'+
         '</div>'+
         '<div class="clear"></div>'+
     '</div>',
@@ -488,6 +488,9 @@ Vue.component('neo-footer', {
                 }, {
                     text: this.$t('footer.BlockCC'),
                     href: 'http://biyiye.com/'
+                }, {
+                    text: this.$t('footer.WLZJ'),
+                    href: 'http://www.wanlianzhijia.com'
                 },
             ]
         }

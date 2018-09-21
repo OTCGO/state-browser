@@ -209,7 +209,7 @@ body {
     border-top: 1px solid #fff;
     color: #fff;
     font-weight: 100;
-    height: 1.65rem;
+    padding-bottom: .1rem
 }
 
 .neo-footer .folder {
@@ -258,7 +258,7 @@ body {
 .neo-footer .left {
     width: 40%;
     float: left;
-    height: 1.1rem;
+    /*height: 1.1rem;*/
     text-align: left;
     padding: 0 .5rem;
 }
@@ -319,9 +319,9 @@ body {
     text-align: center;
 }
 
-.neo-footer .links {
+/*.neo-footer .links {
     margin-top: .3rem;
-}
+}*/
 
 .neo-footer .links .text-type2 {
     padding: 0 .1rem;
@@ -347,7 +347,7 @@ body {
 }
 
 /*.neo-footer .left .footer__connect a[href*=github] {*/
-    /*background: #333;*/
+/*background: #333;*/
 /*}*/
 
 .neo-footer .left .footer__connect li a {

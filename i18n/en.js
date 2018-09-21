@@ -113,5 +113,7 @@ var en = {
         blockchainho:'blockchainho',
         BlockCC:'BlockCC',
         WLZJ:'WL',
+        niubilai:'niubilai',
+        bitansuo:'bitansuo',
     }
 };

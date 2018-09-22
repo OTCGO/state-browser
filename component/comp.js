@@ -443,6 +443,9 @@ Vue.component('neo-footer', {
                 }, {
                     text: this.$t('footer.ont'),
                     href: 'https://ont.io'
+                },{
+                    text: this.$t('footer.niubilai'),
+                    href: 'https://www.niubilai.com'
                 }, {
                     text: this.$t('footer.cryptogladiator'),
                     href: 'http://cryptogladiator.io'
@@ -491,6 +494,12 @@ Vue.component('neo-footer', {
                 }, {
                     text: this.$t('footer.WLZJ'),
                     href: 'http://www.wanlianzhijia.com'
+                }, {
+                    text: this.$t('footer.bitansuo'),
+                    href: 'http://www.bitansuo.com'
+                }, {
+                    text: this.$t('footer.lianshijie'),
+                    href: 'http://www.7234.cn'
                 },
             ]
         }

@@ -113,5 +113,8 @@ var zhCHS = {
       blockchainho:'区块链之家论坛',
       BlockCC:'BlockCC',
       WLZJ:'万链之家',
+      niubilai:'币莱财经',
+      bitansuo:'币探索',
+      lianshijie:'链世界',
   }
 }

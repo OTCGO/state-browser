@@ -497,6 +497,9 @@ Vue.component('neo-footer', {
                 }, {
                     text: this.$t('footer.bitansuo'),
                     href: 'http://www.bitansuo.com'
+                }, {
+                    text: this.$t('footer.lianshijie'),
+                    href: 'http://www.7234.cn'
                 },
             ]
         }

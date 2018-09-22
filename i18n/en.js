@@ -115,5 +115,6 @@ var en = {
         WLZJ:'WL',
         niubilai:'niubilai',
         bitansuo:'bitansuo',
+        lianshijie:'lianshijie',
     }
 };

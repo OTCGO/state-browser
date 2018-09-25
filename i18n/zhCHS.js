@@ -118,5 +118,6 @@ var zhCHS = {
       lianshijie:'链世界',
       qukuainews:'区块链中文网',
       blockcircles:'区块界',
+      BTCSOS:'速援财经',
   }
 }

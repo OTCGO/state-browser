@@ -118,5 +118,6 @@ var en = {
         lianshijie:'lianshijie',
         qukuainews:'qukuainews',
         blockcircles:'blockcircles',
+        BTCSOS:'BTCsos',
     }
 };

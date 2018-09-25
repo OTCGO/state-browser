@@ -506,6 +506,9 @@ Vue.component('neo-footer', {
                 }, {
                     text: this.$t('footer.blockcircles'),
                     href: 'http://www.blockcircles.cn'
+                }, {
+                    text: this.$t('footer.BTCSOS'),
+                    href: 'http://BTCsos.com'
                 },
             ]
         }

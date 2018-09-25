@@ -116,5 +116,7 @@ var zhCHS = {
       niubilai:'币莱财经',
       bitansuo:'币探索',
       lianshijie:'链世界',
+      qukuainews:'区块链中文网',
+      blockcircles:'区块界',
   }
 }

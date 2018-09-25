@@ -116,5 +116,7 @@ var en = {
         niubilai:'niubilai',
         bitansuo:'bitansuo',
         lianshijie:'lianshijie',
+        qukuainews:'qukuainews',
+        blockcircles:'blockcircles',
     }
 };

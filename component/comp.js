@@ -500,6 +500,15 @@ Vue.component('neo-footer', {
                 }, {
                     text: this.$t('footer.lianshijie'),
                     href: 'http://www.7234.cn'
+                }, {
+                    text: this.$t('footer.qukuainews'),
+                    href: 'http://www.qukuainews.com'
+                }, {
+                    text: this.$t('footer.blockcircles'),
+                    href: 'http://www.blockcircles.cn'
+                }, {
+                    text: this.$t('footer.BTCSOS'),
+                    href: 'http://BTCsos.com'
                 },
             ]
         }

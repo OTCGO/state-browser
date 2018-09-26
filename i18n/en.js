@@ -119,5 +119,8 @@ var en = {
         qukuainews:'qukuainews',
         blockcircles:'blockcircles',
         BTCSOS:'BTCsos',
+        hunxu:'hunxu',
+        bitool:'bitool',
+        tokenpapa:'tokenpapa'
     }
 };

@@ -119,5 +119,8 @@ var zhCHS = {
       qukuainews:'区块链中文网',
       blockcircles:'区块界',
       BTCSOS:'速援财经',
+      hunxu:'区块链媒体',
+      bitool:'币兔社区',
+      tokenpapa:'币头条',
   }
 }

@@ -121,6 +121,7 @@ var en = {
         BTCSOS:'BTCsos',
         hunxu:'hunxu',
         bitool:'bitool',
+        doubi:'DouBi',
         tokenpapa:'tokenpapa'
     }
 };

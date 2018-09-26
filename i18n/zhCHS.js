@@ -122,5 +122,6 @@ var zhCHS = {
       hunxu:'区块链媒体',
       bitool:'币兔社区',
       tokenpapa:'币头条',
+      doubi:'豆币',
   }
 }

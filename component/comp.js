@@ -518,6 +518,9 @@ Vue.component('neo-footer', {
                 }, {
                     text: this.$t('footer.tokenpapa'),
                     href: 'http://www.tokenpapa.com'
+                }, {
+                    text: this.$t('footer.doubi'),
+                    href: 'http://doubi.com'
                 },
             ]
         }

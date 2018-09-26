@@ -509,6 +509,15 @@ Vue.component('neo-footer', {
                 }, {
                     text: this.$t('footer.BTCSOS'),
                     href: 'http://BTCsos.com'
+                }, {
+                    text: this.$t('footer.hunxu'),
+                    href: 'https://www.hunxu.cn'
+                }, {
+                    text: this.$t('footer.bitool'),
+                    href: 'https://www.bitool.cn'
+                }, {
+                    text: this.$t('footer.tokenpapa'),
+                    href: 'http://www.tokenpapa.com'
                 },
             ]
         }

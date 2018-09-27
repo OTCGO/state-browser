@@ -123,5 +123,10 @@ var zhCHS = {
       bitool:'币兔社区',
       tokenpapa:'币头条',
       doubi:'豆币',
+      _77zhijia:'77之家',
+      BEE360:'BEE360',
+      btc112:'千币网',
+      bitjia:'比特家',
+      _178bit:'口袋比特',
   }
 }

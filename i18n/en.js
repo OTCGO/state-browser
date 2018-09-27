@@ -122,6 +122,11 @@ var en = {
         hunxu:'hunxu',
         bitool:'bitool',
         doubi:'DouBi',
-        tokenpapa:'tokenpapa'
+        tokenpapa:'tokenpapa',
+        _77zhijia:'77zhijia',
+        BEE360:'BEE360',
+        btc112:'btc112',
+        bitjia:'bitjia',
+        _178bit:'178bit',
     }
 };

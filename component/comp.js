@@ -521,6 +521,21 @@ Vue.component('neo-footer', {
                 }, {
                     text: this.$t('footer.doubi'),
                     href: 'http://doubi.com'
+                }, {
+                    text: this.$t('footer._77zhijia'),
+                    href: 'http://www.77zhijia.com'
+                }, {
+                    text: this.$t('footer.BEE360'),
+                    href: 'https://bee360.io'
+                }, {
+                    text: this.$t('footer.btc112'),
+                    href: 'http://www.btc112.com'
+                }, {
+                    text: this.$t('footer.bitjia'),
+                    href: 'http://www.bitjia.com'
+                }, {
+                    text: this.$t('footer._178bit'),
+                    href: 'http://www.178bit.com'
                 },
             ]
         }

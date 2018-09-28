@@ -128,5 +128,7 @@ var en = {
         btc112:'btc112',
         bitjia:'bitjia',
         _178bit:'178bit',
+        btc126:'btc126',
+        btc789:'btc126',
     }
 };

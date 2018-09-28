@@ -536,6 +536,12 @@ Vue.component('neo-footer', {
                 }, {
                     text: this.$t('footer._178bit'),
                     href: 'http://www.178bit.com'
+                }, {
+                    text: this.$t('footer.btc126'),
+                    href: 'http://www.btc126.com'
+                }, {
+                    text: this.$t('footer.btc789'),
+                    href: 'http://www.btc789.com'
                 },
             ]
         }

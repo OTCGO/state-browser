@@ -128,5 +128,15 @@ var en = {
         btc112:'btc112',
         bitjia:'bitjia',
         _178bit:'178bit',
+        btc126:'btc126',
+        btc789:'btc789',
+        qklyz:'qklyz',
+        bishequ:'bishequ',
+        blockisx:'blockis',
+        gameyjy:'gameyjy',
+        qukuailiant:'qukuailiant',
+        biiquan:'biiquan',
+        qzcj:'qzcj',
+        o_link:'o-o-o',
     }
 };

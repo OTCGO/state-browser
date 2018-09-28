@@ -128,5 +128,15 @@ var zhCHS = {
       btc112:'千币网',
       bitjia:'比特家',
       _178bit:'口袋比特',
+      btc126:'比特币家园',
+      btc789:'比特之窗',
+      qklyz:'区块链驿站',
+      bishequ:'币社区',
+      blockisx:'区间集',
+      gameyjy:' 区块链游戏研究院',
+      qukuailiant:'区块链条网',
+      biiquan:'币圈网',
+      qzcj:'前瞻区块链财经',
+      o_link:'链链财经',
   }
 }

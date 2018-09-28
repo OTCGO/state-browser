@@ -542,6 +542,30 @@ Vue.component('neo-footer', {
                 }, {
                     text: this.$t('footer.btc789'),
                     href: 'http://www.btc789.com'
+                },{
+                    text: this.$t('footer.qklyz'),
+                    href: 'http://www.qklyz.com'
+                },{
+                    text: this.$t('footer.bishequ'),
+                    href: 'http://bishequ.com'
+                },{
+                    text: this.$t('footer.blockisx'),
+                    href: 'http://www.blockisx.com'
+                },{
+                    text: this.$t('footer.gameyjy'),
+                    href: 'http://gameyjy.com'
+                },{
+                    text: this.$t('footer.qukuailiant'),
+                    href: 'http://qukuailiant.com/'
+                },{
+                    text: this.$t('footer.biiquan'),
+                    href: 'http://www.biiquan.com/'
+                },{
+                    text: this.$t('footer.qzcj'),
+                    href: 'http://www.qzcj.top/'
+                },{
+                    text: this.$t('footer.o_link'),
+                    href: 'http://www.o-o-o.link'
                 },
             ]
         }

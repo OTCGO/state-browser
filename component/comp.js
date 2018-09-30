@@ -446,6 +446,9 @@ Vue.component('neo-footer', {
                 },{
                     text: this.$t('footer.niubilai'),
                     href: 'https://www.niubilai.com'
+                },{
+                    text: this.$t('footer.dubiwang'),
+                    href: 'http://www.dubiwang.com'
                 }, {
                     text: this.$t('footer.cryptogladiator'),
                     href: 'http://cryptogladiator.io'
@@ -566,6 +569,30 @@ Vue.component('neo-footer', {
                 },{
                     text: this.$t('footer.o_link'),
                     href: 'http://www.o-o-o.link'
+                },{
+                    text: this.$t('footer.tokenlab'),
+                    href: 'http://tokenlab.online'
+                },{
+                    text: this.$t('footer.bjiebtc'),
+                    href: 'http://bjiebtc.com'
+                },{
+                    text: this.$t('footer._528btc'),
+                    href: 'http://www.528btc.com'
+                },{
+                    text: this.$t('footer.taobi'),
+                    href: 'http://www.taobi.ink'
+                },{
+                    text: this.$t('footer.lechain'),
+                    href: 'http://www.lechain.com'
+                },{
+                    text: this.$t('footer.dayqkl'),
+                    href: 'http://www.dayqkl.com'
+                },{
+                    text: this.$t('footer.hellobtc'),
+                    href: 'http://www.hellobtc.com'
+                },{
+                    text: this.$t('footer.block123'),
+                    href: 'http://www.block123.com'
                 },
             ]
         }

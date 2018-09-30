@@ -138,5 +138,14 @@ var zhCHS = {
       biiquan:'币圈网',
       qzcj:'前瞻区块链财经',
       o_link:'链链财经',
+      tokenlab:'通证经济LAB',
+      bjiebtc:'币姐教你比特币',
+      dubiwang:'读币网',
+      _528btc:'币界网',
+      taobi:'淘币网',
+      lechain:'乐链网',
+      dayqkl:'每日区块链',
+      hellobtc:'白话区块链',
+      block123:'区块链导航',
   }
 }

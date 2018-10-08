@@ -593,6 +593,12 @@ Vue.component('neo-footer', {
                 },{
                     text: this.$t('footer.block123'),
                     href: 'http://www.block123.com'
+                },{
+                    text: this.$t('footer.BCfans'),
+                    href: 'http://www.bcfans.com'
+                },{
+                    text: this.$t('footer.qqbite'),
+                    href: 'http://www.qqbite.com'
                 },
             ]
         }

@@ -147,5 +147,7 @@ var en = {
         dayqkl:'dayqkl',
         hellobtc:'helloBtc',
         block123:'Block123',
+        BCfans:'BCfans',
+        qqbite:'qqbite',
     }
 };

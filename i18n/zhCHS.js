@@ -147,5 +147,7 @@ var zhCHS = {
       dayqkl:'每日区块链',
       hellobtc:'白话区块链',
       block123:'区块链导航',
+      BCfans:'BCfans',
+      qqbite:'丘比特财经',
   }
 }

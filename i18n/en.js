@@ -138,5 +138,14 @@ var en = {
         biiquan:'biiquan',
         qzcj:'qzcj',
         o_link:'o-o-o',
+        tokenlab:'tokenlab',
+        bjiebtc:'bjiebtc',
+        dubiwang:'dubiwang',
+        _528btc:'528btc',
+        taobi:'TAOBI',
+        lechain:'lechain',
+        dayqkl:'dayqkl',
+        hellobtc:'helloBtc',
+        block123:'Block123',
     }
 };

@@ -157,5 +157,6 @@ var zhCHS = {
       btc120:'币圈子',
       chainpow:'链豹财经',
       queding:'确定财经',
+      qianba:'博链财经',
   }
 }

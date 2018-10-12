@@ -157,5 +157,6 @@ var en = {
         btc120:'120btc',
         chainpow:'chainpow',
         queding:'queding',
+        qianba:'qianba',
     }
 };

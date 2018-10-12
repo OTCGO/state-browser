@@ -623,6 +623,9 @@ Vue.component('neo-footer', {
                 },{
                     text: this.$t('footer.queding'),
                     href: 'http://www.queding.cn'
+                },{
+                    text: this.$t('footer.qianba'),
+                    href: 'http://www.qianba.com'
                 },
             ]
         }

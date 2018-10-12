@@ -599,6 +599,30 @@ Vue.component('neo-footer', {
                 },{
                     text: this.$t('footer.qqbite'),
                     href: 'http://www.qqbite.com'
+                },{
+                    text: this.$t('footer.btsabc'),
+                    href: 'http://btsabc.org'
+                },{
+                    text: this.$t('footer.jingyublock'),
+                    href: 'http://www.jingyublock.com'
+                },{
+                    text: this.$t('footer.tanuonline'),
+                    href: 'http://www.tanuonline.com'
+                },{
+                    text: this.$t('footer.bitbee24'),
+                    href: 'http://www.bitbee24.com'
+                },{
+                    text: this.$t('footer.chaindaily'),
+                    href: 'http://chaindaily.com'
+                },{
+                    text: this.$t('footer.btc120'),
+                    href: 'http://www.120btc.com'
+                },{
+                    text: this.$t('footer.chainpow'),
+                    href: 'http://www.chainpow.com'
+                },{
+                    text: this.$t('footer.queding'),
+                    href: 'http://www.queding.cn'
                 },
             ]
         }

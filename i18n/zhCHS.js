@@ -149,5 +149,13 @@ var zhCHS = {
       block123:'区块链导航',
       BCfans:'BCfans',
       qqbite:'丘比特财经',
+      btsabc:'比特帝国',
+      jingyublock:'鲸鱼区块链',
+      tanuonline:'探牛社区',
+      bitbee24:'蜜蜂财经',
+      chaindaily:'今日链闻',
+      btc120:'币圈子',
+      chainpow:'链豹财经',
+      queding:'确定财经',
   }
 }

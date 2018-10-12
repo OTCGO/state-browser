@@ -149,5 +149,13 @@ var en = {
         block123:'Block123',
         BCfans:'BCfans',
         qqbite:'qqbite',
+        btsabc:'btsabc',
+        jingyublock:'jingyublock',
+        tanuonline:'TANU',
+        bitbee24:'bitbee24',
+        chaindaily:'chaindaily',
+        btc120:'120btc',
+        chainpow:'chainpow',
+        queding:'queding',
     }
 };

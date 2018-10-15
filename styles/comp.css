@@ -39,6 +39,9 @@ body {
 .neo-header {
     height: 0.7rem;
     padding: 0 0 0 0.2rem;
+}
+
+.neo-header.underline {
     border-bottom: 1px solid #ddd;
 }
 
@@ -142,8 +145,7 @@ body {
     border-bottom: 1px solid #fff;
     position: absolute;
     width: 0.25rem;
-    top: 0.3rem;
-    left: 0.23rem;
+    top: 0.15rem;
 }
 
 /* #endregion */
@@ -480,9 +482,9 @@ body {
     height: 1rem;
     width: 4rem;
     background: #fff;
-    border-radius: 0.05rem;
+    border-radius: 0.02rem;
     position: relative;
-    box-shadow: 3px 3px 10px #4178B8;
+    box-shadow: 3px 3px 10px #2b5484;
 }
 
 .neo-toolbox__title {

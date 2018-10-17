@@ -158,5 +158,9 @@ var en = {
         chainpow:'chainpow',
         queding:'queding',
         qianba:'qianba',
+        xiha:'xiha',
+        worldb:'Blockfo',
+        qkl100:'100qkl',
+        sootoo:'sootoo',
     }
 };

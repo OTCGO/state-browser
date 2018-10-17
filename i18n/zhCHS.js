@@ -158,5 +158,9 @@ var zhCHS = {
       chainpow:'链豹财经',
       queding:'确定财经',
       qianba:'博链财经',
+      xiha:'嘻哈',
+      worldb:'Blockfo',
+      qkl100:'壹佰区块链网',
+      sootoo:'w维特财经',
   }
 }

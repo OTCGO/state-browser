@@ -104,11 +104,12 @@ Vue.component('neo-menu', {
 
 Vue.component('neo-header', {
     template:
-    '<div class=\'neo-header\'>'+
+    '<div v-bind:class="[\'neo-header\', { underline: hasUnderline }]">'+
         '<neo-title></neo-title>'+
         '<neo-menu ref="menu" v-bind:idx="menuIdx" v-on:changed="changedMenu"></neo-menu>'+
         '<neo-select ref="tooltip" right="0.15rem" v-bind:data="languages" v-on:selected="changeLanguage" top="0.65rem"></neo-select>'+
     '</div>',
+    props: ['hasUnderline'],
     data: function() {
         return {
             menuIdx: 4,
@@ -219,72 +220,72 @@ Vue.component('neo-slider',{
 Vue.component('neo-toolbox', {
     template:
     '<div>'+
-    '<div class="neo-toolbox dynamic" v-if="itemidx == 0">'+
-        '<input type="text" v-on:keyup="handleKeyup" v-model="search" v-bind:placeholder="$t(\'slider.dynamic.search\')" />'+
-        '<i v-on:click="handleSearch" class="icon iconfont icon-search"></i>'+
-    '</div>'+
-    '<div class="neo-toolbox market" v-if="itemidx == 1">'+
-        '<div class="total">'+
-            '<h1>$00.00</h1>'+
+        '<div class="neo-toolbox dynamic" v-if="itemidx == 0">'+
+            '<input type="text" v-on:keyup="handleKeyup" v-model="search" v-bind:placeholder="$t(\'slider.dynamic.search\')" />'+
+            '<i v-on:click="handleSearch" class="icon iconfont icon-search"></i>'+
         '</div>'+
-        '<div class="info">'+
-            '<div class="item">'+
-                '<label>24h Change:</label>'+
-                '<span class="highlight">0.00%</span>'+
+        '<div class="neo-toolbox market" v-if="itemidx == 1">'+
+            '<div class="total">'+
+                '<h1>$00.00</h1>'+
             '</div>'+
-            '<div class="item">'+
-                '<label>24h Volume:</label>'+
-                '<span>000,000.00</span>'+
+            '<div class="info">'+
+                '<div class="item">'+
+                    '<label>24h Change:</label>'+
+                    '<span class="highlight">0.00%</span>'+
+                '</div>'+
+                '<div class="item">'+
+                    '<label>24h Volume:</label>'+
+                    '<span>000,000.00</span>'+
+                '</div>'+
+                '<div class="item">'+
+                    '<label>Market Cap:</label>'+
+                    '<span>000,000.00</span>'+
+                '</div>'+
             '</div>'+
-            '<div class="item">'+
-                '<label>Market Cap:</label>'+
-                '<span>000,000.00</span>'+
+            '<div class="timestamp">'+
+                'Last Updated 5 mintues ago'+
             '</div>'+
         '</div>'+
-        '<div class="timestamp">'+
-            'Last Updated 5 mintues ago'+
+        '<div class="neo-toolbox tran" v-if="itemidx == 2">'+
+            '<div class="total">'+
+                '<label>{{$t("dynamic.transactionNum")}}</label>'+
+                '<span>{{Total}}</span>'+
+            '</div>'+
+            '<div class="category" v-on:click="handleCategory">'+
+                '<span>{{category.name}} <i class="icon iconfont icon-arrow-down"></i></span>'+
+            '</div>'+
         '</div>'+
-    '</div>'+
-    '<div class="neo-toolbox tran" v-if="itemidx == 2">'+
-        '<div class="total">'+
-            '<label>{{$t("dynamic.transactionNum")}}</label>'+
-            '<span>{{Total}}</span>'+
+        '<neo-select ref="tooltip" v-if="itemidx == 2" v-on:selected="changeCategory" v-bind:data="categoryItems" left="6.9rem" top="0.6rem"></neo-select>'+
+        '<div class="neo-toolbox block" v-if="itemidx == 3">'+
+            '<div class="total">'+
+                '<label>{{$t("dynamic.blockNum")}}</label>'+
+                '<span>{{Total}}</span>'+
+            '</div>'+
         '</div>'+
-        '<div class="category" v-on:click="handleCategory">'+
-            '<span>{{category.name}} <i class="icon iconfont icon-arrow-down"></i></span>'+
+        '<div class="clear" v-if="itemidx == 3"></div>'+
+        '<div class="neo-toolbox wallet" v-if="itemidx == 4">'+
+            '<div class="total">'+
+                '<label>{{$t("dynamic.addressNum")}}</label>'+
+                '<span>{{Total}}</span>'+
+            '</div>'+
+            '<div class="toolbar">'+
+                '<div class="item"><a href="https://otcgo.cn/#/signUp" target="_blank" ><span>{{$t("address.newWallet")}}</span></a></div>'+
+                '<div class="item middle"><a href="https://otcgo.cn/#/login" target="_blank" ><span>{{$t("address.openWallet")}}</span></a></div>'+
+            '</div>'+
         '</div>'+
-    '</div>'+
-    '<neo-select ref="tooltip" v-if="itemidx == 2" v-on:selected="changeCategory" v-bind:data="categoryItems" left="6.9rem" top="0.6rem"></neo-select>'+
-    '<div class="neo-toolbox block" v-if="itemidx == 3">'+
-        '<div class="total">'+
-            '<label>{{$t("dynamic.blockNum")}}</label>'+
-            '<span>{{Total}}</span>'+
+        '<div class="clear" v-if="itemidx == 4"></div>'+
+        '<div class="neo-toolbox__title" v-if="itemidx < 3" v-bind:style="{left: toolboxPositions[itemidx] + \'rem\', \'text-align\': itemidx > 1 ? \'right\' : \'left\'}">'+
+            '<h1>{{title}}</h1>'+
+            '<div class="underline" v-bind:class="{\'right\': itemidx > 1}">'+
+                '<i></i>'+
+            '</div>'+
         '</div>'+
-    '</div>'+
-    '<div class="clear" v-if="itemidx == 3"></div>'+
-    '<div class="neo-toolbox wallet" v-if="itemidx == 4">'+
-        '<div class="total">'+
-            '<label>{{$t("dynamic.addressNum")}}</label>'+
-            '<span>{{Total}}</span>'+
+        '<div class="neo-toolbox__title" v-if="itemidx > 2" v-bind:style="{right: toolboxPositions[itemidx] + \'rem\', \'text-align\': itemidx > 1 ? \'right\' : \'left\'}">'+
+            '<h1>{{title}}</h1>'+
+            '<div class="underline" v-bind:class="{\'right\': itemidx > 1}">'+
+                '<i></i>'+
+            '</div>'+
         '</div>'+
-        '<div class="toolbar">'+
-            '<div class="item"><a href="https://otcgo.cn/#/signUp" target="_blank" ><span>{{$t("address.newWallet")}}</span></a></div>'+
-            '<div class="item middle"><a href="https://otcgo.cn/#/login" target="_blank" ><span>{{$t("address.openWallet")}}</span></a></div>'+
-        '</div>'+
-    '</div>'+
-    '<div class="clear" v-if="itemidx == 4"></div>'+
-    '<div class="neo-toolbox__title" v-if="itemidx < 3" v-bind:style="{left: toolboxPositions[itemidx] + \'rem\', \'text-align\': itemidx > 1 ? \'right\' : \'left\'}">'+
-        '<h1>{{title}}</h1>'+
-        '<div class="underline" v-bind:class="{\'right\': itemidx > 1}">'+
-            '<i></i>'+
-        '</div>'+
-    '</div>'+
-    '<div class="neo-toolbox__title" v-if="itemidx > 2" v-bind:style="{right: toolboxPositions[itemidx] + \'rem\', \'text-align\': itemidx > 1 ? \'right\' : \'left\'}">'+
-        '<h1>{{title}}</h1>'+
-        '<div class="underline" v-bind:class="{\'right\': itemidx > 1}">'+
-            '<i></i>'+
-        '</div>'+
-    '</div>'+
     '</div>',
     computed: {
         title: function(){

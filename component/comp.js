@@ -626,6 +626,18 @@ Vue.component('neo-footer', {
                 },{
                     text: this.$t('footer.qianba'),
                     href: 'http://www.qianba.com'
+                },{
+                    text: this.$t('footer.xiha'),
+                    href: 'http://www.xiha.top'
+                },{
+                    text: this.$t('footer.worldb'),
+                    href: 'http://worldb.pro'
+                },{
+                    text: this.$t('footer.qkl100'),
+                    href: 'http://www.100qkl.com'
+                },{
+                    text: this.$t('footer.sootoo'),
+                    href: 'http://vt.sootoo.com'
                 },
             ]
         }

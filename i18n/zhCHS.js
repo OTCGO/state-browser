@@ -161,6 +161,9 @@ var zhCHS = {
       xiha:'嘻哈',
       worldb:'Blockfo',
       qkl100:'壹佰区块链网',
-      sootoo:'w维特财经',
+      sootoo:'维特财经',
+      hibtc:'hi区块链',
+      bitol:'比特在线',
+      ttbite:'天天比特',
   }
 }

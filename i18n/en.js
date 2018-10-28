@@ -162,5 +162,8 @@ var en = {
         worldb:'Blockfo',
         qkl100:'100qkl',
         sootoo:'sootoo',
+        hibtc:'Hibtc',
+        bitol:'BitOL',
+        ttbite:'ttbite',
     }
 };

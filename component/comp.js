@@ -639,6 +639,15 @@ Vue.component('neo-footer', {
                 },{
                     text: this.$t('footer.sootoo'),
                     href: 'http://vt.sootoo.com'
+                },{
+                    text: this.$t('footer.hibtc'),
+                    href: 'https://www.hibtc.org'
+                },{
+                    text: this.$t('footer.bitol'),
+                    href: 'http://www.bitol.net'
+                },{
+                    text: this.$t('footer.ttbite'),
+                    href: 'http://www.ttbite.com'
                 },
             ]
         }

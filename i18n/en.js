@@ -165,5 +165,7 @@ var en = {
         hibtc:'Hibtc',
         bitol:'BitOL',
         ttbite:'ttbite',
+        liansiling:'liansiling',
+        finacerun:'FinaceRun',
     }
 };

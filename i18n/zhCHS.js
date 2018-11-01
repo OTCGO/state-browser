@@ -165,5 +165,7 @@ var zhCHS = {
       hibtc:'hi区块链',
       bitol:'比特在线',
       ttbite:'天天比特',
+      liansiling:'链司令',
+      finacerun:'奔跑财经',
   }
 }

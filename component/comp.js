@@ -648,6 +648,12 @@ Vue.component('neo-footer', {
                 },{
                     text: this.$t('footer.ttbite'),
                     href: 'http://www.ttbite.com'
+                },{
+                    text: this.$t('footer.finacerun'),
+                    href: 'http://www.finacerun.com'
+                },{
+                    text: this.$t('footer.liansiling'),
+                    href: 'http://liansiling.com'
                 },
             ]
         }

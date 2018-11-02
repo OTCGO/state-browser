@@ -167,5 +167,11 @@ var en = {
         ttbite:'ttbite',
         liansiling:'liansiling',
         finacerun:'FinaceRun',
+        jgy:'jgy',
+        bitnews:'bitnews',
+        bikeji:'bikeji',
+        shenliancaijing:'shenliancaijing',
+        blockob:'blockob',
+        bcsky:'bcsky',
     }
 };

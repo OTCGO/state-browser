@@ -167,5 +167,11 @@ var zhCHS = {
       ttbite:'天天比特',
       liansiling:'链司令',
       finacerun:'奔跑财经',
+      jgy:'九个亿财经',
+      bitnews:'比特快讯',
+      bikeji:'币科技',
+      shenliancaijing:'深链财经',
+      blockob:'区块链资讯',
+      bcsky:'链天下',
   }
 }

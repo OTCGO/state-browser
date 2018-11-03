@@ -457,6 +457,9 @@ Vue.component('neo-footer', {
                     text: this.$t('footer.alchemint'),
                     href: 'http://alchemint.io'
                 }, {
+                    text: this.$t('footer.jgy'),
+                    href: 'http://www.jgy.com'
+                }, {
                     text: this.$t('footer.loopring'),
                     href: 'http://loopring.org'
                 }, {
@@ -654,6 +657,21 @@ Vue.component('neo-footer', {
                 },{
                     text: this.$t('footer.liansiling'),
                     href: 'http://liansiling.com'
+                },{
+                    text: this.$t('footer.bitnews'),
+                    href: 'http://www.bitnews.vip'
+                },{
+                    text: this.$t('footer.bikeji'),
+                    href: 'http://www.bikeji.com'
+                },{
+                    text: this.$t('footer.shenliancaijing'),
+                    href: 'http://www.shenliancaijing.com'
+                },{
+                    text: this.$t('footer.blockob'),
+                    href: 'http://www.blockob.com'
+                },{
+                    text: this.$t('footer.bcsky'),
+                    href: 'http://bcsky.pro'
                 },
             ]
         }

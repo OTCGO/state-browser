@@ -672,6 +672,12 @@ Vue.component('neo-footer', {
                 },{
                     text: this.$t('footer.bcsky'),
                     href: 'http://bcsky.pro'
+                },{
+                    text: this.$t('footer.ok35'),
+                    href: 'http://www.ok35.com'
+                },{
+                    text: this.$t('footer.bcsky'),
+                    href: 'http://www.zxbcc.com'
                 },
             ]
         }

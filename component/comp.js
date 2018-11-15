@@ -676,7 +676,7 @@ Vue.component('neo-footer', {
                     text: this.$t('footer.ok35'),
                     href: 'http://www.ok35.com'
                 },{
-                    text: this.$t('footer.bcsky'),
+                    text: this.$t('footer.zxbcc'),
                     href: 'http://www.zxbcc.com'
                 },
             ]

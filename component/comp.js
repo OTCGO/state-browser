@@ -678,6 +678,9 @@ Vue.component('neo-footer', {
                 },{
                     text: this.$t('footer.zxbcc'),
                     href: 'http://www.zxbcc.com'
+                },{
+                    text: this.$t('footer.tuoluocaijing'),
+                    href: 'https://www.tuoluocaijing.cn/'
                 },
             ]
         }

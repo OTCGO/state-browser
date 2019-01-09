@@ -681,6 +681,12 @@ Vue.component('neo-footer', {
                 },{
                     text: this.$t('footer.tuoluocaijing'),
                     href: 'https://www.tuoluocaijing.cn/'
+                },{
+                    text: this.$t('footer.qkl123'),
+                    href: 'https://www.qkl123.com/'
+                },{
+                    text: this.$t('footer.dappOnline'),
+                    href: 'http://dapponline.io/'
                 },
             ]
         }

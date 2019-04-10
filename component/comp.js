@@ -1219,7 +1219,7 @@ Vue.component('neo-address-list', {
             var that = this;
             that.addressItems = [];
             axios({
-                url: host+'/api/v1/'+network+'/asset/transaction/' + that.id.substring(2)+`?start=${start}&end=${end}`,
+                url: host+'/api/v1/'+network+'/asset/transaction/' + that.id+`?start=${start}&end=${end}`,
                 method: 'get',
             })
             .then(function (resp) {
@@ -1230,8 +1230,8 @@ Vue.component('neo-address-list', {
                 that.totalCount = resp.data.data.count
                 for(var i=0; i< result.length; i = i + 2){
                     that.items.push({
-                        addr: result[i],
-                        balance: result[i+1] || 0,
+                        addr: result[i].address,
+                        balance: result[i].balance['$numberDecimal'] || 0,
                     })
                 }
             })

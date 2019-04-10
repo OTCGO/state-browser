@@ -1230,7 +1230,7 @@ Vue.component('neo-address-list', {
         }
     },
     methods: {
-        init: function(start = 0 ,end = 19) {
+        init: function(start = 0 ,end = 20) {
             var that = this;
             that.addressItems = [];
             axios({
@@ -1243,7 +1243,7 @@ Vue.component('neo-address-list', {
                 const result = resp.data.data.list
                 that.items = [];
                 that.totalCount = resp.data.data.count
-                for(var i=0; i< result.length; i = i + 2){
+                for(var i=0; i< result.length; i = i + 1){
                     that.items.push({
                         addr: result[i].address,
                         balance: result[i].balance['$numberDecimal'] || 0,
@@ -1260,7 +1260,7 @@ Vue.component('neo-address-list', {
         changePaginate: function(pageNum) {
             this.currentPage = pageNum
             const start = 20 * (pageNum - 1)
-            const end = start + 19
+            const end =  20
             this.init(start,end)
             // console.log('start',start);
             // console.log('end',end);

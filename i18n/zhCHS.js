@@ -173,5 +173,10 @@ var zhCHS = {
       shenliancaijing:'深链财经',
       blockob:'区块链资讯',
       bcsky:'链天下',
+      ok35:'西瓜财经',
+      zxbcc:'指向标财经',
+      tuoluocaijing:'陀螺财经',
+      qkl123:'区块链导航',
+      dappOnline:'DappOnline',
   }
 }

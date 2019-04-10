@@ -173,5 +173,10 @@ var en = {
         shenliancaijing:'shenliancaijing',
         blockob:'blockob',
         bcsky:'bcsky',
+        ok35:'ok35',
+        zxbcc:'zxbcc',
+        tuoluocaijing:'tuoluocaijing',
+        qkl123:'qkl123',
+        dappOnline:'DappOnline',
     }
 };

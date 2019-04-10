@@ -395,7 +395,7 @@ Vue.component('neo-footer', {
                 //         '<i class=" fa fa-weibo"></i>'+
                 //     '</a>'+
                 // '</li>'+
-                 '<li class=""><a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=1c63793c5fc8adaf4d6c5c9ee782c1ce8fb14dee9494d69a7372efc5415988d6" alt="SEA第五社群" title="SEA第五社群"><img src="/images/QQ.svg" width="25" height="25" alt=""></a> '+
+                 '<li class=""><a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=084887ec4235e85c771e41797f3360ae4be6f50b82d410e5e5d6890e11966d86" alt="SEA第六社群" title="SEA第六社群"><img src="/images/QQ.svg" width="25" height="25" alt=""></a> '+
                  ' </li>'+
                 '<li class="weixin">'+
                         '<a href="#"><img src="/images/wx.svg"  width="25" alt=""></a> <div class="weixin-qr-code">'+
@@ -672,6 +672,21 @@ Vue.component('neo-footer', {
                 },{
                     text: this.$t('footer.bcsky'),
                     href: 'http://bcsky.pro'
+                },{
+                    text: this.$t('footer.ok35'),
+                    href: 'http://www.ok35.com'
+                },{
+                    text: this.$t('footer.zxbcc'),
+                    href: 'http://www.zxbcc.com'
+                },{
+                    text: this.$t('footer.tuoluocaijing'),
+                    href: 'https://www.tuoluocaijing.cn/'
+                },{
+                    text: this.$t('footer.qkl123'),
+                    href: 'https://www.qkl123.com/'
+                },{
+                    text: this.$t('footer.dappOnline'),
+                    href: 'http://dapponline.io/'
                 },
             ]
         }

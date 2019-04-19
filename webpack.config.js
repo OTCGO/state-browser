@@ -9,7 +9,7 @@
 
 const path = require('path')
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-
+const TerserPlugin = require('terser-webpack-plugin');
 const env = process.env.NODE_ENV
 
 module.exports = {
@@ -24,7 +24,7 @@ module.exports = {
         assetinfo: './js/assetinfo.js',
         compcss: './styles/comp.css'
     },
-    devtool: env === 'production' ? 'cheap-module-source-map' : 'source-map',
+    // devtool: env === 'production' ? 'cheap-module-source-map' : 'source-map',
     output: {
         path: path.join(__dirname + '/dist'),
         filename: '[name].js'
@@ -47,9 +47,12 @@ module.exports = {
             test: /\.css$/,
             use: ExtractTextPlugin.extract({
                 fallback: "style-loader",
-                use: [
-                    { loader: 'css-loader', options: { minimize: true } }
-                ]
+                use: [{
+                    loader: 'css-loader',
+                    options: {
+                        minimize: true
+                    }
+                }]
             })
         }]
     },
@@ -57,6 +60,47 @@ module.exports = {
         new ExtractTextPlugin({
             filename: '[name].css',
             allChunks: true,
-        }),
-    ]
+        })
+    ],
+    optimization: {
+        minimizer: [
+            new TerserPlugin({
+                test: /\.js(\?.*)?$/i,
+                extractComments: true,
+                cache: true,
+                parallel: true,
+                sourceMap: true, // Must be set to true if using source-maps in production
+                terserOptions: {
+                    // https://github.com/webpack-contrib/terser-webpack-plugin#terseroptions
+                    extractComments: 'all',
+                    compress: {
+                        warnings: false,
+                        drop_console: true,
+                        drop_debugger: true
+                    },
+                }
+            }),
+        ]
+    }
 }
+
+
+// if (process.env.NODE_ENV === 'production') {
+//     module.exports.optimization = {
+//         minimizer: [
+//             new TerserPlugin({
+//                 extractComments: true,
+//                 cache: true,
+//                 parallel: true,
+//                 sourceMap: true, // Must be set to true if using source-maps in production
+//                 terserOptions: {
+//                     // https://github.com/webpack-contrib/terser-webpack-plugin#terseroptions
+//                     extractComments: 'all',
+//                     compress: {
+//                         drop_console: true,
+//                     },
+//                 }
+//             }),
+//         ]
+//     }
+// }

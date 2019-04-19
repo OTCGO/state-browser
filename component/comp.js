@@ -324,8 +324,9 @@ Vue.component('neo-toolbox', {
     methods: {
         // search
         handleSearch: function() {
-            console.log('search',this.search)
+            // console.log('search',this.search)
 
+            this.search = this.search.replace(/\s+/g,"")
             // if search not exist 
             if(!this.search || this.search === undefined){
                 return
@@ -421,7 +422,7 @@ Vue.component('neo-footer', {
                 '</div>'+
             '</div>'+
             '<div class="info">'+
-                '<div>{{$t("footer.version")}}: v2.8.0</div>'+
+                '<div>{{$t("footer.version")}}: v2.10.1</div>'+
                 '<div class="netwrok"><a href="javascript:void(0)" @click="selectNetwork">{{ network }}</a></div>'+
             '</div>'+
         '</div>'+
@@ -1765,12 +1766,14 @@ Vue.component('neo-addr-info', {
             // this.$refs.chart.init();
             var that = this;
             axios({
-                url: host+'/api/v1/'+network+'/address/balances/'+address,
+                url: host+'/api/v1/'+network+'/address/balances/'+(address.replace(/\s+/g,"")),
                 method: 'get'
             })
             .then(function (resp) {
                 // console.log('resp',resp);
+                if(resp.data.error_code !== 200) return
                 that.items = resp.data.data
+                
                 for (const item of that.items) {
                     if(item.balances != '0'){
                         that.isZero = false
@@ -1936,7 +1939,8 @@ Vue.component('neo-search', {
     },
     methods: {
         search: function () {
-            this.$emit('search', this.keyword)
+            // console.log('search',this.keyword.replace(/\s+/g,""))
+            this.$emit('search', this.keyword.replace(/\s+/g,""))
         }
     }
 })

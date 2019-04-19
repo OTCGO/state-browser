@@ -55,6 +55,7 @@ var zhCHS = {
   transaction: {
     name: '交易信息',
     type: '类型',
+    attribute: '属性',
     networkFee: '网络费用',
     systemFee: '系统费用',
     transactionId: "交易标识",

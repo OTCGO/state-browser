@@ -1136,6 +1136,7 @@ body {
 .neo-tran-script {
     width: 100%;
     font-size: 0.1rem;
+    margin-top: 0.1rem;
 }
 
 .neo-tran-script__item {
@@ -1164,6 +1165,47 @@ body {
 }
 
 .neo-tran-script__item-desc {
+    color: #fff;
+    word-wrap: break-word;
+    padding: 0 0.2rem 0 0;
+}
+
+/* #endregion */
+
+/* #region neo-attr-script */
+
+.neo-tran-attr {
+    width: 100%;
+    font-size: 0.1rem;
+    margin-top: 0.1rem;
+}
+
+.neo-tran-attr__item {
+    width: 100%;
+    margin: 0 0 0.1rem 0;
+    border-left: 0.02rem solid #85C226;
+    position: relative;
+    padding: 0.2rem 0 0.2rem 0.2rem;
+}
+
+.neo-tran-attr__item .underlayer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: #308FD8;
+    opacity: 0.4;
+    border-radius: 0.02rem;
+    z-index: -1;
+}
+
+.neo-tran-attr__item-title {
+    font-size: 0.15rem;
+    color: #85C226;
+}
+
+.neo-tran-attr__item-desc {
     color: #fff;
     word-wrap: break-word;
     padding: 0 0.2rem 0 0;

@@ -13,6 +13,7 @@ var app = new Vue({
         return {
             records: undefined,
             scripts: undefined,
+            attr: [],
             transaction:[]
         }
     } ,
@@ -75,6 +76,10 @@ var app = new Vue({
                                     ' invocation '+
                                     ' verification '+
                                 ' } '+
+                                ' attributes { '+
+                                    ' usage '+
+                                    ' data '+
+                                ' } '+
                             '}'+
                           '}'+
                         '}'
@@ -87,6 +92,7 @@ var app = new Vue({
                     var item = resp.data.data.TransactionQuery.rows[0];
                     var records = []
 
+                    
                     if(item.vin || item.vout){
                         
                         var vins = item.vin;
@@ -155,10 +161,13 @@ var app = new Vue({
                     // tran records       
                     that.records = records
 
+                    that.attr = item.attributes
+                    console.log('attr',that.attr)
 
                     if(item.scripts && item.scripts.length > 0){
                         that.scripts = []
                     }
+
                     for(var i=0; i<item.scripts.length; i++){
                         var row = item.scripts[i]
 

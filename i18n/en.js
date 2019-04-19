@@ -54,6 +54,7 @@ var en = {
     },
     transaction: {
         name: 'transaction info',
+        attribute: 'attribute',
         type: 'type',
         networkFee: 'networkFee',
         systemFee: 'systemFee',

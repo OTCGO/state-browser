@@ -20,6 +20,7 @@
             <neo-tran-info   v-bind:transaction="transaction"></neo-tran-info>
             <neo-tran-record v-for="(recordItem, recordIdx) in records" showborder="true" v-bind:record="recordItem" v-if="records"></neo-tran-record>
             <neo-tran-script v-bind:scripts="scripts" v-if="scripts"></neo-tran-script>
+            <neo-tran-attr v-bind:attr="attr" v-if="attr"></neo-tran-attr>
         </div>
         <neo-footer></neo-footer>
     </div>

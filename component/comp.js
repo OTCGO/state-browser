@@ -1592,6 +1592,21 @@ Vue.component('neo-tran-script',{
     }
 });
 
+
+Vue.component('neo-tran-attr',{
+    template:
+    '<div class="neo-tran-attr">'+
+        '<div class="neo-tran-attr__item" v-for="(item, itemIdx) in attr">'+
+            '<div class="neo-tran-attr__item-title">{{$t("transaction.attribute")}}:{{item.usage}}</div>'+
+            '<div class="neo-tran-attr__item-desc">{{item.data}}</div>'+
+            '<div class="underlayer"></div>'+
+        '</div>'+
+    '</div>',
+    props: {
+        attr: Array
+    }
+});
+
 Vue.component('neo-block-list', {
     template:
     '<div class="neo-block-list">'+

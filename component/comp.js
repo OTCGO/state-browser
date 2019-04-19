@@ -1514,8 +1514,8 @@ Vue.component('neo-tran-list', {
                     }
 
                     if(item.records && item.records.length > 0){
-                        console.log('left',item.records[0].left.length)
-                        console.log('right',item.records[0].right.length)
+                        // console.log('left',item.records[0].left.length)
+                        // console.log('right',item.records[0].right.length)
                         if(item.records[0].left.length > 0){
                             item.records[0].left[0].title = that.$t('transaction.sentFrom');
                         }
@@ -1786,7 +1786,8 @@ Vue.component('neo-addr-info', {
             })
             .then(function (resp) {
                 // console.log('resp',resp);
-                if(resp.data.error_code !== 200) return
+                if(resp.data.error_code) return
+                
                 that.items = resp.data.data
                 
                 for (const item of that.items) {

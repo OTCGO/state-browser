@@ -140,8 +140,8 @@ var app = new Vue({
                     }
 
                     if(records && records.length > 0){
-                        console.log('left',records[0].left.length)
-                        console.log('right',records[0].right.length)
+                        //console.log('left',records[0].left.length)
+                        //console.log('right',records[0].right.length)
                         if(records[0].left.length > 0){
                             records[0].left[0].title = that.$t('transaction.sentFrom');
                         }

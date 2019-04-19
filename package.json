@@ -35,6 +35,7 @@
   "devDependencies": {
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "http-server": "^0.11.1",
+    "terser-webpack-plugin": "^1.2.3",
     "webpack": "^4.1.1",
     "webpack-cli": "^2.0.12"
   }

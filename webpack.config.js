@@ -22,6 +22,7 @@ module.exports = {
         blockinfo: './js/blockinfo.js',
         traninfo: './js/traninfo.js',
         assetinfo: './js/assetinfo.js',
+        eventVue: './js/eventVue.js',
         compcss: './styles/comp.css'
     },
     // devtool: env === 'production' ? 'cheap-module-source-map' : 'source-map',

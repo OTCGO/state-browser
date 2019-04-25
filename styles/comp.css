@@ -555,11 +555,11 @@ body {
 }
 
 .neo-toolbox.market .total h1 {
-    font-size: 0.3rem;
+    font-size: 0.25rem;
     color: #3A43C7;
     font-weight: 100;
     position: relative;
-    bottom: 0.18rem;
+    bottom: 0.13rem;
 }
 
 .neo-toolbox.market .info {

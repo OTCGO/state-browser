@@ -256,26 +256,10 @@ Vue.component('neo-toolbox', {
         '<i v-on:click="handleSearch" class="icon iconfont icon-search"></i>' +
         '</div>' +
         '<div class="neo-toolbox market" v-if="itemidx == 1">' +
-        '<div class="total">' +
-        '<h1>$00.00</h1>' +
-        '</div>' +
-        '<div class="info">' +
-        '<div class="item">' +
-        '<label>24h Change:</label>' +
-        '<span class="highlight">0.00%</span>' +
-        '</div>' +
-        '<div class="item">' +
-        '<label>24h Volume:</label>' +
-        '<span>000,000.00</span>' +
-        '</div>' +
-        '<div class="item">' +
-        '<label>Market Cap:</label>' +
-        '<span>000,000.00</span>' +
-        '</div>' +
-        '</div>' +
-        '<div class="timestamp">' +
-        'Last Updated 5 mintues ago' +
-        '</div>' +
+            '<div class="total">' +
+                '<h1>{{price}}</h1>' +
+            '</div>' +
+            
         '</div>' +
         '<div class="neo-toolbox tran" v-if="itemidx == 2">' +
         '<div class="total">' +
@@ -340,6 +324,7 @@ Vue.component('neo-toolbox', {
         return {
             toolboxPositions: [0.2, 1.8, -4.5, 2.8, 0.2],
             search: undefined,
+            price:'0.00',
             categoryItems: [{
                     idx: 0,
                     code: 'Any',
@@ -441,7 +426,14 @@ Vue.component('neo-toolbox', {
             this.$refs.tooltip.hide();
             this.$emit('changed', item)
         }
+    },
+    mounted(){       
+        eventVue.$on('price',(value) => {
+            //console.log('b',b)
+            this.price = value
+        })
     }
+       
 });
 
 Vue.component('neo-footer', {
@@ -1128,6 +1120,8 @@ Vue.component('neo-market-neochart', {
                 this.coinInfo.market_cap = result.data.data.quotes.CNY.market_cap.toFixed(0).toString().replace(/(?=((?!\b)\d{3})+$)/g, ',')
                 this.coinInfo.percent_change_24h = result.data.data.quotes.CNY.percent_change_24h
                 this.coinInfo.volume_24h = result.data.data.quotes.CNY.volume_24h.toFixed(0).toString().replace(/(?=((?!\b)\d{3})+$)/g, ',')
+
+                eventVue.$emit('price',`￥${this.coinInfo.price}`);
 
             } catch (error) {
 

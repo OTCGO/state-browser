@@ -53,9 +53,9 @@ var app = new Vue({
                 }, 500);
             } 
             if(that.sliderIdx == 1){
-                // setTimeout(function (){
-                //     that.$refs.neochart.init();
-                // }, 500);
+                setTimeout(function (){
+                    that.$refs.neochart.init();
+                }, 500);
             } 
             else if(that.sliderIdx == 2){
                 setTimeout(function (){

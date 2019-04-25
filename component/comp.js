@@ -1,17 +1,15 @@
-
 Vue.component('paginate', VuejsPaginate)
 Vue.component('qrcode', VueQrcode)
 
 Vue.component('neo-title', {
-    template:
-    '<div class="neo-title" v-on:click="goto()">'+
-        '<img class="logo"  :src="$t(\'logo\')" />'+
+    template: '<div class="neo-title" v-on:click="goto()">' +
+        '<img class="logo"  :src="$t(\'logo\')" />' +
         // '<div class="neo-title__main"><span>NEO</span></div>' +
         // '<div class="neo-title__sub"><span>NEP5</span></div>'+
         // '<div class="neo-title__sub"><span>OTCGO</span></div>'+
-    '</div>',
-    methods:{
-        goto: function(){
+        '</div>',
+    methods: {
+        goto: function () {
             // return home
             window.location.href = `/?network=${GetUrlParam('network') || 'mainnet'}`
         }
@@ -19,39 +17,37 @@ Vue.component('neo-title', {
 });
 
 Vue.component('neo-info-title', {
-    template:
-    '<div class="neo-info-title">'+
-        '<div class="title">{{title}}</div>'+
-        '<div style="height:1rem">'+
-            '<div class="subtitle">{{subtitle}} {{id}} </div>'+
-            '<div class="qrcode">'+
-                '<qrcode v-if="qrcode" :value="id" :options="{ size: 100 }"></qrcode>'+
-            '</div>'+
-            '<div class="clearfloat"></div>'+
-        '</div>'+
-    '</div>',
+    template: '<div class="neo-info-title">' +
+        '<div class="title">{{title}}</div>' +
+        '<div style="height:1rem">' +
+        '<div class="subtitle">{{subtitle}} {{id}} </div>' +
+        '<div class="qrcode">' +
+        '<qrcode v-if="qrcode" :value="id" :options="{ size: 100 }"></qrcode>' +
+        '</div>' +
+        '<div class="clearfloat"></div>' +
+        '</div>' +
+        '</div>',
     props: {
         title: String,
         id: String,
         subtitle: String,
-        qrcode:Boolean
+        qrcode: Boolean
     },
     mounted() {
-       // console.log('props',this.id)
+        // console.log('props',this.id)
     }
 })
 
 Vue.component('neo-menu', {
-    template:
-    '<div class="neo-menu" v-cloak>'+
-        '<div class="neo-menu__item" v-for="(item,itemIdx) in menu" v-on:click.prevent="changeMenuItem(itemIdx)">'+
-            '<span>'+
-                '{{item.name}}'+
-                '<i class="icon iconfont icon-arrow-down" v-if="item.items"></i>'+
-            '</span>'+
-            '<div class="underline" v-bind:style="{left: positions[idx]}" v-if="itemIdx-1 == idx && idx > 1"></div>'+
-        '</div>'+
-    '</div>',
+    template: '<div class="neo-menu" v-cloak>' +
+        '<div class="neo-menu__item" v-for="(item,itemIdx) in menu" v-on:click.prevent="changeMenuItem(itemIdx)">' +
+        '<span>' +
+        '{{item.name}}' +
+        '<i class="icon iconfont icon-arrow-down" v-if="item.items"></i>' +
+        '</span>' +
+        '<div class="underline" v-bind:style="{left: positions[idx]}" v-if="itemIdx-1 == idx && idx > 1"></div>' +
+        '</div>' +
+        '</div>',
     props: {
         idx: Number
     },
@@ -62,25 +58,44 @@ Vue.component('neo-menu', {
         //     this.positions = ['', '', '', '0.20rem', '0.25rem']
         // }
     },
-    data: function(){
+    data: function () {
         return {
-            menu:[
-                {id: 1, name: this.$t("menu.language"), items:[]},
-                {id: 2, name: this.$t("menu.wallet"), href:"https://otcgo.cn/download/"},
-                {id: 3, name: this.$t("menu.api"), href:"https://otcgo.github.io/doc/"},
-                {id: 4, name: this.$t("menu.assets"), href:`assets.html?network=${GetUrlParam('network') || 'mainnet'}` },
-                {id: 5, name: this.$t("menu.home"), href:`index.html?network=${GetUrlParam('network') || 'mainnet'}`}
+            menu: [{
+                    id: 1,
+                    name: this.$t("menu.language"),
+                    items: []
+                },
+                {
+                    id: 2,
+                    name: this.$t("menu.wallet"),
+                    href: "https://otcgo.cn/download/"
+                },
+                {
+                    id: 3,
+                    name: this.$t("menu.api"),
+                    href: "https://otcgo.github.io/doc/"
+                },
+                {
+                    id: 4,
+                    name: this.$t("menu.assets"),
+                    href: `assets.html?network=${GetUrlParam('network') || 'mainnet'}`
+                },
+                {
+                    id: 5,
+                    name: this.$t("menu.home"),
+                    href: `index.html?network=${GetUrlParam('network') || 'mainnet'}`
+                }
             ],
             positions: ['', '', '', '0.20rem', '0.20rem']
         }
     },
-    computed:{
-        positions: function(){
+    computed: {
+        positions: function () {
 
         }
     },
     methods: {
-        changeMenuItem: function(idx) {
+        changeMenuItem: function (idx) {
 
             this.$emit('changed', idx)
             console.log(idx)
@@ -89,13 +104,13 @@ Vue.component('neo-menu', {
                 window.open(this.menu[idx].href)
                 return
             }
-            if(idx < 2){
+            if (idx < 2) {
                 return;
             }
 
             this.idx = idx;
             var menuItem = this.menu[idx];
-            if(menuItem.href){
+            if (menuItem.href) {
                 window.location.href = menuItem.href;
             }
         }
@@ -103,31 +118,35 @@ Vue.component('neo-menu', {
 });
 
 Vue.component('neo-header', {
-    template:
-    '<div v-bind:class="[\'neo-header\', { underline: hasUnderline }]">'+
-        '<neo-title></neo-title>'+
-        '<neo-menu ref="menu" v-bind:idx="menuIdx" v-on:changed="changedMenu"></neo-menu>'+
-        '<neo-select ref="tooltip" right="0.15rem" v-bind:data="languages" v-on:selected="changeLanguage" top="0.65rem"></neo-select>'+
-    '</div>',
+    template: '<div v-bind:class="[\'neo-header\', { underline: hasUnderline }]">' +
+        '<neo-title></neo-title>' +
+        '<neo-menu ref="menu" v-bind:idx="menuIdx" v-on:changed="changedMenu"></neo-menu>' +
+        '<neo-select ref="tooltip" right="0.15rem" v-bind:data="languages" v-on:selected="changeLanguage" top="0.65rem"></neo-select>' +
+        '</div>',
     props: ['hasUnderline'],
-    data: function() {
+    data: function () {
         return {
             menuIdx: 4,
-            languages: [
-                {code: 'en', name: 'English'},
-                {code: 'zhCHS', name: '中文'}
+            languages: [{
+                    code: 'en',
+                    name: 'English'
+                },
+                {
+                    code: 'zhCHS',
+                    name: '中文'
+                }
             ],
             select: false
         }
     },
     methods: {
-        setMenuIdx: function(idx) {
+        setMenuIdx: function (idx) {
             this.menuIdx = idx;
         },
-        changedMenu: function(idx) {
-            if(idx == 0){
+        changedMenu: function (idx) {
+            if (idx == 0) {
                 window.event.cancelBubble = true
-                if(this.$refs.tooltip.visiable) {
+                if (this.$refs.tooltip.visiable) {
                     this.$refs.tooltip.hide();
                 } else {
                     this.select = true
@@ -135,59 +154,72 @@ Vue.component('neo-header', {
                 }
             }
         },
-        changeLanguage: function(option) {
+        changeLanguage: function (option) {
             console.log(option)
             this.$refs.tooltip.hide();
-            if(localStorage.locale == option.code){
+            if (localStorage.locale == option.code) {
                 return;
             }
             localStorage.locale = option.code;
             window.location.reload();
         },
-        hideSelect: function() {
+        hideSelect: function () {
             this.$refs.tooltip.hide()
         }
     }
 });
 
-Vue.component('neo-slider',{
-    template:
-    '<div class="neo-slider" v-cloak>'+
-        '<div class="neo-slider__line"></div>'+
-        '<div class="neo-slider__item"'+
-            'v-on:click="changeItem(idx)"'+
-            'v-bind:style="{left: positions[itemidx][idx]+ \'rem\'}"'+
-            'v-for="(item, idx) in items"'+
-            'v-if="idx < itemidx">'+
-            '<div class="neo-slider__item-dot" v-if="itemidx != idx">'+
-                '<i></i>'+
-            '</div>'+
-            '<h1 v-if="itemidx != idx">{{item.title}}</h1>'+
-            '<h2 v-if="itemidx != idx">{{item.subtitle}}</h2>'+
-        '</div>'+
-        '<div class="neo-slider__item"'+
-            'v-on:click="changeItem(idx)"'+
-            'v-bind:style="{right: positions[itemidx][idx]+ \'rem\'}"'+
-            'v-for="(item, idx) in items"'+
-            'v-if="idx > itemidx">'+
-            '<div class="neo-slider__item-dot" v-if="itemidx != idx">'+
-                '<i></i>'+
-            '</div>'+
-            '<h1 v-if="itemidx != idx">{{item.title}}</h1>'+
-            '<h2 v-if="itemidx != idx">{{item.subtitle}}</h2>'+
-        '</div>'+
-    '</div>',
+Vue.component('neo-slider', {
+    template: '<div class="neo-slider" v-cloak>' +
+        '<div class="neo-slider__line"></div>' +
+        '<div class="neo-slider__item"' +
+        'v-on:click="changeItem(idx)"' +
+        'v-bind:style="{left: positions[itemidx][idx]+ \'rem\'}"' +
+        'v-for="(item, idx) in items"' +
+        'v-if="idx < itemidx">' +
+        '<div class="neo-slider__item-dot" v-if="itemidx != idx">' +
+        '<i></i>' +
+        '</div>' +
+        '<h1 v-if="itemidx != idx">{{item.title}}</h1>' +
+        '<h2 v-if="itemidx != idx">{{item.subtitle}}</h2>' +
+        '</div>' +
+        '<div class="neo-slider__item"' +
+        'v-on:click="changeItem(idx)"' +
+        'v-bind:style="{right: positions[itemidx][idx]+ \'rem\'}"' +
+        'v-for="(item, idx) in items"' +
+        'v-if="idx > itemidx">' +
+        '<div class="neo-slider__item-dot" v-if="itemidx != idx">' +
+        '<i></i>' +
+        '</div>' +
+        '<h1 v-if="itemidx != idx">{{item.title}}</h1>' +
+        '<h2 v-if="itemidx != idx">{{item.subtitle}}</h2>' +
+        '</div>' +
+        '</div>',
     props: {
         itemidx: Number
     },
-    data: function() {
+    data: function () {
         return {
-            items:[
-                {title: this.$t("slider.dynamic.name") , subtitle: ''},
-                {title: this.$t("slider.market.name"), subtitle: ''},
-                {title: this.$t("slider.transaction.name"), subtitle: ''},
-                {title: this.$t("slider.block.name"), subtitle: ''},
-                {title: this.$t("slider.address.name"), subtitle: ''}
+            items: [{
+                    title: this.$t("slider.dynamic.name"),
+                    subtitle: ''
+                },
+                {
+                    title: this.$t("slider.market.name"),
+                    subtitle: ''
+                },
+                {
+                    title: this.$t("slider.transaction.name"),
+                    subtitle: ''
+                },
+                {
+                    title: this.$t("slider.block.name"),
+                    subtitle: ''
+                },
+                {
+                    title: this.$t("slider.address.name"),
+                    subtitle: ''
+                }
             ],
             positions: [
                 [0, 5.1, 3.4, 1.7, 0],
@@ -199,7 +231,7 @@ Vue.component('neo-slider',{
         }
     },
     methods: {
-        changeItem: function(idx){
+        changeItem: function (idx) {
             this.$emit('change', idx)
             this.itemIdx = idx;
             // if(ViewPage) {
@@ -218,85 +250,85 @@ Vue.component('neo-slider',{
 });
 
 Vue.component('neo-toolbox', {
-    template:
-    '<div>'+
-        '<div class="neo-toolbox dynamic" v-if="itemidx == 0">'+
-            '<input type="text" v-on:keyup="handleKeyup" v-model="search" v-bind:placeholder="$t(\'slider.dynamic.search\')" />'+
-            '<i v-on:click="handleSearch" class="icon iconfont icon-search"></i>'+
-        '</div>'+
-        '<div class="neo-toolbox market" v-if="itemidx == 1">'+
-            '<div class="total">'+
-                '<h1>$00.00</h1>'+
-            '</div>'+
-            '<div class="info">'+
-                '<div class="item">'+
-                    '<label>24h Change:</label>'+
-                    '<span class="highlight">0.00%</span>'+
-                '</div>'+
-                '<div class="item">'+
-                    '<label>24h Volume:</label>'+
-                    '<span>000,000.00</span>'+
-                '</div>'+
-                '<div class="item">'+
-                    '<label>Market Cap:</label>'+
-                    '<span>000,000.00</span>'+
-                '</div>'+
-            '</div>'+
-            '<div class="timestamp">'+
-                'Last Updated 5 mintues ago'+
-            '</div>'+
-        '</div>'+
-        '<div class="neo-toolbox tran" v-if="itemidx == 2">'+
-            '<div class="total">'+
-                '<label>{{$t("dynamic.transactionNum")}}</label>'+
-                '<span>{{Total}}</span>'+
-            '</div>'+
-            '<div class="category" v-on:click="handleCategory">'+
-                '<span>{{category.name}} <i class="icon iconfont icon-arrow-down"></i></span>'+
-            '</div>'+
-        '</div>'+
-        '<neo-select ref="tooltip" v-if="itemidx == 2" v-on:selected="changeCategory" v-bind:data="categoryItems" left="6.9rem" top="0.6rem"></neo-select>'+
-        '<div class="neo-toolbox block" v-if="itemidx == 3">'+
-            '<div class="total">'+
-                '<label>{{$t("dynamic.blockNum")}}</label>'+
-                '<span>{{Total}}</span>'+
-            '</div>'+
-        '</div>'+
-        '<div class="clear" v-if="itemidx == 3"></div>'+
-        '<div class="neo-toolbox wallet" v-if="itemidx == 4">'+
-            '<div class="total">'+
-                '<label>{{$t("dynamic.addressNum")}}</label>'+
-                '<span>{{Total}}</span>'+
-            '</div>'+
-            '<div class="toolbar">'+
-                '<div class="item"><a href="https://otcgo.cn/#/signUp" target="_blank" ><span>{{$t("address.newWallet")}}</span></a></div>'+
-                '<div class="item middle"><a href="https://otcgo.cn/#/login" target="_blank" ><span>{{$t("address.openWallet")}}</span></a></div>'+
-            '</div>'+
-        '</div>'+
-        '<div class="clear" v-if="itemidx == 4"></div>'+
-        '<div class="neo-toolbox__title" v-if="itemidx < 3" v-bind:style="{left: toolboxPositions[itemidx] + \'rem\', \'text-align\': itemidx > 1 ? \'right\' : \'left\'}">'+
-            '<h1>{{title}}</h1>'+
-            '<div class="underline" v-bind:class="{\'right\': itemidx > 1}">'+
-                '<i></i>'+
-            '</div>'+
-        '</div>'+
-        '<div class="neo-toolbox__title" v-if="itemidx > 2" v-bind:style="{right: toolboxPositions[itemidx] + \'rem\', \'text-align\': itemidx > 1 ? \'right\' : \'left\'}">'+
-            '<h1>{{title}}</h1>'+
-            '<div class="underline" v-bind:class="{\'right\': itemidx > 1}">'+
-                '<i></i>'+
-            '</div>'+
-        '</div>'+
-    '</div>',
+    template: '<div>' +
+        '<div class="neo-toolbox dynamic" v-if="itemidx == 0">' +
+        '<input type="text" v-on:keyup="handleKeyup" v-model="search" v-bind:placeholder="$t(\'slider.dynamic.search\')" />' +
+        '<i v-on:click="handleSearch" class="icon iconfont icon-search"></i>' +
+        '</div>' +
+        '<div class="neo-toolbox market" v-if="itemidx == 1">' +
+        '<div class="total">' +
+        '<h1>$00.00</h1>' +
+        '</div>' +
+        '<div class="info">' +
+        '<div class="item">' +
+        '<label>24h Change:</label>' +
+        '<span class="highlight">0.00%</span>' +
+        '</div>' +
+        '<div class="item">' +
+        '<label>24h Volume:</label>' +
+        '<span>000,000.00</span>' +
+        '</div>' +
+        '<div class="item">' +
+        '<label>Market Cap:</label>' +
+        '<span>000,000.00</span>' +
+        '</div>' +
+        '</div>' +
+        '<div class="timestamp">' +
+        'Last Updated 5 mintues ago' +
+        '</div>' +
+        '</div>' +
+        '<div class="neo-toolbox tran" v-if="itemidx == 2">' +
+        '<div class="total">' +
+        '<label>{{$t("dynamic.transactionNum")}}</label>' +
+        '<span>{{Total}}</span>' +
+        '</div>' +
+        '<div class="category" v-on:click="handleCategory">' +
+        '<span>{{category.name}} <i class="icon iconfont icon-arrow-down"></i></span>' +
+        '</div>' +
+        '</div>' +
+        '<neo-select ref="tooltip" v-if="itemidx == 2" v-on:selected="changeCategory" v-bind:data="categoryItems" left="6.9rem" top="0.6rem"></neo-select>' +
+        '<div class="neo-toolbox block" v-if="itemidx == 3">' +
+        '<div class="total">' +
+        '<label>{{$t("dynamic.blockNum")}}</label>' +
+        '<span>{{Total}}</span>' +
+        '</div>' +
+        '</div>' +
+        '<div class="clear" v-if="itemidx == 3"></div>' +
+        '<div class="neo-toolbox wallet" v-if="itemidx == 4">' +
+        '<div class="total">' +
+        '<label>{{$t("dynamic.addressNum")}}</label>' +
+        '<span>{{Total}}</span>' +
+        '</div>' +
+        '<div class="toolbar">' +
+        '<div class="item"><a href="https://otcgo.cn/#/signUp" target="_blank" ><span>{{$t("address.newWallet")}}</span></a></div>' +
+        '<div class="item middle"><a href="https://otcgo.cn/#/login" target="_blank" ><span>{{$t("address.openWallet")}}</span></a></div>' +
+        '</div>' +
+        '</div>' +
+        '<div class="clear" v-if="itemidx == 4"></div>' +
+        '<div class="neo-toolbox__title" v-if="itemidx < 3" v-bind:style="{left: toolboxPositions[itemidx] + \'rem\', \'text-align\': itemidx > 1 ? \'right\' : \'left\'}">' +
+        '<h1>{{title}}</h1>' +
+        '<div class="underline" v-bind:class="{\'right\': itemidx > 1}">' +
+        '<i></i>' +
+        '</div>' +
+        '</div>' +
+        '<div class="neo-toolbox__title" v-if="itemidx > 2" v-bind:style="{right: toolboxPositions[itemidx] + \'rem\', \'text-align\': itemidx > 1 ? \'right\' : \'left\'}">' +
+        '<h1>{{title}}</h1>' +
+        '<div class="underline" v-bind:class="{\'right\': itemidx > 1}">' +
+        '<i></i>' +
+        '</div>' +
+        '</div>' +
+        '</div>',
     computed: {
-        title: function(){
+        title: function () {
             console.log(this)
-            return [this.$t('slider.dynamic.name'),this.$t('slider.market.name'),this.$t('slider.transaction.name'),
-                    this.$t('slider.block.name'),this.$t('slider.address.name')][this.itemidx]
+            return [this.$t('slider.dynamic.name'), this.$t('slider.market.name'), this.$t('slider.transaction.name'),
+                this.$t('slider.block.name'), this.$t('slider.address.name')
+            ][this.itemidx]
         },
-        Total: function() {
+        Total: function () {
             return this.total.toString().replace(/(?=((?!\b)\d{3})+$)/g, ',')
         },
-        category: function() {
+        category: function () {
             return this.categoryItems[this.categoryIdx];
         }
     },
@@ -304,48 +336,79 @@ Vue.component('neo-toolbox', {
         itemidx: Number,
         total: Number
     },
-    data: function() {
+    data: function () {
         return {
             toolboxPositions: [0.2, 1.8, -4.5, 2.8, 0.2],
             search: undefined,
-            categoryItems: [
-                {idx: 0, code: 'Any', name: 'Any'},
-                {idx: 1, code: 'Contract', name: 'Contract'},
-                {idx: 2, code: 'Miner', name: 'Miner'},
-                {idx: 3, code: 'Claim', name: 'Claim'},
-                {idx: 4, code: 'Invocation', name: 'Invocation'},
-                {idx: 5, code: 'Publish', name: 'Publish'},
-                {idx: 6, code: 'Issue', name: 'Issue'},
-                {idx: 7, code: 'Register', name: 'Register'},
+            categoryItems: [{
+                    idx: 0,
+                    code: 'Any',
+                    name: 'Any'
+                },
+                {
+                    idx: 1,
+                    code: 'Contract',
+                    name: 'Contract'
+                },
+                {
+                    idx: 2,
+                    code: 'Miner',
+                    name: 'Miner'
+                },
+                {
+                    idx: 3,
+                    code: 'Claim',
+                    name: 'Claim'
+                },
+                {
+                    idx: 4,
+                    code: 'Invocation',
+                    name: 'Invocation'
+                },
+                {
+                    idx: 5,
+                    code: 'Publish',
+                    name: 'Publish'
+                },
+                {
+                    idx: 6,
+                    code: 'Issue',
+                    name: 'Issue'
+                },
+                {
+                    idx: 7,
+                    code: 'Register',
+                    name: 'Register'
+                },
             ],
             categoryIdx: 0
         }
     },
     methods: {
         // search
-        handleSearch: function() {
+        handleSearch: function () {
             // console.log('search',this.search)
 
-            this.search = this.search.replace(/\s+/g,"")
+            this.search = this.search.replace(/\s+/g, "")
             // if search not exist 
-            if(!this.search || this.search === undefined){
+            if (!this.search || this.search === undefined) {
                 return
             }
             // address start 'A'
-            if(this.search.replace(/\s+/g,"").substring(0,1) === 'A'){
+            if (this.search.replace(/\s+/g, "").substring(0, 1) === 'A') {
                 window.location.href = 'addrinfo.html?address=' + this.search + `&network=${GetUrlParam('network') || 'mainnet'}`
                 return
             }
 
             //txid lenght  64 or 66
-            if(this.search.length === 64 || this.search.length === 66) {
+            if (this.search.length === 64 || this.search.length === 66) {
                 //console.log('/traninfo.html?id=' + (this.search.length === 66 ? this.search : `0x${this.search}`))
                 window.location.href = 'traninfo.html?id=' + (this.search.length === 66 ? this.search : `0x${this.search}` + `&network=${GetUrlParam('network') || 'mainnet'}`)
                 return
             }
 
             //block height only contains number
-            if(/^\d+$/.test(this.search)) {
+            if (/^\d+$/.test(this.search)) {
                 window.location.href = 'blockinfo.html?index=' + this.search + `&network=${GetUrlParam('network') || 'mainnet'}`
                 return
             }
@@ -354,26 +417,26 @@ Vue.component('neo-toolbox', {
 
         },
         //handleKeyup
-        handleKeyup: function(event) {
+        handleKeyup: function (event) {
             // enter
-            if(event.keyCode === 13){
+            if (event.keyCode === 13) {
                 this.handleSearch()
             }
         },
-        handleCategory: function(){
+        handleCategory: function () {
             window.event.cancelBubble = true;
-            if(this.$refs.tooltip.visiable){
+            if (this.$refs.tooltip.visiable) {
                 this.$refs.tooltip.hide();
             } else {
                 this.$refs.tooltip.show();
             }
         },
-        hideCategory: function() {
-            if(this.$refs.tooltip){
+        hideCategory: function () {
+            if (this.$refs.tooltip) {
                 this.$refs.tooltip.hide();
             }
         },
-        changeCategory: function(item) {
+        changeCategory: function (item) {
             this.categoryIdx = item.idx;
             this.$refs.tooltip.hide();
             this.$emit('changed', item)
@@ -382,340 +445,337 @@ Vue.component('neo-toolbox', {
 });
 
 Vue.component('neo-footer', {
-    template:
-    '<div class="neo-footer">'+
-        '<div class="left">'+
-            '<ul class="footer__connect">'+
-                '<li class="">'+
-                    '<a target="_blank" rel="noreferrer noopener" href="https://github.com/OTCGO/state-browser">'+
-                    '<img src="/images/Github.svg" width="25" height="25" alt="">'+
-                    '</a>'+
-                '</li>'+
-                // '<li class="weibo">'+
-                //     '<a target="_blank" rel="noreferrer noopener" href="#">'+
-                //         '<i class=" fa fa-weibo"></i>'+
-                //     '</a>'+
-                // '</li>'+
-                 '<li class=""><a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=084887ec4235e85c771e41797f3360ae4be6f50b82d410e5e5d6890e11966d86" alt="SEA第六社群" title="SEA第六社群"><img src="/images/QQ.svg" width="25" height="25" alt=""></a> '+
-                 ' </li>'+
-                '<li class="weixin">'+
-                        '<a href="#"><img src="/images/wx.svg"  width="25" alt=""></a> <div class="weixin-qr-code">'+
-                                '<img  src="/images/wxQrcode.jpg" alt="蓝鲸淘智能资产管理平台" width="160">'+
-                        '</div>'+
-                '</li> '+
-                '<li class="telegram"><a target="_blank" href="//t.me/otcgo"  title="Telegram"><img src="/images/Telegram.svg" width="25" height="25" alt=""></a> '+
-                '</li>'+
-                '<li class="twitter"><a target="_blank" href="https://twitter.com/smart_exchangea"  title="twitter"><img src="/images/Twitter.svg" width="25" height="25" alt=""></a> '+
-                '</li>'+
-            '</ul>'+
-            '<div class="links" style="display: flex;">' +
-    '           <span class="text-type2">{{$t("footer.link")}}</span>'+
-    '          <ul class="list-unstyled" style="flex:1">' +
-    '                       <li v-for="item in links"><a class="text-color2" target="_blank" :href="item.href">{{item.text}}</a></li>' +
-    '                    </ul>' +
-    '        </div>'+
-        '</div>'+
-        '<div class="center">'+
-            '<div class="folder">'+
-                '<div class="wrapper">'+
-                    '<a href="#top"><i class="icon iconfont icon-arrow-up"></i></a>'+
-                '</div>'+
-            '</div>'+
-            '<div class="info">'+
-                '<div>{{$t("footer.version")}}: v2.10.1</div>'+
-                '<div class="netwrok"><a href="javascript:void(0)" @click="selectNetwork">{{ network }}</a></div>'+
-            '</div>'+
-        '</div>'+
-        '<div class="right" style="display:flex;justify-content: center;align-items: center;padding:0">'+
-            // '<v-select :on-change="selectNetwork()" v-model="selected" :options="options"></v-select>'+
-        '<img src="/images/wxQrcode.jpg" width="120" height="120" style="margin-top:.2rem" alt="">'+
-        '</div>'+
-        '<div class="clear"></div>'+
-    '</div>',
-    data: function() {
+    template: '<div class="neo-footer">' +
+        '<div class="left">' +
+        '<ul class="footer__connect">' +
+        '<li class="">' +
+        '<a target="_blank" rel="noreferrer noopener" href="https://github.com/OTCGO/state-browser">' +
+        '<img src="/images/Github.svg" width="25" height="25" alt="">' +
+        '</a>' +
+        '</li>' +
+        // '<li class="weibo">'+
+        //     '<a target="_blank" rel="noreferrer noopener" href="#">'+
+        //         '<i class=" fa fa-weibo"></i>'+
+        //     '</a>'+
+        // '</li>'+
+        '<li class=""><a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=084887ec4235e85c771e41797f3360ae4be6f50b82d410e5e5d6890e11966d86" alt="SEA第六社群" title="SEA第六社群"><img src="/images/QQ.svg" width="25" height="25" alt=""></a> ' +
+        ' </li>' +
+        '<li class="weixin">' +
+        '<a href="#"><img src="/images/wx.svg"  width="25" alt=""></a> <div class="weixin-qr-code">' +
+        '<img  src="/images/wxQrcode.jpg" alt="蓝鲸淘智能资产管理平台" width="160">' +
+        '</div>' +
+        '</li> ' +
+        '<li class="telegram"><a target="_blank" href="//t.me/otcgo"  title="Telegram"><img src="/images/Telegram.svg" width="25" height="25" alt=""></a> ' +
+        '</li>' +
+        '<li class="twitter"><a target="_blank" href="https://twitter.com/smart_exchangea"  title="twitter"><img src="/images/Twitter.svg" width="25" height="25" alt=""></a> ' +
+        '</li>' +
+        '</ul>' +
+        '<div class="links" style="display: flex;">' +
+        '           <span class="text-type2">{{$t("footer.link")}}</span>' +
+        '          <ul class="list-unstyled" style="flex:1">' +
+        '                       <li v-for="item in links"><a class="text-color2" target="_blank" :href="item.href">{{item.text}}</a></li>' +
+        '                    </ul>' +
+        '        </div>' +
+        '</div>' +
+        '<div class="center">' +
+        '<div class="folder">' +
+        '<div class="wrapper">' +
+        '<a href="#top"><i class="icon iconfont icon-arrow-up"></i></a>' +
+        '</div>' +
+        '</div>' +
+        '<div class="info">' +
+        '<div>{{$t("footer.version")}}: v2.10.1</div>' +
+        '<div class="netwrok"><a href="javascript:void(0)" @click="selectNetwork">{{ network }}</a></div>' +
+        '</div>' +
+        '</div>' +
+        '<div class="right" style="display:flex;justify-content: center;align-items: center;padding:0">' +
+        // '<v-select :on-change="selectNetwork()" v-model="selected" :options="options"></v-select>'+
+        '<img src="/images/wxQrcode.jpg" width="120" height="120" style="margin-top:.2rem" alt="">' +
+        '</div>' +
+        '<div class="clear"></div>' +
+        '</div>',
+    data: function () {
         return {
             network: '',
-            links: [
-                {
-                    text: this.$t('footer.SEA'),
-                    href: 'https://otcgo.cn/'
-                }, {
-                    text: this.$t('footer.NEO'),
-                    href: 'https://neo.org'
-                }, {
-                    text: this.$t('footer.ont'),
-                    href: 'https://ont.io'
-                },{
-                    text: this.$t('footer.niubilai'),
-                    href: 'https://www.niubilai.com'
-                },{
-                    text: this.$t('footer.dubiwang'),
-                    href: 'http://www.dubiwang.com'
-                }, {
-                    text: this.$t('footer.cryptogladiator'),
-                    href: 'http://cryptogladiator.io'
-                }, {
-                    text: this.$t('footer.alchemint'),
-                    href: 'http://alchemint.io'
-                }, {
-                    text: this.$t('footer.jgy'),
-                    href: 'http://www.jgy.com'
-                }, {
-                    text: this.$t('footer.loopring'),
-                    href: 'http://loopring.org'
-                }, {
-                    text: this.$t('footer.binance'),
-                    href: 'http://www.binance.com'
-                }, {
-                    text: this.$t('footer.byb'),
-                    href: 'http://www.byb.world'
-                }, {
-                    text: this.$t('footer.nns'),
-                    href: 'https://neons.name'
-                }, {
-                    text: this.$t('footer.zdpvt'),
-                    href: 'https://www.zdpvt.com/'
-                }, {
-                    text: this.$t('footer.DBC'),
-                    href: 'https://www.deepbrainchain.org/'
-                }, {
-                    text: this.$t('footer.chainfor'),
-                    href: 'https://www.chainfor.com/'
-                }, {
-                    text: this.$t('footer.bixiaobai'),
-                    href: 'http://www.bixiaobai.com/'
-                }, {
-                    text: this.$t('footer.biyiye'),
-                    href: 'http://biyiye.com/'
-                }, {
-                    text: this.$t('footer.odaily'),
-                    href: 'https://www.odaily.com'
-                }, {
-                    text: this.$t('footer.ihuoqiu'),
-                    href: 'http://www.ihuoqiu.com'
-                }, {
-                    text: this.$t('footer.blockchainho'),
-                    href: 'http://www.blockchainho.me/'
-                }, {
-                    text: this.$t('footer.BlockCC'),
-                    href: 'http://biyiye.com/'
-                }, {
-                    text: this.$t('footer.WLZJ'),
-                    href: 'http://www.wanlianzhijia.com'
-                }, {
-                    text: this.$t('footer.bitansuo'),
-                    href: 'http://www.bitansuo.com'
-                }, {
-                    text: this.$t('footer.lianshijie'),
-                    href: 'http://www.7234.cn'
-                }, {
-                    text: this.$t('footer.qukuainews'),
-                    href: 'http://www.qukuainews.com'
-                }, {
-                    text: this.$t('footer.blockcircles'),
-                    href: 'http://www.blockcircles.cn'
-                }, {
-                    text: this.$t('footer.BTCSOS'),
-                    href: 'http://BTCsos.com'
-                }, {
-                    text: this.$t('footer.hunxu'),
-                    href: 'https://www.hunxu.cn'
-                }, {
-                    text: this.$t('footer.bitool'),
-                    href: 'https://www.bitool.cn'
-                }, {
-                    text: this.$t('footer.tokenpapa'),
-                    href: 'http://www.tokenpapa.com'
-                }, {
-                    text: this.$t('footer.doubi'),
-                    href: 'http://doubi.com'
-                }, {
-                    text: this.$t('footer._77zhijia'),
-                    href: 'http://www.77zhijia.com'
-                }, {
-                    text: this.$t('footer.BEE360'),
-                    href: 'https://bee360.io'
-                }, {
-                    text: this.$t('footer.btc112'),
-                    href: 'http://www.btc112.com'
-                }, {
-                    text: this.$t('footer.bitjia'),
-                    href: 'http://www.bitjia.com'
-                }, {
-                    text: this.$t('footer._178bit'),
-                    href: 'http://www.178bit.com'
-                }, {
-                    text: this.$t('footer.btc126'),
-                    href: 'http://www.btc126.com'
-                }, {
-                    text: this.$t('footer.btc789'),
-                    href: 'http://www.btc789.com'
-                },{
-                    text: this.$t('footer.qklyz'),
-                    href: 'http://www.qklyz.com'
-                },{
-                    text: this.$t('footer.bishequ'),
-                    href: 'http://bishequ.com'
-                },{
-                    text: this.$t('footer.blockisx'),
-                    href: 'http://www.blockisx.com'
-                },{
-                    text: this.$t('footer.gameyjy'),
-                    href: 'http://gameyjy.com'
-                },{
-                    text: this.$t('footer.qukuailiant'),
-                    href: 'http://qukuailiant.com/'
-                },{
-                    text: this.$t('footer.biiquan'),
-                    href: 'http://www.biiquan.com/'
-                },{
-                    text: this.$t('footer.qzcj'),
-                    href: 'http://www.qzcj.top/'
-                },{
-                    text: this.$t('footer.o_link'),
-                    href: 'http://www.o-o-o.link'
-                },{
-                    text: this.$t('footer.tokenlab'),
-                    href: 'http://tokenlab.online'
-                },{
-                    text: this.$t('footer.bjiebtc'),
-                    href: 'http://bjiebtc.com'
-                },{
-                    text: this.$t('footer._528btc'),
-                    href: 'http://www.528btc.com'
-                },{
-                    text: this.$t('footer.taobi'),
-                    href: 'http://www.taobi.ink'
-                },{
-                    text: this.$t('footer.lechain'),
-                    href: 'http://www.lechain.com'
-                },{
-                    text: this.$t('footer.dayqkl'),
-                    href: 'http://www.dayqkl.com'
-                },{
-                    text: this.$t('footer.hellobtc'),
-                    href: 'http://www.hellobtc.com'
-                },{
-                    text: this.$t('footer.block123'),
-                    href: 'http://www.block123.com'
-                },{
-                    text: this.$t('footer.BCfans'),
-                    href: 'http://www.bcfans.com'
-                },{
-                    text: this.$t('footer.qqbite'),
-                    href: 'http://www.qqbite.com'
-                },{
-                    text: this.$t('footer.btsabc'),
-                    href: 'http://btsabc.org'
-                },{
-                    text: this.$t('footer.jingyublock'),
-                    href: 'http://www.jingyublock.com'
-                },{
-                    text: this.$t('footer.tanuonline'),
-                    href: 'http://www.tanuonline.com'
-                },{
-                    text: this.$t('footer.bitbee24'),
-                    href: 'http://www.bitbee24.com'
-                },{
-                    text: this.$t('footer.chaindaily'),
-                    href: 'http://chaindaily.com'
-                },{
-                    text: this.$t('footer.btc120'),
-                    href: 'http://www.120btc.com'
-                },{
-                    text: this.$t('footer.chainpow'),
-                    href: 'http://www.chainpow.com'
-                },{
-                    text: this.$t('footer.queding'),
-                    href: 'http://www.queding.cn'
-                },{
-                    text: this.$t('footer.qianba'),
-                    href: 'http://www.qianba.com'
-                },{
-                    text: this.$t('footer.xiha'),
-                    href: 'http://www.xiha.top'
-                },{
-                    text: this.$t('footer.worldb'),
-                    href: 'http://worldb.pro'
-                },{
-                    text: this.$t('footer.qkl100'),
-                    href: 'http://www.100qkl.com'
-                },{
-                    text: this.$t('footer.sootoo'),
-                    href: 'http://vt.sootoo.com'
-                },{
-                    text: this.$t('footer.hibtc'),
-                    href: 'https://www.hibtc.org'
-                },{
-                    text: this.$t('footer.bitol'),
-                    href: 'http://www.bitol.net'
-                },{
-                    text: this.$t('footer.ttbite'),
-                    href: 'http://www.ttbite.com'
-                },{
-                    text: this.$t('footer.finacerun'),
-                    href: 'http://www.finacerun.com'
-                },{
-                    text: this.$t('footer.liansiling'),
-                    href: 'http://liansiling.com'
-                },{
-                    text: this.$t('footer.bitnews'),
-                    href: 'http://www.bitnews.vip'
-                },{
-                    text: this.$t('footer.bikeji'),
-                    href: 'http://www.bikeji.com'
-                },{
-                    text: this.$t('footer.shenliancaijing'),
-                    href: 'http://www.shenliancaijing.com'
-                },{
-                    text: this.$t('footer.blockob'),
-                    href: 'http://www.blockob.com'
-                },{
-                    text: this.$t('footer.bcsky'),
-                    href: 'http://bcsky.pro'
-                },{
-                    text: this.$t('footer.ok35'),
-                    href: 'http://www.ok35.com'
-                },{
-                    text: this.$t('footer.zxbcc'),
-                    href: 'http://www.zxbcc.com'
-                },{
-                    text: this.$t('footer.tuoluocaijing'),
-                    href: 'https://www.tuoluocaijing.cn/'
-                },{
-                    text: this.$t('footer.qkl123'),
-                    href: 'https://www.qkl123.com/'
-                },{
-                    text: this.$t('footer.dappOnline'),
-                    href: 'http://dapponline.io/'
-                },
-            ]
+            links: [{
+                text: this.$t('footer.SEA'),
+                href: 'https://otcgo.cn/'
+            }, {
+                text: this.$t('footer.NEO'),
+                href: 'https://neo.org'
+            }, {
+                text: this.$t('footer.ont'),
+                href: 'https://ont.io'
+            }, {
+                text: this.$t('footer.niubilai'),
+                href: 'https://www.niubilai.com'
+            }, {
+                text: this.$t('footer.dubiwang'),
+                href: 'http://www.dubiwang.com'
+            }, {
+                text: this.$t('footer.cryptogladiator'),
+                href: 'http://cryptogladiator.io'
+            }, {
+                text: this.$t('footer.alchemint'),
+                href: 'http://alchemint.io'
+            }, {
+                text: this.$t('footer.jgy'),
+                href: 'http://www.jgy.com'
+            }, {
+                text: this.$t('footer.loopring'),
+                href: 'http://loopring.org'
+            }, {
+                text: this.$t('footer.binance'),
+                href: 'http://www.binance.com'
+            }, {
+                text: this.$t('footer.byb'),
+                href: 'http://www.byb.world'
+            }, {
+                text: this.$t('footer.nns'),
+                href: 'https://neons.name'
+            }, {
+                text: this.$t('footer.zdpvt'),
+                href: 'https://www.zdpvt.com/'
+            }, {
+                text: this.$t('footer.DBC'),
+                href: 'https://www.deepbrainchain.org/'
+            }, {
+                text: this.$t('footer.chainfor'),
+                href: 'https://www.chainfor.com/'
+            }, {
+                text: this.$t('footer.bixiaobai'),
+                href: 'http://www.bixiaobai.com/'
+            }, {
+                text: this.$t('footer.biyiye'),
+                href: 'http://biyiye.com/'
+            }, {
+                text: this.$t('footer.odaily'),
+                href: 'https://www.odaily.com'
+            }, {
+                text: this.$t('footer.ihuoqiu'),
+                href: 'http://www.ihuoqiu.com'
+            }, {
+                text: this.$t('footer.blockchainho'),
+                href: 'http://www.blockchainho.me/'
+            }, {
+                text: this.$t('footer.BlockCC'),
+                href: 'http://biyiye.com/'
+            }, {
+                text: this.$t('footer.WLZJ'),
+                href: 'http://www.wanlianzhijia.com'
+            }, {
+                text: this.$t('footer.bitansuo'),
+                href: 'http://www.bitansuo.com'
+            }, {
+                text: this.$t('footer.lianshijie'),
+                href: 'http://www.7234.cn'
+            }, {
+                text: this.$t('footer.qukuainews'),
+                href: 'http://www.qukuainews.com'
+            }, {
+                text: this.$t('footer.blockcircles'),
+                href: 'http://www.blockcircles.cn'
+            }, {
+                text: this.$t('footer.BTCSOS'),
+                href: 'http://BTCsos.com'
+            }, {
+                text: this.$t('footer.hunxu'),
+                href: 'https://www.hunxu.cn'
+            }, {
+                text: this.$t('footer.bitool'),
+                href: 'https://www.bitool.cn'
+            }, {
+                text: this.$t('footer.tokenpapa'),
+                href: 'http://www.tokenpapa.com'
+            }, {
+                text: this.$t('footer.doubi'),
+                href: 'http://doubi.com'
+            }, {
+                text: this.$t('footer._77zhijia'),
+                href: 'http://www.77zhijia.com'
+            }, {
+                text: this.$t('footer.BEE360'),
+                href: 'https://bee360.io'
+            }, {
+                text: this.$t('footer.btc112'),
+                href: 'http://www.btc112.com'
+            }, {
+                text: this.$t('footer.bitjia'),
+                href: 'http://www.bitjia.com'
+            }, {
+                text: this.$t('footer._178bit'),
+                href: 'http://www.178bit.com'
+            }, {
+                text: this.$t('footer.btc126'),
+                href: 'http://www.btc126.com'
+            }, {
+                text: this.$t('footer.btc789'),
+                href: 'http://www.btc789.com'
+            }, {
+                text: this.$t('footer.qklyz'),
+                href: 'http://www.qklyz.com'
+            }, {
+                text: this.$t('footer.bishequ'),
+                href: 'http://bishequ.com'
+            }, {
+                text: this.$t('footer.blockisx'),
+                href: 'http://www.blockisx.com'
+            }, {
+                text: this.$t('footer.gameyjy'),
+                href: 'http://gameyjy.com'
+            }, {
+                text: this.$t('footer.qukuailiant'),
+                href: 'http://qukuailiant.com/'
+            }, {
+                text: this.$t('footer.biiquan'),
+                href: 'http://www.biiquan.com/'
+            }, {
+                text: this.$t('footer.qzcj'),
+                href: 'http://www.qzcj.top/'
+            }, {
+                text: this.$t('footer.o_link'),
+                href: 'http://www.o-o-o.link'
+            }, {
+                text: this.$t('footer.tokenlab'),
+                href: 'http://tokenlab.online'
+            }, {
+                text: this.$t('footer.bjiebtc'),
+                href: 'http://bjiebtc.com'
+            }, {
+                text: this.$t('footer._528btc'),
+                href: 'http://www.528btc.com'
+            }, {
+                text: this.$t('footer.taobi'),
+                href: 'http://www.taobi.ink'
+            }, {
+                text: this.$t('footer.lechain'),
+                href: 'http://www.lechain.com'
+            }, {
+                text: this.$t('footer.dayqkl'),
+                href: 'http://www.dayqkl.com'
+            }, {
+                text: this.$t('footer.hellobtc'),
+                href: 'http://www.hellobtc.com'
+            }, {
+                text: this.$t('footer.block123'),
+                href: 'http://www.block123.com'
+            }, {
+                text: this.$t('footer.BCfans'),
+                href: 'http://www.bcfans.com'
+            }, {
+                text: this.$t('footer.qqbite'),
+                href: 'http://www.qqbite.com'
+            }, {
+                text: this.$t('footer.btsabc'),
+                href: 'http://btsabc.org'
+            }, {
+                text: this.$t('footer.jingyublock'),
+                href: 'http://www.jingyublock.com'
+            }, {
+                text: this.$t('footer.tanuonline'),
+                href: 'http://www.tanuonline.com'
+            }, {
+                text: this.$t('footer.bitbee24'),
+                href: 'http://www.bitbee24.com'
+            }, {
+                text: this.$t('footer.chaindaily'),
+                href: 'http://chaindaily.com'
+            }, {
+                text: this.$t('footer.btc120'),
+                href: 'http://www.120btc.com'
+            }, {
+                text: this.$t('footer.chainpow'),
+                href: 'http://www.chainpow.com'
+            }, {
+                text: this.$t('footer.queding'),
+                href: 'http://www.queding.cn'
+            }, {
+                text: this.$t('footer.qianba'),
+                href: 'http://www.qianba.com'
+            }, {
+                text: this.$t('footer.xiha'),
+                href: 'http://www.xiha.top'
+            }, {
+                text: this.$t('footer.worldb'),
+                href: 'http://worldb.pro'
+            }, {
+                text: this.$t('footer.qkl100'),
+                href: 'http://www.100qkl.com'
+            }, {
+                text: this.$t('footer.sootoo'),
+                href: 'http://vt.sootoo.com'
+            }, {
+                text: this.$t('footer.hibtc'),
+                href: 'https://www.hibtc.org'
+            }, {
+                text: this.$t('footer.bitol'),
+                href: 'http://www.bitol.net'
+            }, {
+                text: this.$t('footer.ttbite'),
+                href: 'http://www.ttbite.com'
+            }, {
+                text: this.$t('footer.finacerun'),
+                href: 'http://www.finacerun.com'
+            }, {
+                text: this.$t('footer.liansiling'),
+                href: 'http://liansiling.com'
+            }, {
+                text: this.$t('footer.bitnews'),
+                href: 'http://www.bitnews.vip'
+            }, {
+                text: this.$t('footer.bikeji'),
+                href: 'http://www.bikeji.com'
+            }, {
+                text: this.$t('footer.shenliancaijing'),
+                href: 'http://www.shenliancaijing.com'
+            }, {
+                text: this.$t('footer.blockob'),
+                href: 'http://www.blockob.com'
+            }, {
+                text: this.$t('footer.bcsky'),
+                href: 'http://bcsky.pro'
+            }, {
+                text: this.$t('footer.ok35'),
+                href: 'http://www.ok35.com'
+            }, {
+                text: this.$t('footer.zxbcc'),
+                href: 'http://www.zxbcc.com'
+            }, {
+                text: this.$t('footer.tuoluocaijing'),
+                href: 'https://www.tuoluocaijing.cn/'
+            }, {
+                text: this.$t('footer.qkl123'),
+                href: 'https://www.qkl123.com/'
+            }, {
+                text: this.$t('footer.dappOnline'),
+                href: 'http://dapponline.io/'
+            }, ]
         }
     },
     methods: {
-        hoverHandle: function(){
+        hoverHandle: function () {
             console.log('hoverHandle')
         },
 
-        selectNetwork: function(){
-            if(this.network === 'TestNet' ){
+        selectNetwork: function () {
+            if (this.network === 'TestNet') {
                 location.href = `index.html?network=testnet`
-            }else{
+            } else {
                 location.href = `index.html?network=mainnet`
             }
 
         }
 
     },
-    mounted(){
-        console.log('network',GetUrlParam('network'))
-        if(!GetUrlParam('network')){
+    mounted() {
+        console.log('network', GetUrlParam('network'))
+        if (!GetUrlParam('network')) {
             this.network = 'TestNet'
 
             return
         }
 
-        this.network = GetUrlParam('network') === 'mainnet'  ? 'TestNet' : 'MainNet'
+        this.network = GetUrlParam('network') === 'mainnet' ? 'TestNet' : 'MainNet'
     }
 
 });
@@ -724,30 +784,29 @@ Vue.component('neo-footer', {
 
 
 Vue.component('neo-paging', {
-    template:
-    '<div class="neo-paging">'+
-    '<div class="info" v-bind:style="{color: TintColor}">'+
-        '{{$t("pagination.current")}}'+
-        ' {{(CurrentPage-1)*PageCount+1}} '+
-        ' {{$t("pagination.to")}}'+
-        ' {{CurrentPage*PageCount>TotalCount ? TotalCount : CurrentPage*PageCount}} '+
-        ' {{$t("pagination.total")}} '+
-        ' {{TotalCount}} '+
-    '</div>'+
-    // '<div class="page">'+
-    //     '<i class="icon iconfont icon-arrow-left prev" v-bind:class="{\'disable\': CurrentPage==1}" v-if="CurrentPage==1"></i>'+
-    //     '<i class="icon iconfont icon-arrow-left prev" v-on:click="prevPage" v-bind:style="{background: TintColor}" v-if="CurrentPage!=1"></i>'+
-    //     '<i class="icon iconfont icon-arrow-right2 next" v-on:click="nextPage" v-bind:style="{background: TintColor}" v-if="CurrentPage<TotalPage"></i>'+
-    //     '<i class="icon iconfont icon-arrow-right2 next" v-bind:class="{\'disable\': CurrentPage>=TotalPage}" v-if="CurrentPage>=TotalPage"></i>'+
-    // '</div>'+
-    // '<paginate'+
-    //     'v-bind:page-count="Math.ceil(totalCount/pageCount)"'+
-    //     'v-bind:click-handler="changePaginate"'+
-    //     'prev-text="\'Prev\'"'+
-    //     'next-text="\'Next\'"'+
-    //     'container-class="\'neo-pagination\'">'+
-    //     '</paginate>'+
-    '</div>',
+    template: '<div class="neo-paging">' +
+        '<div class="info" v-bind:style="{color: TintColor}">' +
+        '{{$t("pagination.current")}}' +
+        ' {{(CurrentPage-1)*PageCount+1}} ' +
+        ' {{$t("pagination.to")}}' +
+        ' {{CurrentPage*PageCount>TotalCount ? TotalCount : CurrentPage*PageCount}} ' +
+        ' {{$t("pagination.total")}} ' +
+        ' {{TotalCount}} ' +
+        '</div>' +
+        // '<div class="page">'+
+        //     '<i class="icon iconfont icon-arrow-left prev" v-bind:class="{\'disable\': CurrentPage==1}" v-if="CurrentPage==1"></i>'+
+        //     '<i class="icon iconfont icon-arrow-left prev" v-on:click="prevPage" v-bind:style="{background: TintColor}" v-if="CurrentPage!=1"></i>'+
+        //     '<i class="icon iconfont icon-arrow-right2 next" v-on:click="nextPage" v-bind:style="{background: TintColor}" v-if="CurrentPage<TotalPage"></i>'+
+        //     '<i class="icon iconfont icon-arrow-right2 next" v-bind:class="{\'disable\': CurrentPage>=TotalPage}" v-if="CurrentPage>=TotalPage"></i>'+
+        // '</div>'+
+        // '<paginate'+
+        //     'v-bind:page-count="Math.ceil(totalCount/pageCount)"'+
+        //     'v-bind:click-handler="changePaginate"'+
+        //     'prev-text="\'Prev\'"'+
+        //     'next-text="\'Next\'"'+
+        //     'container-class="\'neo-pagination\'">'+
+        //     '</paginate>'+
+        '</div>',
     props: {
         tint: String,
         page: Number,
@@ -757,24 +816,24 @@ Vue.component('neo-paging', {
         nextText: String,
     },
     computed: {
-        TotalPage: function() {
+        TotalPage: function () {
             //  Math.ceil 向上取整
-            return Math.ceil(parseFloat(this.total/this.count))
+            return Math.ceil(parseFloat(this.total / this.count))
         },
-        TotalCount: function() {
+        TotalCount: function () {
             return this.total.toString().replace(/(?=((?!\b)\d{3})+$)/g, ',')
         },
-        TintColor: function() {
+        TintColor: function () {
             return this.tint;
         },
-        CurrentPage: function() {
+        CurrentPage: function () {
             return this.page;
         },
-        PageCount: function() {
+        PageCount: function () {
             return this.count;
         }
     },
-    data: function() {
+    data: function () {
         return {
             // tintColor: '#F9C400',
             // currentPage: 1,
@@ -783,21 +842,21 @@ Vue.component('neo-paging', {
         }
     },
     methods: {
-        nextPage: function() {
-            if(this.page >= this.TotalPage) {
+        nextPage: function () {
+            if (this.page >= this.TotalPage) {
                 return
             }
             this.page += 1;
             this.emitEvent()
         },
-        prevPage: function() {
-            if(this.page < 2){
+        prevPage: function () {
+            if (this.page < 2) {
                 return;
             }
             this.page -= 1;
             this.emitEvent();
         },
-        emitEvent: function() {
+        emitEvent: function () {
             var that = this;
             this.$emit('change', {
                 currentPage: that.page,
@@ -809,16 +868,15 @@ Vue.component('neo-paging', {
     }
 })
 
-Vue.component('neo-dynamic-list',{
-    template:
-    '<div class="neo-dynamic-list">'+
-        '<div class="neo-dynamic-list__item" v-for="(item, itemIdx) in items" v-on:click="tap(item)">'+
-            '<h1 v-bind:class="{\'link\': item.url}">{{item.value}} <i>{{item.unit}}</i></h1>'+
-            '<h2>{{item.desc}}</h2>'+
-            '<div class="neo-dynamic-list__item-underlayer"></div>'+
-        '</div>'+
-    '</div>',
-    data: function() {
+Vue.component('neo-dynamic-list', {
+    template: '<div class="neo-dynamic-list">' +
+        '<div class="neo-dynamic-list__item" v-for="(item, itemIdx) in items" v-on:click="tap(item)">' +
+        '<h1 v-bind:class="{\'link\': item.url}">{{item.value}} <i>{{item.unit}}</i></h1>' +
+        '<h2>{{item.desc}}</h2>' +
+        '<div class="neo-dynamic-list__item-underlayer"></div>' +
+        '</div>' +
+        '</div>',
+    data: function () {
         return {
             items: undefined,
             countdown: 0, // 倒计时,
@@ -827,402 +885,424 @@ Vue.component('neo-dynamic-list',{
             intervalid2: undefined
         }
     },
-    beforeDestroy(){
+    beforeDestroy() {
         // clearInterval 
         clearInterval(this.intervalid1)
         clearInterval(this.intervalid2)
         console.log('beforeDestroy')
     },
     methods: {
-        tap: function(item) {
-            if(item.url){
+        tap: function (item) {
+            if (item.url) {
                 window.location.href = item.url
             }
         },
-        init: function() {
+        init: function () {
             var that = this
             axios({
-                url: host+'/api/v1/'+network+'/public/graphql',
-                method: 'post',
-                data: {
-                    query: '{'+
-                        ' SystemQuery { '+
-                            ' rows {'+
-                                ' startTime '+
-                                ' curretTime '+
-                                ' blockNum '+
-                                ' assetNum '+
-                                ' addressNum '+
-                                ' transactionNum '+
-                            ' } '+
-                        ' } '+
-                    ' } '
-                }
-            })
-            .then(function (resp) {
-                if(resp){
-                    let result = resp.data.data.SystemQuery.rows
-
-                    // update  countdown = 0
-                    if(parseInt(result.blockNum - 1) > that.blockIndex){
-                        that.countdown = 0
+                    url: host + '/api/v1/' + network + '/public/graphql',
+                    method: 'post',
+                    data: {
+                        query: '{' +
+                            ' SystemQuery { ' +
+                            ' rows {' +
+                            ' startTime ' +
+                            ' curretTime ' +
+                            ' blockNum ' +
+                            ' assetNum ' +
+                            ' addressNum ' +
+                            ' transactionNum ' +
+                            ' } ' +
+                            ' } ' +
+                            ' } '
                     }
+                })
+                .then(function (resp) {
+                    if (resp) {
+                        let result = resp.data.data.SystemQuery.rows
 
-                    that.blockIndex = result.blockNum - 1
-                    that.items = [
-                        {value: moment(result.startTime*1000).format("YYYY-MM-DD"), unit: '', desc: that.$t('dynamic.startTime')},
-                        {value: moment(result.curretTime*1000).diff(moment(result.startTime*1000), "days"), unit: that.$t('dynamic.day'), desc:  that.$t('dynamic.runTime')},
-                        {value: result.assetNum.toString().replace(/(?=((?!\b)\d{3})+$)/g, ','), unit: '', desc: that.$t('dynamic.assetNum'), url:`assets.html?network=${GetUrlParam('network') || 'mainnet'}`},
-                        {value: result.blockNum.toString().replace(/(?=((?!\b)\d{3})+$)/g, ','), unit: '', desc: that.$t('dynamic.blockNum') },
-                        {value: result.transactionNum.toString().replace(/(?=((?!\b)\d{3})+$)/g, ','), unit: '', desc: that.$t('dynamic.transactionNum') },
-                        {value: result.addressNum.toString().replace(/(?=((?!\b)\d{3})+$)/g, ','), unit: '', desc:that.$t('dynamic.addressNum')},
-                        {value: that.countdown, unit: that.$t('dynamic.second'), desc:that.$t('dynamic.newBlock')}
-                    ]
+                        // update  countdown = 0
+                        if (parseInt(result.blockNum - 1) > that.blockIndex) {
+                            that.countdown = 0
+                        }
 
-                    console.log('that.intervalid2',that.intervalid2)
-                    if(!that.intervalid2){
-                        // 出块时间
-                        that.getCountdown()
+                        that.blockIndex = result.blockNum - 1
+                        that.items = [{
+                                value: moment(result.startTime * 1000).format("YYYY-MM-DD"),
+                                unit: '',
+                                desc: that.$t('dynamic.startTime')
+                            },
+                            {
+                                value: moment(result.curretTime * 1000).diff(moment(result.startTime * 1000), "days"),
+                                unit: that.$t('dynamic.day'),
+                                desc: that.$t('dynamic.runTime')
+                            },
+                            {
+                                value: result.assetNum.toString().replace(/(?=((?!\b)\d{3})+$)/g, ','),
+                                unit: '',
+                                desc: that.$t('dynamic.assetNum'),
+                                url: `assets.html?network=${GetUrlParam('network') || 'mainnet'}`
+                            },
+                            {
+                                value: result.blockNum.toString().replace(/(?=((?!\b)\d{3})+$)/g, ','),
+                                unit: '',
+                                desc: that.$t('dynamic.blockNum')
+                            },
+                            {
+                                value: result.transactionNum.toString().replace(/(?=((?!\b)\d{3})+$)/g, ','),
+                                unit: '',
+                                desc: that.$t('dynamic.transactionNum')
+                            },
+                            {
+                                value: result.addressNum.toString().replace(/(?=((?!\b)\d{3})+$)/g, ','),
+                                unit: '',
+                                desc: that.$t('dynamic.addressNum')
+                            },
+                            {
+                                value: that.countdown,
+                                unit: that.$t('dynamic.second'),
+                                desc: that.$t('dynamic.newBlock')
+                            }
+                        ]
+
+                        console.log('that.intervalid2', that.intervalid2)
+                        if (!that.intervalid2) {
+                            // 出块时间
+                            that.getCountdown()
+                        }
+
                     }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
 
-                }
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-
-            if(!that.intervalid1){
+            if (!that.intervalid1) {
                 // setInterval update
                 that.intervalid1 = setInterval(() => {
                     that.init()
                     console.log('init')
-                },10000)
+                }, 10000)
             }
 
 
         },
-        getCountdown(){
+        getCountdown() {
             console.log('getCountdown')
             let that = this
-            that.intervalid2 = setInterval(()=>{
-                    that.$set(that.items, 6, { value: that.countdown++,unit: that.$t('dynamic.second'), desc:that.$t('dynamic.newBlock') })
-                    console.log('getCountdown')
-                },1000)
+            that.intervalid2 = setInterval(() => {
+                that.$set(that.items, 6, {
+                    value: that.countdown++,
+                    unit: that.$t('dynamic.second'),
+                    desc: that.$t('dynamic.newBlock')
+                })
+                console.log('getCountdown')
+            }, 1000)
         }
 
     }
 });
 
 Vue.component('neo-market-neochart', {
-    template: '<div id="neochart" style="height: 2rem; width: 7.5rem;"></div>',
-    data: function() {
+    template: `
+    <div>
+        <div class="neo-market-list">
+            <div class="neo-market-item">
+                <p class="value" >￥{{coinInfo.price}}</p>
+                <p class="name" >Neo</p>
+            </div>
+            <div class="neo-market-item">
+                <p class="value" >￥{{coinInfo.market_cap}}</p>
+                <p class="name" >市值</p>
+            </div>
+            <div class="neo-market-item">
+                <p class="value" >{{coinInfo.percent_change_24h}}%</p>
+                <p class="name" >24H涨幅</p>
+            </div>
+            <div class="neo-market-item">
+                <p class="value" >{{coinInfo.volume_24h}}</p>
+                <p class="name" >24H成交量</p>
+            </div>
+            <div class="clear"></div>
+        </div>
+       
+
+        <div id="neochart"></div>
+    </div>
+    `,
+    data: function () {
         return {
-            chart: undefined
+            chart: undefined,
+            coinInfo: {
+                price: 0,
+                market_cap: 0,
+                percent_change_24h: 0,
+                volume_24h: 0
+            }
         }
     },
     methods: {
-        init: function() {
-            if(this.chart){
-                this.chart = undefined
+        init: async function () {
+
+            await this.initCoinInfo()
+
+            await this.initChart()
+
+
+        },
+
+        initChart: async function () {
+            try {
+                if (this.chart) {
+                    this.chart = undefined
+                }
+
+                this.chart = echarts.init(document.getElementById('neochart'));
+
+
+
+                const result = await axios({
+                    url: `${host}/api/v1/${network}/ticker/history`,
+                    method: 'get',
+                    params: {
+                        start:moment().subtract(1,'months').format("YYYY-MM-DD") , 
+                        end:moment().format("YYYY-MM-DD") , 
+                        interval:'1d' ,
+                        symbol:'neo-neo'
+                    }
+                })
+
+
+
+                var time = [];
+
+                var data = [];
+
+
+                for (let i = 0; i < result.data.data.length; i++) {
+                    time.push(moment(result.data.data[i].timestamp).format("YYYY-MM-DD"))
+                    data.push((result.data.data[i].price * 6.73).toFixed(2))
+                }
+
+
+
+                var option = {
+                    xAxis: {
+                        type: 'category',
+                        data: time
+                    },
+                    yAxis: {
+                        type: 'value'
+                    },
+                    series: [{
+                        data: data,
+                        type: 'line'
+                    }],
+                    tooltip : {
+                        trigger: 'axis'
+                    },
+                };
+
+
+
+                this.chart.setOption(option);
+            } catch (error) {
+                console.error('initChart', error)
             }
+        },
 
-            this.chart = echarts.init(document.getElementById('neochart'));
 
-            var data1 = [];
+        initCoinInfo: async function () {
 
-            var data2 = [];
+            try {
 
-            for(var i = 0; i < 65; i++){
-                data1.push({
-                    "date": moment('2018-01-12 00:00').add(3*i, 'hours').format('YYYY-MM-DD HH:mm'),
-                    "value": parseInt(Math.random()*10)})
+                const result = await axios({
+                    url: `${host}/api/v1/${network}/ticker/info`,
+                    method: 'get',
+                    params: {
+                        symbol:'neo-neo' 
+                    }
+                })
+
+                this.coinInfo.price = result.data.data.quotes.CNY.price.toFixed(2)
+                this.coinInfo.market_cap = result.data.data.quotes.CNY.market_cap.toFixed(0).toString().replace(/(?=((?!\b)\d{3})+$)/g, ',')
+                this.coinInfo.percent_change_24h = result.data.data.quotes.CNY.percent_change_24h
+                this.coinInfo.volume_24h = result.data.data.quotes.CNY.volume_24h.toFixed(0).toString().replace(/(?=((?!\b)\d{3})+$)/g, ',')
+
+            } catch (error) {
+
             }
-
-            for(var i = 0; i < 65; i++){
-                data2.push({
-                    "date": moment('2018-01-12 00:00').add(3*i, 'hours').format('YYYY-MM-DD HH:mm'),
-                    "value": parseInt(Math.random()*10)})
-            }
-
-            var option = {
-                tooltip: {
-                    trigger: 'axis',
-                    formatter: function (params) {
-                        console.log(params)
-                        return 'time : '+params[0].name + '<br />' + 'value : '+ params[0].value;
-                    },
-                    textStyle: {
-                        fontSize: 10
-                    }
-                },
-                grid: {
-                    left: '2%',
-                    right: '4%',
-                    bottom: '3%',
-                    top: '3%',
-                    containLabel: true,
-                    show: true,
-                    backgroundColor: '#3683D3'
-                },
-                xAxis: {
-                    type: 'category',
-                    data: data1.map(function (item,idx) {
-                        return item.date;
-                    }),
-                    axisLabel: {
-                        formatter: function (value, idx) {
-                            var hour = moment(value).hour();
-                            var date = new Date(value);
-                            if(hour == 12){
-                                return hour + ':00'
-                            } else {
-                                return moment(value).format("DD MMM");
-                            }
-                        },
-                        fontSize: 12*screenWidth/1280,
-                        interval: 3,
-                    },
-                    splitLine: {
-                        show: true,
-                        lineStyle: {
-                            color: '#fff;'
-                        }
-                    },
-                    boundaryGap: false,
-                    axisLine:{
-                        lineStyle:{
-                            color: '#fff'
-                        }
-                    }
-                },
-                yAxis: {
-                    axisLabel: {
-                        formatter: function (val) {
-                            return '$'+val+'.00  ';
-                        },
-                        fontSize: '0.2rem',
-                        color: '#fff'
-                    },
-                    splitNumber: 3,
-                    boundaryGap: [0, '200%'],
-                    splitLine: {
-                        show: true,
-                        lineStyle: {
-                            color: '#fff;'
-                        }
-                    },
-                    nameTextStyle: {
-                        fontSize: 14*screenWidth/1280
-                    },
-                    axisLine:{
-                        lineStyle:{
-                            color: '#fff;'
-                        }
-                    }
-                },
-                series: [
-                    {
-                        type: 'line',
-                        data: data1.map(function (item) {
-                            return item.value;
-                        }),
-                        hoverAnimation: false,
-                        symbolSize: 6,
-                        itemStyle: {
-                            normal: {
-                                color: '#c23531'
-                            }
-                        },
-                        showSymbol: false
-                    },
-                    {
-                        type: 'line',
-                        data: data2.map(function (item) {
-                            return item.value;
-                        }),
-                        hoverAnimation: false,
-                        symbolSize: 6,
-                        itemStyle: {
-                            normal: {
-                                color: '#00cfcf'
-                            }
-                        },
-                        showSymbol: false
-                    }
-                ]
-            };
-
-            this.chart.setOption(option);
+            // console.log(' this.coinInfo', this.coinInfo)
+            // percent_change_24h:0,
+            // volume_24h:0
+            // console.log('initCoinInfo',result)
         }
     }
 });
 
 Vue.component('neo-wallet-list', {
-    template:
-    '<div class="neo-wallet-list">'+
-        '<div class="row header">'+
-                '<div class="row header">'+
-                    // '<div class="col col-1">'+
-                    //     '<span>Num</span>'+
-                    //  '</div>'+
-                    '<div class="col col-1">'+
-                        '<span>{{$t("address.value") }}</span>'+
-                    '</div>'+
-                    '<div class="col col-2">'+
-                        '<span>{{$t("address.blockIndex") }}</span>'+
-                    '</div>'+
-                    '<div class="col col-3">'+
-                        '<span>{{$t("address.time") }}</span>'+
-                    '</div>'+
-                    // '<div class="col col-3">'+
-                    //     '<span>Transactions</span>'+
-                    // '</div>'+
-                    // '<div class="col col-4">'+
-                    //     '<span>Last Transaction</span>'+
-                    // '</div>'+
-                    // '<div class="col col-5">'+
-                    //     '<span>Tokens</span>'+
-                    // '</div>'+
-                    '<div class="underlayer"></div>'+
-                '</div>'+
-        '</div>'+
-        '<div class="row item" v-for="(item, idx) in items">'+
-            // '<div class="col col-1">'+
-            //     '<span>{{item.num}}</span>'+
-            // '</div>'+
-            '<div class="col col-1">'+
-                '<span v-on:click="goto(item.addr)">{{item.addr}}</span>'+
-            '</div>'+
-            '<div class="col col-2">'+
-                '<span>{{item.created}}</span>'+
-            '</div>'+
-            '<div class="col col-3">'+
-                '<span>{{item.time}}</span>'+
-            '</div>'+
-            // '<div class="col col-4">'+
-            //     '<span>{{item.last}}</span>'+
-            // '</div>'+
-            // '<div class="col col-5">'+
-            //     '<span> NEO: {{item.neo}}</span>'+
-            //     '<span> GAS: {{item.gas}}</span>'+
-            // '</div>'+
-            '<div class="underlayer">'+
-            '</div>'+
-            '<i class="icon iconfont icon-search"></i>'+
-        '</div>'+
-        '<div class="clear"></div>'+
-    '</div>',
+    template: '<div class="neo-wallet-list">' +
+        '<div class="row header">' +
+        '<div class="row header">' +
+        // '<div class="col col-1">'+
+        //     '<span>Num</span>'+
+        //  '</div>'+
+        '<div class="col col-1">' +
+        '<span>{{$t("address.value") }}</span>' +
+        '</div>' +
+        '<div class="col col-2">' +
+        '<span>{{$t("address.blockIndex") }}</span>' +
+        '</div>' +
+        '<div class="col col-3">' +
+        '<span>{{$t("address.time") }}</span>' +
+        '</div>' +
+        // '<div class="col col-3">'+
+        //     '<span>Transactions</span>'+
+        // '</div>'+
+        // '<div class="col col-4">'+
+        //     '<span>Last Transaction</span>'+
+        // '</div>'+
+        // '<div class="col col-5">'+
+        //     '<span>Tokens</span>'+
+        // '</div>'+
+        '<div class="underlayer"></div>' +
+        '</div>' +
+        '</div>' +
+        '<div class="row item" v-for="(item, idx) in items">' +
+        // '<div class="col col-1">'+
+        //     '<span>{{item.num}}</span>'+
+        // '</div>'+
+        '<div class="col col-1">' +
+        '<span v-on:click="goto(item.addr)">{{item.addr}}</span>' +
+        '</div>' +
+        '<div class="col col-2">' +
+        '<span>{{item.created}}</span>' +
+        '</div>' +
+        '<div class="col col-3">' +
+        '<span>{{item.time}}</span>' +
+        '</div>' +
+        // '<div class="col col-4">'+
+        //     '<span>{{item.last}}</span>'+
+        // '</div>'+
+        // '<div class="col col-5">'+
+        //     '<span> NEO: {{item.neo}}</span>'+
+        //     '<span> GAS: {{item.gas}}</span>'+
+        // '</div>'+
+        '<div class="underlayer">' +
+        '</div>' +
+        '<i class="icon iconfont icon-search"></i>' +
+        '</div>' +
+        '<div class="clear"></div>' +
+        '</div>',
     props: {
         page: Number,
         count: Number
     },
-    data: function() {
+    data: function () {
         return {
             items: [],
             currentPage: 1
         }
     },
     methods: {
-        init: function() {
+        init: function () {
             var that = this;
             that.walletItems = [];
             axios({
-                url: host+'/api/v1/'+network+'/public/graphql',
-                method: 'post',
-                data: {
-                    query:
-                    '{'+
-                        'AddressQuery (skip:'+(this.currentPage-1)*this.count+', limit:'+ this.count +' ) {'+
-                        'count,'+
-                        'rows {'+
-                          ' _id '+
-                          ' address '+
-                          ' time '+
-                          ' blockIndex '+
-                        '}'+
-                      '}'+
-                    '}'
-                }
-            })
-            .then(function (resp) {
-                console.log(resp)
-                console.log(resp.data.data.AddressQuery.rows)
-                that.items = [];
-                var rows = resp.data.data.AddressQuery.rows;
-                for(var i=0; i<rows.length; i++){
-                    var row = rows[i];
-                    that.items.push({
-                        num: i,
-                        addr: row.address,
-                        created: row.blockIndex,
-                        time:  moment(row.time*1000).format("YYYY-MM-DD | HH:mm:ss")
-                        // trans: '--',
-                        // last: '2839bytes'
-                    })
-                }
-                that.$emit('loaded', resp.data.data.AddressQuery)
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+                    url: host + '/api/v1/' + network + '/public/graphql',
+                    method: 'post',
+                    data: {
+                        query: '{' +
+                            'AddressQuery (skip:' + (this.currentPage - 1) * this.count + ', limit:' + this.count + ' ) {' +
+                            'count,' +
+                            'rows {' +
+                            ' _id ' +
+                            ' address ' +
+                            ' time ' +
+                            ' blockIndex ' +
+                            '}' +
+                            '}' +
+                            '}'
+                    }
+                })
+                .then(function (resp) {
+                    console.log(resp)
+                    console.log(resp.data.data.AddressQuery.rows)
+                    that.items = [];
+                    var rows = resp.data.data.AddressQuery.rows;
+                    for (var i = 0; i < rows.length; i++) {
+                        var row = rows[i];
+                        that.items.push({
+                            num: i,
+                            addr: row.address,
+                            created: row.blockIndex,
+                            time: moment(row.time * 1000).format("YYYY-MM-DD | HH:mm:ss")
+                            // trans: '--',
+                            // last: '2839bytes'
+                        })
+                    }
+                    that.$emit('loaded', resp.data.data.AddressQuery)
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
         },
-        goto: function(address) {
+        goto: function (address) {
             window.location.href = 'addrinfo.html?address=' + address + `&network=${GetUrlParam('network') || 'mainnet'}`
         },
-        setCurrentPage: function(currentPage) {
+        setCurrentPage: function (currentPage) {
             this.currentPage = currentPage;
         }
     }
 });
 
 Vue.component('neo-address-list', {
-    template:
-    '<div class="neo-address-list">'+
-        '<h4 class="update">{{$t("address.update")}}</h4>'+
-        '<div class="row header">'+
-                '<div class="row header">'+
-                    '<div class="col col-1">'+
-                        '<span>{{$t("address.rank")}}</span>'+
-                    '</div>'+
-                    '<div class="col col-2">'+
-                        '<span>{{$t("address.value")}}</span>'+
-                    '</div>'+
-                    '<div class="col col-3">'+
-                        '<span>{{$t("address.balance") }}</span>'+
-                    '</div>'+
-                    '<div class="underlayer"></div>'+
-                '</div>'+
-        '</div>'+
-        '<div class="row item" v-for="(item, idx) in items">'+
-            '<div class="col col-1">'+
-                '<span>{{20 * (currentPage-1) + idx + 1}}</span>'+
-            '</div>'+
-            '<div class="col col-2">'+
-                '<span v-on:click="goto(item.addr)">{{item.addr}}</span>'+
-            '</div>'+
-            '<div class="col col-3">'+
-                '<span>{{item.balance}}</span>'+
-            '</div>'+
-            '<div class="underlayer">'+
-            '</div>'+
-        '</div>'+
-        '<div class="clear"></div><br>'+
+    template: '<div class="neo-address-list">' +
+        '<h4 class="update">{{$t("address.update")}}</h4>' +
+        '<div class="row header">' +
+        '<div class="row header">' +
+        '<div class="col col-1">' +
+        '<span>{{$t("address.rank")}}</span>' +
+        '</div>' +
+        '<div class="col col-2">' +
+        '<span>{{$t("address.value")}}</span>' +
+        '</div>' +
+        '<div class="col col-3">' +
+        '<span>{{$t("address.balance") }}</span>' +
+        '</div>' +
+        '<div class="underlayer"></div>' +
+        '</div>' +
+        '</div>' +
+        '<div class="row item" v-for="(item, idx) in items">' +
+        '<div class="col col-1">' +
+        '<span>{{20 * (currentPage-1) + idx + 1}}</span>' +
+        '</div>' +
+        '<div class="col col-2">' +
+        '<span v-on:click="goto(item.addr)">{{item.addr}}</span>' +
+        '</div>' +
+        '<div class="col col-3">' +
+        '<span>{{item.balance}}</span>' +
+        '</div>' +
+        '<div class="underlayer">' +
+        '</div>' +
+        '</div>' +
+        '<div class="clear"></div><br>' +
 
-        '<paginate'+
-            ' :page-count="Math.ceil(totalCount/pageCount)"'+
-            ' :click-handler="changePaginate"'+
-            ' :page-range="2"'+
-            ' :prev-text="$t(\'pagination.prev\')"'+
-            ' :next-text="$t(\'pagination.next\')"'+
-            ' container-class="neo-pagination">'+
-        ' </paginate>'+
+        '<paginate' +
+        ' :page-count="Math.ceil(totalCount/pageCount)"' +
+        ' :click-handler="changePaginate"' +
+        ' :page-range="2"' +
+        ' :prev-text="$t(\'pagination.prev\')"' +
+        ' :next-text="$t(\'pagination.next\')"' +
+        ' container-class="neo-pagination">' +
+        ' </paginate>' +
 
-        '<div class="clear"></div><br>'+
-    '</div>',
+        '<div class="clear"></div><br>' +
+        '</div>',
     props: {
         id: String
     },
-    data: function() {
+    data: function () {
         return {
             items: [],
             pageCount: 20,
@@ -1231,38 +1311,38 @@ Vue.component('neo-address-list', {
         }
     },
     methods: {
-        init: function(start = 0 ,end = 20) {
+        init: function (start = 0, end = 20) {
             var that = this;
             that.addressItems = [];
             axios({
-                url: host+'/api/v1/'+network+'/asset/transaction/' + that.id+`?start=${start}&end=${end}`,
-                method: 'get',
-            })
-            .then(function (resp) {
-                // console.log(resp)
-                console.log(resp.data.data)
-                const result = resp.data.data.list
-                that.items = [];
-                that.totalCount = resp.data.data.count
-                for(var i=0; i< result.length; i = i + 1){
-                    that.items.push({
-                        addr: result[i].address,
-                        balance: result[i].balance['$numberDecimal'] || 0,
-                    })
-                }
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+                    url: host + '/api/v1/' + network + '/asset/transaction/' + that.id + `?start=${start}&end=${end}`,
+                    method: 'get',
+                })
+                .then(function (resp) {
+                    // console.log(resp)
+                    console.log(resp.data.data)
+                    const result = resp.data.data.list
+                    that.items = [];
+                    that.totalCount = resp.data.data.count
+                    for (var i = 0; i < result.length; i = i + 1) {
+                        that.items.push({
+                            addr: result[i].address,
+                            balance: result[i].balance['$numberDecimal'] || 0,
+                        })
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
         },
-        goto: function(address) {
+        goto: function (address) {
             window.location.href = 'addrinfo.html?address=' + address + `&network=${GetUrlParam('network') || 'mainnet'}`
         },
-        changePaginate: function(pageNum) {
+        changePaginate: function (pageNum) {
             this.currentPage = pageNum
             const start = 20 * (pageNum - 1)
-            const end =  20
-            this.init(start,end)
+            const end = 20
+            this.init(start, end)
             // console.log('start',start);
             // console.log('end',end);
         }
@@ -1271,70 +1351,68 @@ Vue.component('neo-address-list', {
 });
 
 Vue.component('neo-tran-record', {
-    template:
-    '<div class="neo-tran-record" v-bind:class="{\'border\': showborder}">'+
-        '<div class="neo-tran-record__left">'+
-            '<div v-for="(left, leftIdx) in record.left">'+
-                '<div class="neo-tran-record__title">{{left.title}}</div>'+
-                '<div class="neo-tran-record__address" v-on:click="goto(left.address)"><i class="icon iconfont icon-search"></i> <span>{{left.address}}</span></div>'+
-                '<div class="neo-tran-record__amount"><span>{{left.value}} {{left.symbol}}</span></div>'+
-            '</div>'+
-        '</div>'+
-        '<div class="neo-tran-record__middle">'+
-            '<i class="icon iconfont icon-arrow-right"></i>'+
-        '</div>'+
-        '<div class="neo-tran-record__right">'+
-            '<div v-for="(right, rightIdx) in record.right">'+
-                '<div class="neo-tran-record__title">{{right.title}}</div>'+
-                '<div class="neo-tran-record__address" v-on:click="goto(right.address)"><i class="icon iconfont icon-search"></i><span>{{right.address}}</span></div>'+
-                '<div class="neo-tran-record__amount"><span>{{right.value}} {{right.symbol}}</span></div>'+
-            '</div>'+
-        '</div>'+
-        '<div class="underlayer"></div>'+
-        '<div class="clear"></div>'+
-    '</div>',
+    template: '<div class="neo-tran-record" v-bind:class="{\'border\': showborder}">' +
+        '<div class="neo-tran-record__left">' +
+        '<div v-for="(left, leftIdx) in record.left">' +
+        '<div class="neo-tran-record__title">{{left.title}}</div>' +
+        '<div class="neo-tran-record__address" v-on:click="goto(left.address)"><i class="icon iconfont icon-search"></i> <span>{{left.address}}</span></div>' +
+        '<div class="neo-tran-record__amount"><span>{{left.value}} {{left.symbol}}</span></div>' +
+        '</div>' +
+        '</div>' +
+        '<div class="neo-tran-record__middle">' +
+        '<i class="icon iconfont icon-arrow-right"></i>' +
+        '</div>' +
+        '<div class="neo-tran-record__right">' +
+        '<div v-for="(right, rightIdx) in record.right">' +
+        '<div class="neo-tran-record__title">{{right.title}}</div>' +
+        '<div class="neo-tran-record__address" v-on:click="goto(right.address)"><i class="icon iconfont icon-search"></i><span>{{right.address}}</span></div>' +
+        '<div class="neo-tran-record__amount"><span>{{right.value}} {{right.symbol}}</span></div>' +
+        '</div>' +
+        '</div>' +
+        '<div class="underlayer"></div>' +
+        '<div class="clear"></div>' +
+        '</div>',
     props: {
         showborder: Boolean,
         record: Object
     },
     methods: {
-        goto: function(address) {
-            window.location.href = "addrinfo.html?address="+ address + `&network=${GetUrlParam('network') || 'mainnet'}`
+        goto: function (address) {
+            window.location.href = "addrinfo.html?address=" + address + `&network=${GetUrlParam('network') || 'mainnet'}`
         }
     }
 });
 
 Vue.component('neo-tran-list', {
-    template:
-    '<div class="neo-tran-list">'+
-        '<div class="title" v-if="title!=\'\'">{{title}}</div>'+
-        '<div class="row header">'+
-            '<div class="col col-1"><span>{{$t("transaction.type") }}</span></div>'+
-            '<div class="col col-2"><span>{{$t("transaction.transactionId") }}</span></div>'+
-            '<div class="col col-3"><span>{{$t("transaction.time") }}</span></div>'+
-            '<div class="underlayer"></div>'+
-        '</div>'+
-        '<div class="wrapper" v-for="(item, idx) in items">'+
-            '<div class="row item" v-bind:class="{\'expand\': item.expand}">'+
-                '<div class="col col-1">'+
-                    '<span>{{item.type}}</span>'+
-                '</div>'+
-                '<div class="col col-2">'+
-                    '<span v-on:click="goto(idx)">{{item.tranid}}</span>'+
-                '</div>'+
-                '<div class="col col-3">'+
-                    '<span>{{item.time}}</span>'+
-                '</div>'+
-                '<div class="col col-4" v-on:click="expandTranItem(idx)">'+
-                '</div>'+
-                '<i class="icon iconfont icon-arrow-down-1" v-if="item.records.length > 0"></i>'+
-                '<div class="underlayer"></div>'+
-            '</div>'+
-            '<div v-if="item.expand">'+
-                '<neo-tran-record v-for="(recordItem, recordIdx) in item.records" v-bind:record="recordItem"></neo-tran-record>'+
-            '</div>'+
-        '</div>'+
-    '</div>',
+    template: '<div class="neo-tran-list">' +
+        '<div class="title" v-if="title!=\'\'">{{title}}</div>' +
+        '<div class="row header">' +
+        '<div class="col col-1"><span>{{$t("transaction.type") }}</span></div>' +
+        '<div class="col col-2"><span>{{$t("transaction.transactionId") }}</span></div>' +
+        '<div class="col col-3"><span>{{$t("transaction.time") }}</span></div>' +
+        '<div class="underlayer"></div>' +
+        '</div>' +
+        '<div class="wrapper" v-for="(item, idx) in items">' +
+        '<div class="row item" v-bind:class="{\'expand\': item.expand}">' +
+        '<div class="col col-1">' +
+        '<span>{{item.type}}</span>' +
+        '</div>' +
+        '<div class="col col-2">' +
+        '<span v-on:click="goto(idx)">{{item.tranid}}</span>' +
+        '</div>' +
+        '<div class="col col-3">' +
+        '<span>{{item.time}}</span>' +
+        '</div>' +
+        '<div class="col col-4" v-on:click="expandTranItem(idx)">' +
+        '</div>' +
+        '<i class="icon iconfont icon-arrow-down-1" v-if="item.records.length > 0"></i>' +
+        '<div class="underlayer"></div>' +
+        '</div>' +
+        '<div v-if="item.expand">' +
+        '<neo-tran-record v-for="(recordItem, recordIdx) in item.records" v-bind:record="recordItem"></neo-tran-record>' +
+        '</div>' +
+        '</div>' +
+        '</div>',
     props: {
         title: Boolean,
         page: Number,
@@ -1342,7 +1420,7 @@ Vue.component('neo-tran-list', {
         block: Number,
         address: Number
     },
-    data: function() {
+    data: function () {
         return {
             items: [],
             category: 'Any',
@@ -1351,25 +1429,25 @@ Vue.component('neo-tran-list', {
         }
     },
     computed: {
-        QueryFilter: function() {
+        QueryFilter: function () {
             var filter = '';
-            if(this.currentPage && this.count){
-                filter += 'skip:'+(this.currentPage-1)*this.count+', limit:'+ this.count;
+            if (this.currentPage && this.count) {
+                filter += 'skip:' + (this.currentPage - 1) * this.count + ', limit:' + this.count;
             }
 
-            if(this.block) {
-                filter += ' ,blockIndex:'+this.block;
+            if (this.block) {
+                filter += ' ,blockIndex:' + this.block;
             }
 
-            if(this.address) {
-                filter += ' ,address: "' + this.address +'"';
+            if (this.address) {
+                filter += ' ,address: "' + this.address + '"';
             }
 
-            if(this.category && this.category != 'Any') {
-                filter += ' ,type: "' + this.category +'Transaction"';
+            if (this.category && this.category != 'Any') {
+                filter += ' ,type: "' + this.category + 'Transaction"';
             }
 
-            if(this.asset && this.asset != '') {
+            if (this.asset && this.asset != '') {
                 filter += ' ,asset: "' + this.asset + '"';
             }
 
@@ -1377,185 +1455,186 @@ Vue.component('neo-tran-list', {
         }
     },
     methods: {
-        expandTranItem: function(idx) {
+        expandTranItem: function (idx) {
             // if(this.items[idx].type != 'Invocation') {
             //     return;
             // }
             this.items[idx].expand = !this.items[idx].expand;
             this.$set(this.items, idx, this.items[idx]);
         },
-        setCategory: function(category) {
+        setCategory: function (category) {
             this.category = category
             this.init()
         },
-        setCurrentPage: function(currentPage) {
+        setCurrentPage: function (currentPage) {
             this.currentPage = currentPage;
         },
-        setAsset: function(asset) {
+        setAsset: function (asset) {
             this.asset = asset
         },
-        init: function() {
+        init: function () {
             var that = this;
             that.items = [];
             axios({
-                url: host+'/api/v1/'+network+'/public/graphql',
-                method: 'post',
-                data: {
-                    query:
-                    '{'+
-                        'TransactionQuery ('+that.QueryFilter+' ) {'+
-                        'count,'+
-                        'rows {'+
-                          ' _id '+
-                          ' txid '+
-                          ' blockIndex '+
-                          ' time '+
-                          ' size '+
-                          ' type '+
-                          ' vin { '+
-                            ' vout '+
-                            ' txid '+
-                            ' utxo { '+
-                                ' address '+
-                                ' value '+
-                                ' asset '+
-                                ' name '+
-                            ' } '+
-                          ' } '+
-                          ' vout { '+
-                                ' address ' +
-                                ' value ' +
-                                ' asset ' +
-                                ' n ' +
-                                ' name ' +
-                          ' } '+
-                          ' nep5 { '+
-                                ' to'+
-                                ' from  '+
-                                ' symbol '+
-                                ' value '+
-                                ' operation '+
-                                ' assetId '+
-                          ' } '+
-                          ' scripts { '+
-                            ' invocation '+
-                            ' verification '+
-                          ' } '+
-                        '}'+
-                      '}'+
-                    '}'
-                }
-            })
-            .then(function (resp) {
-
-                that.$emit('loaded', resp.data.data.TransactionQuery)
-                that.items = [];
-                for(var i=0; i<resp.data.data.TransactionQuery.rows.length; i++){
-                    var row = resp.data.data.TransactionQuery.rows[i];
-                    var item = {
-                        type: row.type.replace('Transaction',''),
-                        tranid: row.txid,
-                        time: moment(row.time*1000).format("YYYY-MM-DD | HH:mm:ss"),
-                        records: [],
-                        expand: false,
+                    url: host + '/api/v1/' + network + '/public/graphql',
+                    method: 'post',
+                    data: {
+                        query: '{' +
+                            'TransactionQuery (' + that.QueryFilter + ' ) {' +
+                            'count,' +
+                            'rows {' +
+                            ' _id ' +
+                            ' txid ' +
+                            ' blockIndex ' +
+                            ' time ' +
+                            ' size ' +
+                            ' type ' +
+                            ' vin { ' +
+                            ' vout ' +
+                            ' txid ' +
+                            ' utxo { ' +
+                            ' address ' +
+                            ' value ' +
+                            ' asset ' +
+                            ' name ' +
+                            ' } ' +
+                            ' } ' +
+                            ' vout { ' +
+                            ' address ' +
+                            ' value ' +
+                            ' asset ' +
+                            ' n ' +
+                            ' name ' +
+                            ' } ' +
+                            ' nep5 { ' +
+                            ' to' +
+                            ' from  ' +
+                            ' symbol ' +
+                            ' value ' +
+                            ' operation ' +
+                            ' assetId ' +
+                            ' } ' +
+                            ' scripts { ' +
+                            ' invocation ' +
+                            ' verification ' +
+                            ' } ' +
+                            '}' +
+                            '}' +
+                            '}'
                     }
-                    that.items.push(item)
+                })
+                .then(function (resp) {
 
-                    if(row.vin || row.vout){
+                    that.$emit('loaded', resp.data.data.TransactionQuery)
+                    that.items = [];
+                    for (var i = 0; i < resp.data.data.TransactionQuery.rows.length; i++) {
+                        var row = resp.data.data.TransactionQuery.rows[i];
+                        var item = {
+                            type: row.type.replace('Transaction', ''),
+                            tranid: row.txid,
+                            time: moment(row.time * 1000).format("YYYY-MM-DD | HH:mm:ss"),
+                            records: [],
+                            expand: false,
+                        }
+                        that.items.push(item)
 
-                        var vins = row.vin;
-                        var vouts = row.vout;
-                        var record = { left: [], right: []}
+                        if (row.vin || row.vout) {
 
-                        for(var j = 0; j < vins.length; j++){
-                            var vinItem = vins[j];
-                            record.left.push({
-                                title: "",
-                                symbol: vinItem.utxo.name,
-                                value: vinItem.utxo.value,
-                                address: vinItem.utxo.address
-                            })
+                            var vins = row.vin;
+                            var vouts = row.vout;
+                            var record = {
+                                left: [],
+                                right: []
+                            }
+
+                            for (var j = 0; j < vins.length; j++) {
+                                var vinItem = vins[j];
+                                record.left.push({
+                                    title: "",
+                                    symbol: vinItem.utxo.name,
+                                    value: vinItem.utxo.value,
+                                    address: vinItem.utxo.address
+                                })
+                            }
+
+                            for (var k = 0; k < vouts.length; k++) {
+                                var voutItem = vouts[k];
+                                record.right.push({
+                                    title: "",
+                                    symbol: voutItem.name,
+                                    value: voutItem.value,
+                                    address: voutItem.address
+                                })
+                            }
+
+                            if (record.left.length || record.right.length) {
+                                item.records.push(record)
+                            }
                         }
 
-                        for(var k=0; k < vouts.length; k++){
-                            var voutItem = vouts[k];
-                            record.right.push({
-                                title: "",
-                                symbol: voutItem.name,
-                                value: voutItem.value,
-                                address: voutItem.address
-                            })
+                        if (row.nep5 && row.nep5.length > 0) {
+                            var nep5s = row.nep5;
+                            for (var l = 0; l < nep5s.length; l++) {
+                                var nep5Item = nep5s[l];
+                                item.records.push({
+                                    left: [{
+                                        // title: "Sent From",
+                                        symbol: nep5Item.symbol == null ? '--' : nep5Item.symbol,
+                                        address: nep5Item.from,
+                                        value: nep5Item.value
+                                    }],
+                                    right: [{
+                                        // title: "Sent From",
+                                        symbol: nep5Item.symbol == null ? '--' : nep5Item.symbol,
+                                        address: nep5Item.to,
+                                        value: nep5Item.value
+                                    }]
+                                })
+                            }
                         }
 
-                        if(record.left.length  || record.right.length){
-                            item.records.push(record)
+                        if (item.records && item.records.length > 0) {
+                            // console.log('left',item.records[0].left.length)
+                            // console.log('right',item.records[0].right.length)
+                            if (item.records[0].left.length > 0) {
+                                item.records[0].left[0].title = that.$t('transaction.sentFrom');
+                            }
+
+                            if (item.records[0].right.length > 0) {
+                                item.records[0].right[0].title = that.$t('transaction.sentTo')
+                            }
                         }
                     }
 
-                    if(row.nep5 && row.nep5.length > 0){
-                        var nep5s = row.nep5;
-                        for(var l = 0; l < nep5s.length; l ++){
-                            var nep5Item = nep5s[l];
-                            item.records.push({
-                                left: [{
-                                    // title: "Sent From",
-                                    symbol: nep5Item.symbol == null ? '--' : nep5Item.symbol,
-                                    address: nep5Item.from,
-                                    value: nep5Item.value
-                                }],
-                                right: [{
-                                    // title: "Sent From",
-                                    symbol: nep5Item.symbol == null ? '--' : nep5Item.symbol,
-                                    address: nep5Item.to,
-                                    value: nep5Item.value
-                                }]
-                            })
-                        }
-                    }
 
-                    if(item.records && item.records.length > 0){
-                        // console.log('left',item.records[0].left.length)
-                        // console.log('right',item.records[0].right.length)
-                        if(item.records[0].left.length > 0){
-                            item.records[0].left[0].title = that.$t('transaction.sentFrom');
-                        }
-
-                        if(item.records[0].right.length > 0){
-                            item.records[0].right[0].title = that.$t('transaction.sentTo')
-                        }
-                    }
-                }
-
-
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
         },
-        goto: function(idx) {
+        goto: function (idx) {
             console.log(idx)
             var item = this.items[idx];
-            window.location.href = 'traninfo.html?id='+ item.tranid + `&network=${GetUrlParam('network') || 'mainnet'}`
+            window.location.href = 'traninfo.html?id=' + item.tranid + `&network=${GetUrlParam('network') || 'mainnet'}`
         }
     }
 })
 
 Vue.component('neo-tran-info', {
-    template:
-    '<div class="neo-tran-info">'+
-        '<div class="warpper" v-for="(item, itemIdx) in transaction">'+
-            '<div class="neo-tran-info__item" v-bind:class="{\'first\': itemIdx%3==0}">'+
-                '<h1>{{item.title}}</h1>'+
-                '<span v-bind:class="{\'link\': item.url}" v-on:click="goto(item.url)">{{item.desc}}</span>'+
-                '<div class="underlayer"></div>'+
-            '</div>'+
-            '<div class="clear" v-if="itemIdx % 3 == 2 || itemIdx == transaction.length - 1"></div>'+
-        '</div>'+
-    '</div>',
+    template: '<div class="neo-tran-info">' +
+        '<div class="warpper" v-for="(item, itemIdx) in transaction">' +
+        '<div class="neo-tran-info__item" v-bind:class="{\'first\': itemIdx%3==0}">' +
+        '<h1>{{item.title}}</h1>' +
+        '<span v-bind:class="{\'link\': item.url}" v-on:click="goto(item.url)">{{item.desc}}</span>' +
+        '<div class="underlayer"></div>' +
+        '</div>' +
+        '<div class="clear" v-if="itemIdx % 3 == 2 || itemIdx == transaction.length - 1"></div>' +
+        '</div>' +
+        '</div>',
     props: {
         transaction: Array
     },
-    data: function() {
+    data: function () {
         return {
             // items:[]
             // items: [
@@ -1568,9 +1647,9 @@ Vue.component('neo-tran-info', {
             // ]
         }
     },
-    methods:{
-        goto: function(url){
-            if(url){
+    methods: {
+        goto: function (url) {
+            if (url) {
                 window.location.href = url;
             }
         }
@@ -1578,155 +1657,149 @@ Vue.component('neo-tran-info', {
 
 });
 
-Vue.component('neo-tran-script',{
-    template:
-    '<div class="neo-tran-script">'+
-        '<div class="neo-tran-script__item" v-for="(item, itemIdx) in scripts">'+
-            '<div class="neo-tran-script__item-title">{{item.title}}</div>'+
-            '<div class="neo-tran-script__item-desc">{{item.desc}}</div>'+
-            '<div class="underlayer"></div>'+
-        '</div>'+
-    '</div>',
+Vue.component('neo-tran-script', {
+    template: '<div class="neo-tran-script">' +
+        '<div class="neo-tran-script__item" v-for="(item, itemIdx) in scripts">' +
+        '<div class="neo-tran-script__item-title">{{item.title}}</div>' +
+        '<div class="neo-tran-script__item-desc">{{item.desc}}</div>' +
+        '<div class="underlayer"></div>' +
+        '</div>' +
+        '</div>',
     props: {
         scripts: Array
     }
 });
 
 
-Vue.component('neo-tran-attr',{
-    template:
-    '<div class="neo-tran-attr">'+
-        '<div class="neo-tran-attr__item" v-for="(item, itemIdx) in attr">'+
-            '<div class="neo-tran-attr__item-title">{{$t("transaction.attribute")}}:{{item.usage}}</div>'+
-            '<div class="neo-tran-attr__item-desc">{{item.data}}</div>'+
-            '<div class="underlayer"></div>'+
-        '</div>'+
-    '</div>',
+Vue.component('neo-tran-attr', {
+    template: '<div class="neo-tran-attr">' +
+        '<div class="neo-tran-attr__item" v-for="(item, itemIdx) in attr">' +
+        '<div class="neo-tran-attr__item-title">{{$t("transaction.attribute")}}:{{item.usage}}</div>' +
+        '<div class="neo-tran-attr__item-desc">{{item.data}}</div>' +
+        '<div class="underlayer"></div>' +
+        '</div>' +
+        '</div>',
     props: {
         attr: Array
     }
 });
 
 Vue.component('neo-block-list', {
-    template:
-    '<div class="neo-block-list">'+
-        '<div class="row header">'+
-            '<div class="col col-1">'+
-                '<span>{{$t("block.height")}} </span>'+
-            '</div>'+
-            '<div class="col col-2">'+
-                '<span>{{$t("block.size")}}</span>'+
-            '</div>'+
-            '<div class="col col-3">'+
-                '<span>{{$t("block.transactions")}}</span>'+
-            '</div>'+
-            '<div class="col col-4">'+
-                '<span>{{$t("block.time")}}</span>'+
-            '</div>'+
-            '<div class="underlayer"></div>'+
-        '</div>'+
-        '<div class="row item" v-for="(item, idx) in items">'+
-            '<div class="col col-1">'+
-                '<span v-on:click="goto(item.height)">{{item.height}}</span>'+
-            '</div>'+
-            '<div class="col col-2">'+
-                '<span>{{item.size}}</span>'+
-            '</div>'+
-            '<div class="col col-3">'+
-                '<span>{{item.trans}}</span>'+
-            '</div>'+
-            '<div class="col col-4">'+
-                '<span>{{item.created}}</span>'+
-            '</div>'+
-            '<div class="underlayer"></div>'+
-            '<i class="icon iconfont icon-sign-five"></i>'+
-        '</div>'+
-    '</div>',
+    template: '<div class="neo-block-list">' +
+        '<div class="row header">' +
+        '<div class="col col-1">' +
+        '<span>{{$t("block.height")}} </span>' +
+        '</div>' +
+        '<div class="col col-2">' +
+        '<span>{{$t("block.size")}}</span>' +
+        '</div>' +
+        '<div class="col col-3">' +
+        '<span>{{$t("block.transactions")}}</span>' +
+        '</div>' +
+        '<div class="col col-4">' +
+        '<span>{{$t("block.time")}}</span>' +
+        '</div>' +
+        '<div class="underlayer"></div>' +
+        '</div>' +
+        '<div class="row item" v-for="(item, idx) in items">' +
+        '<div class="col col-1">' +
+        '<span v-on:click="goto(item.height)">{{item.height}}</span>' +
+        '</div>' +
+        '<div class="col col-2">' +
+        '<span>{{item.size}}</span>' +
+        '</div>' +
+        '<div class="col col-3">' +
+        '<span>{{item.trans}}</span>' +
+        '</div>' +
+        '<div class="col col-4">' +
+        '<span>{{item.created}}</span>' +
+        '</div>' +
+        '<div class="underlayer"></div>' +
+        '<i class="icon iconfont icon-sign-five"></i>' +
+        '</div>' +
+        '</div>',
     props: {
         page: Number,
         count: Number
     },
-    data: function() {
+    data: function () {
         return {
-            items: [
-            ],
+            items: [],
             currentPage: 1
         }
     },
-    methods:{
-        init: function() {
+    methods: {
+        init: function () {
             var that = this;
             that.walletItems = [];
             axios({
-                url: host+'/api/v1/'+network+'/public/graphql',
-                method: 'post',
-                data: {
-                    query:
-                    '{'+
-                        'BlockQuery (skip:'+(this.currentPage-1)*this.count+', limit:'+ this.count +' ) {'+
-                        'count,'+
-                        'rows {'+
-                          ' _id '+
-                          ' size '+
-                          ' version '+
-                          ' previousblockhash '+
-                          ' merkleroot '+
-                          ' time '+
-                          ' index '+
-                          ' nonce '+
-                          ' nextconsensus '+
-                          ' confirmations '+
-                          ' nextblockhash '+
-                          ' transactions '+
-                        '}'+
-                      '}'+
-                    '}'
-                }
-            })
-            .then(function (resp) {
-                console.log(resp)
-                that.$emit('loaded', resp.data.data.BlockQuery)
-                that.items = [];
-                for(var i=0; i<resp.data.data.BlockQuery.rows.length; i++){
-                    var row = resp.data.data.BlockQuery.rows[i];
-                    that.items.push({
-                        height: row.index.toString().replace(/(?=((?!\b)\d{3})+$)/g, ','),
-                        size: row.size.toString().replace(/(?=((?!\b)\d{3})+$)/g, ',') + ' ' + that.$t('block.byte'),
-                        trans: row.transactions,
-                        created: row.time == null ? 'N/A' : moment(row.time*1000).format("YYYY-MM-DD | HH:mm:ss")
-                    })
-                }
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+                    url: host + '/api/v1/' + network + '/public/graphql',
+                    method: 'post',
+                    data: {
+                        query: '{' +
+                            'BlockQuery (skip:' + (this.currentPage - 1) * this.count + ', limit:' + this.count + ' ) {' +
+                            'count,' +
+                            'rows {' +
+                            ' _id ' +
+                            ' size ' +
+                            ' version ' +
+                            ' previousblockhash ' +
+                            ' merkleroot ' +
+                            ' time ' +
+                            ' index ' +
+                            ' nonce ' +
+                            ' nextconsensus ' +
+                            ' confirmations ' +
+                            ' nextblockhash ' +
+                            ' transactions ' +
+                            '}' +
+                            '}' +
+                            '}'
+                    }
+                })
+                .then(function (resp) {
+                    console.log(resp)
+                    that.$emit('loaded', resp.data.data.BlockQuery)
+                    that.items = [];
+                    for (var i = 0; i < resp.data.data.BlockQuery.rows.length; i++) {
+                        var row = resp.data.data.BlockQuery.rows[i];
+                        that.items.push({
+                            height: row.index.toString().replace(/(?=((?!\b)\d{3})+$)/g, ','),
+                            size: row.size.toString().replace(/(?=((?!\b)\d{3})+$)/g, ',') + ' ' + that.$t('block.byte'),
+                            trans: row.transactions,
+                            created: row.time == null ? 'N/A' : moment(row.time * 1000).format("YYYY-MM-DD | HH:mm:ss")
+                        })
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
         },
-        goto: function(index) {
+        goto: function (index) {
 
             window.location.href = 'blockinfo.html?index=' + index.toString().replace(/,/g, '') + `&network=${GetUrlParam('network') || 'mainnet'}`
         },
-        setCurrentPage: function(currentPage) {
+        setCurrentPage: function (currentPage) {
             this.currentPage = currentPage;
         }
     }
 })
 
 Vue.component('neo-block-info', {
-    template:
-    '<div class="neo-block-info">'+
-        '<div class="warpper" v-for="(item, itemIdx) in block">'+
-            '<div class="neo-block-info__item" v-bind:class="{\'first\': itemIdx%3==0}">'+
-                '<h1>{{item.title}}</h1>'+
-                '<span v-bind:class="{\'link\': item.url}" v-on:click="goto(item.url)">{{item.desc}}</span>'+
-                '<div class="underlayer"></div>'+
-            '</div>'+
-            '<div class="clear" v-if="itemIdx % 3 == 2 || itemIdx == block.length - 1"></div>'+
-        '</div>'+
-    '</div>',
+    template: '<div class="neo-block-info">' +
+        '<div class="warpper" v-for="(item, itemIdx) in block">' +
+        '<div class="neo-block-info__item" v-bind:class="{\'first\': itemIdx%3==0}">' +
+        '<h1>{{item.title}}</h1>' +
+        '<span v-bind:class="{\'link\': item.url}" v-on:click="goto(item.url)">{{item.desc}}</span>' +
+        '<div class="underlayer"></div>' +
+        '</div>' +
+        '<div class="clear" v-if="itemIdx % 3 == 2 || itemIdx == block.length - 1"></div>' +
+        '</div>' +
+        '</div>',
     props: {
         block: Array
     },
-    data: function() {
+    data: function () {
         return {
             // block: [
             //     {title: 'BlockIndex', desc: '1 minute ago'},
@@ -1740,8 +1813,8 @@ Vue.component('neo-block-info', {
         }
     },
     methods: {
-        goto: function(url){
-            if(url){
+        goto: function (url) {
+            if (url) {
                 window.location.href = url;
             }
         }
@@ -1749,86 +1822,84 @@ Vue.component('neo-block-info', {
 });
 
 Vue.component('neo-addr-info', {
-    template:
-    '<div class="neo-addr-info ">'+
-        '<div class="balance">'+
+    template: '<div class="neo-addr-info ">' +
+        '<div class="balance">' +
 
-            '<div v-for="item in items" class="col item" v-if="item.balances != '+'0'+' ">'+
+        '<div v-for="item in items" class="col item" v-if="item.balances != ' + '0' + ' ">' +
 
-                '<h3>{{item.name}}</h3>'+
-                '<h4>{{item.balances}}</h4>'+
-            '</div>'+
-
-
-            '<div class="col item"  v-show = "isZero">'+
-                '<h3>{{$t("address.zero")}}</h3>'+
-            '</div>'+
+        '<h3>{{item.name}}</h3>' +
+        '<h4>{{item.balances}}</h4>' +
+        '</div>' +
 
 
-            '<div class="clear"></div>'+
-        '</div>'+
-        '<div class="underlayer"></div>'+
-        ''+
-    '</div>',
-    data: function() {
+        '<div class="col item"  v-show = "isZero">' +
+        '<h3>{{$t("address.zero")}}</h3>' +
+        '</div>' +
+
+
+        '<div class="clear"></div>' +
+        '</div>' +
+        '<div class="underlayer"></div>' +
+        '' +
+        '</div>',
+    data: function () {
         return {
             items: [],
             isZero: true
         }
     },
     methods: {
-        init: function(address) {
+        init: function (address) {
             // this.$refs.chart.init();
             var that = this;
             axios({
-                url: host+'/api/v1/'+network+'/address/balances/'+(address.replace(/\s+/g,"")),
-                method: 'get'
-            })
-            .then(function (resp) {
-                // console.log('resp',resp);
-                if(resp.data.error_code) return
-                
-                that.items = resp.data.data
-                
-                for (const item of that.items) {
-                    if(item.balances != '0'){
-                        that.isZero = false
-                        break
+                    url: host + '/api/v1/' + network + '/address/balances/' + (address.replace(/\s+/g, "")),
+                    method: 'get'
+                })
+                .then(function (resp) {
+                    // console.log('resp',resp);
+                    if (resp.data.error_code) return
+
+                    that.items = resp.data.data
+
+                    for (const item of that.items) {
+                        if (item.balances != '0') {
+                            that.isZero = false
+                            break
+                        }
+                        // console.log('item',item.balances)
                     }
-                    // console.log('item',item.balances)
-                }
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
         }
 
     }
 });
 
 Vue.component('neo-asset-list', {
-    template:
-    '<div class="neo-asset-list" v-cloak>'+
-        '<div class="row hd">'+
-            '<div class="col col-1"><span>{{$t("asset.name")}}</span></div>'+
-            '<div class="col col-2"><span>{{$t("asset.type")}}</span></div>'+
-            '<div class="col col-3"><span>{{$t("asset.assetId")}}</span></div>'+
-            '<div class="col col-4"><span>{{$t("asset.amount")}}</span></div>'+
-            '<div class="underlayer"></div>'+
-        '</div>'+
-        '<div class="row item" v-for="(item, itemIdx) in items">'+
-            '<div class="col col-1" v-bind:title="item.name"><span>{{item.name}}</span></div>'+
-            '<div class="col col-2"><span>{{item.type}}</span></div>'+
-            '<div class="col col-3 link" v-on:click="detail(itemIdx)"><span>{{item.id}}</span></div>'+
-            '<div class="col col-4"><span>{{item.amount}}&nbsp; {{item.symbol}}</span></div>'+
-            '<div class="underlayer"></div>'+
-        '</div>'+
-    '</div>',
+    template: '<div class="neo-asset-list" v-cloak>' +
+        '<div class="row hd">' +
+        '<div class="col col-1"><span>{{$t("asset.name")}}</span></div>' +
+        '<div class="col col-2"><span>{{$t("asset.type")}}</span></div>' +
+        '<div class="col col-3"><span>{{$t("asset.assetId")}}</span></div>' +
+        '<div class="col col-4"><span>{{$t("asset.amount")}}</span></div>' +
+        '<div class="underlayer"></div>' +
+        '</div>' +
+        '<div class="row item" v-for="(item, itemIdx) in items">' +
+        '<div class="col col-1" v-bind:title="item.name"><span>{{item.name}}</span></div>' +
+        '<div class="col col-2"><span>{{item.type}}</span></div>' +
+        '<div class="col col-3 link" v-on:click="detail(itemIdx)"><span>{{item.id}}</span></div>' +
+        '<div class="col col-4"><span>{{item.amount}}&nbsp; {{item.symbol}}</span></div>' +
+        '<div class="underlayer"></div>' +
+        '</div>' +
+        '</div>',
     props: {
         page: Number,
         count: Number
     },
-    data: function() {
+    data: function () {
         return {
             items: [],
             currentPage: 1,
@@ -1836,119 +1907,117 @@ Vue.component('neo-asset-list', {
         }
     },
     methods: {
-        init: function() {
+        init: function () {
             var that = this;
             that.items = [];
             axios({
-                url: host+'/api/v1/'+network+'/public/graphql',
-                method: 'post',
-                data: {
-                    query:'{'+
-                            ' AssetQuery(skip: ' + (that.currentPage-1) * that.count +', limit: '+ that.count + (that.keyword == '' ? '' : ', search:"'+that.keyword+'"') +' ){ '+
-                                ' count '+
-                                ' rows { '+
-                                    ' _id '+
-                                    ' assetId '+
-                                    ' symbol '+
-                                    ' type '+
-                                    ' amount '+
-                                    ' name { '+
-                                        ' lang '+
-                                        ' name '+
-                                    ' } '+
-                                ' } '+
+                    url: host + '/api/v1/' + network + '/public/graphql',
+                    method: 'post',
+                    data: {
+                        query: '{' +
+                            ' AssetQuery(skip: ' + (that.currentPage - 1) * that.count + ', limit: ' + that.count + (that.keyword == '' ? '' : ', search:"' + that.keyword + '"') + ' ){ ' +
+                            ' count ' +
+                            ' rows { ' +
+                            ' _id ' +
+                            ' assetId ' +
+                            ' symbol ' +
+                            ' type ' +
+                            ' amount ' +
+                            ' name { ' +
+                            ' lang ' +
+                            ' name ' +
+                            ' } ' +
+                            ' } ' +
 
-                            ' } '+
-                        ' } '
-                }
-            })
-            .then(function (resp) {
-                console.log(resp)
-                that.$emit('loaded', resp.data.data.AssetQuery)
-                that.items = [];
-                for(var i=0; i<resp.data.data.AssetQuery.rows.length; i++){
-                    var row = resp.data.data.AssetQuery.rows[i];
-                    that.items.push({
-                        id: row.assetId == null ? 'N/A' : row.assetId.substring(2),
-                        symbol: row.symbol == null ? '' : row.symbol,
-                        amount: row.amount == null ? 'N/A' : row.amount.toString().replace(/(?=((?!\b)\d{3})+$)/g, ','),
-                        name: row.name == null ? 'N/A' : (row.name[0].name || 'N/A'),
-                        type: row.type == null ? 'N/A' : row.type
-                    })
-                }
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+                            ' } ' +
+                            ' } '
+                    }
+                })
+                .then(function (resp) {
+                    console.log(resp)
+                    that.$emit('loaded', resp.data.data.AssetQuery)
+                    that.items = [];
+                    for (var i = 0; i < resp.data.data.AssetQuery.rows.length; i++) {
+                        var row = resp.data.data.AssetQuery.rows[i];
+                        that.items.push({
+                            id: row.assetId == null ? 'N/A' : row.assetId.substring(2),
+                            symbol: row.symbol == null ? '' : row.symbol,
+                            amount: row.amount == null ? 'N/A' : row.amount.toString().replace(/(?=((?!\b)\d{3})+$)/g, ','),
+                            name: row.name == null ? 'N/A' : (row.name[0].name || 'N/A'),
+                            type: row.type == null ? 'N/A' : row.type
+                        })
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
         },
-        setCurrentPage: function(currentPage) {
+        setCurrentPage: function (currentPage) {
             this.currentPage = currentPage;
         },
-        setSearchKeyword: function(keyword) {
+        setSearchKeyword: function (keyword) {
             this.keyword = keyword
         },
-        detail: function(idx) {
+        detail: function (idx) {
             console.log(this.items[idx])
-            window.location.href = 'assetinfo.html?index=0x'+this.items[idx].id + `&network=${GetUrlParam('network') || 'mainnet'}`
+            window.location.href = 'assetinfo.html?index=0x' + this.items[idx].id + `&network=${GetUrlParam('network') || 'mainnet'}`
         }
     }
 })
 
 Vue.component('neo-select', {
-    template:
-    '<div class="neo-select" v-if="visiable" v-bind:style="{left: left, right: right, top: top}">'+
-        '<div class="neo-select-arrow"></div>'+
-        '<div class="neo-select-list">'+
-            '<div class="neo-select-item" v-bind:class="{\'last\': itemIdx==items.length-1}" v-for="(item,itemIdx) in items" v-on:click="selected(itemIdx)">{{item.name}}</div>'+
-        '</div>'+
-    '</div>',
+    template: '<div class="neo-select" v-if="visiable" v-bind:style="{left: left, right: right, top: top}">' +
+        '<div class="neo-select-arrow"></div>' +
+        '<div class="neo-select-list">' +
+        '<div class="neo-select-item" v-bind:class="{\'last\': itemIdx==items.length-1}" v-for="(item,itemIdx) in items" v-on:click="selected(itemIdx)">{{item.name}}</div>' +
+        '</div>' +
+        '</div>',
     props: {
         data: Array,
         left: Number,
         right: Number,
         top: Number
     },
-    data: function() {
+    data: function () {
         return {
             visiable: false
         }
     },
     computed: {
-        items: function() {
-            if(this.data && this.data.length > 0) {
+        items: function () {
+            if (this.data && this.data.length > 0) {
                 return this.data
             }
 
             var arr = [];
-            for(var i = 0; i < 5; i++) {
+            for (var i = 0; i < 5; i++) {
                 arr.push({
-                    code: 'item'+i,
-                    name: '选项'+i
+                    code: 'item' + i,
+                    name: '选项' + i
                 })
             }
             return arr;
         }
     },
     methods: {
-        selected: function(idx) {
+        selected: function (idx) {
             this.$emit('selected', this.items[idx])
         },
-        show: function() {
+        show: function () {
             this.visiable = true;
         },
-        hide: function() {
+        hide: function () {
             this.visiable = false;
         }
     }
 })
 
 Vue.component('neo-search', {
-    template:
-    '<div class="neo-search">'+
+    template: '<div class="neo-search">' +
         '<input type="text" v-on:keyup.enter="search" v-model="keyword"> </input>' +
-        '<i class="icon iconfont icon-search" v-on:click="search"></i>'+
-    '</div>',
-    data: function() {
+        '<i class="icon iconfont icon-search" v-on:click="search"></i>' +
+        '</div>',
+    data: function () {
         return {
             keyword: ''
         }
@@ -1956,7 +2025,7 @@ Vue.component('neo-search', {
     methods: {
         search: function () {
             // console.log('search',this.keyword.replace(/\s+/g,""))
-            this.$emit('search', this.keyword.replace(/\s+/g,""))
+            this.$emit('search', this.keyword.replace(/\s+/g, ""))
         }
     }
 })

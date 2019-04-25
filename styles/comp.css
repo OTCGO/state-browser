@@ -760,6 +760,43 @@ body {
 
 /* #endregion */
 
+/* #region neo-market-list */
+
+.neo-market-list {
+    width: 7.5rem;
+    height: 1.5rem;
+    color:#fff;
+}
+
+.neo-market-list .neo-market-item {
+    text-align: center;
+    width: 23%;
+    background: #3685cd;
+    border-radius: .02rem;
+    color:#fff;
+    float: left;
+    margin-left: 10px;
+    height: 1.1rem;
+    
+}
+
+.neo-market-list .neo-market-item .name {
+    font-size: 0.1rem
+}
+
+.neo-market-list .neo-market-item .value {
+    font-size: 0.2rem
+}
+
+#neochart {
+    width: 7.5rem;
+    height: 2.5rem;
+    margin: 0 auto
+}
+
+
+/* #endregion */
+
 /* #region neo-wallet-list*/
 .neo-wallet-list {
     width: 7.5rem;

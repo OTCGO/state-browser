@@ -33,6 +33,11 @@ var network = GetUrlParam('network') || 'mainnet'
 var host = 'http://state-api.otcgo.cn'
 // var rpc = 'http://state-api.otcgo.cn:10332'
 
+if(document.domain === 'localhost' || document.domain === '127.0.0.1'){
+    host = 'http://localhost:5001'
+}
+
+
 if(network === 'testnet'){
     host = 'http://future.otcgo.cn:5001'
 }

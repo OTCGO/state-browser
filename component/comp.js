@@ -1815,6 +1815,59 @@ Vue.component('neo-block-info', {
     }
 });
 
+Vue.component('neo-bonus',{
+    template:`
+    <div class='neo-bonus'>
+        <div class="bonus">
+            <span class="gas">GAS &nbsp;&nbsp;&nbsp;</span>
+            <span>&nbsp;&nbsp;&nbsp;{{$t("address.available")}}: {{gasBonus.available}}</span>
+            <span>&nbsp;&nbsp;&nbsp;{{$t("address.unavailable")}}: {{gasBonus.unavailable}}</span>
+        </div>
+        <div class="bonus">
+            <span class="ong">ONG&nbsp;&nbsp;&nbsp;</span>
+            <span>&nbsp;&nbsp;&nbsp;{{$t("address.available")}}: {{ongBonus.available}}</span>
+            <span>&nbsp;&nbsp;&nbsp;{{$t("address.unavailable")}}: {{ongBonus.unavailable}}</span>
+        </div>
+    
+    </div>
+    `,
+    data:function(){
+        return {
+            gasBonus: {
+                available:0,
+                unavailable:0
+            },
+            ongBonus: {
+                available:0,
+                unavailable:0
+            },
+        }
+    },
+    methods:{
+        init:function(address){
+            //getBonus
+            this.getBonus(address)
+        },
+        getBonus(address){
+            const getGas = axios({
+                url: `https://api.otcgo.cn/mainnet/claim/${address}`,
+                method: 'get'
+            })
+            const getOng = axios({
+                url: `https://api.otcgo.cn/mainnet/claim/ont/${address}`,
+                method: 'get'
+            })
+            Promise.all([getGas,getOng]).then(result =>{
+                console.log('result',result)
+                this.gasBonus = result[0].data
+                this.ongBonus = result[1].data
+            }).catch()
+
+        }
+
+    }
+})
+
 Vue.component('neo-addr-info', {
     template: '<div class="neo-addr-info ">' +
         '<div class="balance">' +
@@ -1845,6 +1898,9 @@ Vue.component('neo-addr-info', {
     methods: {
         init: function (address) {
             // this.$refs.chart.init();
+            
+
+
             var that = this;
             axios({
                     url: host + '/api/v1/' + network + '/address/balances/' + (address.replace(/\s+/g, "")),

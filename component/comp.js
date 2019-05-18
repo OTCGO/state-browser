@@ -1309,7 +1309,7 @@ Vue.component('neo-address-list', {
             var that = this;
             that.addressItems = [];
             axios({
-                    url: host + '/api/v1/' + network + '/asset/transaction/' + that.id + `?start=${start}&end=${end}`,
+                    url: host + '/api/v1/' + network + '/asset/rank/' + that.id + `?start=${start}&end=${end}`,
                     method: 'get',
                 })
                 .then(function (resp) {

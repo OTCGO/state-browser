@@ -1819,10 +1819,10 @@ Vue.component('neo-addr-info', {
     template: '<div class="neo-addr-info ">' +
         '<div class="balance">' +
 
-        '<div v-for="item in items" class="col item" v-if="item.balances != ' + '0' + ' ">' +
+        '<div v-for="item in items" class="col item" v-if="item.balance != ' + '0' + ' ">' +
 
-        '<h3>{{item.name}}</h3>' +
-        '<h4>{{item.balances}}</h4>' +
+        '<h3>{{item.symbol}}</h3>' +
+        '<h4>{{item.balance}}</h4>' +
         '</div>' +
 
 

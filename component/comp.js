@@ -1321,7 +1321,7 @@ Vue.component('neo-address-list', {
                     for (var i = 0; i < result.length; i = i + 1) {
                         that.items.push({
                             addr: result[i].address,
-                            balance: result[i].balance['$numberDecimal'] || 0,
+                            balance: result[i].balance || 0,
                         })
                     }
                 })

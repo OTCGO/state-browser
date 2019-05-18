@@ -1729,3 +1729,21 @@ body {
 /* #region neo-search */
 
 
+/* neo-bonus */
+
+
+.neo-bonus {
+    height: 1rem;
+    border-left: .02rem solid #f7c300;
+    
+}
+.bonus{
+    height: 0.4;
+    margin-top: 10px;
+    line-height: 0.4rem;
+    margin-left: 0.05rem;
+    background: #417fb2;
+    text-align: left
+}
+/* #neo-bonus */
+

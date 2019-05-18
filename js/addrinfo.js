@@ -28,6 +28,7 @@ var app = new Vue({
             // this.$refs.wallet.init();
             this.$refs.addrinfo.init(this.address);
             this.$refs.tran.init()
+            this.$refs.bonus.init(this.address);
         },
         loaded: function(data) {
             console.log('loaded: ', data)

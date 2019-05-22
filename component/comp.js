@@ -1828,6 +1828,11 @@ Vue.component('neo-bonus',{
             <span>&nbsp;&nbsp;&nbsp;{{$t("address.available")}}: {{ongBonus.available}}</span>
             <span>&nbsp;&nbsp;&nbsp;{{$t("address.unavailable")}}: {{ongBonus.unavailable}}</span>
         </div>
+        <div class="bonus">
+            <span class="ong">SEAC&nbsp;&nbsp;</span>
+            <span>&nbsp;&nbsp;&nbsp;{{$t("address.available")}}: {{seacBonus.available}}</span>
+            <span>&nbsp;&nbsp;&nbsp;{{$t("address.unavailable")}}: {{seacBonus.unavailable}}</span>
+        </div>
     
     </div>
     `,
@@ -1838,6 +1843,10 @@ Vue.component('neo-bonus',{
                 unavailable:0
             },
             ongBonus: {
+                available:0,
+                unavailable:0
+            },
+            seacBonus: {
                 available:0,
                 unavailable:0
             },
@@ -1857,10 +1866,17 @@ Vue.component('neo-bonus',{
                 url: `https://api.otcgo.cn/mainnet/claim/ont/${address}`,
                 method: 'get'
             })
-            Promise.all([getGas,getOng]).then(result =>{
+
+            const getSeac = axios({
+                url: `https://api.otcgo.cn/v2/mainnet/claim/seas/${address}`,
+                method: 'get'
+            })
+
+            Promise.all([getGas,getOng,getSeac]).then(result =>{
                 console.log('result',result)
                 this.gasBonus = result[0].data
                 this.ongBonus = result[1].data
+                this.seacBonus = result[2].data.data
             }).catch()
 
         }

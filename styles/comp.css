@@ -1733,7 +1733,8 @@ body {
 
 
 .neo-bonus {
-    height: 1rem;
+    height: auto;
+    margin-bottom: 20px;
     border-left: .02rem solid #f7c300;
     
 }

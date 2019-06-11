@@ -74,7 +74,7 @@ var zhCHS = {
     balance: '余额',
     rank: '排名',
     zero: "该地址余额为0",
-    update: "每周更新数据"
+    update: "排行数据实时更新"
   },
   asset: {
     name: '名称',

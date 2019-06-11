@@ -75,7 +75,7 @@ var zhCHS = {
     balance: '余额',
     rank: '排名',
     zero: "该地址余额为0",
-    update: "每周更新数据",
+    update: "数据实时更新",
     available: '待提取',
     unavailable: '未提取'
   },

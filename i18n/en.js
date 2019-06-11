@@ -75,7 +75,7 @@ var en = {
         balance: 'balance',
         rank: 'rank',
         zero: 'the address balance is 0',
-        update: 'Weekly Updates',
+        update: 'Real Time Updates',
         available: 'available',
         unavailable: 'unavailable'
     },

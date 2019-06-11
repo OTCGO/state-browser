@@ -55,6 +55,7 @@ var zhCHS = {
   transaction: {
     name: '交易信息',
     type: '类型',
+    attribute: '属性',
     networkFee: '网络费用',
     systemFee: '系统费用',
     transactionId: "交易标识",
@@ -74,7 +75,9 @@ var zhCHS = {
     balance: '余额',
     rank: '排名',
     zero: "该地址余额为0",
-    update: "排行数据实时更新"
+    update: "数据实时更新",
+    available: '待提取',
+    unavailable: '未提取'
   },
   asset: {
     name: '名称',

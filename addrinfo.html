@@ -19,6 +19,7 @@
         <div class="page-addr-info">
             <neo-info-title :title="$t('address.value')" subtitle="" v-bind:id="address" :qrcode="true" ></neo-info-title>
             <neo-addr-info ref="addrinfo"></neo-addr-info><br />
+            <neo-bonus ref="bonus"></neo-bonus>
             <neo-tran-list 
                 ref="tran" 
                 v-bind:address="address" 

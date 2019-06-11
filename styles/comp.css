@@ -555,11 +555,11 @@ body {
 }
 
 .neo-toolbox.market .total h1 {
-    font-size: 0.3rem;
+    font-size: 0.25rem;
     color: #3A43C7;
     font-weight: 100;
     position: relative;
-    bottom: 0.18rem;
+    bottom: 0.13rem;
 }
 
 .neo-toolbox.market .info {
@@ -757,6 +757,43 @@ body {
     position: relative;
     z-index: 2;
 }
+
+/* #endregion */
+
+/* #region neo-market-list */
+
+.neo-market-list {
+    width: 7.5rem;
+    height: 1.5rem;
+    color:#fff;
+}
+
+.neo-market-list .neo-market-item {
+    text-align: center;
+    width: 23%;
+    background: #3685cd;
+    border-radius: .02rem;
+    color:#fff;
+    float: left;
+    margin-left: 10px;
+    height: 1.1rem;
+    
+}
+
+.neo-market-list .neo-market-item .name {
+    font-size: 0.1rem
+}
+
+.neo-market-list .neo-market-item .value {
+    font-size: 0.2rem
+}
+
+#neochart {
+    width: 7.5rem;
+    height: 2.5rem;
+    margin: 0 auto
+}
+
 
 /* #endregion */
 
@@ -1136,6 +1173,7 @@ body {
 .neo-tran-script {
     width: 100%;
     font-size: 0.1rem;
+    margin-top: 0.1rem;
 }
 
 .neo-tran-script__item {
@@ -1164,6 +1202,47 @@ body {
 }
 
 .neo-tran-script__item-desc {
+    color: #fff;
+    word-wrap: break-word;
+    padding: 0 0.2rem 0 0;
+}
+
+/* #endregion */
+
+/* #region neo-attr-script */
+
+.neo-tran-attr {
+    width: 100%;
+    font-size: 0.1rem;
+    margin-top: 0.1rem;
+}
+
+.neo-tran-attr__item {
+    width: 100%;
+    margin: 0 0 0.1rem 0;
+    border-left: 0.02rem solid #85C226;
+    position: relative;
+    padding: 0.2rem 0 0.2rem 0.2rem;
+}
+
+.neo-tran-attr__item .underlayer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: #308FD8;
+    opacity: 0.4;
+    border-radius: 0.02rem;
+    z-index: -1;
+}
+
+.neo-tran-attr__item-title {
+    font-size: 0.15rem;
+    color: #85C226;
+}
+
+.neo-tran-attr__item-desc {
     color: #fff;
     word-wrap: break-word;
     padding: 0 0.2rem 0 0;
@@ -1649,4 +1728,23 @@ body {
 
 /* #region neo-search */
 
+
+/* neo-bonus */
+
+
+.neo-bonus {
+    height: auto;
+    margin-bottom: 20px;
+    border-left: .02rem solid #f7c300;
+    
+}
+.bonus{
+    height: 0.4;
+    margin-top: 10px;
+    line-height: 0.4rem;
+    margin-left: 0.05rem;
+    background: #417fb2;
+    text-align: left
+}
+/* #neo-bonus */
 

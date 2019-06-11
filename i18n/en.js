@@ -54,6 +54,7 @@ var en = {
     },
     transaction: {
         name: 'transaction info',
+        attribute: 'attribute',
         type: 'type',
         networkFee: 'networkFee',
         systemFee: 'systemFee',
@@ -74,7 +75,9 @@ var en = {
         balance: 'balance',
         rank: 'rank',
         zero: 'the address balance is 0',
-        update: 'Real-time Updates'
+        update: 'Real Time Updates',
+        available: 'available',
+        unavailable: 'unavailable'
     },
     asset: {
         name: 'Name',

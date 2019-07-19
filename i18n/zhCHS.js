@@ -85,7 +85,8 @@ var zhCHS = {
     assetId: '标识',
     amount: '总量',
     symbol: '符号',
-    info: '资产信息'
+    info: '资产信息',
+    circulation: '流通量'
   },
   pagination: {
     current: '当前',

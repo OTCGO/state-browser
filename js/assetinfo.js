@@ -74,6 +74,21 @@ var app = new Vue({
                         {title: that.$t('asset.assetId'), desc: item.assetId},
                         {title: that.$t('asset.amount'), desc: item.amount},
                     ]
+
+                    if(item.assetId === '0xf735eb717f2f31dfc8d12d9df379da9b198b2045'){
+                        // 流通量 = (当前高度 - 200 0000 ) * 6 + 1000 0000 
+                        
+                        axios({
+                            url: `https://api.otcgo.cn/mainnet/height`,
+                            method: 'get',
+                        }).then(({ data }) => {
+                            const total = (Number(data.height) - 2000000 ) * 6 + 10000000 
+                            // console.log('total',total)
+                            that.block.push({title: that.$t('asset.circulation'), desc: total})
+                        }).catch()
+                    }
+
+                    // console.log('that.block',that.block)
                 }
             })
             .catch(function (error) {

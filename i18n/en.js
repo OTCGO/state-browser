@@ -85,7 +85,8 @@ var en = {
         symbol: 'Symbol',
         assetId: 'AssetId',
         amount: 'Amount',
-        info: 'Asset Info'
+        info: 'Asset Info',
+        circulation: 'Circulation'
     },
     pagination: {
         current: 'current',
